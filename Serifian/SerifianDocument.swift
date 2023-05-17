@@ -9,31 +9,65 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 extension UTType {
-    static var exampleText: UTType {
-        UTType(importedAs: "com.example.plain-text")
+    static var serifianDocument: UTType {
+        UTType(exportedAs: "com.persello.serifian.document")
     }
 }
 
 struct SerifianDocument: FileDocument {
+    
     var text: String
-
-    init(text: String = "Hello, world!") {
-        self.text = text
+    
+    static var readableContentTypes: [UTType] = [.serifianDocument]
+    
+    init() {
+        self.text = "Hello Serifian"
     }
-
-    static var readableContentTypes: [UTType] { [.exampleText] }
-
+    
     init(configuration: ReadConfiguration) throws {
-        guard let data = configuration.file.regularFileContents,
-              let string = String(data: data, encoding: .utf8)
-        else {
-            throw CocoaError(.fileReadCorruptFile)
-        }
-        text = string
+        let root = configuration.file
+        
+        // Find a Typst folder.
+        let typstFolder = root.fileWrappers?.first(where: { (_, wrapper) in
+            wrapper.isDirectory && wrapper.filename == "Typst"
+        })?.value
+        
+        let sources = typstFolder?.fileWrappers?.filter({ element in
+            element.value.filename?.hasSuffix(".typ") ?? false
+        })
+        
+        self.text = String(data: sources!.first!.value.regularFileContents!, encoding: .utf8)!
+        
     }
     
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        let data = text.data(using: .utf8)!
-        return .init(regularFileWithContents: data)
+        let root = configuration.existingFile ?? FileWrapper(directoryWithFileWrappers: [:])
+        
+        // Search for an existing Typst folder.
+        let existingTypstFolder = root.fileWrappers?.first(where: { (_, wrapper: FileWrapper) in
+            wrapper.isDirectory && wrapper.filename == "Typst"
+        })?.value
+        
+        let typstFolder: FileWrapper
+        if existingTypstFolder == nil {
+            typstFolder = FileWrapper(directoryWithFileWrappers: [:])
+            typstFolder.preferredFilename = "Typst"
+            root.addFileWrapper(typstFolder)
+        } else {
+            typstFolder = existingTypstFolder!
+            
+            // Empty the folder before re-writing.
+            typstFolder.fileWrappers?.values.compactMap({$0}).forEach({ file in
+                typstFolder.removeFileWrapper(file)
+            })
+        }
+        
+        let file = FileWrapper(regularFileWithContents: text.data(using: .utf8)!)
+        file.preferredFilename = "bap.typ"
+        
+        typstFolder.addFileWrapper(file)
+        
+        return root
     }
+    
 }
