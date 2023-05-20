@@ -70,10 +70,10 @@
 		8BD35E6C2A141B5100BDBED6 = {
 			isa = PBXGroup;
 			children = (
+				8B76A12C2A18FDE200CF5624 /* Frameworks */,
 				8B76A1292A18FCC600CF5624 /* Packages */,
 				8BD35E772A141B5100BDBED6 /* Serifian */,
 				8BD35E762A141B5100BDBED6 /* Products */,
-				8B76A12C2A18FDE200CF5624 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
