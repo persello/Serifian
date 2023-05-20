@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B76A12E2A18FDE300CF5624 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = 8B76A12D2A18FDE300CF5624 /* SwiftyTypst */; };
 		8BD35E792A141B5100BDBED6 /* SerifianApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E782A141B5100BDBED6 /* SerifianApp.swift */; };
 		8BD35E7B2A141B5100BDBED6 /* SerifianDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */; };
 		8BD35E7D2A141B5100BDBED6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E7C2A141B5100BDBED6 /* ContentView.swift */; };
@@ -14,7 +15,21 @@
 		8BD35E842A141B5200BDBED6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BD35E832A141B5200BDBED6 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8BB72F602A154B2800BA77C5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		8B76A12B2A18FD8000CF5624 /* SwiftyTypst */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyTypst; path = ../SwiftyTypst; sourceTree = "<group>"; };
 		8BD35E752A141B5100BDBED6 /* Serifian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serifian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD35E782A141B5100BDBED6 /* SerifianApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerifianApp.swift; sourceTree = "<group>"; };
 		8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerifianDocument.swift; sourceTree = "<group>"; };
@@ -30,13 +45,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B76A12E2A18FDE300CF5624 /* SwiftyTypst in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8BB72F582A15472500BA77C5 /* Frameworks */ = {
+		8B76A1292A18FCC600CF5624 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				8B76A12B2A18FD8000CF5624 /* SwiftyTypst */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		8B76A12C2A18FDE200CF5624 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -46,9 +70,10 @@
 		8BD35E6C2A141B5100BDBED6 = {
 			isa = PBXGroup;
 			children = (
+				8B76A1292A18FCC600CF5624 /* Packages */,
 				8BD35E772A141B5100BDBED6 /* Serifian */,
 				8BD35E762A141B5100BDBED6 /* Products */,
-				8BB72F582A15472500BA77C5 /* Frameworks */,
+				8B76A12C2A18FDE200CF5624 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,12 +117,16 @@
 				8BD35E712A141B5100BDBED6 /* Sources */,
 				8BD35E722A141B5100BDBED6 /* Frameworks */,
 				8BD35E732A141B5100BDBED6 /* Resources */,
+				8BB72F602A154B2800BA77C5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Serifian;
+			packageProductDependencies = (
+				8B76A12D2A18FDE300CF5624 /* SwiftyTypst */,
+			);
 			productName = Serifian;
 			productReference = 8BD35E752A141B5100BDBED6 /* Serifian.app */;
 			productType = "com.apple.product-type.application";
@@ -284,6 +313,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Serifian/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Serifian;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -305,9 +336,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
@@ -325,6 +358,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Serifian/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Serifian;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -346,9 +381,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Release;
 		};
@@ -374,6 +411,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8B76A12D2A18FDE300CF5624 /* SwiftyTypst */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftyTypst;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8BD35E6D2A141B5100BDBED6 /* Project object */;
 }

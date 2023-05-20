@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
+import SwiftyTypst
 
 extension UTType {
     static var serifianDocument: UTType {
@@ -14,9 +15,10 @@ extension UTType {
     }
 }
 
-struct SerifianDocument: FileDocument {
+class SerifianDocument: FileDocument {
     
     var text: String
+    var rootURL: URL?
     
     static var readableContentTypes: [UTType] = [.serifianDocument]
     
@@ -24,7 +26,7 @@ struct SerifianDocument: FileDocument {
         self.text = "Hello Serifian"
     }
     
-    init(configuration: ReadConfiguration) throws {
+    required init(configuration: ReadConfiguration) throws {
         let root = configuration.file
         
         // Find a Typst folder.
@@ -67,7 +69,21 @@ struct SerifianDocument: FileDocument {
         
         typstFolder.addFileWrapper(file)
         
+        let x = SwiftyTypst.compile(root: self.rootURL!.appendingPathComponent("Typst").path, main: file.preferredFilename!)
+        
+        if let x {
+            let pdfData = Data(x)
+            let pdfFile = FileWrapper(regularFileWithContents: pdfData)
+            pdfFile.preferredFilename = "preview.pdf"
+            root.addFileWrapper(pdfFile)
+        }
         return root
     }
     
+    public func settingRootURL(config: FileDocumentConfiguration<SerifianDocument>) -> FileDocumentConfiguration<SerifianDocument> {
+        if self.rootURL == nil {
+            self.rootURL = config.fileURL
+        }
+        return config
+    }
 }
