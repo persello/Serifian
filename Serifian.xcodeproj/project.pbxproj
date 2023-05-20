@@ -303,6 +303,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = "iOS Icon";
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = "Mac Beta Icon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Serifian/Serifian.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -348,6 +350,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = "iOS Icon";
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = "Mac Icon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Serifian/Serifian.entitlements;
 				CODE_SIGN_STYLE = Automatic;
