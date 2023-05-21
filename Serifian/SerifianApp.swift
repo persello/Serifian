@@ -15,4 +15,3 @@ struct SerifianApp: App {
         }
     }
 }
-

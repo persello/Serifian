@@ -19,10 +19,10 @@ extension PDFView: NSViewRepresentable {
     func makeNSView(context: Context) -> NSViewType {
         let pdfView = PDFKit.PDFView()
         pdfView.document = self.document
-        
+
         return pdfView
     }
-    
+
     func updateNSView(_ nsView: NSViewType, context: Context) {
         nsView.document = self.document
     }
@@ -35,10 +35,10 @@ extension PDFView: UIViewRepresentable {
     func makeUIView(context: Context) -> UIViewType {
         let pdfView = PDFKit.PDFView()
         pdfView.document = self.document
-        
+
         return pdfView
     }
-    
+
     func updateUIView(_ uiView: UIViewType, context: Context) {
         uiView.document = self.document
     }
