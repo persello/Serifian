@@ -28,15 +28,24 @@ struct SidebarItemViewModel: Identifiable, Hashable, Equatable {
             return Image(systemSymbol: .docText)
         }
 
+        if referencedSource is ImageFile {
+            return Image(systemSymbol: .photo)
+        }
+
+        if referencedSource is Folder {
+            return Image(systemSymbol: .folder)
+        }
+
         return Image(systemSymbol: .doc)
     }
 
-    var id: URL {
+    var id: String {
         return self.referencedSource.getPath()
     }
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+        hasher.combine(referencedSource)
     }
 
     static func == (lhs: SidebarItemViewModel, rhs: SidebarItemViewModel) -> Bool {

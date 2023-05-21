@@ -43,3 +43,13 @@ class Folder: SourceProtocol {
         }
     }
 }
+
+extension Folder: Hashable {
+    static func == (lhs: Folder, rhs: Folder) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.name)
+    }
+}

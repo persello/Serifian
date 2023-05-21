@@ -125,6 +125,7 @@ class SerifianDocument: FileDocument {
         if self.rootURL == nil {
             self.rootURL = config.fileURL
         }
+        print("Setting root URL.")
         return config
     }
 }

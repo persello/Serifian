@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents a content (file or folder) inside the Typst sources folder for a document.
-protocol SourceProtocol: Identifiable, AnyObject {
+protocol SourceProtocol: Identifiable, AnyObject, Hashable {
     associatedtype Content
 
     init(from fileWrapper: FileWrapper, in folder: Folder?) throws
@@ -47,16 +47,16 @@ func sourceProtocolObjectFrom(fileWrapper: FileWrapper, in folder: Folder?) -> (
 }
 
 extension SourceProtocol {
-    func getPath() -> URL {
+    func getPath() -> String {
         if let parent {
             let basePath = parent.getPath()
-            return basePath.appending(path: self.name)
+            return basePath + "/" + self.name
         } else {
-            return URL(filePath: self.name)
+            return self.name
         }
     }
 
-    var id: URL {
+    var id: String {
         self.getPath()
     }
 }

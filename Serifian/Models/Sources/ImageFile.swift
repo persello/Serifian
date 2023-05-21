@@ -55,3 +55,14 @@ class ImageFile: SourceProtocol {
         self.parent = folder
     }
 }
+
+extension ImageFile: Hashable {
+    static func == (lhs: ImageFile, rhs: ImageFile) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(content)
+        hasher.combine(name)
+    }
+}

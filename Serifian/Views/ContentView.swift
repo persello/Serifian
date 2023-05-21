@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Binding var document: SerifianDocument
-    @State var selectedSource: Set<SidebarItemViewModel> = []
+    @State var document: SerifianDocument
+    @State var selectedSource: SidebarItemViewModel? = nil
 
     var currentSource: (any SourceProtocol)? {
-        return selectedSource.first?.referencedSource
+        return selectedSource?.referencedSource
     }
 
     var body: some View {
         NavigationSplitView {
-            SidebarView(document: $document, selectedItem: $selectedSource)
+            SidebarView(files: document.contents, selectedItem: $selectedSource)
                 .navigationBarBackButtonHidden()
             #if os(iOS)
                 .navigationTitle(document.title)
@@ -27,15 +27,22 @@ struct ContentView: View {
                 Text("Typst source")
             } else if let image = currentSource as? ImageFile {
                 Text("Image")
+            } else if let genericFile = currentSource as? GenericFile {
+                Text("Generic file")
             } else {
                 Text("No source selected")
             }
+
+            Text("Preview")
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(document: .constant(SerifianDocument()))
+        let documentFile = Bundle.main.url(forResource: "Document", withExtension: "sr")!
+        let wrapper = try! FileWrapper(url: documentFile)
+        let document = try! SerifianDocument(fromFileWrapper: wrapper)
+        return ContentView(document: document)
     }
 }

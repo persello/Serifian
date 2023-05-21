@@ -28,3 +28,14 @@ class GenericFile: SourceProtocol {
         self.parent = folder
     }
 }
+
+extension GenericFile: Hashable {
+    static func == (lhs: GenericFile, rhs: GenericFile) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(content)
+        hasher.combine(name)
+    }
+}

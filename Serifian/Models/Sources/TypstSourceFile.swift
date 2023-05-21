@@ -53,3 +53,14 @@ class TypstSourceFile: SourceProtocol {
         self.parent = folder
     }
 }
+
+extension TypstSourceFile: Hashable {
+    static func == (lhs: TypstSourceFile, rhs: TypstSourceFile) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(content)
+        hasher.combine(name)
+    }
+}

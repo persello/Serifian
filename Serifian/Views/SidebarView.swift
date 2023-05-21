@@ -8,27 +8,26 @@
 import SwiftUI
 
 struct SidebarView: View {
-    @Binding var document: SerifianDocument
-    @Binding var selectedItem: Set<SidebarItemViewModel>
+    @State var files: [any SourceProtocol]
+    @Binding var selectedItem: SidebarItemViewModel?
 
     var sidebarItems: [SidebarItemViewModel] {
-        self.document.contents.map { source in
+        self.files.map { source in
             SidebarItemViewModel(referencedSource: source)
         }
     }
 
     var body: some View {
-        List(sidebarItems, id: \.id, children: \.children, selection: $selectedItem) { item in
+        List(sidebarItems, id: \.self, children: \.children, selection: $selectedItem) { item in
             NavigationLink(value: item) {
                 Label {
                     Text(item.referencedSource.name)
                 } icon: {
                     item.image
                 }
-
             }
+            .tag(item)
         }
-        .listStyle(.sidebar)
     }
 }
 
@@ -37,13 +36,13 @@ struct SidebarView_Previews: PreviewProvider {
         let documentFile = Bundle.main.url(forResource: "Document", withExtension: "sr")!
         let wrapper = try! FileWrapper(url: documentFile)
         let document = try! SerifianDocument(fromFileWrapper: wrapper)
-        return SidebarView(
-            document: .constant(document),
-            selectedItem: .constant(
-                .init([
+        return NavigationStack {
+            SidebarView(
+                files: document.contents,
+                selectedItem: .constant(
                     .init(referencedSource: document.contents.first!)
-                ])
+                )
             )
-        )
+        }
     }
 }
