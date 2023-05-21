@@ -17,29 +17,50 @@ extension UTType {
 
 class SerifianDocument: FileDocument {
 
-    var text: String
+    var contents: [any SourceProtocol]
+    var metadata: DocumentMetadata
     var rootURL: URL?
 
     static var readableContentTypes: [UTType] = [.serifianDocument]
 
     init() {
-        self.text = "Hello Serifian"
+        self.contents = []
+        self.metadata = DocumentMetadata(mainSource: "./Typst/main.typ")
     }
 
     required init(configuration: ReadConfiguration) throws {
         let root = configuration.file
 
+        // Find the metadata.
+        guard let metadata = root.fileWrappers?.first(where: { (_, wrapper) in
+            wrapper.isRegularFile && wrapper.filename == "Info.plist"
+        })?.value,
+              let encodedMetadata = metadata.regularFileContents else {
+            throw DocumentError.noMetadata
+        }
+
+        let plistDecoder = PropertyListDecoder()
+        self.metadata = try plistDecoder.decode(DocumentMetadata.self, from: encodedMetadata)
+
         // Find a Typst folder.
-        let typstFolder = root.fileWrappers?.first(where: { (_, wrapper) in
+        guard let typstFolder = root.fileWrappers?.first(where: { (_, wrapper) in
             wrapper.isDirectory && wrapper.filename == "Typst"
-        })?.value
+        })?.value else {
+            throw DocumentError.noTypstFolder
+        }
 
-        let sources = typstFolder?.fileWrappers?.filter({ element in
-            element.value.filename?.hasSuffix(".typ") ?? false
-        })
+        // Get the contents of Typst.
+        guard let contents = typstFolder.fileWrappers else {
+            throw DocumentError.noTypstContent
+        }
 
-        self.text = String(data: sources!.first!.value.regularFileContents!, encoding: .utf8)!
-
+        // Create the actual contents.
+        self.contents = []
+        for item in contents.values {
+            if let sourceItem = sourceProtocolObjectFrom(fileWrapper: item, in: URL(filePath: ".")) {
+                self.contents.append(sourceItem)
+            }
+        }
     }
 
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
@@ -52,22 +73,39 @@ class SerifianDocument: FileDocument {
 
         let typstFolder: FileWrapper
         if existingTypstFolder == nil {
+            // If the folder does not exist, create it from scratch.
             typstFolder = FileWrapper(directoryWithFileWrappers: [:])
             typstFolder.preferredFilename = "Typst"
             root.addFileWrapper(typstFolder)
         } else {
             typstFolder = existingTypstFolder!
 
-            // Empty the folder before re-writing.
+            // Else, empty the folder before re-writing.
             typstFolder.fileWrappers?.values.compactMap({$0}).forEach({ file in
                 typstFolder.removeFileWrapper(file)
             })
         }
 
-        let file = FileWrapper(regularFileWithContents: text.data(using: .utf8)!)
-        file.preferredFilename = "bap.typ"
+        // Encode files.
+        for item in self.contents {
+            let wrapper = try item.fileWrapper
 
-        typstFolder.addFileWrapper(file)
+            typstFolder.addFileWrapper(wrapper)
+        }
+
+        // Remove old metadata.
+        if let oldMetadata = root.fileWrappers?["Info.plist"] {
+            root.removeFileWrapper(oldMetadata)
+        }
+
+        // Encode metadata.
+        let plistEncoder = PropertyListEncoder()
+        plistEncoder.outputFormat = .binary
+        let encodedMetadata = try plistEncoder.encode(self.metadata)
+        let metadataWrapper = FileWrapper(regularFileWithContents: encodedMetadata)
+
+        metadataWrapper.preferredFilename = "Info.plist"
+        root.addFileWrapper(metadataWrapper)
 
         return root
     }
