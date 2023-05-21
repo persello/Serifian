@@ -31,7 +31,10 @@
 			<key>UTTypeDescription</key>
 			<string>Serifian Document</string>
 			<key>UTTypeIcons</key>
-			<dict/>
+			<dict>
+				<key>UTTypeIconText</key>
+				<string>Serifian</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>com.persello.Serifian.document</string>
 			<key>UTTypeTagSpecification</key>

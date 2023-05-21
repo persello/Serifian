@@ -9,11 +9,11 @@ import Foundation
 import CoreGraphics
 import SwiftyImageIO
 
-struct ImageFile: SourceProtocol {
+class ImageFile: SourceProtocol {
     var name: String
     var content: CGImage
-    var path: URL
     var type: UTI
+    weak var parent: Folder?
     var fileWrapper: FileWrapper {
         get throws {
             guard let data = CFDataCreateMutable(nil, 0),
@@ -34,7 +34,7 @@ struct ImageFile: SourceProtocol {
     }
 
 
-    init(from fileWrapper: FileWrapper, in path: URL) throws {
+    required init(from fileWrapper: FileWrapper, in folder: Folder?) throws {
         guard let data = fileWrapper.regularFileContents else {
             throw SourceError.fileHasNoContents
         }
@@ -52,6 +52,6 @@ struct ImageFile: SourceProtocol {
         self.type = uti
         self.content = image
         self.name = fileWrapper.preferredFilename ?? "Image"
-        self.path = path.appending(path: self.name)
+        self.parent = folder
     }
 }

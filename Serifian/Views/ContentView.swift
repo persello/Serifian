@@ -9,14 +9,28 @@ import SwiftUI
 
 struct ContentView: View {
     @Binding var document: SerifianDocument
+    @State var selectedSource: Set<SidebarItemViewModel> = []
+
+    var currentSource: (any SourceProtocol)? {
+        return selectedSource.first?.referencedSource
+    }
 
     var body: some View {
         NavigationSplitView {
-            Text("AAAA")
+            SidebarView(document: $document, selectedItem: $selectedSource)
+                .navigationBarBackButtonHidden()
+            #if os(iOS)
+                .navigationTitle("Title")
+            #endif
         } detail: {
-            Text("Editor")
+            if let typstSource = currentSource as? TypstSourceFile {
+                Text("Typst source")
+            } else if let image = currentSource as? ImageFile {
+                Text("Image")
+            } else {
+                Text("No source selected")
+            }
         }
-
     }
 }
 

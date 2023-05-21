@@ -19,6 +19,9 @@
 		8B7E8EA12A1A7C0E008221CE /* DocumentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EA02A1A7C0E008221CE /* DocumentError.swift */; };
 		8B7E8EA32A1A7DFE008221CE /* DocumentMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EA22A1A7DFE008221CE /* DocumentMetadata.swift */; };
 		8B7E8EA52A1A86A2008221CE /* TypstSourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EA42A1A86A2008221CE /* TypstSourceFile.swift */; };
+		8B7E8EA92A1A89EB008221CE /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EA82A1A89EB008221CE /* SidebarView.swift */; };
+		8B7E8EB02A1A9085008221CE /* SidebarItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EAF2A1A9085008221CE /* SidebarItemViewModel.swift */; };
+		8B7E8EB22A1AA397008221CE /* Document.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8B7E8EB12A1AA397008221CE /* Document.sr */; };
 		8BD35E792A141B5100BDBED6 /* SerifianApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E782A141B5100BDBED6 /* SerifianApp.swift */; };
 		8BD35E7B2A141B5100BDBED6 /* SerifianDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */; };
 		8BD35E7D2A141B5100BDBED6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E7C2A141B5100BDBED6 /* ContentView.swift */; };
@@ -51,6 +54,9 @@
 		8B7E8EA02A1A7C0E008221CE /* DocumentError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentError.swift; sourceTree = "<group>"; };
 		8B7E8EA22A1A7DFE008221CE /* DocumentMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentMetadata.swift; sourceTree = "<group>"; };
 		8B7E8EA42A1A86A2008221CE /* TypstSourceFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstSourceFile.swift; sourceTree = "<group>"; };
+		8B7E8EA82A1A89EB008221CE /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		8B7E8EAF2A1A9085008221CE /* SidebarItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemViewModel.swift; sourceTree = "<group>"; };
+		8B7E8EB12A1AA397008221CE /* Document.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Document.sr; sourceTree = "<group>"; };
 		8BD35E752A141B5100BDBED6 /* Serifian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serifian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD35E782A141B5100BDBED6 /* SerifianApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerifianApp.swift; sourceTree = "<group>"; };
 		8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerifianDocument.swift; sourceTree = "<group>"; };
@@ -103,6 +109,7 @@
 			children = (
 				8BD35E7C2A141B5100BDBED6 /* ContentView.swift */,
 				8B7E8E8D2A1A5319008221CE /* PDFView.swift */,
+				8B7E8EA82A1A89EB008221CE /* SidebarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -130,6 +137,14 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		8B7E8EAA2A1A8A04008221CE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8B7E8EAF2A1A9085008221CE /* SidebarItemViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		8BD35E6C2A141B5100BDBED6 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +168,7 @@
 			children = (
 				8B7E8E922A1A6518008221CE /* Views */,
 				8B7E8E912A1A650C008221CE /* Models */,
+				8B7E8EAA2A1A8A04008221CE /* ViewModels */,
 				8BD35E782A141B5100BDBED6 /* SerifianApp.swift */,
 				8BD35E7E2A141B5200BDBED6 /* Assets.xcassets */,
 				8BD35E802A141B5200BDBED6 /* Info.plist */,
@@ -166,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				8BD35E832A141B5200BDBED6 /* Preview Assets.xcassets */,
+				8B7E8EB12A1AA397008221CE /* Document.sr */,
 				8B7E8E8F2A1A56A6008221CE /* example.pdf */,
 			);
 			path = "Preview Content";
@@ -238,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B7E8E902A1A56A6008221CE /* example.pdf in Resources */,
+				8B7E8EB22A1AA397008221CE /* Document.sr in Resources */,
 				8BD35E842A141B5200BDBED6 /* Preview Assets.xcassets in Resources */,
 				8BD35E7F2A141B5200BDBED6 /* Assets.xcassets in Resources */,
 			);
@@ -254,6 +272,7 @@
 				8B7E8E9C2A1A7291008221CE /* ImageFile.swift in Sources */,
 				8B7E8EA12A1A7C0E008221CE /* DocumentError.swift in Sources */,
 				8B7E8E942A1A6608008221CE /* SourceProtocol.swift in Sources */,
+				8B7E8EB02A1A9085008221CE /* SidebarItemViewModel.swift in Sources */,
 				8B7E8E9A2A1A6EB0008221CE /* GenericFile.swift in Sources */,
 				8BD35E792A141B5100BDBED6 /* SerifianApp.swift in Sources */,
 				8B7E8E8E2A1A5319008221CE /* PDFView.swift in Sources */,
@@ -261,6 +280,7 @@
 				8BD35E7D2A141B5100BDBED6 /* ContentView.swift in Sources */,
 				8B7E8EA52A1A86A2008221CE /* TypstSourceFile.swift in Sources */,
 				8B7E8E982A1A6A15008221CE /* SourceError.swift in Sources */,
+				8B7E8EA92A1A89EB008221CE /* SidebarView.swift in Sources */,
 				8B7E8E962A1A674E008221CE /* Folder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,7 +400,7 @@
 		8BD35E882A141B5200BDBED6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = "iOS Icon";
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = "Mac Beta Icon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -427,7 +447,7 @@
 		8BD35E892A141B5200BDBED6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = "iOS Icon";
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = "Mac Icon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

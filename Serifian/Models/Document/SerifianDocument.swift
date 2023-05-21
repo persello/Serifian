@@ -24,13 +24,12 @@ class SerifianDocument: FileDocument {
     static var readableContentTypes: [UTType] = [.serifianDocument]
 
     init() {
-        self.contents = []
+        let main = TypstSourceFile(name: "main.typ", content: "Hello, Serifian.", in: nil)
+        self.contents = [main]
         self.metadata = DocumentMetadata(mainSource: "./Typst/main.typ")
     }
 
-    required init(configuration: ReadConfiguration) throws {
-        let root = configuration.file
-
+    init(fromFileWrapper root: FileWrapper) throws {
         // Find the metadata.
         guard let metadata = root.fileWrappers?.first(where: { (_, wrapper) in
             wrapper.isRegularFile && wrapper.filename == "Info.plist"
@@ -57,10 +56,15 @@ class SerifianDocument: FileDocument {
         // Create the actual contents.
         self.contents = []
         for item in contents.values {
-            if let sourceItem = sourceProtocolObjectFrom(fileWrapper: item, in: URL(filePath: ".")) {
+            if let sourceItem = sourceProtocolObjectFrom(fileWrapper: item, in: nil) {
                 self.contents.append(sourceItem)
             }
         }
+    }
+
+    required convenience init(configuration: ReadConfiguration) throws {
+        let root = configuration.file
+        try self.init(fromFileWrapper: root)
     }
 
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {

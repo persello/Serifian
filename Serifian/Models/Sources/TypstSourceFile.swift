@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct TypstSourceFile: SourceProtocol {
+class TypstSourceFile: SourceProtocol {
     var name: String
     var content: String
-    var path: URL
+    weak var parent: Folder?
     var fileWrapper: FileWrapper {
         get throws {
             guard let data = content.data(using: .utf8) else {
@@ -24,7 +24,7 @@ struct TypstSourceFile: SourceProtocol {
         }
     }
 
-    init(from fileWrapper: FileWrapper, in path: URL) throws {
+    required init(from fileWrapper: FileWrapper, in folder: Folder?) throws {
         guard fileWrapper.isRegularFile else {
             throw SourceError.notAFile
         }
@@ -44,6 +44,12 @@ struct TypstSourceFile: SourceProtocol {
 
         self.content = content
         self.name = fileWrapper.filename ?? "File"
-        self.path = path.appending(path: self.name)
+        self.parent = folder
+    }
+
+    init(name: String, content: String, in folder: Folder?) {
+        self.name = name
+        self.content = content
+        self.parent = folder
     }
 }

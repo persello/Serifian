@@ -12,6 +12,9 @@ struct SerifianApp: App {
     var body: some Scene {
         DocumentGroup(newDocument: SerifianDocument()) { file in
             ContentView(document: file.document.settingRootURL(config: file).$document)
+            #if os(iOS)
+                .navigationTitle("")
+            #endif
         }
     }
 }
