@@ -18,6 +18,9 @@ enum SourceError: Error {
     case utiError
     case imageDataBufferCreationError
     case imageDataBufferStoreError
+    case notTypstSource
+    case UTF8EncodingError
+    case UTF8DecodingError
 }
 
 extension SourceError: LocalizedError {
@@ -37,6 +40,12 @@ extension SourceError: LocalizedError {
             return "Cannot create a memory buffer for storing image data before saving it to a file."
         case .imageDataBufferStoreError:
             return "Cannot store image data before saving it to a file."
+        case .notTypstSource:
+            return "Cannot create a Typst source file from a different format."
+        case .UTF8DecodingError:
+            return "A source file cannot be decoded from UTF8."
+        case .UTF8EncodingError:
+            return "A source file cannot be encoded to UTF8."
         }
     }
 
@@ -46,8 +55,12 @@ extension SourceError: LocalizedError {
                 .notAFile,
                 .fileHasNoContents,
                 .notAnImage,
-                .utiError:
+                .utiError,
+                .notTypstSource,
+                .UTF8DecodingError:
             return "Parts of this document might be corrupted."
+        case .UTF8EncodingError:
+            return "A source file has symbols that cannot be encoded into UTF8."
         default:
             return nil
         }
@@ -58,6 +71,8 @@ extension SourceError: LocalizedError {
         case .imageDataBufferCreationError,
                 .imageDataBufferStoreError:
             return "Try again later."
+        case .UTF8EncodingError:
+            return "Remove any incompatible symbols."
         default:
             return nil
         }

@@ -33,6 +33,11 @@ func sourceProtocolObjectFrom(fileWrapper: FileWrapper, in path: URL) -> (any So
         return imageFile
     }
 
+    // Try to parse a Typst source file.
+    if let typstFile = try? TypstSourceFile(from: fileWrapper, in: path) {
+        return typstFile
+    }
+
     // Lastly, we try with a generic file.
     if let genericFile = try? GenericFile(from: fileWrapper, in: path) {
         return genericFile
