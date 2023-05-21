@@ -19,7 +19,14 @@ struct SidebarView: View {
 
     var body: some View {
         List(sidebarItems, id: \.id, children: \.children, selection: $selectedItem) { item in
-            Text(item.referencedSource.name)
+            NavigationLink(value: item) {
+                Label {
+                    Text(item.referencedSource.name)
+                } icon: {
+                    item.image
+                }
+
+            }
         }
         .listStyle(.sidebar)
     }

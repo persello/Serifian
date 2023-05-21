@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+import SFSafeSymbols
 
 struct SidebarItemViewModel: Identifiable, Hashable, Equatable {
 
@@ -19,6 +21,14 @@ struct SidebarItemViewModel: Identifiable, Hashable, Equatable {
         } else {
             return nil
         }
+    }
+
+    var image: Image {
+        if referencedSource is TypstSourceFile {
+            return Image(systemSymbol: .docText)
+        }
+
+        return Image(systemSymbol: .doc)
     }
 
     var id: URL {

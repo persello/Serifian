@@ -20,6 +20,7 @@ class SerifianDocument: FileDocument {
     var contents: [any SourceProtocol]
     var metadata: DocumentMetadata
     var rootURL: URL?
+    var title: String
 
     static var readableContentTypes: [UTType] = [.serifianDocument]
 
@@ -27,9 +28,15 @@ class SerifianDocument: FileDocument {
         let main = TypstSourceFile(name: "main.typ", content: "Hello, Serifian.", in: nil)
         self.contents = [main]
         self.metadata = DocumentMetadata(mainSource: "./Typst/main.typ")
+        self.title = "Untitled"
     }
 
     init(fromFileWrapper root: FileWrapper) throws {
+        // Set title.
+        var fileNameComponents = root.filename?.split(separator: ".")
+        fileNameComponents?.removeLast()
+        self.title = fileNameComponents?.joined(separator: ".") ?? "Untitled"
+
         // Find the metadata.
         guard let metadata = root.fileWrappers?.first(where: { (_, wrapper) in
             wrapper.isRegularFile && wrapper.filename == "Info.plist"

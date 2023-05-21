@@ -20,7 +20,7 @@ struct ContentView: View {
             SidebarView(document: $document, selectedItem: $selectedSource)
                 .navigationBarBackButtonHidden()
             #if os(iOS)
-                .navigationTitle("Title")
+                .navigationTitle(document.title)
             #endif
         } detail: {
             if let typstSource = currentSource as? TypstSourceFile {
