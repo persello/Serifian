@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8B76A12E2A18FDE300CF5624 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = 8B76A12D2A18FDE300CF5624 /* SwiftyTypst */; };
+		8B7E8E8E2A1A5319008221CE /* PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8E8D2A1A5319008221CE /* PDFView.swift */; };
+		8B7E8E902A1A56A6008221CE /* example.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8B7E8E8F2A1A56A6008221CE /* example.pdf */; };
 		8BD35E792A141B5100BDBED6 /* SerifianApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E782A141B5100BDBED6 /* SerifianApp.swift */; };
 		8BD35E7B2A141B5100BDBED6 /* SerifianDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */; };
 		8BD35E7D2A141B5100BDBED6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E7C2A141B5100BDBED6 /* ContentView.swift */; };
@@ -30,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		8B76A12B2A18FD8000CF5624 /* SwiftyTypst */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyTypst; path = ../SwiftyTypst; sourceTree = "<group>"; };
+		8B7E8E8D2A1A5319008221CE /* PDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFView.swift; sourceTree = "<group>"; };
+		8B7E8E8F2A1A56A6008221CE /* example.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = example.pdf; path = ../../../../Desktop/example.pdf; sourceTree = "<group>"; };
 		8BD35E752A141B5100BDBED6 /* Serifian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serifian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD35E782A141B5100BDBED6 /* SerifianApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerifianApp.swift; sourceTree = "<group>"; };
 		8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerifianDocument.swift; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 				8BD35E782A141B5100BDBED6 /* SerifianApp.swift */,
 				8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */,
 				8BD35E7C2A141B5100BDBED6 /* ContentView.swift */,
+				8B7E8E8D2A1A5319008221CE /* PDFView.swift */,
 				8BD35E7E2A141B5200BDBED6 /* Assets.xcassets */,
 				8BD35E802A141B5200BDBED6 /* Info.plist */,
 				8BD35E812A141B5200BDBED6 /* Serifian.entitlements */,
@@ -103,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				8BD35E832A141B5200BDBED6 /* Preview Assets.xcassets */,
+				8B7E8E8F2A1A56A6008221CE /* example.pdf */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -169,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B7E8E902A1A56A6008221CE /* example.pdf in Resources */,
 				8BD35E842A141B5200BDBED6 /* Preview Assets.xcassets in Resources */,
 				8BD35E7F2A141B5200BDBED6 /* Assets.xcassets in Resources */,
 			);
@@ -182,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BD35E792A141B5100BDBED6 /* SerifianApp.swift in Sources */,
+				8B7E8E8E2A1A5319008221CE /* PDFView.swift in Sources */,
 				8BD35E7B2A141B5100BDBED6 /* SerifianDocument.swift in Sources */,
 				8BD35E7D2A141B5100BDBED6 /* ContentView.swift in Sources */,
 			);
