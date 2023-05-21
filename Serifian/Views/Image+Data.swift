@@ -1,5 +1,5 @@
 //
-//  Image+CGImage.swift
+//  Image+Data.swift
 //  Serifian
 //
 //  Created by Riccardo Persello on 21/05/23.
@@ -17,14 +17,17 @@ import AppKit
 
 extension Image {
 #if os(macOS)
-    init(cgImage: CGImage) {
-        let size = NSSize(width: cgImage.width, height: cgImage.height)
-        let nsImage = NSImage(cgImage: cgImage, size: size)
+    init(data: Data) throws {
+        guard let nsImage = NSImage(data: data) else {
+            throw SourceError.notAnImage
+        }
         self.init(nsImage: nsImage)
     }
 #elseif os(iOS)
-    init(cgImage: CGImage) {
-        let uiImage = UIImage(cgImage: cgImage)
+    init(data: Data) throws {
+        guard let uiImage = UIImage(data: data) else {
+            throw SourceError.notAnImage
+        }
         self.init(uiImage: uiImage)
     }
 #endif

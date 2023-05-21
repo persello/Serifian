@@ -16,8 +16,6 @@ enum SourceError: Error {
     case fileHasNoContents
     case notAnImage
     case utiError
-    case imageDataBufferCreationError
-    case imageDataBufferStoreError
     case notTypstSource
     case UTF8EncodingError
     case UTF8DecodingError
@@ -33,13 +31,9 @@ extension SourceError: LocalizedError {
         case .fileHasNoContents:
             return "A file object was being created from a file wrapper without any content."
         case .notAnImage:
-            return "An image file object was being created from a file that is not a supported bitmap image."
+            return "An image file object was being visualised from a file that is not a supported bitmap image."
         case .utiError:
             return "Cannot find the UTI of a file."
-        case .imageDataBufferCreationError:
-            return "Cannot create a memory buffer for storing image data before saving it to a file."
-        case .imageDataBufferStoreError:
-            return "Cannot store image data before saving it to a file."
         case .notTypstSource:
             return "Cannot create a Typst source file from a different format."
         case .UTF8DecodingError:
@@ -68,9 +62,6 @@ extension SourceError: LocalizedError {
 
     var recoverySuggestion: String? {
         switch self {
-        case .imageDataBufferCreationError,
-                .imageDataBufferStoreError:
-            return "Try again later."
         case .UTF8EncodingError:
             return "Remove any incompatible symbols."
         default:

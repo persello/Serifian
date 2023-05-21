@@ -7,30 +7,18 @@
 
 import Foundation
 import CoreGraphics
-import SwiftyImageIO
+import ImageIO
+import SwiftUI
 
 class ImageFile: SourceProtocol {
     var name: String
-    var content: CGImage
-    var type: UTI
+    var content: Data
     weak var parent: Folder?
     var fileWrapper: FileWrapper {
-        get throws {
-            guard let data = CFDataCreateMutable(nil, 0),
-                  let destination = ImageDestination(data: data, UTI: self.type, imageCount: 1) else {
-                throw SourceError.imageDataBufferCreationError
-            }
-            
-            destination.addImage(content)
-            guard destination.finalize() else {
-                throw SourceError.imageDataBufferStoreError
-            }
-            
-            let wrapper = FileWrapper(regularFileWithContents: data as Data)
-            wrapper.preferredFilename = name
-            
-            return wrapper
-        }
+        let wrapper = FileWrapper(regularFileWithContents: self.content)
+        wrapper.preferredFilename = name
+
+        return wrapper
     }
 
 
@@ -39,18 +27,10 @@ class ImageFile: SourceProtocol {
             throw SourceError.fileHasNoContents
         }
 
-        let imageSource = ImageSource(data: data, options: nil)
+        // Try to create an image in order to validate data.
+        let _ = try Image(data: data)
 
-        guard let uti = imageSource?.UTI else {
-            throw SourceError.utiError
-        }
-
-        guard let image = imageSource?.createImage() else {
-            throw SourceError.notAnImage
-        }
-
-        self.type = uti
-        self.content = image
+        self.content = data
         self.name = fileWrapper.preferredFilename ?? "Image"
         self.parent = folder
     }

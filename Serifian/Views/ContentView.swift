@@ -26,14 +26,12 @@ struct ContentView: View {
             if let typstSource = currentSource as? TypstSourceFile {
                 Text("Typst source")
             } else if let image = currentSource as? ImageFile {
-                Text("Image")
+                try? Image(data: image.content).resizable().scaledToFit()
             } else if let genericFile = currentSource as? GenericFile {
                 Text("Generic file")
             } else {
                 Text("No source selected")
             }
-
-            Text("Preview")
         }
     }
 }

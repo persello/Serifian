@@ -15,7 +15,6 @@
 		8B7E8E982A1A6A15008221CE /* SourceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8E972A1A6A15008221CE /* SourceError.swift */; };
 		8B7E8E9A2A1A6EB0008221CE /* GenericFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8E992A1A6EB0008221CE /* GenericFile.swift */; };
 		8B7E8E9C2A1A7291008221CE /* ImageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8E9B2A1A7291008221CE /* ImageFile.swift */; };
-		8B7E8E9F2A1A75D5008221CE /* SwiftyImageIO in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7E8E9E2A1A75D5008221CE /* SwiftyImageIO */; };
 		8B7E8EA12A1A7C0E008221CE /* DocumentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EA02A1A7C0E008221CE /* DocumentError.swift */; };
 		8B7E8EA32A1A7DFE008221CE /* DocumentMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EA22A1A7DFE008221CE /* DocumentMetadata.swift */; };
 		8B7E8EA52A1A86A2008221CE /* TypstSourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EA42A1A86A2008221CE /* TypstSourceFile.swift */; };
@@ -23,7 +22,7 @@
 		8B7E8EB02A1A9085008221CE /* SidebarItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EAF2A1A9085008221CE /* SidebarItemViewModel.swift */; };
 		8B7E8EB22A1AA397008221CE /* Document.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8B7E8EB12A1AA397008221CE /* Document.sr */; };
 		8B7E8EB52A1AADA5008221CE /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7E8EB42A1AADA5008221CE /* SFSafeSymbols */; };
-		8B7E8EB72A1AB007008221CE /* Image+CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EB62A1AB007008221CE /* Image+CGImage.swift */; };
+		8B7E8EB72A1AB007008221CE /* Image+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EB62A1AB007008221CE /* Image+Data.swift */; };
 		8BD35E792A141B5100BDBED6 /* SerifianApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E782A141B5100BDBED6 /* SerifianApp.swift */; };
 		8BD35E7B2A141B5100BDBED6 /* SerifianDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */; };
 		8BD35E7D2A141B5100BDBED6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E7C2A141B5100BDBED6 /* ContentView.swift */; };
@@ -59,7 +58,7 @@
 		8B7E8EA82A1A89EB008221CE /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		8B7E8EAF2A1A9085008221CE /* SidebarItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemViewModel.swift; sourceTree = "<group>"; };
 		8B7E8EB12A1AA397008221CE /* Document.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Document.sr; sourceTree = "<group>"; };
-		8B7E8EB62A1AB007008221CE /* Image+CGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+CGImage.swift"; sourceTree = "<group>"; };
+		8B7E8EB62A1AB007008221CE /* Image+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Data.swift"; sourceTree = "<group>"; };
 		8BD35E752A141B5100BDBED6 /* Serifian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serifian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD35E782A141B5100BDBED6 /* SerifianApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerifianApp.swift; sourceTree = "<group>"; };
 		8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerifianDocument.swift; sourceTree = "<group>"; };
@@ -76,7 +75,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B7E8EB52A1AADA5008221CE /* SFSafeSymbols in Frameworks */,
-				8B7E8E9F2A1A75D5008221CE /* SwiftyImageIO in Frameworks */,
 				8B76A12E2A18FDE300CF5624 /* SwiftyTypst in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,7 +112,7 @@
 				8BD35E7C2A141B5100BDBED6 /* ContentView.swift */,
 				8B7E8E8D2A1A5319008221CE /* PDFView.swift */,
 				8B7E8EA82A1A89EB008221CE /* SidebarView.swift */,
-				8B7E8EB62A1AB007008221CE /* Image+CGImage.swift */,
+				8B7E8EB62A1AB007008221CE /* Image+Data.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -212,7 +210,6 @@
 			name = Serifian;
 			packageProductDependencies = (
 				8B76A12D2A18FDE300CF5624 /* SwiftyTypst */,
-				8B7E8E9E2A1A75D5008221CE /* SwiftyImageIO */,
 				8B7E8EB42A1AADA5008221CE /* SFSafeSymbols */,
 			);
 			productName = Serifian;
@@ -244,7 +241,6 @@
 			);
 			mainGroup = 8BD35E6C2A141B5100BDBED6;
 			packageReferences = (
-				8B7E8E9D2A1A75D5008221CE /* XCRemoteSwiftPackageReference "SwiftyImageIO" */,
 				8B7E8EB32A1AADA5008221CE /* XCRemoteSwiftPackageReference "sfsafesymbols" */,
 			);
 			productRefGroup = 8BD35E762A141B5100BDBED6 /* Products */;
@@ -289,7 +285,7 @@
 				8B7E8E982A1A6A15008221CE /* SourceError.swift in Sources */,
 				8B7E8EA92A1A89EB008221CE /* SidebarView.swift in Sources */,
 				8B7E8E962A1A674E008221CE /* Folder.swift in Sources */,
-				8B7E8EB72A1AB007008221CE /* Image+CGImage.swift in Sources */,
+				8B7E8EB72A1AB007008221CE /* Image+Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,14 +519,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8B7E8E9D2A1A75D5008221CE /* XCRemoteSwiftPackageReference "SwiftyImageIO" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/S2Ler/SwiftyImageIO";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.4.0;
-			};
-		};
 		8B7E8EB32A1AADA5008221CE /* XCRemoteSwiftPackageReference "sfsafesymbols" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sfsafesymbols/sfsafesymbols";
@@ -545,11 +533,6 @@
 		8B76A12D2A18FDE300CF5624 /* SwiftyTypst */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftyTypst;
-		};
-		8B7E8E9E2A1A75D5008221CE /* SwiftyImageIO */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8B7E8E9D2A1A75D5008221CE /* XCRemoteSwiftPackageReference "SwiftyImageIO" */;
-			productName = SwiftyImageIO;
 		};
 		8B7E8EB42A1AADA5008221CE /* SFSafeSymbols */ = {
 			isa = XCSwiftPackageProductDependency;
