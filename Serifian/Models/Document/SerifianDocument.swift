@@ -17,6 +17,8 @@ extension UTType {
 
 class SerifianDocument: FileDocument {
 
+    var compiler: TypstCompiler? = nil
+
     var contents: [any SourceProtocol]
     var metadata: DocumentMetadata
     var rootURL: URL?
@@ -124,8 +126,11 @@ class SerifianDocument: FileDocument {
     public func settingRootURL(config: FileDocumentConfiguration<SerifianDocument>) -> FileDocumentConfiguration<SerifianDocument> {
         if self.rootURL == nil {
             self.rootURL = config.fileURL
+            if let rootURL {
+                self.compiler = TypstCompiler(root: rootURL.path())
+            }
         }
-        print("Setting root URL.")
+
         return config
     }
 }

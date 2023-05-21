@@ -23,6 +23,7 @@
 		8B7E8EB22A1AA397008221CE /* Document.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8B7E8EB12A1AA397008221CE /* Document.sr */; };
 		8B7E8EB52A1AADA5008221CE /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7E8EB42A1AADA5008221CE /* SFSafeSymbols */; };
 		8B7E8EB72A1AB007008221CE /* Image+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EB62A1AB007008221CE /* Image+Data.swift */; };
+		8B7E8EB92A1ACB62008221CE /* SerifianDocument+Compile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EB82A1ACB62008221CE /* SerifianDocument+Compile.swift */; };
 		8BD35E792A141B5100BDBED6 /* SerifianApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E782A141B5100BDBED6 /* SerifianApp.swift */; };
 		8BD35E7B2A141B5100BDBED6 /* SerifianDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */; };
 		8BD35E7D2A141B5100BDBED6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E7C2A141B5100BDBED6 /* ContentView.swift */; };
@@ -59,6 +60,7 @@
 		8B7E8EAF2A1A9085008221CE /* SidebarItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemViewModel.swift; sourceTree = "<group>"; };
 		8B7E8EB12A1AA397008221CE /* Document.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Document.sr; sourceTree = "<group>"; };
 		8B7E8EB62A1AB007008221CE /* Image+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Data.swift"; sourceTree = "<group>"; };
+		8B7E8EB82A1ACB62008221CE /* SerifianDocument+Compile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+Compile.swift"; sourceTree = "<group>"; };
 		8BD35E752A141B5100BDBED6 /* Serifian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serifian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD35E782A141B5100BDBED6 /* SerifianApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerifianApp.swift; sourceTree = "<group>"; };
 		8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerifianDocument.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */,
 				8B7E8EA02A1A7C0E008221CE /* DocumentError.swift */,
 				8B7E8EA22A1A7DFE008221CE /* DocumentMetadata.swift */,
+				8B7E8EB82A1ACB62008221CE /* SerifianDocument+Compile.swift */,
 			);
 			path = Document;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				8B7E8E9C2A1A7291008221CE /* ImageFile.swift in Sources */,
 				8B7E8EA12A1A7C0E008221CE /* DocumentError.swift in Sources */,
 				8B7E8E942A1A6608008221CE /* SourceProtocol.swift in Sources */,
+				8B7E8EB92A1ACB62008221CE /* SerifianDocument+Compile.swift in Sources */,
 				8B7E8EB02A1A9085008221CE /* SidebarItemViewModel.swift in Sources */,
 				8B7E8E9A2A1A6EB0008221CE /* GenericFile.swift in Sources */,
 				8BD35E792A141B5100BDBED6 /* SerifianApp.swift in Sources */,
