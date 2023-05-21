@@ -9,7 +9,7 @@ import SwiftUI
 import PDFKit
 
 struct ContentView: View {
-    @State var document: SerifianDocument
+    @ObservedObject var document: SerifianDocument
     @State var selectedSource: SidebarItemViewModel? = nil
     @State var pdfPreview: PDFDocument?
 
@@ -26,14 +26,8 @@ struct ContentView: View {
             #endif
         } detail: {
             if let typstSource = currentSource as? TypstSourceFile {
-                let sourceBinding = Binding {
-                    typstSource.content
-                } set: { val, t in
-                    typstSource.content = val
-                }
-
                 HStack {
-                    TextEditor(text: sourceBinding)
+                    CodeEditor(typstSource: typstSource)
                     if let pdfPreview {
                         PDFView(document: pdfPreview)
                     }

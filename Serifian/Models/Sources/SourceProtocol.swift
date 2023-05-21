@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents a content (file or folder) inside the Typst sources folder for a document.
-protocol SourceProtocol: Identifiable, AnyObject, Hashable {
+protocol SourceProtocol: Identifiable, AnyObject, Hashable, ObservableObject, NSCopying {
     associatedtype Content
 
     init(from fileWrapper: FileWrapper, in folder: Folder?) throws
@@ -60,3 +60,4 @@ extension SourceProtocol {
         self.getPath()
     }
 }
+

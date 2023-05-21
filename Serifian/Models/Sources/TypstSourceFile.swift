@@ -8,8 +8,8 @@
 import Foundation
 
 class TypstSourceFile: SourceProtocol {
-    var name: String
-    var content: String
+    @Published var name: String
+    @Published var content: String
     weak var parent: Folder?
     var fileWrapper: FileWrapper {
         get throws {
@@ -56,11 +56,18 @@ class TypstSourceFile: SourceProtocol {
 
 extension TypstSourceFile: Hashable {
     static func == (lhs: TypstSourceFile, rhs: TypstSourceFile) -> Bool {
-        return lhs.id == rhs.id
+        return lhs.id == rhs.id && lhs.content == rhs.content
     }
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(content)
         hasher.combine(name)
+    }
+}
+
+extension TypstSourceFile: NSCopying {
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = TypstSourceFile(name: self.name, content: self.content, in: self.parent)
+        return copy
     }
 }

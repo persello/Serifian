@@ -9,7 +9,7 @@ import Foundation
 
 /// A `SourceProtocol` struct that represents a folder inside the Typst sources folder.
 class Folder: SourceProtocol {
-    var name: String
+    @Published var name: String
     var content: [any SourceProtocol]
     weak var parent: Folder?
     var fileWrapper: FileWrapper {
@@ -42,6 +42,12 @@ class Folder: SourceProtocol {
             }
         }
     }
+
+    init(name: String, in folder: Folder?) {
+        self.name = name
+        self.content = []
+        self.parent = folder
+    }
 }
 
 extension Folder: Hashable {
@@ -51,5 +57,17 @@ extension Folder: Hashable {
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.name)
+    }
+}
+
+extension Folder: NSCopying {
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Folder(name: self.name, in: self.parent)
+        copy.content = []
+        for item in self.content {
+            copy.content.append(item.copy() as! any SourceProtocol)
+        }
+
+        return copy
     }
 }

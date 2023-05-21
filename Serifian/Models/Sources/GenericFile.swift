@@ -9,8 +9,8 @@ import Foundation
 
 /// A `SourceProtocol` struct that represents a file that cannot be represented otherwise.
 class GenericFile: SourceProtocol {
-    var name: String
-    var content: Data
+    @Published var name: String
+    @Published var content: Data
     weak var parent: Folder?
     var fileWrapper: FileWrapper {
         let wrapper = FileWrapper(regularFileWithContents: content)
@@ -27,6 +27,12 @@ class GenericFile: SourceProtocol {
         self.content = fileWrapper.regularFileContents ?? Data()
         self.parent = folder
     }
+
+    init(name: String, content: Data, in folder: Folder?) {
+        self.name = name
+        self.content = content
+        self.parent = folder
+    }
 }
 
 extension GenericFile: Hashable {
@@ -37,5 +43,12 @@ extension GenericFile: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(content)
         hasher.combine(name)
+    }
+}
+
+extension GenericFile: NSCopying {
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = GenericFile(name: self.name, content: self.content, in: self.parent)
+        return copy
     }
 }

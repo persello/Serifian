@@ -24,6 +24,7 @@
 		8B7E8EB52A1AADA5008221CE /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7E8EB42A1AADA5008221CE /* SFSafeSymbols */; };
 		8B7E8EB72A1AB007008221CE /* Image+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EB62A1AB007008221CE /* Image+Data.swift */; };
 		8B7E8EB92A1ACB62008221CE /* SerifianDocument+Compile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EB82A1ACB62008221CE /* SerifianDocument+Compile.swift */; };
+		8B7E8EBB2A1AD25F008221CE /* CodeEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8EBA2A1AD25F008221CE /* CodeEditor.swift */; };
 		8BD35E792A141B5100BDBED6 /* SerifianApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E782A141B5100BDBED6 /* SerifianApp.swift */; };
 		8BD35E7B2A141B5100BDBED6 /* SerifianDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */; };
 		8BD35E7D2A141B5100BDBED6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD35E7C2A141B5100BDBED6 /* ContentView.swift */; };
@@ -61,6 +62,7 @@
 		8B7E8EB12A1AA397008221CE /* Document.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Document.sr; sourceTree = "<group>"; };
 		8B7E8EB62A1AB007008221CE /* Image+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Data.swift"; sourceTree = "<group>"; };
 		8B7E8EB82A1ACB62008221CE /* SerifianDocument+Compile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+Compile.swift"; sourceTree = "<group>"; };
+		8B7E8EBA2A1AD25F008221CE /* CodeEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEditor.swift; sourceTree = "<group>"; };
 		8BD35E752A141B5100BDBED6 /* Serifian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serifian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD35E782A141B5100BDBED6 /* SerifianApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerifianApp.swift; sourceTree = "<group>"; };
 		8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerifianDocument.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				8B7E8E8D2A1A5319008221CE /* PDFView.swift */,
 				8B7E8EA82A1A89EB008221CE /* SidebarView.swift */,
 				8B7E8EB62A1AB007008221CE /* Image+Data.swift */,
+				8B7E8EBA2A1AD25F008221CE /* CodeEditor.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B7E8EBB2A1AD25F008221CE /* CodeEditor.swift in Sources */,
 				8B7E8EA32A1A7DFE008221CE /* DocumentMetadata.swift in Sources */,
 				8B7E8E9C2A1A7291008221CE /* ImageFile.swift in Sources */,
 				8B7E8EA12A1A7C0E008221CE /* DocumentError.swift in Sources */,

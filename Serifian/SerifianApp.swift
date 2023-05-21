@@ -10,8 +10,10 @@ import SwiftUI
 @main
 struct SerifianApp: App {
     var body: some Scene {
-        DocumentGroup(newDocument: SerifianDocument()) { file in
-            ContentView(document: file.document.settingRootURL(config: file).document)
+        DocumentGroup {
+            SerifianDocument()
+        } editor: { configuration in
+            ContentView(document: configuration.document.settingRootURL(config: configuration).document)
             #if os(iOS)
                 .navigationTitle("")
             #endif

@@ -15,14 +15,16 @@ extension UTType {
     }
 }
 
-class SerifianDocument: FileDocument {
+class SerifianDocument: ReferenceFileDocument {
 
     var compiler: TypstCompiler? = nil
 
-    var contents: [any SourceProtocol]
-    var metadata: DocumentMetadata
+    @Published var contents: [any SourceProtocol]
+    @Published var metadata: DocumentMetadata
     var rootURL: URL?
     var title: String
+
+    var sink: Any? = nil
 
     static var readableContentTypes: [UTType] = [.serifianDocument]
 
@@ -69,6 +71,10 @@ class SerifianDocument: FileDocument {
                 self.contents.append(sourceItem)
             }
         }
+
+        self.sink = self.objectWillChange.sink { _ in
+            print("Document changed")
+        }
     }
 
     required convenience init(configuration: ReadConfiguration) throws {
@@ -76,7 +82,7 @@ class SerifianDocument: FileDocument {
         try self.init(fromFileWrapper: root)
     }
 
-    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+    func fileWrapper(snapshot: SerifianDocument, configuration: WriteConfiguration) throws -> FileWrapper {
         let root = configuration.existingFile ?? FileWrapper(directoryWithFileWrappers: [:])
 
         // Search for an existing Typst folder.
@@ -123,7 +129,11 @@ class SerifianDocument: FileDocument {
         return root
     }
 
-    public func settingRootURL(config: FileDocumentConfiguration<SerifianDocument>) -> FileDocumentConfiguration<SerifianDocument> {
+    func snapshot(contentType: UTType) throws -> SerifianDocument {
+        return self.copy() as! SerifianDocument
+    }
+
+    public func settingRootURL(config: ReferenceFileDocumentConfiguration<SerifianDocument>) -> ReferenceFileDocumentConfiguration<SerifianDocument> {
         if self.rootURL == nil {
             self.rootURL = config.fileURL
             if let rootURL {
@@ -132,5 +142,19 @@ class SerifianDocument: FileDocument {
         }
 
         return config
+    }
+}
+
+extension SerifianDocument: NSCopying {
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = SerifianDocument()
+        copy.metadata = self.metadata
+        copy.contents = []
+
+        for item in self.contents {
+            copy.contents.append(item.copy() as! any SourceProtocol)
+        }
+
+        return copy
     }
 }
