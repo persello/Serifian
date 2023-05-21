@@ -40,7 +40,11 @@ struct ContentView: View {
                 }
                 .toolbar {
                     Button {
-                        self.pdfPreview = try? document.compile()
+                        do {
+                            self.pdfPreview = try document.compile()
+                        } catch {
+                            print(error)
+                        }
                     } label: {
                         Label("Compile", systemSymbol: .play)
                     }

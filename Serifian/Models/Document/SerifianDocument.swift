@@ -127,7 +127,7 @@ class SerifianDocument: FileDocument {
         if self.rootURL == nil {
             self.rootURL = config.fileURL
             if let rootURL {
-                self.compiler = TypstCompiler(root: rootURL.path())
+                self.compiler = TypstCompiler(root: rootURL.path(percentEncoded: false))
             }
         }
 
