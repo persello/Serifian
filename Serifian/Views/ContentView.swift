@@ -11,7 +11,12 @@ struct ContentView: View {
     @Binding var document: SerifianDocument
 
     var body: some View {
-        Text("AAAAAA")
+        NavigationSplitView {
+            Text("AAAA")
+        } detail: {
+            Text("Editor")
+        }
+
     }
 }
 

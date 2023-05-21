@@ -92,15 +92,8 @@
 		8B7E8E912A1A650C008221CE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */,
-				8B7E8E932A1A6608008221CE /* SourceProtocol.swift */,
-				8B7E8E972A1A6A15008221CE /* SourceError.swift */,
-				8B7E8E952A1A674E008221CE /* Folder.swift */,
-				8B7E8E992A1A6EB0008221CE /* GenericFile.swift */,
-				8B7E8E9B2A1A7291008221CE /* ImageFile.swift */,
-				8B7E8EA42A1A86A2008221CE /* TypstSourceFile.swift */,
-				8B7E8EA02A1A7C0E008221CE /* DocumentError.swift */,
-				8B7E8EA22A1A7DFE008221CE /* DocumentMetadata.swift */,
+				8B7E8EA62A1A89AF008221CE /* Document */,
+				8B7E8EA72A1A89CC008221CE /* Sources */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -112,6 +105,29 @@
 				8B7E8E8D2A1A5319008221CE /* PDFView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8B7E8EA62A1A89AF008221CE /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				8BD35E7A2A141B5100BDBED6 /* SerifianDocument.swift */,
+				8B7E8EA02A1A7C0E008221CE /* DocumentError.swift */,
+				8B7E8EA22A1A7DFE008221CE /* DocumentMetadata.swift */,
+			);
+			path = Document;
+			sourceTree = "<group>";
+		};
+		8B7E8EA72A1A89CC008221CE /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8B7E8E932A1A6608008221CE /* SourceProtocol.swift */,
+				8B7E8E972A1A6A15008221CE /* SourceError.swift */,
+				8B7E8E952A1A674E008221CE /* Folder.swift */,
+				8B7E8E992A1A6EB0008221CE /* GenericFile.swift */,
+				8B7E8E9B2A1A7291008221CE /* ImageFile.swift */,
+				8B7E8EA42A1A86A2008221CE /* TypstSourceFile.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		8BD35E6C2A141B5100BDBED6 = {
