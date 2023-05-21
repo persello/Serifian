@@ -28,9 +28,9 @@ class SerifianDocument: ReferenceFileDocument {
 
     static var readableContentTypes: [UTType] = [.serifianDocument]
 
-    init() {
+    init(empty: Bool = false) {
         let main = TypstSourceFile(name: "main.typ", content: "Hello, Serifian.", in: nil)
-        self.contents = [main]
+        self.contents = empty ? [] : [main]
         self.metadata = DocumentMetadata(mainSource: "./Typst/main.typ")
         self.title = "Untitled"
     }
@@ -83,38 +83,18 @@ class SerifianDocument: ReferenceFileDocument {
     }
 
     func fileWrapper(snapshot: SerifianDocument, configuration: WriteConfiguration) throws -> FileWrapper {
-        let root = configuration.existingFile ?? FileWrapper(directoryWithFileWrappers: [:])
+        let root = FileWrapper(directoryWithFileWrappers: [:])
 
-        // Search for an existing Typst folder.
-        let existingTypstFolder = root.fileWrappers?.first(where: { (_, wrapper: FileWrapper) in
-            wrapper.isDirectory && wrapper.filename == "Typst"
-        })?.value
-
-        let typstFolder: FileWrapper
-        if existingTypstFolder == nil {
-            // If the folder does not exist, create it from scratch.
-            typstFolder = FileWrapper(directoryWithFileWrappers: [:])
-            typstFolder.preferredFilename = "Typst"
-            root.addFileWrapper(typstFolder)
-        } else {
-            typstFolder = existingTypstFolder!
-
-            // Else, empty the folder before re-writing.
-            typstFolder.fileWrappers?.values.compactMap({$0}).forEach({ file in
-                typstFolder.removeFileWrapper(file)
-            })
-        }
+        // If the folder does not exist, create it from scratch.
+        let typstFolder = FileWrapper(directoryWithFileWrappers: [:])
+        typstFolder.preferredFilename = "Typst"
+        root.addFileWrapper(typstFolder)
 
         // Encode files.
         for item in self.contents {
             let wrapper = try item.fileWrapper
 
             typstFolder.addFileWrapper(wrapper)
-        }
-
-        // Remove old metadata.
-        if let oldMetadata = root.fileWrappers?["Info.plist"] {
-            root.removeFileWrapper(oldMetadata)
         }
 
         // Encode metadata.
@@ -147,7 +127,7 @@ class SerifianDocument: ReferenceFileDocument {
 
 extension SerifianDocument: NSCopying {
     func copy(with zone: NSZone? = nil) -> Any {
-        let copy = SerifianDocument()
+        let copy = SerifianDocument(empty: true)
         copy.metadata = self.metadata
         copy.contents = []
 
