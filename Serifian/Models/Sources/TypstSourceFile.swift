@@ -6,11 +6,16 @@
 //
 
 import Foundation
+import Combine
 
 class TypstSourceFile: SourceProtocol {
     @Published var name: String
     @Published var content: String
     weak var parent: Folder?
+
+    private unowned var document: SerifianDocument
+    private var onChange: AnyCancellable!
+
     var fileWrapper: FileWrapper {
         get throws {
             guard let data = content.data(using: .utf8) else {
@@ -24,7 +29,7 @@ class TypstSourceFile: SourceProtocol {
         }
     }
 
-    required init(from fileWrapper: FileWrapper, in folder: Folder?) throws {
+    required init(from fileWrapper: FileWrapper, in folder: Folder?, partOf document: SerifianDocument) throws {
         guard fileWrapper.isRegularFile else {
             throw SourceError.notAFile
         }
@@ -45,12 +50,21 @@ class TypstSourceFile: SourceProtocol {
         self.content = content
         self.name = fileWrapper.filename ?? "File"
         self.parent = folder
+        self.document = document
+        self.onChange = self.objectWillChange.sink(receiveValue: { _ in
+            self.document.objectWillChange.send()
+        })
     }
 
-    init(name: String, content: String, in folder: Folder?) {
+    init(name: String, content: String, in folder: Folder?, partOf document: SerifianDocument) {
         self.name = name
         self.content = content
         self.parent = folder
+        self.document = document
+
+        self.onChange = self.objectWillChange.sink(receiveValue: { _ in
+            self.document.objectWillChange.send()
+        })
     }
 }
 
@@ -67,7 +81,7 @@ extension TypstSourceFile: Hashable {
 
 extension TypstSourceFile: NSCopying {
     func copy(with zone: NSZone? = nil) -> Any {
-        let copy = TypstSourceFile(name: self.name, content: self.content, in: self.parent)
+        let copy = TypstSourceFile(name: self.name, content: self.content, in: self.parent, partOf: self.document)
         return copy
     }
 }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PDFKit
+import Combine
 
 struct ContentView: View {
     @ObservedObject var document: SerifianDocument
@@ -16,6 +17,8 @@ struct ContentView: View {
     var currentSource: (any SourceProtocol)? {
         return selectedSource?.referencedSource
     }
+
+    @State var compilationWatcher: AnyCancellable?
 
     var body: some View {
         NavigationSplitView {
@@ -34,13 +37,16 @@ struct ContentView: View {
                 }
                 .toolbar {
                     Button {
-                        do {
-                            self.pdfPreview = try document.compile()
-                        } catch {
-                            print(error)
+                        if self.compilationWatcher == nil {
+                            self.compilationWatcher = document.objectWillChange.debounce(for: .seconds(1), scheduler: RunLoop.main).sink(receiveValue: { _ in
+                                self.pdfPreview = try? document.compile()
+                            })
+                        } else {
+                            self.compilationWatcher?.cancel()
+                            self.compilationWatcher = nil
                         }
                     } label: {
-                        Label("Compile", systemSymbol: .play)
+                        Label("Compile", systemSymbol: compilationWatcher == nil ? .play : .playFill)
                     }
                 }
             } else if let image = currentSource as? ImageFile {

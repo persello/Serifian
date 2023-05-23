@@ -13,7 +13,7 @@ struct SerifianApp: App {
         DocumentGroup {
             SerifianDocument()
         } editor: { configuration in
-            ContentView(document: configuration.document.settingRootURL(config: configuration).document)
+            ContentView(document: configuration.document)
             #if os(iOS)
                 .navigationTitle("")
             #endif

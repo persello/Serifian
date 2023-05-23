@@ -15,16 +15,24 @@ struct PDFView {
 #if os(macOS)
 
 extension PDFView: NSViewRepresentable {
-    typealias NSViewType = PDFKit.PDFView
-    func makeNSView(context: Context) -> NSViewType {
+    typealias NSViewType = NSView
+
+    func makeNSView(context: Context) -> NSView {
+        let container = NSViewType()
         let pdfView = PDFKit.PDFView()
         pdfView.document = self.document
+        pdfView.bounds = container.bounds
+        pdfView.autoresizingMask = [.height, .width]
 
-        return pdfView
+        container.addSubview(pdfView)
+
+        return container
     }
 
-    func updateNSView(_ nsView: NSViewType, context: Context) {
-        nsView.document = self.document
+    func updateNSView(_ nsView: NSView, context: Context) {
+        let pdfView = nsView.subviews.first as! PDFKit.PDFView
+
+        pdfView.document = self.document
     }
 }
 

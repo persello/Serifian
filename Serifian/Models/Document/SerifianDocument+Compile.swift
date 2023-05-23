@@ -14,7 +14,7 @@ enum CompilationError: Error {
 
 extension SerifianDocument {
     func compile() throws -> PDFDocument {
-        try self.compiler?.setMain(main: self.metadata.mainSource)
+        try self.compiler.setMain(main: self.metadata.mainSource)
 
         let result = self.compiler?.compile()
 

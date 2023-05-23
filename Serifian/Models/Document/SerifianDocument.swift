@@ -8,6 +8,7 @@
 import SwiftUI
 import UniformTypeIdentifiers
 import SwiftyTypst
+import Combine
 
 extension UTType {
     static var serifianDocument: UTType {
@@ -17,22 +18,28 @@ extension UTType {
 
 class SerifianDocument: ReferenceFileDocument {
 
-    var compiler: TypstCompiler? = nil
+    var compiler: TypstCompiler!
 
-    @Published var contents: [any SourceProtocol]
+    var contents: [any SourceProtocol] = []
     @Published var metadata: DocumentMetadata
-    var rootURL: URL?
     var title: String
 
-    var sink: Any? = nil
+    var documentChangeSink: AnyCancellable!
 
     static var readableContentTypes: [UTType] = [.serifianDocument]
 
     init(empty: Bool = false) {
-        let main = TypstSourceFile(name: "main.typ", content: "Hello, Serifian.", in: nil)
-        self.contents = empty ? [] : [main]
-        self.metadata = DocumentMetadata(mainSource: "./Typst/main.typ")
+        self.metadata = DocumentMetadata(mainSource: "main.typ")
         self.title = "Untitled"
+        self.compiler = TypstCompiler(fileReader: self)
+        self.documentChangeSink = self.objectWillChange.sink(receiveValue: { _ in
+            self.compiler.notifyChange()
+        })
+
+        if !empty {
+            let main = TypstSourceFile(name: "main.typ", content: "Hello, Serifian.", in: nil, partOf: self)
+            self.contents = [main]
+        }
     }
 
     init(fromFileWrapper root: FileWrapper) throws {
@@ -64,16 +71,19 @@ class SerifianDocument: ReferenceFileDocument {
             throw DocumentError.noTypstContent
         }
 
-        // Create the actual contents.
         self.contents = []
-        for item in contents.values {
-            if let sourceItem = sourceProtocolObjectFrom(fileWrapper: item, in: nil) {
-                self.contents.append(sourceItem)
-            }
+
+        // Create the compiler and set up the change notifications.
+        self.compiler = TypstCompiler(fileReader: self)
+        self.documentChangeSink = self.objectWillChange.sink { _ in
+            self.compiler.notifyChange()
         }
 
-        self.sink = self.objectWillChange.sink { _ in
-            print("Document changed")
+        // Create the actual contents.
+        for item in contents.values {
+            if let sourceItem = sourceProtocolObjectFrom(fileWrapper: item, in: nil, partOf: self) {
+                self.contents.append(sourceItem)
+            }
         }
     }
 
@@ -111,17 +121,6 @@ class SerifianDocument: ReferenceFileDocument {
 
     func snapshot(contentType: UTType) throws -> SerifianDocument {
         return self.copy() as! SerifianDocument
-    }
-
-    public func settingRootURL(config: ReferenceFileDocumentConfiguration<SerifianDocument>) -> ReferenceFileDocumentConfiguration<SerifianDocument> {
-        if self.rootURL == nil {
-            self.rootURL = config.fileURL
-            if let rootURL {
-                self.compiler = TypstCompiler(root: rootURL.path(percentEncoded: false))
-            }
-        }
-
-        return config
     }
 }
 

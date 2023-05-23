@@ -6,14 +6,17 @@
 //
 
 import Foundation
-import CoreGraphics
-import ImageIO
 import SwiftUI
+import Combine
 
 class ImageFile: SourceProtocol {
     @Published var name: String
     @Published var content: Data
     weak var parent: Folder?
+
+    private unowned var document: SerifianDocument
+    private var onChange: AnyCancellable!
+
     var fileWrapper: FileWrapper {
         let wrapper = FileWrapper(regularFileWithContents: self.content)
         wrapper.preferredFilename = name
@@ -21,7 +24,7 @@ class ImageFile: SourceProtocol {
         return wrapper
     }
 
-    required init(from fileWrapper: FileWrapper, in folder: Folder?) throws {
+    required init(from fileWrapper: FileWrapper, in folder: Folder?, partOf document: SerifianDocument) throws {
         guard let data = fileWrapper.regularFileContents else {
             throw SourceError.fileHasNoContents
         }
@@ -32,12 +35,22 @@ class ImageFile: SourceProtocol {
         self.content = data
         self.name = fileWrapper.preferredFilename ?? "Image"
         self.parent = folder
+        self.document = document
+
+        self.onChange = self.objectWillChange.sink(receiveValue: { _ in
+            self.document.objectWillChange.send()
+        })
     }
 
-    init(name: String, content: Data, in folder: Folder?) {
+    init(name: String, content: Data, in folder: Folder?, partOf document: SerifianDocument) {
         self.name = name
         self.content = content
         self.parent = folder
+        self.document = document
+
+        self.onChange = self.objectWillChange.sink(receiveValue: { _ in
+            self.document.objectWillChange.send()
+        })
     }
 }
 
@@ -54,7 +67,7 @@ extension ImageFile: Hashable {
 
 extension ImageFile: NSCopying {
     func copy(with zone: NSZone? = nil) -> Any {
-        let copy = ImageFile(name: self.name, content: self.content, in: self.parent)
+        let copy = ImageFile(name: self.name, content: self.content, in: self.parent, partOf: self.document)
         return copy
     }
 }

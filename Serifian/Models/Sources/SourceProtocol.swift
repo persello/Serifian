@@ -11,7 +11,7 @@ import Foundation
 protocol SourceProtocol: Identifiable, AnyObject, Hashable, ObservableObject, NSCopying {
     associatedtype Content
 
-    init(from fileWrapper: FileWrapper, in folder: Folder?) throws
+    init(from fileWrapper: FileWrapper, in folder: Folder?, partOf document: SerifianDocument) throws
     var name: String { get set }
     var content: Content { get set }
     var fileWrapper: FileWrapper { get throws }
@@ -21,25 +21,25 @@ protocol SourceProtocol: Identifiable, AnyObject, Hashable, ObservableObject, NS
 /// Tries to create a `SourceProtocol` conforming object from a `FileWrapper`.
 /// - Parameter fileWrapper: The input `FileWrapper`.
 /// - Returns: A `SourceProtocol` conforming object if successful, `nil` otherwise.
-func sourceProtocolObjectFrom(fileWrapper: FileWrapper, in folder: Folder?) -> (any SourceProtocol)? {
+func sourceProtocolObjectFrom(fileWrapper: FileWrapper, in folder: Folder?, partOf document: SerifianDocument) -> (any SourceProtocol)? {
 
     // Try to parse a folder from the specified wrapper.
-    if let folder = try? Folder(from: fileWrapper, in: folder) {
+    if let folder = try? Folder(from: fileWrapper, in: folder, partOf: document) {
         return folder
     }
 
     // Try to parse an image file.
-    if let imageFile = try? ImageFile(from: fileWrapper, in: folder) {
+    if let imageFile = try? ImageFile(from: fileWrapper, in: folder, partOf: document) {
         return imageFile
     }
 
     // Try to parse a Typst source file.
-    if let typstFile = try? TypstSourceFile(from: fileWrapper, in: folder) {
+    if let typstFile = try? TypstSourceFile(from: fileWrapper, in: folder, partOf: document) {
         return typstFile
     }
 
     // Lastly, we try with a generic file.
-    if let genericFile = try? GenericFile(from: fileWrapper, in: folder) {
+    if let genericFile = try? GenericFile(from: fileWrapper, in: folder, partOf: document) {
         return genericFile
     }
 
@@ -47,16 +47,16 @@ func sourceProtocolObjectFrom(fileWrapper: FileWrapper, in folder: Folder?) -> (
 }
 
 extension SourceProtocol {
-    func getPath() -> String {
+    func getPath() -> URL {
         if let parent {
             let basePath = parent.getPath()
-            return basePath + "/" + self.name
+            return basePath.appending(path: self.name)
         } else {
-            return self.name
+            return URL(string: self.name)!
         }
     }
 
-    var id: String {
+    var id: URL {
         self.getPath()
     }
 }

@@ -6,12 +6,17 @@
 //
 
 import Foundation
+import Combine
 
 /// A `SourceProtocol` struct that represents a folder inside the Typst sources folder.
 class Folder: SourceProtocol {
     @Published var name: String
     var content: [any SourceProtocol]
     weak var parent: Folder?
+
+    private unowned var document: SerifianDocument
+    private var onChange: AnyCancellable!
+
     var fileWrapper: FileWrapper {
         let wrapper = FileWrapper(directoryWithFileWrappers: [:])
         wrapper.preferredFilename = self.name
@@ -25,7 +30,7 @@ class Folder: SourceProtocol {
         return wrapper
     }
 
-    required init(from fileWrapper: FileWrapper, in folder: Folder?) throws {
+    required init(from fileWrapper: FileWrapper, in folder: Folder?, partOf document: SerifianDocument) throws {
         guard fileWrapper.isDirectory else {
             throw SourceError.notAFolder
         }
@@ -33,20 +38,29 @@ class Folder: SourceProtocol {
         self.name = fileWrapper.filename ?? "Folder"
         self.content = []
         self.parent = folder
+        self.document = document
+        self.onChange = self.objectWillChange.sink(receiveValue: { _ in
+            self.document.objectWillChange.send()
+        })
 
         if let files = fileWrapper.fileWrappers?.values {
             for file in files {
-                if let source = sourceProtocolObjectFrom(fileWrapper: file, in: self) {
+                if let source = sourceProtocolObjectFrom(fileWrapper: file, in: self, partOf: self.document) {
                     self.content.append(source)
                 }
             }
         }
     }
 
-    init(name: String, in folder: Folder?) {
+    init(name: String, in folder: Folder?, partOf document: SerifianDocument) {
         self.name = name
         self.content = []
         self.parent = folder
+        self.document = document
+
+        self.onChange = self.objectWillChange.sink(receiveValue: { _ in
+            self.document.objectWillChange.send()
+        })
     }
 }
 
@@ -62,7 +76,7 @@ extension Folder: Hashable {
 
 extension Folder: NSCopying {
     func copy(with zone: NSZone? = nil) -> Any {
-        let copy = Folder(name: self.name, in: self.parent)
+        let copy = Folder(name: self.name, in: self.parent, partOf: self.document)
         copy.content = []
         for item in self.content {
             copy.content.append(item.copy() as! any SourceProtocol)

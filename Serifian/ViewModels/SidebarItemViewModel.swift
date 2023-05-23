@@ -39,7 +39,7 @@ struct SidebarItemViewModel: Identifiable, Hashable, Equatable {
         return Image(systemSymbol: .doc)
     }
 
-    var id: String {
+    var id: URL {
         return self.referencedSource.getPath()
     }
 
