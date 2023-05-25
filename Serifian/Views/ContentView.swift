@@ -38,7 +38,7 @@ struct ContentView: View {
                 .toolbar {
                     Button {
                         if self.compilationWatcher == nil {
-                            self.compilationWatcher = document.objectWillChange.debounce(for: .seconds(1), scheduler: RunLoop.main).sink(receiveValue: { _ in
+                            self.compilationWatcher = document.objectWillChange.debounce(for: .seconds(0.1), scheduler: RunLoop.main).sink(receiveValue: { _ in
                                 self.pdfPreview = try? document.compile()
                             })
                         } else {

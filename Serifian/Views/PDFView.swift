@@ -19,9 +19,10 @@ extension PDFView: NSViewRepresentable {
 
     func makeNSView(context: Context) -> NSView {
         let container = NSViewType()
-        let pdfView = PDFKit.PDFView()
+        container.wantsLayer = true
+
+        let pdfView = PDFKit.PDFView(frame: container.bounds)
         pdfView.document = self.document
-        pdfView.bounds = container.bounds
         pdfView.autoresizingMask = [.height, .width]
 
         container.addSubview(pdfView)
@@ -29,10 +30,38 @@ extension PDFView: NSViewRepresentable {
         return container
     }
 
-    func updateNSView(_ nsView: NSView, context: Context) {
-        let pdfView = nsView.subviews.first as! PDFKit.PDFView
 
-        pdfView.document = self.document
+
+    func updateNSView(_ nsView: NSView, context: Context) {
+        let oldPdfView = nsView.subviews.first! as! PDFKit.PDFView
+        let oldScrollView = (oldPdfView.subviews.first! as! NSScrollView)
+
+        let newPdfView = PDFKit.PDFView(frame: nsView.bounds)
+        newPdfView.document = self.document
+        newPdfView.autoresizingMask = [.height, .width]
+
+        nsView.addSubview(newPdfView, positioned: .below, relativeTo: nsView.subviews.first!)
+
+        nsView.layout()
+
+
+        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { timer in
+
+            // TODO: Intelligently delay this operation.
+
+            let newScrollView = (newPdfView.subviews.first! as! NSScrollView)
+
+            let oldRect = oldScrollView.contentView.bounds
+            newScrollView.setMagnification(oldScrollView.magnification, centeredAt: .zero)
+            newScrollView.contentView.scrollToVisible(oldRect)
+
+
+            for view in nsView.subviews {
+                if view != newPdfView {
+                    view.removeFromSuperview()
+                }
+            }
+        }
     }
 }
 
