@@ -116,9 +116,10 @@ class SerifianDocument: ReferenceFileDocument {
         metadataWrapper.preferredFilename = "Info.plist"
         root.addFileWrapper(metadataWrapper)
 
-        // Add thumbnail.
-        if let thumbnail = self.thumbnailFileWrapper() {
+        // Add thumbnail and preview.
+        if let (thumbnail, preview) = self.thumbnailAndPreviewFileWrappers() {
             root.addFileWrapper(thumbnail)
+            root.addFileWrapper(preview)
         }
 
         return root
