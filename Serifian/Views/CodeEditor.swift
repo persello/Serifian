@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CodeEditor: View {
     @ObservedObject var typstSource: TypstSourceFile
+
     var body: some View {
         TextEditor(text: $typstSource.content)
     }

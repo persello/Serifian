@@ -29,12 +29,13 @@ struct ContentView: View {
             #endif
         } detail: {
             if let typstSource = currentSource as? TypstSourceFile {
-                HStack {
+//                HStack {
                     CodeEditor(typstSource: typstSource)
-                    if let pdfPreview {
-                        PDFView(document: pdfPreview)
-                    }
-                }
+                    .ignoresSafeArea(.all, edges: .bottom)
+//                    if let pdfPreview {
+//                        PDFView(document: pdfPreview)
+//                    }
+//                }
                 .toolbar {
                     Button {
                         if self.compilationWatcher == nil {
@@ -57,6 +58,7 @@ struct ContentView: View {
                 Text("No source selected")
             }
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 

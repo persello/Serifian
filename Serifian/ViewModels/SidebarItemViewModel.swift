@@ -45,7 +45,6 @@ struct SidebarItemViewModel: Identifiable, Hashable, Equatable {
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
-        hasher.combine(referencedSource)
     }
 
     static func == (lhs: SidebarItemViewModel, rhs: SidebarItemViewModel) -> Bool {

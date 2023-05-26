@@ -52,7 +52,9 @@ class TypstSourceFile: SourceProtocol {
         self.parent = folder
         self.document = document
         self.onChange = self.objectWillChange.sink(receiveValue: { _ in
-            self.document.objectWillChange.send()
+            DispatchQueue.main.async {
+                self.document.objectWillChange.send()
+            }
         })
     }
 
@@ -63,7 +65,9 @@ class TypstSourceFile: SourceProtocol {
         self.document = document
 
         self.onChange = self.objectWillChange.sink(receiveValue: { _ in
-            self.document.objectWillChange.send()
+            DispatchQueue.main.async {
+                self.document.objectWillChange.send()
+            }
         })
     }
 }

@@ -52,7 +52,7 @@ extension SourceProtocol {
             let basePath = parent.getPath()
             return basePath.appending(path: self.name)
         } else {
-            return URL(string: self.name)!
+            return URL(filePath: self.name)
         }
     }
 
