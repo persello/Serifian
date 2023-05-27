@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad10_5" orientation="landscape" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Document Browser View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="DocumentBrowserViewController" id="BYZ-38-t0r" customClass="DocumentBrowserViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="0fo-ii-Aj5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="26" y="654"/>
+        </scene>
+        <!--Document title-->
+        <scene sceneID="Oda-x6-EjE">
+            <objects>
+                <viewController id="hlC-xv-vT7" customClass="WorkbenchViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Cr-ca-qyf">
+                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUM-Pz-jqU">
+                                <rect key="frame" x="206" y="199" width="791" height="479"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="bql-Db-oCq" kind="embed" id="1RX-IE-azM"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0zk-vt-Ma9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Document title" style="editor" id="IeS-Zw-f65">
+                        <barButtonItem key="leftBarButtonItem" title="Back" image="chevron.left" catalog="system" id="2Af-2d-vCl">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="hlC-xv-vT7" id="qQl-Cr-aKg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="awj-db-enM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="809.89208633093529" y="1400.7194244604318"/>
+        </scene>
+        <!--Document title-->
+        <scene sceneID="9Z3-rj-vyo">
+            <objects>
+                <viewController id="p5m-fu-0gn" customClass="SidebarViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EqB-gP-WU9">
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b3w-sF-dp6">
+                                <rect key="frame" x="0.0" y="122" width="420" height="712"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewLayout key="collectionViewLayout" id="K5i-ox-bcq"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="AEB-Cy-g0g">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1el-xE-aMq">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="delegate" destination="p5m-fu-0gn" id="EJI-F8-Ayx"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0E6-hG-ahl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0E6-hG-ahl" firstAttribute="bottom" secondItem="b3w-sF-dp6" secondAttribute="bottom" id="BqI-aD-GPa"/>
+                            <constraint firstItem="0E6-hG-ahl" firstAttribute="trailing" secondItem="b3w-sF-dp6" secondAttribute="trailing" id="DJC-vy-O3F"/>
+                            <constraint firstItem="b3w-sF-dp6" firstAttribute="leading" secondItem="0E6-hG-ahl" secondAttribute="leading" id="nDJ-qf-APQ"/>
+                            <constraint firstItem="b3w-sF-dp6" firstAttribute="top" secondItem="0E6-hG-ahl" secondAttribute="top" id="pph-dF-cmT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Document title" id="aHO-jk-LPm"/>
+                    <connections>
+                        <outlet property="collectionView" destination="b3w-sF-dp6" id="3oi-qC-Ltd"/>
+                        <outlet property="navigationItem" destination="aHO-jk-LPm" id="hM6-xB-NDj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Go-wF-c7b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2175" y="653.95683453237416"/>
+        </scene>
+        <!--Root Split View Controller-->
+        <scene sceneID="gQ0-BV-7gp">
+            <objects>
+                <splitViewController storyboardIdentifier="RootSplitViewController" allowDoubleColumnStyle="YES" preferredDisplayMode="secondaryOnly" primaryBackgroundStyle="sidebar" id="kfU-ny-yVW" customClass="RootSplitViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="T2K-Xk-G5I" kind="relationship" relationship="masterViewController" id="ok1-Ta-xmY"/>
+                        <segue destination="hlC-xv-vT7" kind="relationship" relationship="detailViewController" id="8pS-lf-ki3"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eWd-WE-esN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="810" y="654"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pnV-UV-fOb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T2K-Xk-G5I" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Q5U-0R-n3P">
+                        <rect key="frame" x="0.0" y="20" width="420" height="102"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="p5m-fu-0gn" kind="relationship" relationship="rootViewController" id="BQN-kI-dBM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1E3-cd-bu3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1460.611510791367" y="653.95683453237416"/>
+        </scene>
+        <!--Typst Source Workbench View Controller-->
+        <scene sceneID="2zq-j2-PXV">
+            <objects>
+                <viewController id="bql-Db-oCq" customClass="TypstSourceWorkbenchViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0U3-bd-7g5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1511" y="1505"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
