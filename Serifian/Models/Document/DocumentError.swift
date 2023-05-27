@@ -11,4 +11,5 @@ enum DocumentError: Error {
     case noTypstFolder
     case noTypstContent
     case noMetadata
+    case notAFileWrapper
 }

@@ -55,8 +55,6 @@ extension SourceError: LocalizedError {
             return "Parts of this document might be corrupted."
         case .UTF8EncodingError:
             return "A source file has symbols that cannot be encoded into UTF8."
-        default:
-            return nil
         }
     }
 

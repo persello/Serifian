@@ -15,7 +15,6 @@ class SidebarViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
         let configuration = UICollectionLayoutListConfiguration(appearance: .sidebar)
         let layout = UICollectionViewCompositionalLayout.list(using: configuration)
         collectionView.collectionViewLayout = layout

@@ -16,10 +16,10 @@ extension SerifianDocument {
             return nil
         }
 
-        let image = firstPage.thumbnail(of: .init(width: 2000, height: 2000), for: .trimBox)
+        let image = firstPage.thumbnail(of: .init(width: 1024, height: 1024), for: .trimBox)
 
         #if os(iOS)
-        guard let data = image.jpegData(compressionQuality: 0.7) else {
+        guard let data = image.jpegData(compressionQuality: 0.4) else {
             return nil
         }
         #elseif os(macOS)

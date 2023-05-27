@@ -28,7 +28,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         // Set the URL for the new document here. Optionally, you can present a template chooser before calling the importHandler.
         // Make sure the importHandler is always called, even if the user cancels the creation request.
         if let newDocumentURL {
-            let newDocument = SerifianDocument(fileURL: newDocumentURL)
+            let newDocument = SerifianDocument(empty: false, fileURL: newDocumentURL)
 
             Task {
                 await newDocument.save(to: newDocumentURL, for: .forCreating)
@@ -75,6 +75,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let documentViewController = storyBoard.instantiateViewController(withIdentifier: "RootSplitViewController") as! RootSplitViewController
+        documentViewController.setDocument(for: documentURL)
 
         // Set up transition.
         documentViewController.transitioningDelegate = self

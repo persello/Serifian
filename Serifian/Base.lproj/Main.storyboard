@@ -12,7 +12,7 @@
         <!--Document Browser View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="DocumentBrowserViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DocumentBrowserViewController" id="BYZ-38-t0r" customClass="DocumentBrowserViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,38 +24,29 @@
             </objects>
             <point key="canvasLocation" x="26" y="654"/>
         </scene>
-        <!--View Controller-->
+        <!--Workbench View Controller-->
         <scene sceneID="Oda-x6-EjE">
             <objects>
-                <viewController id="hlC-xv-vT7" sceneMemberID="viewController">
+                <viewController id="hlC-xv-vT7" customClass="WorkbenchViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Cr-ca-qyf">
-                        <rect key="frame" x="0.0" y="0.0" width="791.5" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="0zk-vt-Ma9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" style="editor" id="IeS-Zw-f65">
+                        <barButtonItem key="leftBarButtonItem" title="Back" image="chevron.left" catalog="system" id="2Af-2d-vCl">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="hlC-xv-vT7" id="qQl-Cr-aKg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awj-db-enM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="810" y="1401"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="arQ-78-cz7">
-            <objects>
-                <navigationController id="pnv-Oc-voy" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gnN-Pg-bS6">
-                        <rect key="frame" x="0.0" y="20" width="420" height="50"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="p5m-fu-0gn" kind="relationship" relationship="rootViewController" id="rDE-FH-dx9"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T5m-OH-dnv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1502" y="654"/>
-        </scene>
-        <!--Sidebar View Controller-->
+        <!--Document-->
         <scene sceneID="9Z3-rj-vyo">
             <objects>
                 <viewController id="p5m-fu-0gn" customClass="SidebarViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
@@ -91,22 +82,23 @@
                             <constraint firstItem="b3w-sF-dp6" firstAttribute="top" secondItem="0E6-hG-ahl" secondAttribute="top" id="pph-dF-cmT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="aHO-jk-LPm"/>
+                    <navigationItem key="navigationItem" title="Document" id="aHO-jk-LPm"/>
                     <connections>
                         <outlet property="collectionView" destination="b3w-sF-dp6" id="3oi-qC-Ltd"/>
+                        <outlet property="navigationItem" destination="aHO-jk-LPm" id="hM6-xB-NDj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Go-wF-c7b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2198" y="654"/>
+            <point key="canvasLocation" x="1461" y="654"/>
         </scene>
         <!--Root Split View Controller-->
         <scene sceneID="gQ0-BV-7gp">
             <objects>
-                <splitViewController storyboardIdentifier="RootSplitViewController" allowDoubleColumnStyle="YES" primaryBackgroundStyle="sidebar" id="kfU-ny-yVW" customClass="RootSplitViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="RootSplitViewController" allowDoubleColumnStyle="YES" preferredDisplayMode="secondaryOnly" primaryBackgroundStyle="sidebar" id="kfU-ny-yVW" customClass="RootSplitViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
-                        <segue destination="pnv-Oc-voy" kind="relationship" relationship="masterViewController" id="isW-mC-a7A"/>
-                        <segue destination="hlC-xv-vT7" kind="relationship" relationship="detailViewController" id="gSw-yl-M3H"/>
+                        <segue destination="p5m-fu-0gn" kind="relationship" relationship="masterViewController" id="ok1-Ta-xmY"/>
+                        <segue destination="hlC-xv-vT7" kind="relationship" relationship="detailViewController" id="8pS-lf-ki3"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWd-WE-esN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -115,6 +107,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
