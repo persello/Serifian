@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "sfsafesymbols",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sfsafesymbols/sfsafesymbols",
+      "state" : {
+        "revision" : "7cca2d60925876b5953a2cf7341cd80fbeac983c",
+        "version" : "4.1.1"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/SwiftUI-Introspect",
+      "state" : {
+        "revision" : "5b3f3996c7a2a84d5f4ba0e03cd7d584154778f2",
+        "version" : "0.3.1"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -21,6 +21,7 @@
 		8B4F2C082A2161E8007A15D7 /* SerifianPreviewMac.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8B4F2BFA2A2161E8007A15D7 /* SerifianPreviewMac.appex */; platformFilters = (macos, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8B4F2C122A216306007A15D7 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4F2C112A216306007A15D7 /* QuickLook.framework */; };
 		8B4F2C1E2A216306007A15D7 /* SerifianPreview.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8B4F2C102A216306007A15D7 /* SerifianPreview.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8B4F2C242A21681C007A15D7 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 8B4F2C232A21681C007A15D7 /* Introspect */; };
 		8B76A12E2A18FDE300CF5624 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = 8B76A12D2A18FDE300CF5624 /* SwiftyTypst */; };
 		8B7E8E8E2A1A5319008221CE /* PDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8E8D2A1A5319008221CE /* PDFView.swift */; };
 		8B7E8E942A1A6608008221CE /* SourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7E8E932A1A6608008221CE /* SourceProtocol.swift */; };
@@ -184,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B7E8EB52A1AADA5008221CE /* SFSafeSymbols in Frameworks */,
+				8B4F2C242A21681C007A15D7 /* Introspect in Frameworks */,
 				8B76A12E2A18FDE300CF5624 /* SwiftyTypst in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,6 +427,7 @@
 			packageProductDependencies = (
 				8B76A12D2A18FDE300CF5624 /* SwiftyTypst */,
 				8B7E8EB42A1AADA5008221CE /* SFSafeSymbols */,
+				8B4F2C232A21681C007A15D7 /* Introspect */,
 			);
 			productName = Serifian;
 			productReference = 8BD35E752A141B5100BDBED6 /* Serifian.app */;
@@ -468,6 +471,7 @@
 			mainGroup = 8BD35E6C2A141B5100BDBED6;
 			packageReferences = (
 				8B7E8EB32A1AADA5008221CE /* XCRemoteSwiftPackageReference "sfsafesymbols" */,
+				8B4F2C222A21681C007A15D7 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 8BD35E762A141B5100BDBED6 /* Products */;
 			projectDirPath = "";
@@ -1106,6 +1110,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8B4F2C222A21681C007A15D7 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.1;
+			};
+		};
 		8B7E8EB32A1AADA5008221CE /* XCRemoteSwiftPackageReference "sfsafesymbols" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sfsafesymbols/sfsafesymbols";
@@ -1117,6 +1129,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8B4F2C232A21681C007A15D7 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B4F2C222A21681C007A15D7 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
 		8B76A12D2A18FDE300CF5624 /* SwiftyTypst */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftyTypst;

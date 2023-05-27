@@ -24,32 +24,34 @@ struct ContentView: View {
         NavigationSplitView {
             SidebarView(files: document.contents, selectedItem: $selectedSource)
                 .navigationBarBackButtonHidden()
-            #if os(iOS)
+#if os(iOS)
                 .navigationTitle(document.title)
-            #endif
+#endif
         } detail: {
             if let typstSource = currentSource as? TypstSourceFile {
-//                HStack {
-                    CodeEditor(typstSource: typstSource)
-                    .ignoresSafeArea(.all, edges: .bottom)
-//                    if let pdfPreview {
-//                        PDFView(document: pdfPreview)
+                //                HStack {
+
+                CodeEditor(typstSource: typstSource)
+
+                //                    if let pdfPreview {
+                //                        PDFView(document: pdfPreview)
+                //                    }
+                //                }
+
+//                    .toolbar {
+//                        Button {
+//                            if self.compilationWatcher == nil {
+//                                self.compilationWatcher = document.objectWillChange.debounce(for: .seconds(0.1), scheduler: RunLoop.main).sink(receiveValue: { _ in
+//                                    self.pdfPreview = try? document.compile()
+//                                })
+//                            } else {
+//                                self.compilationWatcher?.cancel()
+//                                self.compilationWatcher = nil
+//                            }
+//                        } label: {
+//                            Label("Compile", systemSymbol: compilationWatcher == nil ? .play : .playFill)
+//                        }
 //                    }
-//                }
-                .toolbar {
-                    Button {
-                        if self.compilationWatcher == nil {
-                            self.compilationWatcher = document.objectWillChange.debounce(for: .seconds(0.1), scheduler: RunLoop.main).sink(receiveValue: { _ in
-                                self.pdfPreview = try? document.compile()
-                            })
-                        } else {
-                            self.compilationWatcher?.cancel()
-                            self.compilationWatcher = nil
-                        }
-                    } label: {
-                        Label("Compile", systemSymbol: compilationWatcher == nil ? .play : .playFill)
-                    }
-                }
             } else if let image = currentSource as? ImageFile {
                 try? Image(data: image.content).resizable().scaledToFit()
             } else if let genericFile = currentSource as? GenericFile {
@@ -58,7 +60,6 @@ struct ContentView: View {
                 Text("No source selected")
             }
         }
-        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 

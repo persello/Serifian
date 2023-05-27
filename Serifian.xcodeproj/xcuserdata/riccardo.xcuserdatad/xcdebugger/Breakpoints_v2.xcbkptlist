@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "63989678-3506-4DAF-8B54-BC6150D94AB4"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7D558E02-362A-47FD-8D2D-52A01E22D33B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/Models/Document/SerifianDocument+Thumbnail.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "thumbnailAndPreviewFileWrappers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "68A8ACD7-E102-456A-99F0-4E5ECA064EB8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/Models/Document/SerifianDocument+Thumbnail.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "thumbnailAndPreviewFileWrappers()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "68A8ACD7-E102-456A-99F0-4E5ECA064EB8 - 4ea108079127fce2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.SerifianDocument.thumbnailFileWrapper() -&gt; Swift.Optional&lt;__C.NSFileWrapper&gt;"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/Models/Document/SerifianDocument+Thumbnail.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "68A8ACD7-E102-456A-99F0-4E5ECA064EB8 - 4ea108079127fce2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.SerifianDocument.thumbnailFileWrapper() -&gt; Swift.Optional&lt;__C.NSFileWrapper&gt;"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/Models/Document/SerifianDocument+Thumbnail.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EED6C052-6E71-4675-A1D8-0EC37D4E9F65"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/Views/SidebarView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "sidebarItems"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "EED6C052-6E71-4675-A1D8-0EC37D4E9F65 - a26b449a4dfc034e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.SidebarView.sidebarItems.getter : Swift.Array&lt;Serifian.SidebarItemViewModel&gt;"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/Views/SidebarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "EED6C052-6E71-4675-A1D8-0EC37D4E9F65 - a2abfee979ffb675"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Serifian.SourceProtocol) -&gt; Serifian.SidebarItemViewModel in Serifian.SidebarView.sidebarItems.getter : Swift.Array&lt;Serifian.SidebarItemViewModel&gt;"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/Views/SidebarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5BB4FB57-15C8-419F-9FA2-CB7817E9EE3C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/Models/Document/SerifianDocument.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "fileWrapper(snapshot:configuration:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3E0E966D-7729-43A0-813E-A10B662FCE00"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/Models/Sources/TypstSourceFile.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "init(name:content:in:partOf:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B6C644F5-54F1-4F85-B797-ABA13F648318"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/Models/Sources/TypstSourceFile.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "init(from:in:partOf:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "44A7D823-8834-4480-BE0C-BDBC1707D6CD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/Models/Document/SerifianDocument.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "init(fromFileWrapper:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DFEBB853-5CAF-472A-8884-47B5611ECF3B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/Views/CodeEditor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "CodeEditor_Previews"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
