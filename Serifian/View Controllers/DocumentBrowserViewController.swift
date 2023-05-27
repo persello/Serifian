@@ -75,7 +75,6 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let documentViewController = storyBoard.instantiateViewController(withIdentifier: "RootSplitViewController") as! RootSplitViewController
-        documentViewController.setDocument(for: documentURL)
 
         // Set up transition.
         documentViewController.transitioningDelegate = self
@@ -85,7 +84,11 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         documentViewController.modalPresentationStyle = .fullScreen
         transitionController?.targetView = documentViewController.view
 
-        present(documentViewController, animated: true, completion: nil)
+        Task {
+            // TODO: Handle failure.
+            try! await documentViewController.setDocument(for: documentURL)
+            present(documentViewController, animated: true)
+        }
     }
 }
 

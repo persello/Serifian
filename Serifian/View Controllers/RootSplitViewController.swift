@@ -18,12 +18,13 @@ class RootSplitViewController: UISplitViewController {
         // Do any additional setup after loading the view.
     }
 
-    func setDocument(for url: URL) {
+    func setDocument(for url: URL) async throws {
         let document = SerifianDocument(fileURL: url)
+        try await document.read(from: url)
         self.documentURL = url
         self.document = document
 
-        let workbench = (self.viewControllers.last as! UINavigationController).topViewController!
+        let workbench = (self.viewControllers.last as! UINavigationController).topViewController! as! WorkbenchViewController
 
         let documentProperties = UIDocumentProperties(url: url)
         if let itemProvider = NSItemProvider(contentsOf: url) {
@@ -44,6 +45,10 @@ class RootSplitViewController: UISplitViewController {
             var children = suggestedActions
             return UIMenu(children: children)
         }
+
+        let sidebar = (self.viewControllers.first as! UINavigationController).topViewController! as! SidebarViewController
+        sidebar.navigationItem.title = document.title
+        sidebar.populateSidebar(for: document)
     }
 }
 
@@ -59,7 +64,10 @@ extension RootSplitViewController: UINavigationItemRenameDelegate {
                 return
             }
 
-            self.setDocument(for: newUrl)
+            Task {
+                // TODO: Handle failure.
+                try? await self.setDocument(for: newUrl)
+            }
         }
     }
 }
