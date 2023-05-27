@@ -20,8 +20,8 @@ class SidebarViewController: UIViewController {
         // Do any additional setup after loading the view.
         let configuration = UICollectionLayoutListConfiguration(appearance: .sidebar)
         let layout = UICollectionViewCompositionalLayout.list(using: configuration)
-        collectionView.collectionViewLayout = layout
-        collectionView.dataSource = self.dataSource
+        self.collectionView.collectionViewLayout = layout
+        self.collectionView.dataSource = self.dataSource
 
         let cell = UICollectionView.CellRegistration<UICollectionViewListCell, SidebarItemViewModel> { (cell, indexPath, item) in
 
@@ -43,6 +43,7 @@ class SidebarViewController: UIViewController {
 
         self.dataSource.apply(contentSnapshot(), to: "Files")
         self.view.backgroundColor = .secondarySystemBackground
+        self.navigationItem.title = referencedDocument.title
     }
 
     private func apply(
@@ -69,11 +70,19 @@ class SidebarViewController: UIViewController {
         return snapshot
     }
 
-    func populateSidebar(for document: SerifianDocument) {
+    func setReferencedDocument(_ document: SerifianDocument) {
         self.referencedDocument = document
     }
 }
 
 extension SidebarViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
+        if let item = dataSource.itemIdentifier(for: indexPath) {
+            if item.children == nil {
+                return true
+            }
+        }
 
+        return false
+    }
 }

@@ -20,6 +20,8 @@
 		8B348C842A2264EB009DD175 /* Untitled.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8B348C832A2264EB009DD175 /* Untitled.sr */; };
 		8B348C872A22A67B009DD175 /* UIApplication+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C862A22A67B009DD175 /* UIApplication+TopViewController.swift */; };
 		8B348C892A22B0A2009DD175 /* SidebarItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C882A22B0A2009DD175 /* SidebarItemViewModel.swift */; };
+		8B348C8B2A22C2AE009DD175 /* TypstSourceWorkbenchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B348C8A2A22C2AD009DD175 /* TypstSourceWorkbenchViewController.xib */; };
+		8B348C8D2A22C6AE009DD175 /* TypstSourceWorkbenchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C8C2A22C6AE009DD175 /* TypstSourceWorkbenchViewController.swift */; };
 		8B4F2B6E2A21376D007A15D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2B6D2A21376D007A15D7 /* AppDelegate.swift */; };
 		8B4F2B702A21376D007A15D7 /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2B6F2A21376D007A15D7 /* DocumentBrowserViewController.swift */; };
 		8B4F2B772A21376D007A15D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B4F2B752A21376D007A15D7 /* Main.storyboard */; };
@@ -86,6 +88,8 @@
 		8B348C832A2264EB009DD175 /* Untitled.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Untitled.sr; sourceTree = "<group>"; };
 		8B348C862A22A67B009DD175 /* UIApplication+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopViewController.swift"; sourceTree = "<group>"; };
 		8B348C882A22B0A2009DD175 /* SidebarItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarItemViewModel.swift; sourceTree = "<group>"; };
+		8B348C8A2A22C2AD009DD175 /* TypstSourceWorkbenchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypstSourceWorkbenchViewController.xib; sourceTree = "<group>"; };
+		8B348C8C2A22C6AE009DD175 /* TypstSourceWorkbenchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstSourceWorkbenchViewController.swift; sourceTree = "<group>"; };
 		8B4F2B6A2A21376D007A15D7 /* Serifian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serifian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4F2B6D2A21376D007A15D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B4F2B6F2A21376D007A15D7 /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 				8B4F2C522A222E1C007A15D7 /* View Controllers */,
 				8B4F2B6D2A21376D007A15D7 /* AppDelegate.swift */,
 				8B4F2B752A21376D007A15D7 /* Main.storyboard */,
+				8B348C8A2A22C2AD009DD175 /* TypstSourceWorkbenchViewController.xib */,
 				8B4F2B782A21376E007A15D7 /* Assets.xcassets */,
 				8B4F2B7A2A21376E007A15D7 /* LaunchScreen.storyboard */,
 				8B4F2B7D2A21376E007A15D7 /* Info.plist */,
@@ -252,6 +257,7 @@
 				8B4F2C532A222E6F007A15D7 /* RootSplitViewController.swift */,
 				8B4F2C572A2236C0007A15D7 /* SidebarViewController.swift */,
 				8B348C7C2A225462009DD175 /* WorkbenchViewController.swift */,
+				8B348C8C2A22C6AE009DD175 /* TypstSourceWorkbenchViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -396,6 +402,7 @@
 				8B4F2B7C2A21376E007A15D7 /* LaunchScreen.storyboard in Resources */,
 				8B4F2B792A21376E007A15D7 /* Assets.xcassets in Resources */,
 				8B348C822A225939009DD175 /* Empty.sr in Resources */,
+				8B348C8B2A22C2AE009DD175 /* TypstSourceWorkbenchViewController.xib in Resources */,
 				8B4F2B772A21376D007A15D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B4F2C672A223C8B007A15D7 /* DocumentMetadata.swift in Sources */,
+				8B348C8D2A22C6AE009DD175 /* TypstSourceWorkbenchViewController.swift in Sources */,
 				8B4F2C582A2236C0007A15D7 /* SidebarViewController.swift in Sources */,
 				8B4F2C642A223C8B007A15D7 /* SerifianDocument+Compile.swift in Sources */,
 				8B4F2B702A21376D007A15D7 /* DocumentBrowserViewController.swift in Sources */,
