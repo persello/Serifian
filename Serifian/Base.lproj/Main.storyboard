@@ -31,48 +31,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9aB-7Q-onk">
-                                <rect key="frame" x="0.0" y="70" width="1112" height="764"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CiV-eZ-pvn">
-                                        <rect key="frame" x="0.0" y="0.0" width="500" height="764"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="500" id="cpZ-zF-Lgs"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPf-mp-2am" customClass="DraggableDividerView" customModule="Serifian" customModuleProvider="target">
-                                        <rect key="frame" x="500" y="0.0" width="1" height="764"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="1" id="yqe-cT-ZUp"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Lx-cy2">
-                                        <rect key="frame" x="501" y="0.0" width="611" height="764"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                </subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CiV-eZ-pvn" userLabel="Leading View">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="834"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="BLb-Lx-cy2" secondAttribute="trailing" id="0ce-ZL-rdh"/>
-                                    <constraint firstItem="BLb-Lx-cy2" firstAttribute="top" secondItem="9aB-7Q-onk" secondAttribute="top" id="5cE-zI-PRQ"/>
-                                    <constraint firstAttribute="bottom" secondItem="BLb-Lx-cy2" secondAttribute="bottom" id="Fjb-yX-zlS"/>
-                                    <constraint firstItem="CiV-eZ-pvn" firstAttribute="leading" secondItem="9aB-7Q-onk" secondAttribute="leading" id="JfR-AF-sAc"/>
-                                    <constraint firstAttribute="bottom" secondItem="bPf-mp-2am" secondAttribute="bottom" id="S6f-Bt-MtJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="CiV-eZ-pvn" secondAttribute="bottom" id="YAM-L5-WdN"/>
-                                    <constraint firstItem="CiV-eZ-pvn" firstAttribute="top" secondItem="9aB-7Q-onk" secondAttribute="top" id="uza-b5-8Oe"/>
-                                    <constraint firstItem="bPf-mp-2am" firstAttribute="top" secondItem="9aB-7Q-onk" secondAttribute="top" id="vop-Lv-3jS"/>
+                                    <constraint firstAttribute="width" priority="999" constant="200" id="lAG-NO-DZb"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="nNs-Ht-dnW"/>
                                 </constraints>
-                            </stackView>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPf-mp-2am" customClass="DraggableDividerView" customModule="Serifian" customModuleProvider="target">
+                                <rect key="frame" x="200" y="0.0" width="1" height="834"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="uvR-n3-4eE"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Lx-cy2" userLabel="Trailing View">
+                                <rect key="frame" x="201" y="0.0" width="911" height="834"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="QWD-BY-3UG"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0zk-vt-Ma9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="9aB-7Q-onk" firstAttribute="leading" secondItem="0zk-vt-Ma9" secondAttribute="leading" id="RnM-a3-Bdy"/>
-                            <constraint firstItem="0zk-vt-Ma9" firstAttribute="trailing" secondItem="9aB-7Q-onk" secondAttribute="trailing" id="ZbI-fb-IOU"/>
-                            <constraint firstItem="0zk-vt-Ma9" firstAttribute="bottom" secondItem="9aB-7Q-onk" secondAttribute="bottom" id="mAF-Xf-84m"/>
-                            <constraint firstItem="9aB-7Q-onk" firstAttribute="top" secondItem="0zk-vt-Ma9" secondAttribute="top" id="wQ6-KM-aIY"/>
+                            <constraint firstItem="CiV-eZ-pvn" firstAttribute="top" secondItem="0Cr-ca-qyf" secondAttribute="top" id="7z8-ch-Q8V"/>
+                            <constraint firstItem="0zk-vt-Ma9" firstAttribute="trailing" secondItem="BLb-Lx-cy2" secondAttribute="trailing" priority="998" id="Dhk-xd-v25"/>
+                            <constraint firstItem="BLb-Lx-cy2" firstAttribute="top" secondItem="0Cr-ca-qyf" secondAttribute="top" id="Fzx-wA-mxG"/>
+                            <constraint firstItem="0zk-vt-Ma9" firstAttribute="bottom" secondItem="BLb-Lx-cy2" secondAttribute="bottom" id="KIO-2O-IXg"/>
+                            <constraint firstItem="bPf-mp-2am" firstAttribute="top" secondItem="0Cr-ca-qyf" secondAttribute="top" id="Kst-1r-tb5"/>
+                            <constraint firstItem="0zk-vt-Ma9" firstAttribute="bottom" secondItem="bPf-mp-2am" secondAttribute="bottom" id="Oev-4p-fJb"/>
+                            <constraint firstItem="BLb-Lx-cy2" firstAttribute="leading" secondItem="bPf-mp-2am" secondAttribute="trailing" id="Vuf-i1-Atk"/>
+                            <constraint firstItem="CiV-eZ-pvn" firstAttribute="trailing" secondItem="bPf-mp-2am" secondAttribute="leading" id="cPY-NB-OpX"/>
+                            <constraint firstItem="bPf-mp-2am" firstAttribute="leading" secondItem="CiV-eZ-pvn" secondAttribute="trailing" id="dnq-Hc-Ydg"/>
+                            <constraint firstItem="CiV-eZ-pvn" firstAttribute="leading" secondItem="0zk-vt-Ma9" secondAttribute="leading" id="iPc-3r-7cr"/>
+                            <constraint firstItem="0zk-vt-Ma9" firstAttribute="bottom" secondItem="CiV-eZ-pvn" secondAttribute="bottom" id="qnu-x2-Esz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="IeS-Zw-f65">
@@ -84,8 +80,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="draggableDividerView" destination="bPf-mp-2am" id="BAb-il-r4l"/>
-                        <outlet property="leadingViewPreferredWidth" destination="cpZ-zF-Lgs" id="Tuq-uZ-rOl"/>
-                        <outlet property="stackView" destination="9aB-7Q-onk" id="fma-Ee-CGC"/>
+                        <outlet property="leadingViewMinimumWidth" destination="nNs-Ht-dnW" id="em0-7O-zoY"/>
+                        <outlet property="leadingViewPreferredWidth" destination="lAG-NO-DZb" id="r9A-aR-JKs"/>
+                        <outlet property="trailingViewMinimumWidth" destination="QWD-BY-3UG" id="1LJ-K7-v3T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awj-db-enM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

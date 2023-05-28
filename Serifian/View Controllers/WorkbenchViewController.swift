@@ -9,19 +9,19 @@ import UIKit
 
 class WorkbenchViewController: UIViewController {
 
+    @IBOutlet weak var trailingViewMinimumWidth: NSLayoutConstraint!
+    @IBOutlet weak var leadingViewMinimumWidth: NSLayoutConstraint!
     @IBOutlet weak var leadingViewPreferredWidth: NSLayoutConstraint!
+
     @IBOutlet weak var draggableDividerView: DraggableDividerView!
-    @IBOutlet weak var stackView: UIStackView!
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true)
     }
 
-    var minimumLeadingViewRelativeWidth: CGFloat = 1.0/3
-    var maximumLeadingViewRelativeWidth: CGFloat = 2.0/3
+    private var lastLeadingViewRelativeWidth: CGFloat!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.setupDragger()
     }
 
@@ -50,6 +50,18 @@ class WorkbenchViewController: UIViewController {
         }
     }
 
+    private func setupDragger() {
+        self.view.bringSubviewToFront(draggableDividerView)
+        draggableDividerView.attachPanHandler { recognizer in
+            let point = recognizer.location(in: self.view)
+            var relativeWidth = point.x / self.view.bounds.width
+
+            self.leadingViewPreferredWidth.constant = relativeWidth * self.view.bounds.width
+        }
+
+        self.lastLeadingViewRelativeWidth = leadingViewPreferredWidth.constant / self.view.bounds.width
+    }
+
     func setupTitleMenuProvider(_ url: URL, title: String) {
         let documentProperties = UIDocumentProperties(url: url)
         if let itemProvider = NSItemProvider(contentsOf: url) {
@@ -72,18 +84,6 @@ class WorkbenchViewController: UIViewController {
         }
 
         self.navigationItem.documentProperties = UIDocumentProperties(url: url)
-    }
-
-    private func setupDragger() {
-        self.stackView.bringSubviewToFront(draggableDividerView)
-        draggableDividerView.attachPanHandler { recognizer in
-            let point = recognizer.location(in: self.view)
-            var relativeWidth = point.x / self.view.bounds.width
-            relativeWidth = relativeWidth > self.maximumLeadingViewRelativeWidth ? self.maximumLeadingViewRelativeWidth : relativeWidth
-            relativeWidth = relativeWidth < self.minimumLeadingViewRelativeWidth ? self.minimumLeadingViewRelativeWidth : relativeWidth
-
-            self.leadingViewPreferredWidth.constant = relativeWidth * self.view.bounds.width
-        }
     }
 
     func setSource(source: any SourceProtocol) {
