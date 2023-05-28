@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 class TypstSourceFile: SourceProtocol {
     @Published var name: String
@@ -14,7 +13,6 @@ class TypstSourceFile: SourceProtocol {
     weak var parent: Folder?
 
     private unowned var document: SerifianDocument
-    private var onChange: AnyCancellable!
 
     var fileWrapper: FileWrapper {
         get throws {
@@ -51,11 +49,6 @@ class TypstSourceFile: SourceProtocol {
         self.name = fileWrapper.filename ?? "File"
         self.parent = folder
         self.document = document
-        self.onChange = self.objectWillChange.sink(receiveValue: { _ in
-            DispatchQueue.main.async {
-                self.document.objectWillChange.send()
-            }
-        })
     }
 
     init(name: String, content: String, in folder: Folder?, partOf document: SerifianDocument) {
@@ -63,12 +56,6 @@ class TypstSourceFile: SourceProtocol {
         self.content = content
         self.parent = folder
         self.document = document
-
-        self.onChange = self.objectWillChange.sink(receiveValue: { _ in
-            DispatchQueue.main.async {
-                self.document.objectWillChange.send()
-            }
-        })
     }
 }
 

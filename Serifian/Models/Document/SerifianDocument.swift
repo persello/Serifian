@@ -7,24 +7,19 @@
 
 import UIKit
 import SwiftyTypst
-import Combine
+import PDFKit
 
-class SerifianDocument: UIDocument, ObservableObject, Identifiable {
+class SerifianDocument: UIDocument, Identifiable {
     var title: String
     var compiler: TypstCompiler!
     var metadata: DocumentMetadata
     var contents: [any SourceProtocol] = []
     var coverImage: CGImage?
-
-    private var cancellable: AnyCancellable?
+    var preview: PDFDocument?
 
     convenience init(empty: Bool, fileURL: URL) {
 
         self.init(fileURL: fileURL)
-
-        self.cancellable = self.objectWillChange.sink(receiveValue: { _ in
-            self.compiler.notifyChange()
-        })
 
         if !empty {
             let main = TypstSourceFile(name: "main.typ", content: "Hello, Serifian.", in: nil, partOf: self)
@@ -106,9 +101,6 @@ class SerifianDocument: UIDocument, ObservableObject, Identifiable {
 
         // Create the compiler and set up the change notifications.
         self.compiler = TypstCompiler(fileReader: self)
-        self.cancellable = self.objectWillChange.sink { _ in
-            self.compiler.notifyChange()
-        }
 
         // Create the actual contents.
         for item in contents.values {

@@ -87,6 +87,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         Task {
             // TODO: Handle failure.
             try! await documentViewController.setDocument(for: documentURL)
+            documentViewController.attachDocumentBrowserReference(self)
             present(documentViewController, animated: true)
         }
     }

@@ -11,11 +11,16 @@ class RootSplitViewController: UISplitViewController {
 
     private(set) var document: SerifianDocument!
     private(set) var documentURL: URL!
+    private weak var documentBrowserViewController: DocumentBrowserViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+
+    func attachDocumentBrowserReference(_ documentBrowserViewController: DocumentBrowserViewController) {
+        self.documentBrowserViewController = documentBrowserViewController
     }
 
     func setDocument(for url: URL) async throws {
@@ -29,5 +34,22 @@ class RootSplitViewController: UISplitViewController {
 
         let sidebar = (self.viewControllers.first as! UINavigationController).topViewController! as! SidebarViewController
         sidebar.setReferencedDocument(document)
+        sidebar.attachSourceSelectionCallback { source in
+            workbench.setSource(source: source)
+        }
+    }
+
+    func renameDocument(to newName: String) async -> String {
+        guard let documentBrowserViewController else {
+            return document.title
+        }
+
+        do {
+            let resultURL = try await documentBrowserViewController.renameDocument(at: self.documentURL, proposedName: newName)
+            try await self.setDocument(for: resultURL)
+            return document.title
+        } catch {
+            return document.title
+        }
     }
 }

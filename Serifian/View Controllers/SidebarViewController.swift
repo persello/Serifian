@@ -11,8 +11,9 @@ class SidebarViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    private var dataSource: UICollectionViewDiffableDataSource<String, SidebarItemViewModel>!
+    private var dataSource: UICollectionViewDiffableDataSource<String, SidebarItemViewModel>?
     private unowned var referencedDocument: SerifianDocument!
+    private var sourceChangeCallback: ((any SourceProtocol) -> ())?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +42,8 @@ class SidebarViewController: UIViewController {
             return collectionView.dequeueConfiguredReusableCell(using: cell, for: indexPath, item: item)
         }
 
-        self.dataSource.apply(contentSnapshot(), to: "Files")
         self.view.backgroundColor = .secondarySystemBackground
-        self.navigationItem.title = referencedDocument.title
+        self.updateSidebar()
     }
 
     private func apply(
@@ -70,19 +70,35 @@ class SidebarViewController: UIViewController {
         return snapshot
     }
 
+    private func updateSidebar() {
+        self.dataSource?.apply(contentSnapshot(), to: "Files")
+        self.navigationItem.title = referencedDocument.title
+    }
+
     func setReferencedDocument(_ document: SerifianDocument) {
         self.referencedDocument = document
+        self.updateSidebar()
+    }
+
+    func attachSourceSelectionCallback(_ callback: @escaping (any SourceProtocol) -> ()) {
+        self.sourceChangeCallback = callback
     }
 }
 
 extension SidebarViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
-        if let item = dataSource.itemIdentifier(for: indexPath) {
+        if let item = dataSource?.itemIdentifier(for: indexPath) {
             if item.children == nil {
                 return true
             }
         }
 
         return false
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let item = dataSource?.itemIdentifier(for: indexPath) {
+            self.sourceChangeCallback?(item.referencedSource)
+        }
     }
 }

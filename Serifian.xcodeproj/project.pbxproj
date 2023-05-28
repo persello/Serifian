@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B348C652A223DA7009DD175 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = 8B348C642A223DA7009DD175 /* SwiftyTypst */; };
 		8B348C702A223E18009DD175 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C6F2A223E18009DD175 /* Folder.swift */; };
 		8B348C712A223E18009DD175 /* SourceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C6A2A223E18009DD175 /* SourceError.swift */; };
 		8B348C722A223E18009DD175 /* TypstSourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C6B2A223E18009DD175 /* TypstSourceFile.swift */; };
@@ -41,6 +40,7 @@
 		8B4F2C662A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C612A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift */; };
 		8B4F2C672A223C8B007A15D7 /* DocumentMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C622A223C8B007A15D7 /* DocumentMetadata.swift */; };
 		8B4F2C682A223C8B007A15D7 /* SerifianDocument+FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileReader.swift */; };
+		8B9561B12A234783001E0F6F /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = 8B9561B02A234783001E0F6F /* SwiftyTypst */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,12 +108,12 @@
 		8B4F2C532A222E6F007A15D7 /* RootSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootSplitViewController.swift; sourceTree = "<group>"; };
 		8B4F2C572A2236C0007A15D7 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		8B4F2C5A2A223B64007A15D7 /* SerifianDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerifianDocument.swift; sourceTree = "<group>"; };
-		8B4F2C5D2A223C4B007A15D7 /* SwiftyTypst */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyTypst; path = ../../SwiftyTypst; sourceTree = "<group>"; };
 		8B4F2C5F2A223C8B007A15D7 /* SerifianDocument+Compile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+Compile.swift"; sourceTree = "<group>"; };
 		8B4F2C602A223C8B007A15D7 /* DocumentError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentError.swift; sourceTree = "<group>"; };
 		8B4F2C612A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+Thumbnail.swift"; sourceTree = "<group>"; };
 		8B4F2C622A223C8B007A15D7 /* DocumentMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentMetadata.swift; sourceTree = "<group>"; };
 		8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+FileReader.swift"; sourceTree = "<group>"; };
+		8B9561AF2A23477A001E0F6F /* SwiftyTypst */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyTypst; path = ../SwiftyTypst; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B348C652A223DA7009DD175 /* SwiftyTypst in Frameworks */,
+				8B9561B12A234783001E0F6F /* SwiftyTypst in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +215,6 @@
 				8B4F2C522A222E1C007A15D7 /* View Controllers */,
 				8B4F2B6D2A21376D007A15D7 /* AppDelegate.swift */,
 				8B4F2B752A21376D007A15D7 /* Main.storyboard */,
-				8B348C902A22CE59009DD175 /* TypstSourceWorkbenchViewController.xib */,
 				8B4F2B782A21376E007A15D7 /* Assets.xcassets */,
 				8B4F2B7A2A21376E007A15D7 /* LaunchScreen.storyboard */,
 				8B4F2B7D2A21376E007A15D7 /* Info.plist */,
@@ -258,6 +257,7 @@
 				8B4F2C572A2236C0007A15D7 /* SidebarViewController.swift */,
 				8B348C7C2A225462009DD175 /* WorkbenchViewController.swift */,
 				8B348C8C2A22C6AE009DD175 /* TypstSourceWorkbenchViewController.swift */,
+				8B348C902A22CE59009DD175 /* TypstSourceWorkbenchViewController.xib */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -274,7 +274,7 @@
 		8B4F2C5C2A223C4B007A15D7 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				8B4F2C5D2A223C4B007A15D7 /* SwiftyTypst */,
+				8B9561AF2A23477A001E0F6F /* SwiftyTypst */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -312,7 +312,7 @@
 			);
 			name = Serifian;
 			packageProductDependencies = (
-				8B348C642A223DA7009DD175 /* SwiftyTypst */,
+				8B9561B02A234783001E0F6F /* SwiftyTypst */,
 			);
 			productName = Serifian;
 			productReference = 8B4F2B6A2A21376D007A15D7 /* Serifian.app */;
@@ -835,7 +835,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8B348C642A223DA7009DD175 /* SwiftyTypst */ = {
+		8B9561B02A234783001E0F6F /* SwiftyTypst */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftyTypst;
 		};

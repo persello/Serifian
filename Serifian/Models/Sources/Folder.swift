@@ -6,16 +6,14 @@
 //
 
 import Foundation
-import Combine
 
 /// A `SourceProtocol` struct that represents a folder inside the Typst sources folder.
 class Folder: SourceProtocol {
-    @Published var name: String
+    var name: String
     var content: [any SourceProtocol]
     weak var parent: Folder?
 
     private unowned var document: SerifianDocument
-    private var onChange: AnyCancellable!
 
     var fileWrapper: FileWrapper {
         let wrapper = FileWrapper(directoryWithFileWrappers: [:])
@@ -39,9 +37,6 @@ class Folder: SourceProtocol {
         self.content = []
         self.parent = folder
         self.document = document
-        self.onChange = self.objectWillChange.sink(receiveValue: { _ in
-            self.document.objectWillChange.send()
-        })
 
         if let files = fileWrapper.fileWrappers?.values {
             for file in files {
@@ -57,10 +52,6 @@ class Folder: SourceProtocol {
         self.content = []
         self.parent = folder
         self.document = document
-
-        self.onChange = self.objectWillChange.sink(receiveValue: { _ in
-            self.document.objectWillChange.send()
-        })
     }
 }
 

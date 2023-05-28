@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,15 +30,6 @@
                     <view key="view" contentMode="scaleToFill" id="0Cr-ca-qyf">
                         <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUM-Pz-jqU">
-                                <rect key="frame" x="206" y="199" width="791" height="479"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="bql-Db-oCq" kind="embed" id="1RX-IE-azM"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="0zk-vt-Ma9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -67,16 +57,7 @@
                                 <rect key="frame" x="0.0" y="122" width="420" height="712"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="K5i-ox-bcq"/>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="AEB-Cy-g0g">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1el-xE-aMq">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
                                     <outlet property="delegate" destination="p5m-fu-0gn" id="EJI-F8-Ayx"/>
                                 </connections>
@@ -131,14 +112,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1E3-cd-bu3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1460.611510791367" y="653.95683453237416"/>
-        </scene>
-        <!--Typst Source Workbench View Controller-->
-        <scene sceneID="2zq-j2-PXV">
-            <objects>
-                <viewController id="bql-Db-oCq" customClass="TypstSourceWorkbenchViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0U3-bd-7g5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1511" y="1505"/>
         </scene>
     </scenes>
     <resources>

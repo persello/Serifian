@@ -19,6 +19,31 @@ class WorkbenchViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    func setSource(source: any SourceProtocol) {
+        self.clearChildren()
+
+        if let typstSource = source as? TypstSourceFile {
+            self.showTypstEditor(for: typstSource)
+        }
+    }
+
+    private func showTypstEditor(for source: TypstSourceFile) {
+        let editor = TypstSourceWorkbenchViewController(nibName: "TypstSourceWorkbenchViewController", bundle: nil)
+        
+        self.addChild(editor)
+        editor.view.frame = self.view.frame
+        self.view.addSubview(editor.view)
+        editor.willMove(toParent: self)
+    }
+
+    private func clearChildren() {
+        for child in self.children {
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
+    }
+
     func setupTitleMenuProvider(_ url: URL, title: String) {
         let documentProperties = UIDocumentProperties(url: url)
         if let itemProvider = NSItemProvider(contentsOf: url) {
@@ -46,21 +71,9 @@ class WorkbenchViewController: UIViewController {
 
 extension WorkbenchViewController: UINavigationItemRenameDelegate {
     func navigationItem(_: UINavigationItem, didEndRenamingWith title: String) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let documentBrowser = storyboard.instantiateViewController(withIdentifier: "DocumentBrowserViewController") as! DocumentBrowserViewController
-        let rootSplitViewController = self.presentingViewController as! RootSplitViewController
-
-        documentBrowser.renameDocument(at: rootSplitViewController.documentURL, proposedName: title) { newUrl, error in
-            guard error != nil,
-                  let newUrl else {
-                // TODO: Handle error.
-                return
-            }
-
-            Task {
-                // TODO: Handle failure.
-                try? await rootSplitViewController.setDocument(for: newUrl)
-            }
+        let rootSplitViewController = self.parent?.parent as! RootSplitViewController
+        Task {
+            await rootSplitViewController.renameDocument(to: title)
         }
     }
 }

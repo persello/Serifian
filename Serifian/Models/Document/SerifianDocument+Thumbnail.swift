@@ -10,9 +10,15 @@ import PDFKit
 
 extension SerifianDocument {
     func thumbnailAndPreviewFileWrappers() -> (thumbnail: FileWrapper, preview: FileWrapper)? {
-        let compiledDocument = try? self.compile()
+        if self.preview == nil {
+            preview = try? self.compile()
+        }
 
-        guard let firstPage = compiledDocument?.page(at: 0) else {
+        guard let preview else {
+            return nil
+        }
+
+        guard let firstPage = preview.page(at: 0) else {
             return nil
         }
 
@@ -32,7 +38,7 @@ extension SerifianDocument {
         let thumbnailWrapper = FileWrapper(regularFileWithContents: data)
         thumbnailWrapper.preferredFilename = "cover.jpeg"
 
-        guard let pdfData = compiledDocument?.dataRepresentation() else {
+        guard let pdfData = preview.dataRepresentation() else {
             return nil
         }
 

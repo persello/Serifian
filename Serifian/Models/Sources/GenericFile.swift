@@ -6,16 +6,14 @@
 //
 
 import Foundation
-import Combine
 
 /// A `SourceProtocol` struct that represents a file that cannot be represented otherwise.
 class GenericFile: SourceProtocol {
-    @Published var name: String
-    @Published var content: Data
+    var name: String
+    var content: Data
     weak var parent: Folder?
 
     private unowned var document: SerifianDocument
-    private var onChange: AnyCancellable!
 
     var fileWrapper: FileWrapper {
         let wrapper = FileWrapper(regularFileWithContents: content)
@@ -32,9 +30,6 @@ class GenericFile: SourceProtocol {
         self.content = fileWrapper.regularFileContents ?? Data()
         self.parent = folder
         self.document = document
-        self.onChange = self.objectWillChange.sink(receiveValue: { _ in
-            self.document.objectWillChange.send()
-        })
     }
 
     init(name: String, content: Data, in folder: Folder?, partOf document: SerifianDocument) {
@@ -42,9 +37,6 @@ class GenericFile: SourceProtocol {
         self.content = content
         self.parent = folder
         self.document = document
-        self.onChange = self.objectWillChange.sink(receiveValue: { _ in
-            self.document.objectWillChange.send()
-        })
     }
 }
 
