@@ -23,32 +23,79 @@
             </objects>
             <point key="canvasLocation" x="26" y="654"/>
         </scene>
-        <!--Document title-->
+        <!--Workbench View Controller-->
         <scene sceneID="Oda-x6-EjE">
             <objects>
-                <viewController id="hlC-xv-vT7" customClass="WorkbenchViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WorkbenchViewController" id="hlC-xv-vT7" customClass="WorkbenchViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Cr-ca-qyf">
                         <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9aB-7Q-onk">
+                                <rect key="frame" x="0.0" y="70" width="1112" height="764"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CiV-eZ-pvn">
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="764"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="500" id="cpZ-zF-Lgs"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPf-mp-2am" customClass="DraggableDividerView" customModule="Serifian" customModuleProvider="target">
+                                        <rect key="frame" x="500" y="0.0" width="1" height="764"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="yqe-cT-ZUp"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Lx-cy2">
+                                        <rect key="frame" x="501" y="0.0" width="611" height="764"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="BLb-Lx-cy2" secondAttribute="trailing" id="0ce-ZL-rdh"/>
+                                    <constraint firstItem="BLb-Lx-cy2" firstAttribute="top" secondItem="9aB-7Q-onk" secondAttribute="top" id="5cE-zI-PRQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="BLb-Lx-cy2" secondAttribute="bottom" id="Fjb-yX-zlS"/>
+                                    <constraint firstItem="CiV-eZ-pvn" firstAttribute="leading" secondItem="9aB-7Q-onk" secondAttribute="leading" id="JfR-AF-sAc"/>
+                                    <constraint firstAttribute="bottom" secondItem="bPf-mp-2am" secondAttribute="bottom" id="S6f-Bt-MtJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="CiV-eZ-pvn" secondAttribute="bottom" id="YAM-L5-WdN"/>
+                                    <constraint firstItem="CiV-eZ-pvn" firstAttribute="top" secondItem="9aB-7Q-onk" secondAttribute="top" id="uza-b5-8Oe"/>
+                                    <constraint firstItem="bPf-mp-2am" firstAttribute="top" secondItem="9aB-7Q-onk" secondAttribute="top" id="vop-Lv-3jS"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="0zk-vt-Ma9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9aB-7Q-onk" firstAttribute="leading" secondItem="0zk-vt-Ma9" secondAttribute="leading" id="RnM-a3-Bdy"/>
+                            <constraint firstItem="0zk-vt-Ma9" firstAttribute="trailing" secondItem="9aB-7Q-onk" secondAttribute="trailing" id="ZbI-fb-IOU"/>
+                            <constraint firstItem="0zk-vt-Ma9" firstAttribute="bottom" secondItem="9aB-7Q-onk" secondAttribute="bottom" id="mAF-Xf-84m"/>
+                            <constraint firstItem="9aB-7Q-onk" firstAttribute="top" secondItem="0zk-vt-Ma9" secondAttribute="top" id="wQ6-KM-aIY"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Document title" style="editor" id="IeS-Zw-f65">
+                    <navigationItem key="navigationItem" style="editor" id="IeS-Zw-f65">
                         <barButtonItem key="leftBarButtonItem" title="Back" image="chevron.left" catalog="system" id="2Af-2d-vCl">
                             <connections>
                                 <action selector="backButtonPressed:" destination="hlC-xv-vT7" id="qQl-Cr-aKg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="draggableDividerView" destination="bPf-mp-2am" id="BAb-il-r4l"/>
+                        <outlet property="leadingViewPreferredWidth" destination="cpZ-zF-Lgs" id="Tuq-uZ-rOl"/>
+                        <outlet property="stackView" destination="9aB-7Q-onk" id="fma-Ee-CGC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awj-db-enM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="809.89208633093529" y="1400.7194244604318"/>
+            <point key="canvasLocation" x="1524.2805755395684" y="1400.7194244604318"/>
         </scene>
-        <!--Document title-->
+        <!--Sidebar View Controller-->
         <scene sceneID="9Z3-rj-vyo">
             <objects>
-                <viewController id="p5m-fu-0gn" customClass="SidebarViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SidebarViewController" id="p5m-fu-0gn" customClass="SidebarViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EqB-gP-WU9">
                         <rect key="frame" x="0.0" y="0.0" width="420" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,7 +119,7 @@
                             <constraint firstItem="b3w-sF-dp6" firstAttribute="top" secondItem="0E6-hG-ahl" secondAttribute="top" id="pph-dF-cmT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Document title" id="aHO-jk-LPm"/>
+                    <navigationItem key="navigationItem" id="aHO-jk-LPm"/>
                     <connections>
                         <outlet property="collectionView" destination="b3w-sF-dp6" id="3oi-qC-Ltd"/>
                         <outlet property="navigationItem" destination="aHO-jk-LPm" id="hM6-xB-NDj"/>
@@ -88,7 +135,7 @@
                 <splitViewController storyboardIdentifier="RootSplitViewController" allowDoubleColumnStyle="YES" preferredDisplayMode="secondaryOnly" primaryBackgroundStyle="sidebar" id="kfU-ny-yVW" customClass="RootSplitViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="T2K-Xk-G5I" kind="relationship" relationship="masterViewController" id="ok1-Ta-xmY"/>
-                        <segue destination="hlC-xv-vT7" kind="relationship" relationship="detailViewController" id="8pS-lf-ki3"/>
+                        <segue destination="fZj-fA-cXV" kind="relationship" relationship="detailViewController" id="8pS-lf-ki3"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWd-WE-esN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -98,7 +145,7 @@
         <!--Navigation Controller-->
         <scene sceneID="pnV-UV-fOb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T2K-Xk-G5I" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SidebarNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="T2K-Xk-G5I" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Q5U-0R-n3P">
                         <rect key="frame" x="0.0" y="20" width="420" height="102"/>
@@ -112,6 +159,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1E3-cd-bu3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1460.611510791367" y="653.95683453237416"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eot-4O-RAn">
+            <objects>
+                <navigationController storyboardIdentifier="WorkbenchNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="fZj-fA-cXV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fgg-jx-w2K">
+                        <rect key="frame" x="0.0" y="20" width="1112" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance" backgroundEffect="systemChromeMaterial"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vlL-Wq-94B">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="hlC-xv-vT7" kind="relationship" relationship="rootViewController" id="KGd-K8-5U6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dWm-zL-YT3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="809.89208633093529" y="1400.7194244604318"/>
         </scene>
     </scenes>
     <resources>

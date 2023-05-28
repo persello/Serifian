@@ -9,31 +9,37 @@ import UIKit
 
 class WorkbenchViewController: UIViewController {
 
+    @IBOutlet weak var leadingViewPreferredWidth: NSLayoutConstraint!
+    @IBOutlet weak var draggableDividerView: DraggableDividerView!
+    @IBOutlet weak var stackView: UIStackView!
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true)
     }
 
+    var minimumLeadingViewRelativeWidth: CGFloat = 1.0/3
+    var maximumLeadingViewRelativeWidth: CGFloat = 2.0/3
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.setupDragger()
     }
 
-    func setSource(source: any SourceProtocol) {
-        self.clearChildren()
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let oldLeadingViewWidth = leadingViewPreferredWidth.constant
+        let oldWidth = self.view.bounds.width
 
-        if let typstSource = source as? TypstSourceFile {
-            self.showTypstEditor(for: typstSource)
-        }
+        let newLeadingViewWidth = (oldLeadingViewWidth / oldWidth) * size.width
+        leadingViewPreferredWidth.constant = newLeadingViewWidth
     }
 
     private func showTypstEditor(for source: TypstSourceFile) {
-        let editor = TypstSourceWorkbenchViewController(nibName: "TypstSourceWorkbenchViewController", bundle: nil)
-        
-        self.addChild(editor)
-        editor.view.frame = self.view.frame
-        self.view.addSubview(editor.view)
-        editor.willMove(toParent: self)
+//        let editor = TypstSourceWorkbenchViewController(nibName: "TypstSourceWorkbenchViewController", bundle: nil)
+//
+//        self.addChild(editor)
+//        editor.view.frame = self.view.frame
+//        self.view.addSubview(editor.view)
+//        editor.willMove(toParent: self)
     }
 
     private func clearChildren() {
@@ -66,6 +72,26 @@ class WorkbenchViewController: UIViewController {
         }
 
         self.navigationItem.documentProperties = UIDocumentProperties(url: url)
+    }
+
+    private func setupDragger() {
+        self.stackView.bringSubviewToFront(draggableDividerView)
+        draggableDividerView.attachPanHandler { recognizer in
+            let point = recognizer.location(in: self.view)
+            var relativeWidth = point.x / self.view.bounds.width
+            relativeWidth = relativeWidth > self.maximumLeadingViewRelativeWidth ? self.maximumLeadingViewRelativeWidth : relativeWidth
+            relativeWidth = relativeWidth < self.minimumLeadingViewRelativeWidth ? self.minimumLeadingViewRelativeWidth : relativeWidth
+
+            self.leadingViewPreferredWidth.constant = relativeWidth * self.view.bounds.width
+        }
+    }
+
+    func setSource(source: any SourceProtocol) {
+        self.clearChildren()
+
+        if let typstSource = source as? TypstSourceFile {
+            self.showTypstEditor(for: typstSource)
+        }
     }
 }
 

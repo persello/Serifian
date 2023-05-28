@@ -17,10 +17,7 @@
 		8B348C7F2A22567B009DD175 /* DocumentCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C7E2A22567B009DD175 /* DocumentCreationView.swift */; };
 		8B348C822A225939009DD175 /* Empty.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8B348C812A225939009DD175 /* Empty.sr */; };
 		8B348C842A2264EB009DD175 /* Untitled.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8B348C832A2264EB009DD175 /* Untitled.sr */; };
-		8B348C872A22A67B009DD175 /* UIApplication+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C862A22A67B009DD175 /* UIApplication+TopViewController.swift */; };
 		8B348C892A22B0A2009DD175 /* SidebarItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C882A22B0A2009DD175 /* SidebarItemViewModel.swift */; };
-		8B348C8D2A22C6AE009DD175 /* TypstSourceWorkbenchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C8C2A22C6AE009DD175 /* TypstSourceWorkbenchViewController.swift */; };
-		8B348C8E2A22CE59009DD175 /* TypstSourceWorkbenchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B348C902A22CE59009DD175 /* TypstSourceWorkbenchViewController.xib */; };
 		8B4F2B6E2A21376D007A15D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2B6D2A21376D007A15D7 /* AppDelegate.swift */; };
 		8B4F2B702A21376D007A15D7 /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2B6F2A21376D007A15D7 /* DocumentBrowserViewController.swift */; };
 		8B4F2B772A21376D007A15D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B4F2B752A21376D007A15D7 /* Main.storyboard */; };
@@ -41,6 +38,8 @@
 		8B4F2C672A223C8B007A15D7 /* DocumentMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C622A223C8B007A15D7 /* DocumentMetadata.swift */; };
 		8B4F2C682A223C8B007A15D7 /* SerifianDocument+FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileReader.swift */; };
 		8B9561B12A234783001E0F6F /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = 8B9561B02A234783001E0F6F /* SwiftyTypst */; };
+		8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */; };
+		8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,10 +85,7 @@
 		8B348C7E2A22567B009DD175 /* DocumentCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCreationView.swift; sourceTree = "<group>"; };
 		8B348C812A225939009DD175 /* Empty.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Empty.sr; sourceTree = "<group>"; };
 		8B348C832A2264EB009DD175 /* Untitled.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Untitled.sr; sourceTree = "<group>"; };
-		8B348C862A22A67B009DD175 /* UIApplication+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopViewController.swift"; sourceTree = "<group>"; };
 		8B348C882A22B0A2009DD175 /* SidebarItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarItemViewModel.swift; sourceTree = "<group>"; };
-		8B348C8C2A22C6AE009DD175 /* TypstSourceWorkbenchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstSourceWorkbenchViewController.swift; sourceTree = "<group>"; };
-		8B348C8F2A22CE59009DD175 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TypstSourceWorkbenchViewController.xib; sourceTree = "<group>"; };
 		8B4F2B6A2A21376D007A15D7 /* Serifian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serifian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4F2B6D2A21376D007A15D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B4F2B6F2A21376D007A15D7 /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +110,8 @@
 		8B4F2C622A223C8B007A15D7 /* DocumentMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentMetadata.swift; sourceTree = "<group>"; };
 		8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+FileReader.swift"; sourceTree = "<group>"; };
 		8B9561AF2A23477A001E0F6F /* SwiftyTypst */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyTypst; path = ../SwiftyTypst; sourceTree = "<group>"; };
+		8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableDividerView.swift; sourceTree = "<group>"; };
+		8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,13 +145,13 @@
 		8B348C762A223E22009DD175 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				8B348C882A22B0A2009DD175 /* SidebarItemViewModel.swift */,
+				8B348C6C2A223E18009DD175 /* SourceProtocol.swift */,
+				8B348C6A2A223E18009DD175 /* SourceError.swift */,
 				8B348C6F2A223E18009DD175 /* Folder.swift */,
 				8B348C6D2A223E18009DD175 /* GenericFile.swift */,
 				8B348C6E2A223E18009DD175 /* ImageFile.swift */,
-				8B348C6A2A223E18009DD175 /* SourceError.swift */,
-				8B348C6C2A223E18009DD175 /* SourceProtocol.swift */,
 				8B348C6B2A223E18009DD175 /* TypstSourceFile.swift */,
-				8B348C882A22B0A2009DD175 /* SidebarItemViewModel.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -162,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				8B348C7E2A22567B009DD175 /* DocumentCreationView.swift */,
+				8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,7 +177,7 @@
 		8B348C852A22A66C009DD175 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				8B348C862A22A67B009DD175 /* UIApplication+TopViewController.swift */,
+				8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -256,8 +255,6 @@
 				8B4F2C532A222E6F007A15D7 /* RootSplitViewController.swift */,
 				8B4F2C572A2236C0007A15D7 /* SidebarViewController.swift */,
 				8B348C7C2A225462009DD175 /* WorkbenchViewController.swift */,
-				8B348C8C2A22C6AE009DD175 /* TypstSourceWorkbenchViewController.swift */,
-				8B348C902A22CE59009DD175 /* TypstSourceWorkbenchViewController.xib */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -402,7 +399,6 @@
 				8B4F2B7C2A21376E007A15D7 /* LaunchScreen.storyboard in Resources */,
 				8B4F2B792A21376E007A15D7 /* Assets.xcassets in Resources */,
 				8B348C822A225939009DD175 /* Empty.sr in Resources */,
-				8B348C8E2A22CE59009DD175 /* TypstSourceWorkbenchViewController.xib in Resources */,
 				8B4F2B772A21376D007A15D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,7 +425,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B4F2C672A223C8B007A15D7 /* DocumentMetadata.swift in Sources */,
-				8B348C8D2A22C6AE009DD175 /* TypstSourceWorkbenchViewController.swift in Sources */,
 				8B4F2C582A2236C0007A15D7 /* SidebarViewController.swift in Sources */,
 				8B4F2C642A223C8B007A15D7 /* SerifianDocument+Compile.swift in Sources */,
 				8B4F2B702A21376D007A15D7 /* DocumentBrowserViewController.swift in Sources */,
@@ -437,6 +432,7 @@
 				8B348C732A223E18009DD175 /* SourceProtocol.swift in Sources */,
 				8B4F2B6E2A21376D007A15D7 /* AppDelegate.swift in Sources */,
 				8B4F2C662A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift in Sources */,
+				8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */,
 				8B348C7D2A225462009DD175 /* WorkbenchViewController.swift in Sources */,
 				8B348C712A223E18009DD175 /* SourceError.swift in Sources */,
 				8B348C742A223E18009DD175 /* GenericFile.swift in Sources */,
@@ -446,8 +442,8 @@
 				8B348C892A22B0A2009DD175 /* SidebarItemViewModel.swift in Sources */,
 				8B348C752A223E18009DD175 /* ImageFile.swift in Sources */,
 				8B4F2C652A223C8B007A15D7 /* DocumentError.swift in Sources */,
+				8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */,
 				8B4F2C5B2A223B64007A15D7 /* SerifianDocument.swift in Sources */,
-				8B348C872A22A67B009DD175 /* UIApplication+TopViewController.swift in Sources */,
 				8B348C702A223E18009DD175 /* Folder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,14 +480,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8B348C902A22CE59009DD175 /* TypstSourceWorkbenchViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8B348C8F2A22CE59009DD175 /* Base */,
-			);
-			name = TypstSourceWorkbenchViewController.xib;
-			sourceTree = "<group>";
-		};
 		8B4F2B752A21376D007A15D7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -635,6 +623,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BZTVD28H6K;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Serifian/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -669,6 +658,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BZTVD28H6K;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Serifian/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
