@@ -24,18 +24,19 @@ struct SidebarItemViewModel: Identifiable, Hashable, Equatable {
 
     var image: UIImage {
         if referencedSource is TypstSourceFile {
-            return UIImage(systemName: "doc.text")!
+            let configuration = UIImage.SymbolConfiguration(paletteColors: [.white, .systemTeal])
+            return UIImage(systemName: "t.square.fill", withConfiguration: configuration)!
         }
 
         if referencedSource is ImageFile {
-            return UIImage(systemName: "photo")!
+            return UIImage(systemName: "photo.fill")!
         }
 
         if referencedSource is Folder {
             return UIImage(systemName: "folder")!
         }
 
-        return UIImage(systemName: "doc")!
+        return UIImage(systemName: "doc.fill")!
     }
 
     var id: URL {

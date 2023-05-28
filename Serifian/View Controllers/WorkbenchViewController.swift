@@ -82,8 +82,6 @@ class WorkbenchViewController: UIViewController {
             var children = suggestedActions
             return UIMenu(children: children)
         }
-
-        self.navigationItem.documentProperties = UIDocumentProperties(url: url)
     }
 
     func setSource(source: any SourceProtocol) {

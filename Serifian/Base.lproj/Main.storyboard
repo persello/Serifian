@@ -21,7 +21,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="26" y="654"/>
+            <point key="canvasLocation" x="42" y="654"/>
         </scene>
         <!--Workbench View Controller-->
         <scene sceneID="Oda-x6-EjE">
@@ -87,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awj-db-enM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1524.2805755395684" y="1400.7194244604318"/>
+            <point key="canvasLocation" x="1461" y="1401"/>
         </scene>
         <!--Sidebar View Controller-->
         <scene sceneID="9Z3-rj-vyo">
@@ -124,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Go-wF-c7b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2175" y="653.95683453237416"/>
+            <point key="canvasLocation" x="2122" y="654"/>
         </scene>
         <!--Root Split View Controller-->
         <scene sceneID="gQ0-BV-7gp">

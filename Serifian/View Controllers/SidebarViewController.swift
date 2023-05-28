@@ -34,6 +34,18 @@ class SidebarViewController: UIViewController {
             if item.children != nil {
                 cell.accessories = [.outlineDisclosure()]
             }
+
+            cell.configurationUpdateHandler = { cell, state in
+                var contentConfiguration = cell.contentConfiguration as! UIListContentConfiguration
+
+                if cell.isSelected {
+                    contentConfiguration.image = item.image.withConfiguration(UIImage.SymbolConfiguration(paletteColors: [.white]))
+                } else {
+                    contentConfiguration.image = item.image
+                }
+
+                cell.contentConfiguration = contentConfiguration
+            }
         }
 
         self.dataSource = UICollectionViewDiffableDataSource<String, SidebarItemViewModel>(collectionView: collectionView) {
@@ -86,7 +98,7 @@ class SidebarViewController: UIViewController {
 }
 
 extension SidebarViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         if let item = dataSource?.itemIdentifier(for: indexPath) {
             if item.children == nil {
                 return true
