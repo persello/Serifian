@@ -30,7 +30,7 @@ class RootSplitViewController: UISplitViewController {
         self.document = document
 
         let workbench = (self.viewControllers.last as! UINavigationController).topViewController! as! WorkbenchViewController
-        workbench.setupTitleMenuProvider(url, title: document.title)
+        workbench.setupDocument(document)
 
         let sidebar = (self.viewControllers.first as! UINavigationController).topViewController! as! SidebarViewController
         sidebar.setReferencedDocument(document)

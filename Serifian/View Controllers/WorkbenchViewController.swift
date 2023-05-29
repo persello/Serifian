@@ -34,6 +34,8 @@ class WorkbenchViewController: UIViewController {
     private var lastLeadingViewRelativeWidth: CGFloat!
     private var lastTrailingPaneMinimumWidth: CGFloat!
 
+    unowned private var document: SerifianDocument!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -214,9 +216,12 @@ extension WorkbenchViewController {
 //        }
     }
 
-    func setupTitleMenuProvider(_ url: URL, title: String) {
-        let documentProperties = UIDocumentProperties(url: url)
-        if let itemProvider = NSItemProvider(contentsOf: url) {
+    func setupDocument(_ document: SerifianDocument) {
+
+        self.document = document
+
+        let documentProperties = UIDocumentProperties(url: document.fileURL)
+        if let itemProvider = NSItemProvider(contentsOf: document.fileURL) {
             documentProperties.dragItemsProvider = { _ in
                 [UIDragItem(itemProvider: itemProvider)]
             }
@@ -228,7 +233,7 @@ extension WorkbenchViewController {
 
         self.navigationItem.renameDelegate = self
         self.navigationItem.documentProperties = documentProperties
-        self.navigationItem.title = title
+        self.navigationItem.title = document.title
 
         self.navigationItem.titleMenuProvider = { suggestedActions in
             var children = suggestedActions
