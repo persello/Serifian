@@ -35,7 +35,7 @@ class RootSplitViewController: UISplitViewController {
         let sidebar = (self.viewControllers.first as! UINavigationController).topViewController! as! SidebarViewController
         sidebar.setReferencedDocument(document)
         sidebar.attachSourceSelectionCallback { source in
-            workbench.setSource(source: source)
+            workbench.changeSource(source: source)
         }
     }
 

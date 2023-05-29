@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad10_5" orientation="landscape" layout="fullscreen" appearance="light"/>
+    <device id="ipad11_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +14,7 @@
             <objects>
                 <viewController storyboardIdentifier="DocumentBrowserViewController" id="BYZ-38-t0r" customClass="DocumentBrowserViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="0fo-ii-Aj5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -28,11 +29,11 @@
             <objects>
                 <viewController storyboardIdentifier="WorkbenchViewController" id="hlC-xv-vT7" customClass="WorkbenchViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Cr-ca-qyf">
-                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CiV-eZ-pvn" userLabel="Leading View">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="834"/>
+                                <rect key="frame" x="0.0" y="74" width="200" height="760"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="999" constant="200" id="lAG-NO-DZb"/>
@@ -40,35 +41,35 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPf-mp-2am" customClass="DraggableDividerView" customModule="Serifian" customModuleProvider="target">
-                                <rect key="frame" x="200" y="0.0" width="1" height="834"/>
+                                <rect key="frame" x="200" y="74" width="1" height="760"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="uvR-n3-4eE"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Lx-cy2" userLabel="Trailing View">
-                                <rect key="frame" x="201" y="0.0" width="911" height="834"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Lx-cy2" userLabel="Trailing View" customClass="PDFView">
+                                <rect key="frame" x="201" y="74" width="993" height="760"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="QWD-BY-3UG"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="0zk-vt-Ma9"/>
+                        <viewLayoutGuide key="safeArea" id="emJ-bA-E4V"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="CiV-eZ-pvn" firstAttribute="top" secondItem="0Cr-ca-qyf" secondAttribute="top" id="7z8-ch-Q8V"/>
-                            <constraint firstItem="0zk-vt-Ma9" firstAttribute="trailing" secondItem="BLb-Lx-cy2" secondAttribute="trailing" priority="998" id="Dhk-xd-v25"/>
-                            <constraint firstItem="BLb-Lx-cy2" firstAttribute="top" secondItem="0Cr-ca-qyf" secondAttribute="top" id="Fzx-wA-mxG"/>
-                            <constraint firstItem="0zk-vt-Ma9" firstAttribute="bottom" secondItem="BLb-Lx-cy2" secondAttribute="bottom" id="KIO-2O-IXg"/>
-                            <constraint firstItem="bPf-mp-2am" firstAttribute="top" secondItem="0Cr-ca-qyf" secondAttribute="top" id="Kst-1r-tb5"/>
-                            <constraint firstItem="0zk-vt-Ma9" firstAttribute="bottom" secondItem="bPf-mp-2am" secondAttribute="bottom" id="Oev-4p-fJb"/>
+                            <constraint firstItem="CiV-eZ-pvn" firstAttribute="top" secondItem="emJ-bA-E4V" secondAttribute="top" id="7z8-ch-Q8V"/>
+                            <constraint firstAttribute="trailing" secondItem="BLb-Lx-cy2" secondAttribute="trailing" priority="998" id="Dhk-xd-v25"/>
+                            <constraint firstItem="BLb-Lx-cy2" firstAttribute="top" secondItem="emJ-bA-E4V" secondAttribute="top" id="Fzx-wA-mxG"/>
+                            <constraint firstAttribute="bottom" secondItem="BLb-Lx-cy2" secondAttribute="bottom" id="KIO-2O-IXg"/>
+                            <constraint firstItem="bPf-mp-2am" firstAttribute="top" secondItem="emJ-bA-E4V" secondAttribute="top" id="Kst-1r-tb5"/>
+                            <constraint firstAttribute="bottom" secondItem="bPf-mp-2am" secondAttribute="bottom" id="Oev-4p-fJb"/>
                             <constraint firstItem="BLb-Lx-cy2" firstAttribute="leading" secondItem="bPf-mp-2am" secondAttribute="trailing" id="Vuf-i1-Atk"/>
                             <constraint firstItem="CiV-eZ-pvn" firstAttribute="trailing" secondItem="bPf-mp-2am" secondAttribute="leading" id="cPY-NB-OpX"/>
                             <constraint firstItem="bPf-mp-2am" firstAttribute="leading" secondItem="CiV-eZ-pvn" secondAttribute="trailing" id="dnq-Hc-Ydg"/>
-                            <constraint firstItem="CiV-eZ-pvn" firstAttribute="leading" secondItem="0zk-vt-Ma9" secondAttribute="leading" id="iPc-3r-7cr"/>
-                            <constraint firstItem="0zk-vt-Ma9" firstAttribute="bottom" secondItem="CiV-eZ-pvn" secondAttribute="bottom" id="qnu-x2-Esz"/>
+                            <constraint firstItem="CiV-eZ-pvn" firstAttribute="leading" secondItem="0Cr-ca-qyf" secondAttribute="leading" id="iPc-3r-7cr"/>
+                            <constraint firstAttribute="bottom" secondItem="CiV-eZ-pvn" secondAttribute="bottom" id="qnu-x2-Esz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="IeS-Zw-f65">
@@ -77,11 +78,19 @@
                                 <action selector="backButtonPressed:" destination="hlC-xv-vT7" id="qQl-Cr-aKg"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Preview" id="kIa-Rb-bSa">
+                            <imageReference key="image" image="sidebar.squares.trailing" catalog="system" variableValue="0.0"/>
+                            <connections>
+                                <action selector="previewPaneButtonPressed:" destination="hlC-xv-vT7" id="ewz-db-cs3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="draggableDividerView" destination="bPf-mp-2am" id="BAb-il-r4l"/>
+                        <outlet property="leadingView" destination="CiV-eZ-pvn" id="5kC-nq-QaU"/>
                         <outlet property="leadingViewMinimumWidth" destination="nNs-Ht-dnW" id="em0-7O-zoY"/>
                         <outlet property="leadingViewPreferredWidth" destination="lAG-NO-DZb" id="r9A-aR-JKs"/>
+                        <outlet property="trailingView" destination="BLb-Lx-cy2" id="NDn-C5-8MF"/>
                         <outlet property="trailingViewMinimumWidth" destination="QWD-BY-3UG" id="1LJ-K7-v3T"/>
                     </connections>
                 </viewController>
@@ -98,7 +107,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b3w-sF-dp6">
-                                <rect key="frame" x="0.0" y="122" width="420" height="712"/>
+                                <rect key="frame" x="0.0" y="126" width="420" height="688"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="K5i-ox-bcq"/>
                                 <cells/>
@@ -145,7 +154,7 @@
                 <navigationController storyboardIdentifier="SidebarNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="T2K-Xk-G5I" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Q5U-0R-n3P">
-                        <rect key="frame" x="0.0" y="20" width="420" height="102"/>
+                        <rect key="frame" x="0.0" y="24" width="420" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -163,9 +172,9 @@
                 <navigationController storyboardIdentifier="WorkbenchNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="fZj-fA-cXV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fgg-jx-w2K">
-                        <rect key="frame" x="0.0" y="20" width="1112" height="50"/>
+                        <rect key="frame" x="0.0" y="24" width="1194" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <navigationBarAppearance key="scrollEdgeAppearance" backgroundEffect="systemChromeMaterial"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vlL-Wq-94B">
@@ -182,6 +191,7 @@
     </scenes>
     <resources>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
+        <image name="sidebar.squares.trailing" catalog="system" width="128" height="93"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

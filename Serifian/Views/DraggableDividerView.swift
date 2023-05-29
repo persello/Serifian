@@ -10,33 +10,17 @@ import UIKit
 class DraggableDividerView: UIView {
 
     class DividerDraggerView: UIView {
-
-        var onPanGesture: ((UIPanGestureRecognizer) -> ())?
-
         override init(frame: CGRect) {
             super.init(frame: frame)
             self.bounds = frame
-            self.setup()
+            self.backgroundColor = .clear
+            self.translatesAutoresizingMaskIntoConstraints = false
         }
 
         required init?(coder: NSCoder) {
             super.init(coder: coder)
-            self.setup()
-        }
-
-        private func setup() {
-            self.translatesAutoresizingMaskIntoConstraints = false
             self.backgroundColor = .clear
-
-            let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
-            panGestureRecognizer.minimumNumberOfTouches = 1
-            self.addGestureRecognizer(panGestureRecognizer)
-        }
-
-        @objc private func handlePan(_ sender: UIPanGestureRecognizer? = nil) {
-            if let sender {
-                self.onPanGesture?(sender)
-            }
+            self.translatesAutoresizingMaskIntoConstraints = false
         }
 
         override func draw(_ rect: CGRect) {
@@ -51,6 +35,7 @@ class DraggableDividerView: UIView {
     }
 
     private unowned var dragger: DividerDraggerView!
+    unowned var panRecognizer: UIPanGestureRecognizer!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,11 +54,16 @@ class DraggableDividerView: UIView {
         path.fill()
     }
 
-    private func addDragger() {
-        let dragger = DividerDraggerView(frame: .init(origin: .zero, size: .init(width: 56, height: 56)))
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        return dragger.frame.contains(point)
+    }
 
+    private func addDragger() {
+        // Create the dragger view.
+        let dragger = DividerDraggerView(frame: .init(origin: .zero, size: .init(width: 56, height: 56)))
         self.addSubview(dragger)
 
+        // Add the constraints.
         let centerXConstraint = self.centerXAnchor.constraint(equalTo: dragger.centerXAnchor)
         let centerYConstraint = self.centerYAnchor.constraint(equalTo: dragger.centerYAnchor)
         let widthConstraint = dragger.widthAnchor.constraint(equalToConstant: 56)
@@ -83,16 +73,16 @@ class DraggableDividerView: UIView {
         dragger.addConstraints([heightConstraint, widthConstraint])
         self.addConstraints([centerXConstraint, centerYConstraint])
 
+        // Show the dragger.
         self.bringSubviewToFront(dragger)
 
+        // Add pan gesture recognizer.
+        let panGestureRecognizer = UIPanGestureRecognizer()
+        panGestureRecognizer.minimumNumberOfTouches = 1
+        self.addGestureRecognizer(panGestureRecognizer)
+
+        // Save references.
+        self.panRecognizer = panGestureRecognizer
         self.dragger = dragger
-    }
-
-    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        return dragger.frame.contains(point)
-    }
-
-    func attachPanHandler(_ handler: @escaping (UIPanGestureRecognizer) -> ()) {
-        dragger.onPanGesture = handler
     }
 }
