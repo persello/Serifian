@@ -40,6 +40,9 @@ class WorkbenchViewController: UIViewController {
         super.viewDidLoad()
 
         self.setupDragger()
+        self.trailingView.pageBreakMargins = .init(top: 30, left: 30, bottom: 30, right: 30)
+        self.trailingView.autoScales = true
+        self.trailingView.document = try? self.document.compile()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -136,6 +139,11 @@ extension WorkbenchViewController {
 
         if recognizer.state == .ended || recognizer.state == .cancelled {
             endPan(at: point, velocity: recognizer.velocity(in: self.view))
+        }
+
+        // Keep PDF scaled to fit.
+        if trailingView.scaleFactor == trailingView.scaleFactorForSizeToFit {
+            self.trailingView.autoScales = true
         }
     }
 
@@ -236,7 +244,7 @@ extension WorkbenchViewController {
         self.navigationItem.title = document.title
 
         self.navigationItem.titleMenuProvider = { suggestedActions in
-            var children = suggestedActions
+            let children = suggestedActions
             return UIMenu(children: children)
         }
     }
