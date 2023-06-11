@@ -74,22 +74,24 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
     func presentDocument(at documentURL: URL) {
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let documentViewController = storyBoard.instantiateViewController(withIdentifier: "RootSplitViewController") as! RootSplitViewController
+        let rootSplitViewController = storyBoard.instantiateViewController(withIdentifier: "RootSplitViewController") as! RootSplitViewController
 
         // Set up transition.
-        documentViewController.transitioningDelegate = self
+        rootSplitViewController.transitioningDelegate = self
         transitionController = self.transitionController(forDocumentAt: documentURL)
 
         // Customise transition.
-        documentViewController.modalPresentationStyle = .fullScreen
-        transitionController?.targetView = documentViewController.view
+        rootSplitViewController.modalPresentationStyle = .fullScreen
+        transitionController?.targetView = rootSplitViewController.view
 
-        Task {
-            // TODO: Handle failure.
-            try! await documentViewController.setDocument(for: documentURL)
-            documentViewController.attachDocumentBrowserReference(self)
-            present(documentViewController, animated: true)
-        }
+        // TODO: Handle failure.
+        let document = SerifianDocument(fileURL: documentURL)
+        try! document.read(from: documentURL)
+        try! rootSplitViewController.setDocument(document)
+        present(rootSplitViewController, animated: true)
     }
 }
 
+#Preview("Document Browser View Controller") {
+    DocumentBrowserViewController()
+}

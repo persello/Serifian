@@ -11,7 +11,7 @@ import PDFKit
 extension SerifianDocument {
     func thumbnailAndPreviewFileWrappers() -> (thumbnail: FileWrapper, preview: FileWrapper)? {
         if self.preview == nil {
-            preview = try? self.compile()
+            let _ = try? self.compile(updatesPreview: true)
         }
 
         guard let preview else {

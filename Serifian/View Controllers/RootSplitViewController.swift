@@ -10,8 +10,6 @@ import UIKit
 class RootSplitViewController: UISplitViewController {
 
     private(set) var document: SerifianDocument!
-    private(set) var documentURL: URL!
-    private weak var documentBrowserViewController: DocumentBrowserViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,14 +17,7 @@ class RootSplitViewController: UISplitViewController {
         // Do any additional setup after loading the view.
     }
 
-    func attachDocumentBrowserReference(_ documentBrowserViewController: DocumentBrowserViewController) {
-        self.documentBrowserViewController = documentBrowserViewController
-    }
-
-    func setDocument(for url: URL) async throws {
-        let document = SerifianDocument(fileURL: url)
-        try document.read(from: url)
-        self.documentURL = url
+    func setDocument(_ document: SerifianDocument) throws {
         self.document = document
 
         let workbench = (self.viewControllers.last as! UINavigationController).topViewController! as! WorkbenchViewController
@@ -39,17 +30,29 @@ class RootSplitViewController: UISplitViewController {
         }
     }
 
-    func renameDocument(to newName: String) async -> String {
-        guard let documentBrowserViewController else {
-            return document.title
-        }
+//    func renameDocument(to newName: String) async -> String {
+//        guard let documentBrowserViewController else {
+//            return document.title
+//        }
+//
+//        do {
+//            let resultURL = try await documentBrowserViewController.renameDocument(at: self.documentURL, proposedName: newName)
+//            try self.setDocument(for: resultURL)
+//            return document.title
+//        } catch {
+//            return document.title
+//        }
+//    }
+}
 
-        do {
-            let resultURL = try await documentBrowserViewController.renameDocument(at: self.documentURL, proposedName: newName)
-            try await self.setDocument(for: resultURL)
-            return document.title
-        } catch {
-            return document.title
-        }
-    }
+#Preview("Root Split View Controller") {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let vc = storyboard.instantiateViewController(identifier: "RootSplitViewController") as! RootSplitViewController
+    
+    let documentURL = Bundle.main.url(forResource: "Empty", withExtension: ".sr")!
+    let document = SerifianDocument(fileURL: documentURL)
+    try! document.read(from: documentURL)
+    try! vc.setDocument(document)
+        
+    return vc
 }

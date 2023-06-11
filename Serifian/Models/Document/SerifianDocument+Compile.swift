@@ -13,7 +13,8 @@ enum CompilationError: Error {
 }
 
 extension SerifianDocument {
-    func compile() throws -> PDFDocument {
+    @discardableResult
+    func compile(updatesPreview: Bool = true) throws -> PDFDocument {
         try self.compiler.setMain(main: self.metadata.mainSource)
 
         let result = self.compiler?.compile()
@@ -21,6 +22,10 @@ extension SerifianDocument {
         switch result {
         case .document(let buffer):
             if let document = PDFDocument(data: Data(buffer)) {
+                if updatesPreview {
+                    self.preview = document
+                }
+
                 return document
             } else {
                 throw CompilationError.generic

@@ -37,9 +37,12 @@
 		8B4F2C662A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C612A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift */; };
 		8B4F2C672A223C8B007A15D7 /* DocumentMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C622A223C8B007A15D7 /* DocumentMetadata.swift */; };
 		8B4F2C682A223C8B007A15D7 /* SerifianDocument+FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileReader.swift */; };
+		8B87B6FC2A36685100287D9F /* HighlightableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87B6FB2A36685100287D9F /* HighlightableSource.swift */; };
+		8B87B6FE2A3668BA00287D9F /* AutocompletableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */; };
 		8B9561B12A234783001E0F6F /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = 8B9561B02A234783001E0F6F /* SwiftyTypst */; };
 		8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */; };
 		8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */; };
+		8BE0E0CB2A2D27FD00A64EB1 /* TypstEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,9 +112,12 @@
 		8B4F2C612A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+Thumbnail.swift"; sourceTree = "<group>"; };
 		8B4F2C622A223C8B007A15D7 /* DocumentMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentMetadata.swift; sourceTree = "<group>"; };
 		8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+FileReader.swift"; sourceTree = "<group>"; };
+		8B87B6FB2A36685100287D9F /* HighlightableSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightableSource.swift; sourceTree = "<group>"; };
+		8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletableSource.swift; sourceTree = "<group>"; };
 		8B9561AF2A23477A001E0F6F /* SwiftyTypst */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyTypst; path = ../SwiftyTypst; sourceTree = "<group>"; };
 		8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableDividerView.swift; sourceTree = "<group>"; };
 		8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
+		8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstEditorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,12 +151,13 @@
 		8B348C762A223E22009DD175 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				8B348C882A22B0A2009DD175 /* SidebarItemViewModel.swift */,
-				8B348C6C2A223E18009DD175 /* SourceProtocol.swift */,
-				8B348C6A2A223E18009DD175 /* SourceError.swift */,
+				8B87B6FF2A366D5D00287D9F /* Protocols */,
 				8B348C6F2A223E18009DD175 /* Folder.swift */,
 				8B348C6D2A223E18009DD175 /* GenericFile.swift */,
 				8B348C6E2A223E18009DD175 /* ImageFile.swift */,
+				8B348C882A22B0A2009DD175 /* SidebarItemViewModel.swift */,
+				8B348C6A2A223E18009DD175 /* SourceError.swift */,
+				8B348C6C2A223E18009DD175 /* SourceProtocol.swift */,
 				8B348C6B2A223E18009DD175 /* TypstSourceFile.swift */,
 			);
 			path = Sources;
@@ -255,6 +262,7 @@
 				8B4F2C532A222E6F007A15D7 /* RootSplitViewController.swift */,
 				8B4F2C572A2236C0007A15D7 /* SidebarViewController.swift */,
 				8B348C7C2A225462009DD175 /* WorkbenchViewController.swift */,
+				8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -287,6 +295,15 @@
 				8B4F2C612A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift */,
 			);
 			path = Document;
+			sourceTree = "<group>";
+		};
+		8B87B6FF2A366D5D00287D9F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */,
+				8B87B6FB2A36685100287D9F /* HighlightableSource.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,6 +396,8 @@
 				Base,
 			);
 			mainGroup = 8B4F2B612A21376D007A15D7;
+			packageReferences = (
+			);
 			productRefGroup = 8B4F2B6B2A21376D007A15D7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -434,17 +453,20 @@
 				8B4F2C662A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift in Sources */,
 				8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */,
 				8B348C7D2A225462009DD175 /* WorkbenchViewController.swift in Sources */,
+				8BE0E0CB2A2D27FD00A64EB1 /* TypstEditorViewController.swift in Sources */,
 				8B348C712A223E18009DD175 /* SourceError.swift in Sources */,
 				8B348C742A223E18009DD175 /* GenericFile.swift in Sources */,
 				8B4F2C682A223C8B007A15D7 /* SerifianDocument+FileReader.swift in Sources */,
 				8B348C722A223E18009DD175 /* TypstSourceFile.swift in Sources */,
 				8B4F2C542A222E6F007A15D7 /* RootSplitViewController.swift in Sources */,
+				8B87B6FE2A3668BA00287D9F /* AutocompletableSource.swift in Sources */,
 				8B348C892A22B0A2009DD175 /* SidebarItemViewModel.swift in Sources */,
 				8B348C752A223E18009DD175 /* ImageFile.swift in Sources */,
 				8B4F2C652A223C8B007A15D7 /* DocumentError.swift in Sources */,
 				8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */,
 				8B4F2C5B2A223B64007A15D7 /* SerifianDocument.swift in Sources */,
 				8B348C702A223E18009DD175 /* Folder.swift in Sources */,
+				8B87B6FC2A36685100287D9F /* HighlightableSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,6 +654,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -667,6 +690,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -693,6 +717,7 @@
 				INFOPLIST_FILE = Preview/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Preview;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -718,6 +743,7 @@
 				INFOPLIST_FILE = Preview/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Preview;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -743,6 +769,7 @@
 				INFOPLIST_FILE = Thumbnail/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Thumbnail;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -768,6 +795,7 @@
 				INFOPLIST_FILE = Thumbnail/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Thumbnail;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

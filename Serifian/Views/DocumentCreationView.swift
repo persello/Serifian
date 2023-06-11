@@ -32,8 +32,8 @@ struct DocumentCreationView: View {
         }
     }
 
-    @State var loadedTemplates: [SerifianDocument] = []
-    @State var selectedTemplate: SerifianDocument?
+    @State private var loadedTemplates: [SerifianDocument] = []
+    @State private var selectedTemplate: SerifianDocument?
 
     var body: some View {
         LazyVGrid(
@@ -94,8 +94,9 @@ struct DocumentCreationView: View {
     }
 }
 
-struct DocumentCreationView_Previews: PreviewProvider {
-    static var previews: some View {
-        DocumentCreationView()
-    }
+#Preview("Document Creation View") {
+    Text("New document")
+        .sheet(isPresented: .constant(true)) {
+            DocumentCreationView()
+        }
 }

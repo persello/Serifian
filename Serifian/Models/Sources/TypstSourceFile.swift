@@ -8,11 +8,11 @@
 import Foundation
 
 class TypstSourceFile: SourceProtocol {
-    @Published var name: String
-    @Published var content: String
+    var name: String
+    var content: String
     weak var parent: Folder?
 
-    private unowned var document: SerifianDocument
+    unowned var document: SerifianDocument
 
     var fileWrapper: FileWrapper {
         get throws {

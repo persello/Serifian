@@ -9,7 +9,7 @@ import UIKit
 import PDFKit
 
 // MARK: View controller
-class WorkbenchViewController: UIViewController {
+class WorkbenchViewController: UIDocumentViewController {
 
     // Constraints.
     @IBOutlet weak var trailingViewMinimumWidth: NSLayoutConstraint!
@@ -34,7 +34,9 @@ class WorkbenchViewController: UIViewController {
     private var lastLeadingViewRelativeWidth: CGFloat!
     private var lastTrailingPaneMinimumWidth: CGFloat!
 
-    unowned private var document: SerifianDocument!
+    private var serifianDocument: SerifianDocument {
+        self.document as! SerifianDocument
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +44,9 @@ class WorkbenchViewController: UIViewController {
         self.setupDragger()
         self.trailingView.pageBreakMargins = .init(top: 30, left: 30, bottom: 30, right: 30)
         self.trailingView.autoScales = true
-        self.trailingView.document = try? self.document.compile()
+        self.trailingView.document = try? self.serifianDocument.compile()
+        
+        self.navigationItem.centerItemGroups.append(undoRedoItemGroup)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -206,12 +210,31 @@ extension WorkbenchViewController {
     /// Shows an editor specialized for Typst source files.
     /// - Parameter source: The Typst source to show in the editor.
     private func showTypstEditor(for source: TypstSourceFile) {
-//        let editor = TypstSourceWorkbenchViewController(nibName: "TypstSourceWorkbenchViewController", bundle: nil)
-//
-//        self.addChild(editor)
-//        editor.view.frame = self.view.frame
-//        self.view.addSubview(editor.view)
-//        editor.willMove(toParent: self)
+        let editor = TypstEditorViewController(source: source)
+
+        self.replaceLeadingViewSubview(with: editor)
+    }
+    
+    /// Replaces the leading view with the specified controller's root view.
+    /// - Parameter newController: The view controller of the new view.
+    private func replaceLeadingViewSubview(with newController: UIViewController) {
+        
+        // Set up View and View Controller.
+        self.addChild(newController)
+        newController.view.frame = self.leadingView.frame
+        self.leadingView.addSubview(newController.view)
+        newController.willMove(toParent: self)
+        newController.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Constraints.
+        let constraints = [
+            newController.view.leadingAnchor.constraint(equalTo: self.leadingView.leadingAnchor),
+            newController.view.trailingAnchor.constraint(equalTo: self.leadingView.trailingAnchor),
+            newController.view.bottomAnchor.constraint(equalTo: self.leadingView.bottomAnchor),
+            newController.view.topAnchor.constraint(equalTo: self.leadingView.topAnchor)
+        ]
+                
+        self.leadingView.addConstraints(constraints)
     }
 
     /// Clears the editor part (leading view) by restoring it to an empty state.
@@ -225,37 +248,19 @@ extension WorkbenchViewController {
     }
 
     func setupDocument(_ document: SerifianDocument) {
-
         self.document = document
-
-        let documentProperties = UIDocumentProperties(url: document.fileURL)
-        if let itemProvider = NSItemProvider(contentsOf: document.fileURL) {
-            documentProperties.dragItemsProvider = { _ in
-                [UIDragItem(itemProvider: itemProvider)]
-            }
-
-            documentProperties.activityViewControllerProvider = {
-                UIActivityViewController(activityItems: [itemProvider], applicationActivities: nil)
-            }
-        }
-
-        self.navigationItem.renameDelegate = self
-        self.navigationItem.documentProperties = documentProperties
-        self.navigationItem.title = document.title
-
-        self.navigationItem.titleMenuProvider = { suggestedActions in
-            let children = suggestedActions
-            return UIMenu(children: children)
-        }
     }
 }
 
-// MARK: Navigation item rename delegate
-extension WorkbenchViewController: UINavigationItemRenameDelegate {
-    func navigationItem(_: UINavigationItem, didEndRenamingWith title: String) {
-        let rootSplitViewController = self.parent?.parent as! RootSplitViewController
-        Task {
-            await rootSplitViewController.renameDocument(to: title)
-        }
-    }
+#Preview("Workbench View Controller") {
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let vc = storyboard.instantiateViewController(withIdentifier: "WorkbenchViewController") as! WorkbenchViewController
+    
+    let documentURL = Bundle.main.url(forResource: "Empty", withExtension: ".sr")!
+    let document = SerifianDocument(fileURL: documentURL)
+    try! document.read(from: documentURL)
+    
+    vc.setupDocument(document)
+    
+    return vc
 }
