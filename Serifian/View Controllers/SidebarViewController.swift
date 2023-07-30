@@ -23,6 +23,7 @@ class SidebarViewController: UIViewController {
         let layout = UICollectionViewCompositionalLayout.list(using: configuration)
         self.collectionView.collectionViewLayout = layout
         self.collectionView.dataSource = self.dataSource
+        self.collectionView.backgroundColor = .clear
 
         let cell = UICollectionView.CellRegistration<UICollectionViewListCell, SidebarItemViewModel> { (cell, indexPath, item) in
 

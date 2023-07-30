@@ -32,7 +32,7 @@ class SerifianDocument: UIDocument, Identifiable {
         self.metadata = DocumentMetadata(mainSource: "main.typ")
         super.init(fileURL: url)
 
-        self.compiler = TypstCompiler(fileReader: self)
+        self.compiler = TypstCompiler(fileReader: self, main: self.metadata.mainSource)
     }
 
     override func contents(forType typeName: String) throws -> Any {
@@ -100,7 +100,7 @@ class SerifianDocument: UIDocument, Identifiable {
         self.contents = []
 
         // Create the compiler and set up the change notifications.
-        self.compiler = TypstCompiler(fileReader: self)
+        self.compiler = TypstCompiler(fileReader: self, main: self.metadata.mainSource)
 
         // Create the actual contents.
         for item in contents.values {

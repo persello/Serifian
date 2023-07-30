@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22113.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22138.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad11_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22113"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -33,15 +33,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiV-eZ-pvn" userLabel="Leading View">
-                                <rect key="frame" x="0.0" y="74" width="200" height="760"/>
+                                <rect key="frame" x="0.0" y="74" width="700" height="760"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" priority="999" constant="200" id="lAG-NO-DZb"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="nNs-Ht-dnW"/>
+                                    <constraint firstAttribute="width" priority="999" constant="700" id="lAG-NO-DZb"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="nNs-Ht-dnW"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPf-mp-2am" customClass="DraggableDividerView" customModule="Serifian" customModuleProvider="target">
-                                <rect key="frame" x="200" y="74" width="1" height="760"/>
+                                <rect key="frame" x="700" y="74" width="1" height="760"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -49,10 +49,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Lx-cy2" userLabel="Trailing View" customClass="PDFView">
-                                <rect key="frame" x="201" y="74" width="993" height="760"/>
+                                <rect key="frame" x="701" y="74" width="493" height="760"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="QWD-BY-3UG"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="QWD-BY-3UG"/>
                                 </constraints>
                             </view>
                         </subviews>

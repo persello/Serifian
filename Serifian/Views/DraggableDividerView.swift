@@ -57,7 +57,7 @@ class DraggableDividerView: UIView {
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         return dragger.frame.contains(point)
     }
-
+    
     private func addDragger() {
         // Create the dragger view.
         let dragger = DividerDraggerView(frame: .init(origin: .zero, size: .init(width: 56, height: 56)))

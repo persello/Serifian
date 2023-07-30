@@ -32,8 +32,8 @@ extension SerifianDocument: FileReader {
     }
 
     func read(path: String) throws -> [UInt8] {
-        let url = URL(filePath: path)
-
+        let url = URL(filePath: path.trimmingCharacters(in: CharacterSet(["/", "."])))
+        
         guard let file = self.source(path: url, in: nil) else {
             throw FileReaderError.NotFound(message: "Not found among the document's sources.")
         }

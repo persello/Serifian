@@ -117,6 +117,9 @@
 		8B9561AF2A23477A001E0F6F /* SwiftyTypst */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyTypst; path = ../SwiftyTypst; sourceTree = "<group>"; };
 		8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableDividerView.swift; sourceTree = "<group>"; };
 		8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
+		8BC05B0C2A6C278E00C4B69A /* Serifian.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Serifian.entitlements; sourceTree = "<group>"; };
+		8BC05B0D2A6C278E00C4B69A /* Preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Preview.entitlements; sourceTree = "<group>"; };
+		8BC05B0E2A6C278E00C4B69A /* Thumbnail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Thumbnail.entitlements; sourceTree = "<group>"; };
 		8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstEditorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,6 +218,7 @@
 		8B4F2B6C2A21376D007A15D7 /* Serifian */ = {
 			isa = PBXGroup;
 			children = (
+				8BC05B0C2A6C278E00C4B69A /* Serifian.entitlements */,
 				8B348C852A22A66C009DD175 /* Utilities */,
 				8B348C772A224A66009DD175 /* Views */,
 				8B4F2C592A223B46007A15D7 /* Models */,
@@ -240,6 +244,7 @@
 		8B4F2C312A222627007A15D7 /* Preview */ = {
 			isa = PBXGroup;
 			children = (
+				8BC05B0D2A6C278E00C4B69A /* Preview.entitlements */,
 				8B4F2C342A222627007A15D7 /* PreviewProvider.swift */,
 				8B4F2C392A222627007A15D7 /* Info.plist */,
 			);
@@ -249,6 +254,7 @@
 		8B4F2C482A2226AD007A15D7 /* Thumbnail */ = {
 			isa = PBXGroup;
 			children = (
+				8BC05B0E2A6C278E00C4B69A /* Thumbnail.entitlements */,
 				8B4F2C492A2226AD007A15D7 /* ThumbnailProvider.swift */,
 				8B4F2C4B2A2226AD007A15D7 /* Info.plist */,
 			);
@@ -374,7 +380,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					8B4F2B692A21376D007A15D7 = {
 						CreatedOnToolsVersion = 14.3;
@@ -641,7 +647,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = "iOS Icon";
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = "macOS Beta Icon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Serifian/Serifian.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BZTVD28H6K;
@@ -663,7 +671,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.persello.Serifian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -677,7 +685,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = "iOS Icon";
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = "macOS Icon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Serifian/Serifian.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BZTVD28H6K;
@@ -699,7 +709,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.persello.Serifian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -710,6 +720,7 @@
 		8B4F2C3E2A222627007A15D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Preview/Preview.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BZTVD28H6K;
@@ -727,6 +738,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.persello.Serifian.Preview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -736,6 +748,7 @@
 		8B4F2C3F2A222627007A15D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Preview/Preview.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BZTVD28H6K;
@@ -753,6 +766,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.persello.Serifian.Preview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -762,6 +776,7 @@
 		8B4F2C502A2226AD007A15D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Thumbnail/Thumbnail.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BZTVD28H6K;
@@ -779,6 +794,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.persello.Serifian.Thumbnail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -788,6 +804,7 @@
 		8B4F2C512A2226AD007A15D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Thumbnail/Thumbnail.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BZTVD28H6K;
@@ -805,6 +822,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.persello.Serifian.Thumbnail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

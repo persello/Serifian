@@ -15,7 +15,7 @@ enum CompilationError: Error {
 extension SerifianDocument {
     @discardableResult
     func compile(updatesPreview: Bool = true) throws -> PDFDocument {
-        try self.compiler.setMain(main: self.metadata.mainSource)
+//        try self.compiler.setMain(main: self.metadata.mainSource)
 
         let result = self.compiler?.compile()
 
