@@ -60,9 +60,13 @@ class SerifianDocument: UIDocument, Identifiable {
         root.addFileWrapper(metadataWrapper)
 
         // Add thumbnail and preview.
-        if let (thumbnail, preview) = self.thumbnailAndPreviewFileWrappers() {
-            root.addFileWrapper(thumbnail)
-            root.addFileWrapper(preview)
+        Task {
+            
+            // TODO: This might cause issues.
+            if let (thumbnail, preview) = await self.thumbnailAndPreviewFileWrappers() {
+                root.addFileWrapper(thumbnail)
+                root.addFileWrapper(preview)
+            }
         }
 
         return root
@@ -114,6 +118,13 @@ class SerifianDocument: UIDocument, Identifiable {
            let data = imageWrapper.regularFileContents,
            let dataProvider = CGDataProvider(data: data as CFData) {
             self.coverImage = CGImage(jpegDataProviderSource: dataProvider, decode: nil, shouldInterpolate: false, intent: .perceptual)
+        }
+        
+        // Preview.
+        if let previewWrapper = root.fileWrappers?["preview.pdf"],
+           let data = previewWrapper.regularFileContents,
+           let pdf = PDFDocument(data: data) {
+            self.preview = pdf
         }
     }
 }

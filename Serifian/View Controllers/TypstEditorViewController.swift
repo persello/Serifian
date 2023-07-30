@@ -71,6 +71,10 @@ extension TypstEditorViewController: UITextViewDelegate {
         
         // Change document.
         source.content = textView.text
+
+        Task {
+            try? await source.document.compile(updatesPreview: true)
+        }
     }
 }
 

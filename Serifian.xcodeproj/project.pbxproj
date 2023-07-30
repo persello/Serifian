@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -39,10 +39,10 @@
 		8B4F2C682A223C8B007A15D7 /* SerifianDocument+FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileReader.swift */; };
 		8B87B6FC2A36685100287D9F /* HighlightableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87B6FB2A36685100287D9F /* HighlightableSource.swift */; };
 		8B87B6FE2A3668BA00287D9F /* AutocompletableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */; };
-		8B9561B12A234783001E0F6F /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = 8B9561B02A234783001E0F6F /* SwiftyTypst */; };
 		8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */; };
 		8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */; };
 		8BE0E0CB2A2D27FD00A64EB1 /* TypstEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */; };
+		ADC3BAD22A76CB7300A3561B /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = ADC3BAD12A76CB7300A3561B /* SwiftyTypst */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,7 +114,6 @@
 		8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+FileReader.swift"; sourceTree = "<group>"; };
 		8B87B6FB2A36685100287D9F /* HighlightableSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightableSource.swift; sourceTree = "<group>"; };
 		8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletableSource.swift; sourceTree = "<group>"; };
-		8B9561AF2A23477A001E0F6F /* SwiftyTypst */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftyTypst; path = ../SwiftyTypst; sourceTree = "<group>"; };
 		8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableDividerView.swift; sourceTree = "<group>"; };
 		8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
 		8BC05B0C2A6C278E00C4B69A /* Serifian.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Serifian.entitlements; sourceTree = "<group>"; };
@@ -128,7 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B9561B12A234783001E0F6F /* SwiftyTypst in Frameworks */,
+				ADC3BAD22A76CB7300A3561B /* SwiftyTypst in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				8B348C802A225925009DD175 /* Templates */,
-				8B4F2C5C2A223C4B007A15D7 /* Packages */,
 				8B4F2B6C2A21376D007A15D7 /* Serifian */,
 				8B4F2C312A222627007A15D7 /* Preview */,
 				8B4F2C482A2226AD007A15D7 /* Thumbnail */,
@@ -282,14 +280,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		8B4F2C5C2A223C4B007A15D7 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				8B9561AF2A23477A001E0F6F /* SwiftyTypst */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		8B4F2C5E2A223C77007A15D7 /* Document */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,7 +322,7 @@
 			);
 			name = Serifian;
 			packageProductDependencies = (
-				8B9561B02A234783001E0F6F /* SwiftyTypst */,
+				ADC3BAD12A76CB7300A3561B /* SwiftyTypst */,
 			);
 			productName = Serifian;
 			productReference = 8B4F2B6A2A21376D007A15D7 /* Serifian.app */;
@@ -403,6 +393,7 @@
 			);
 			mainGroup = 8B4F2B612A21376D007A15D7;
 			packageReferences = (
+				ADC3BAD02A76CB7200A3561B /* XCLocalSwiftPackageReference "../SwiftyTypst" */,
 			);
 			productRefGroup = 8B4F2B6B2A21376D007A15D7 /* Products */;
 			projectDirPath = "";
@@ -671,8 +662,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.persello.Serifian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -709,8 +701,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.persello.Serifian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -870,8 +863,15 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		ADC3BAD02A76CB7200A3561B /* XCLocalSwiftPackageReference "../SwiftyTypst" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../SwiftyTypst;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		8B9561B02A234783001E0F6F /* SwiftyTypst */ = {
+		ADC3BAD12A76CB7300A3561B /* SwiftyTypst */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftyTypst;
 		};

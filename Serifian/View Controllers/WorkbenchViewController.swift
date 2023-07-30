@@ -40,11 +40,15 @@ class WorkbenchViewController: UIDocumentViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            self.trailingView.layoutDocumentView()
+        }
 
         self.setupDragger()
         self.trailingView.pageBreakMargins = .init(top: 30, left: 30, bottom: 30, right: 30)
         self.trailingView.autoScales = true
-        self.trailingView.document = try? self.serifianDocument.compile()
+        self.trailingView.document = self.serifianDocument.preview
         
         self.navigationItem.centerItemGroups.append(undoRedoItemGroup)
     }
