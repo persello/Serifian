@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PDFKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.windowScene?.titlebar?.titleVisibility = .hidden
         self.window?.windowScene?.titlebar?.toolbar = nil
         #endif
+        
+        UIResponder.swizzleFirstResponder()
         
         return true
     }

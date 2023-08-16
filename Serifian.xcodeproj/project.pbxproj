@@ -42,6 +42,7 @@
 		8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */; };
 		8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */; };
 		8BE0E0CB2A2D27FD00A64EB1 /* TypstEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */; };
+		AD334FB72A7703AD006FCB04 /* UIResponder+Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */; };
 		ADC3BAD22A76CB7300A3561B /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = ADC3BAD12A76CB7300A3561B /* SwiftyTypst */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		8BC05B0D2A6C278E00C4B69A /* Preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Preview.entitlements; sourceTree = "<group>"; };
 		8BC05B0E2A6C278E00C4B69A /* Thumbnail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Thumbnail.entitlements; sourceTree = "<group>"; };
 		8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstEditorViewController.swift; sourceTree = "<group>"; };
+		AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+Swizzle.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */,
+				AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				8B348C752A223E18009DD175 /* ImageFile.swift in Sources */,
 				8B4F2C652A223C8B007A15D7 /* DocumentError.swift in Sources */,
 				8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */,
+				AD334FB72A7703AD006FCB04 /* UIResponder+Swizzle.swift in Sources */,
 				8B4F2C5B2A223B64007A15D7 /* SerifianDocument.swift in Sources */,
 				8B348C702A223E18009DD175 /* Folder.swift in Sources */,
 				8B87B6FC2A36685100287D9F /* HighlightableSource.swift in Sources */,

@@ -29,20 +29,6 @@ class RootSplitViewController: UISplitViewController {
             workbench.changeSource(source: source)
         }
     }
-
-//    func renameDocument(to newName: String) async -> String {
-//        guard let documentBrowserViewController else {
-//            return document.title
-//        }
-//
-//        do {
-//            let resultURL = try await documentBrowserViewController.renameDocument(at: self.documentURL, proposedName: newName)
-//            try self.setDocument(for: resultURL)
-//            return document.title
-//        } catch {
-//            return document.title
-//        }
-//    }
 }
 
 #Preview("Root Split View Controller") {

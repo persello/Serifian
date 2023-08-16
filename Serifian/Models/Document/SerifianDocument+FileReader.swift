@@ -15,7 +15,7 @@ extension SerifianDocument: FileReader {
         if let folder {
             sources = folder.content
         } else {
-            sources = self.contents
+            sources = self.getSources()
         }
 
         for source in sources {

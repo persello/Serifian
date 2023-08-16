@@ -6,14 +6,18 @@
 //
 
 import Foundation
+import Combine
 
 /// A `SourceProtocol` struct that represents a file that cannot be represented otherwise.
 class GenericFile: SourceProtocol {
     var name: String
-    var content: Data
+    @Published var content: Data
     weak var parent: Folder?
-
-    private unowned var document: SerifianDocument
+    unowned var document: SerifianDocument
+    
+    var changePublisher: AnyPublisher<Void, Never> {
+        return self.objectWillChange.eraseToAnyPublisher()
+    }
 
     var fileWrapper: FileWrapper {
         let wrapper = FileWrapper(regularFileWithContents: content)

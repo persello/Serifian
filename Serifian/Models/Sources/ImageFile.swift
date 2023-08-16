@@ -7,14 +7,18 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class ImageFile: SourceProtocol {
     var name: String
-    var content: Data
+    @Published var content: Data
     weak var parent: Folder?
+    unowned var document: SerifianDocument
 
-    private unowned var document: SerifianDocument
-
+    var changePublisher: AnyPublisher<Void, Never> {
+        return self.objectWillChange.eraseToAnyPublisher()
+    }
+    
     var fileWrapper: FileWrapper {
         let wrapper = FileWrapper(regularFileWithContents: self.content)
         wrapper.preferredFilename = name

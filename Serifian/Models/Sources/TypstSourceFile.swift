@@ -6,13 +6,17 @@
 //
 
 import Foundation
+import Combine
 
 class TypstSourceFile: SourceProtocol {
     var name: String
-    var content: String
+    @Published var content: String
     weak var parent: Folder?
-
     unowned var document: SerifianDocument
+    
+    var changePublisher: AnyPublisher<Void, Never> {
+        return self.objectWillChange.eraseToAnyPublisher()
+    }
 
     var fileWrapper: FileWrapper {
         get throws {

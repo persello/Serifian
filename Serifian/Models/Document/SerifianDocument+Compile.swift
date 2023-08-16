@@ -22,7 +22,7 @@ extension SerifianDocument {
         case .document(let buffer):
             if let document = PDFDocument(data: Data(buffer)) {
                 if updatesPreview {
-                    self.preview = document
+                    self.setPreview(document)
                 }
 
                 return document

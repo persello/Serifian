@@ -6,16 +6,19 @@
 //
 
 import Foundation
+import Combine
 
 /// Represents a content (file or folder) inside the Typst sources folder for a document.
-protocol SourceProtocol: Identifiable, AnyObject, Hashable, NSCopying {
+protocol SourceProtocol: Identifiable, AnyObject, Hashable, NSCopying, ObservableObject {
     associatedtype Content
 
     init(from fileWrapper: FileWrapper, in folder: Folder?, partOf document: SerifianDocument) throws
+    var changePublisher: AnyPublisher<Void, Never> { get }
     var name: String { get set }
     var content: Content { get set }
     var fileWrapper: FileWrapper { get throws }
     var parent: Folder? { get }
+    var document: SerifianDocument { get }
 }
 
 /// Tries to create a `SourceProtocol` conforming object from a `FileWrapper`.

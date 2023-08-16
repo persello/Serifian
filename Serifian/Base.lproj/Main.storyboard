@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22138.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22146" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad11_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22113"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22122"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -87,11 +87,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="draggableDividerView" destination="bPf-mp-2am" id="BAb-il-r4l"/>
-                        <outlet property="leadingView" destination="CiV-eZ-pvn" id="5kC-nq-QaU"/>
-                        <outlet property="leadingViewMinimumWidth" destination="nNs-Ht-dnW" id="em0-7O-zoY"/>
-                        <outlet property="leadingViewPreferredWidth" destination="lAG-NO-DZb" id="r9A-aR-JKs"/>
-                        <outlet property="trailingView" destination="BLb-Lx-cy2" id="NDn-C5-8MF"/>
-                        <outlet property="trailingViewMinimumWidth" destination="QWD-BY-3UG" id="1LJ-K7-v3T"/>
+                        <outlet property="editorMinimumWidth" destination="nNs-Ht-dnW" id="em0-7O-zoY"/>
+                        <outlet property="editorPreferredWidth" destination="lAG-NO-DZb" id="r9A-aR-JKs"/>
+                        <outlet property="editorView" destination="CiV-eZ-pvn" id="5kC-nq-QaU"/>
+                        <outlet property="previewMinimumWidth" destination="QWD-BY-3UG" id="1LJ-K7-v3T"/>
+                        <outlet property="previewView" destination="BLb-Lx-cy2" id="NDn-C5-8MF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awj-db-enM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -103,7 +103,7 @@
             <objects>
                 <viewController storyboardIdentifier="SidebarViewController" id="p5m-fu-0gn" customClass="SidebarViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EqB-gP-WU9">
-                        <rect key="frame" x="0.0" y="0.0" width="420" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b3w-sF-dp6">
@@ -178,6 +178,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vlL-Wq-94B">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>

@@ -71,10 +71,6 @@ extension TypstEditorViewController: UITextViewDelegate {
         
         // Change document.
         source.content = textView.text
-
-        Task {
-            try? await source.document.compile(updatesPreview: true)
-        }
     }
 }
 
@@ -83,7 +79,7 @@ extension TypstEditorViewController: UITextViewDelegate {
     let document = SerifianDocument(fileURL: documentURL)
     try! document.read(from: documentURL)
     
-    let source = document.contents.compactMap({$0 as? TypstSourceFile}).first!
+    let source = document.getSources().compactMap({$0 as? TypstSourceFile}).first!
         
     let vc = TypstEditorViewController(source: source)
     

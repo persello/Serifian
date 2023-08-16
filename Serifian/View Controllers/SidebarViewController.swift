@@ -76,7 +76,7 @@ class SidebarViewController: UIViewController {
     private func contentSnapshot() -> NSDiffableDataSourceSectionSnapshot<SidebarItemViewModel> {
         var snapshot = NSDiffableDataSourceSectionSnapshot<SidebarItemViewModel>()
 
-        for item in self.referencedDocument.contents {
+        for item in self.referencedDocument.getSources() {
             apply(model: SidebarItemViewModel(referencedSource: item), to: nil, in: &snapshot)
         }
 
