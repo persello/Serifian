@@ -25,7 +25,6 @@ class TypstEditorViewController: UIViewController {
         super.viewDidLoad()
         
         self.textView = UITextView(frame: self.view.frame)
-        self.textView.font = UIFont.monospacedSystemFont(ofSize: 0, weight: .regular)
         self.textView.delegate = self
         self.view.addSubview(textView)
         
@@ -39,38 +38,40 @@ class TypstEditorViewController: UIViewController {
                 
         self.view.addConstraints(constraints)
         
-        self.textView.text = source.content
+        self.textView.attributedText = NSAttributedString(source.highlightedContents())
     }
 }
 
 extension TypstEditorViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        let oldText = source.content
-        
-        // Cleanup undo manager.
-        if source.document.undoManager.canRedo {
-//            source.document.undoManager.remove
-        }
-        
-        // Register undo.
-        source.document.undoManager.registerUndo(withTarget: source) { source in
-            
-            // Register redo.
-            let newText = source.content
-            source.document.undoManager.registerUndo(withTarget: source) { source in
-                
-                // Apply redo.
-                source.content = newText
-                textView.text = newText
-            }
-            
-            // Apply undo.
-            source.content = oldText
-            textView.text = oldText
-        }
-        
-        // Change document.
         source.content = textView.text
+        self.textView.attributedText = NSAttributedString(source.highlightedContents())
+//        let oldText = source.content
+//        
+//        // Cleanup undo manager.
+//        if source.document.undoManager.canRedo {
+////            source.document.undoManager.remove
+//        }
+//        
+//        // Register undo.
+//        source.document.undoManager.registerUndo(withTarget: source) { source in
+//            
+//            // Register redo.
+//            let newText = source.content
+//            source.document.undoManager.registerUndo(withTarget: source) { source in
+//                
+//                // Apply redo.
+//                source.content = newText
+//                textView.text = newText
+//            }
+//            
+//            // Apply undo.
+//            source.content = oldText
+//            textView.text = oldText
+//        }
+//        
+//        // Change document.
+//        source.content = textView.text
     }
 }
 

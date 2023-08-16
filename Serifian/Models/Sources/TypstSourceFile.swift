@@ -80,3 +80,26 @@ extension TypstSourceFile: NSCopying {
         return copy
     }
 }
+
+extension TypstSourceFile: HighlightableSource {
+    func highlightedContents() -> AttributedString {
+        var attributedString = AttributedString(self.content)
+        let highlightResults = self.document.compiler.highlight(filePath: self.getPath().relativeString)
+        
+        attributedString.setAttributes(HighlightingTheme.default.baseContainer)
+
+        for result in highlightResults {
+            if result.start >= content.count || result.end >= content.count {
+                continue
+            }
+            
+            let attributeContainer = HighlightingTheme.default.attributeContainer(for: result.tag)
+            let startIndex = attributedString.index(attributedString.startIndex, offsetByUnicodeScalars: Int(result.start))
+            let endIndex = attributedString.index(attributedString.startIndex, offsetByUnicodeScalars: Int(result.end))
+            
+            attributedString[startIndex..<endIndex].setAttributes(attributeContainer)
+        }
+        
+        return attributedString
+    }
+}
