@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 class TypstEditorViewController: UIViewController {
 
     private var source: TypstSourceFile
     private var textView: UITextView!
+    private var highlightCancellable: AnyCancellable?
     
     init(source: TypstSourceFile) {
         self.source = source
@@ -37,17 +39,27 @@ class TypstEditorViewController: UIViewController {
         ]
                 
         self.view.addConstraints(constraints)
+        self.highlight()
         
+        self.highlightCancellable = self.source.objectWillChange.throttle(for: 1, scheduler: RunLoop.main, latest: true).sink { _ in
+            self.highlight()
+        }
+    }
+    
+    func highlight() {
+        let cursorPosition = self.textView.selectedRange
+        print("HIGHLIGHTING")
         self.textView.attributedText = NSAttributedString(source.highlightedContents())
+        self.textView.selectedRange = cursorPosition
     }
 }
 
 extension TypstEditorViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         source.content = textView.text
-        self.textView.attributedText = NSAttributedString(source.highlightedContents())
+        
 //        let oldText = source.content
-//        
+//
 //        // Cleanup undo manager.
 //        if source.document.undoManager.canRedo {
 ////            source.document.undoManager.remove
@@ -76,7 +88,7 @@ extension TypstEditorViewController: UITextViewDelegate {
 }
 
 #Preview("Typst Editor View Controller") {
-    let documentURL = Bundle.main.url(forResource: "Empty", withExtension: ".sr")!
+    let documentURL = Bundle.main.url(forResource: "Curriculum Vitae", withExtension: ".sr")!
     let document = SerifianDocument(fileURL: documentURL)
     try! document.read(from: documentURL)
     
