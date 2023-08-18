@@ -15,13 +15,14 @@ struct AutocompletePopupItem: View {
     
     var body: some View {
         Grid(alignment: .leading, horizontalSpacing: 12, verticalSpacing: -4) {
-            GridRow(alignment: .firstTextBaseline) {
+            GridRow(alignment: .center) {
                 icon(completion: completion)
                     .frame(width: 36, height: 24, alignment: .trailing)
                     .opacity(0.5)
                     .scaleEffect(focused ? 1.0 : 0.9)
                 Text(completion.label)
                     .font(.system(size: (focused ? 14 : 12), design: .monospaced))
+                    .opacity(focused ? 1.0 : 0.7)
             }
             
             if focused {
@@ -34,7 +35,7 @@ struct AutocompletePopupItem: View {
                 }
             }
         }
-        .padding(.vertical, 4)
+        .padding(.vertical, focused ? 4 : 0)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(.secondary.opacity(focused ? 0.2 : 0.0))
         .contentShape(.rect)
@@ -112,44 +113,49 @@ struct AutocompletePopup: View {
     }
         
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                ForEach(completions, id: \.completion) { completion in
-                    AutocompletePopupItem(completion: completion, focused: selectedItem == completion)
-                        .onTapGesture {
-                            selectedIndex = completions.firstIndex(of: completion) ?? selectedIndex
-                            callback(completion.completion)
-                        }
-                        .onHover { hovering in
-                            if hovering {
+        ScrollViewReader { proxy in
+            ScrollView {
+                VStack(spacing: 0) {
+                    ForEach(completions, id: \.completion) { completion in
+                        AutocompletePopupItem(completion: completion, focused: selectedItem == completion)
+                            .onTapGesture {
                                 selectedIndex = completions.firstIndex(of: completion) ?? selectedIndex
+                                callback(completion.completion)
                             }
+                            .onHover { hovering in
+                                if hovering {
+                                    selectedIndex = completions.firstIndex(of: completion) ?? selectedIndex
+                                }
+                            }
+                            .id(completion)
+                    }
+                }
+            }
+            .onAppear {
+                keyboardCoordinator.attachHandler { action in
+                    switch action {
+                    case .previous:
+                        if selectedIndex > completions.startIndex {
+                            selectedIndex = completions.index(before: selectedIndex)
+                            proxy.scrollTo(selectedItem)
                         }
+                    case .next:
+                        if selectedIndex < completions.endIndex - 1 {
+                            selectedIndex = completions.index(after: selectedIndex)
+                            proxy.scrollTo(selectedItem)
+                        }
+                    case .enter:
+                        if let completion = selectedItem?.completion {
+                            callback(completion)
+                        }
+                    }
                 }
             }
         }
-        .frame(width: 320, height: 240)
+        .frame(width: 300, height: 180)
         .background(.background)
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         .shadow(radius: 4, y: 2)
-        .onAppear {
-            keyboardCoordinator.attachHandler { action in
-                switch action {
-                case .previous:
-                    if selectedIndex > completions.startIndex {
-                        selectedIndex = completions.index(before: selectedIndex)
-                    }
-                case .next:
-                    if selectedIndex < completions.endIndex - 1 {
-                        selectedIndex = completions.index(after: selectedIndex)
-                    }
-                case .enter:
-                    if let completion = selectedItem?.completion {
-                        callback(completion)
-                    }
-                }
-            }
-        }
     }
 }
 
