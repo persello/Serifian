@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftyTypst
 
 class TypstSourceFile: SourceProtocol {
     var name: String
@@ -101,5 +102,11 @@ extension TypstSourceFile: HighlightableSource {
         }
         
         return attributedString
+    }
+}
+
+extension TypstSourceFile: AutocompletableSource {
+    func autocomplete(at position: UInt64) -> [AutocompleteResult] {
+        return self.document.compiler.autocomplete(filePath: self.getPath().relativeString, position: position)
     }
 }

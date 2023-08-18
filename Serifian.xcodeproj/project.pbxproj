@@ -44,7 +44,8 @@
 		8BE0E0CB2A2D27FD00A64EB1 /* TypstEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */; };
 		AD334FB72A7703AD006FCB04 /* UIResponder+Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */; };
 		AD5EBBCA2A8E4BB800E8E33C /* Curriculum Vitae.sr in Resources */ = {isa = PBXBuildFile; fileRef = AD5EBBC92A8E4BB700E8E33C /* Curriculum Vitae.sr */; };
-		ADC3BAD22A76CB7300A3561B /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = ADC3BAD12A76CB7300A3561B /* SwiftyTypst */; };
+		AD8DC5D52A8E8421008E2717 /* AutocompletePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */; };
+		ADB569E52A8E633400F67C54 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = ADB569E42A8E633400F67C54 /* SwiftyTypst */; };
 		ADD5C4062A8D6F6600CCD0C5 /* Highlighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD5C4052A8D6F6600CCD0C5 /* Highlighting.swift */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,7 @@
 		8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstEditorViewController.swift; sourceTree = "<group>"; };
 		AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+Swizzle.swift"; sourceTree = "<group>"; };
 		AD5EBBC92A8E4BB700E8E33C /* Curriculum Vitae.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "Curriculum Vitae.sr"; sourceTree = "<group>"; };
+		AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopup.swift; sourceTree = "<group>"; };
 		ADD5C4052A8D6F6600CCD0C5 /* Highlighting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlighting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,7 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADC3BAD22A76CB7300A3561B /* SwiftyTypst in Frameworks */,
+				ADB569E52A8E633400F67C54 /* SwiftyTypst in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +178,7 @@
 			children = (
 				8B348C7E2A22567B009DD175 /* DocumentCreationView.swift */,
 				8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */,
+				AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,8 +197,8 @@
 			isa = PBXGroup;
 			children = (
 				8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */,
-				AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */,
 				ADD5C4052A8D6F6600CCD0C5 /* Highlighting.swift */,
+				AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -331,7 +334,7 @@
 			);
 			name = Serifian;
 			packageProductDependencies = (
-				ADC3BAD12A76CB7300A3561B /* SwiftyTypst */,
+				ADB569E42A8E633400F67C54 /* SwiftyTypst */,
 			);
 			productName = Serifian;
 			productReference = 8B4F2B6A2A21376D007A15D7 /* Serifian.app */;
@@ -459,6 +462,7 @@
 				8B4F2B6E2A21376D007A15D7 /* AppDelegate.swift in Sources */,
 				8B4F2C662A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift in Sources */,
 				8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */,
+				AD8DC5D52A8E8421008E2717 /* AutocompletePopup.swift in Sources */,
 				8B348C7D2A225462009DD175 /* WorkbenchViewController.swift in Sources */,
 				8BE0E0CB2A2D27FD00A64EB1 /* TypstEditorViewController.swift in Sources */,
 				8B348C712A223E18009DD175 /* SourceError.swift in Sources */,
@@ -883,7 +887,7 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		ADC3BAD12A76CB7300A3561B /* SwiftyTypst */ = {
+		ADB569E42A8E633400F67C54 /* SwiftyTypst */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftyTypst;
 		};

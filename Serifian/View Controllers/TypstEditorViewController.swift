@@ -41,14 +41,13 @@ class TypstEditorViewController: UIViewController {
         self.view.addConstraints(constraints)
         self.highlight()
         
-        self.highlightCancellable = self.source.objectWillChange.throttle(for: 1, scheduler: RunLoop.main, latest: true).sink { _ in
+        self.highlightCancellable = self.source.objectWillChange.throttle(for: 2, scheduler: RunLoop.main, latest: true).sink { _ in
             self.highlight()
         }
     }
     
     func highlight() {
         let cursorPosition = self.textView.selectedRange
-        print("HIGHLIGHTING")
         self.textView.attributedText = NSAttributedString(source.highlightedContents())
         self.textView.selectedRange = cursorPosition
     }

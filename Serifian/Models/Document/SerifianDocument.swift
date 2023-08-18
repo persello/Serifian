@@ -142,7 +142,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
     func addSource(_ source: any SourceProtocol) {
         self.sources.append(source)
         
-        let cancellable = source.changePublisher.debounce(for: 1, scheduler: RunLoop.main).sink { _ in
+        let cancellable = source.changePublisher.throttle(for: 3, scheduler: RunLoop.main, latest: true).sink { _ in
             self.objectWillChange.send()
             Task.detached {
                 try? await self.compile(updatesPreview: true)
