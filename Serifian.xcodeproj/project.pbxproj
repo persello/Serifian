@@ -45,6 +45,7 @@
 		AD334FB72A7703AD006FCB04 /* UIResponder+Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */; };
 		AD5EBBCA2A8E4BB800E8E33C /* Curriculum Vitae.sr in Resources */ = {isa = PBXBuildFile; fileRef = AD5EBBC92A8E4BB700E8E33C /* Curriculum Vitae.sr */; };
 		AD8DC5D52A8E8421008E2717 /* AutocompletePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */; };
+		AD8DC5DA2A900CD1008E2717 /* Fuse in Frameworks */ = {isa = PBXBuildFile; productRef = AD8DC5D92A900CD1008E2717 /* Fuse */; };
 		ADB569E52A8E633400F67C54 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = ADB569E42A8E633400F67C54 /* SwiftyTypst */; };
 		ADD5C4062A8D6F6600CCD0C5 /* Highlighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD5C4052A8D6F6600CCD0C5 /* Highlighting.swift */; };
 /* End PBXBuildFile section */
@@ -136,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADB569E52A8E633400F67C54 /* SwiftyTypst in Frameworks */,
+				AD8DC5DA2A900CD1008E2717 /* Fuse in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +337,7 @@
 			name = Serifian;
 			packageProductDependencies = (
 				ADB569E42A8E633400F67C54 /* SwiftyTypst */,
+				AD8DC5D92A900CD1008E2717 /* Fuse */,
 			);
 			productName = Serifian;
 			productReference = 8B4F2B6A2A21376D007A15D7 /* Serifian.app */;
@@ -406,6 +409,7 @@
 			mainGroup = 8B4F2B612A21376D007A15D7;
 			packageReferences = (
 				ADC3BAD02A76CB7200A3561B /* XCLocalSwiftPackageReference "../SwiftyTypst" */,
+				AD8DC5D82A900C83008E2717 /* XCRemoteSwiftPackageReference "fuse-swift" */,
 			);
 			productRefGroup = 8B4F2B6B2A21376D007A15D7 /* Products */;
 			projectDirPath = "";
@@ -886,7 +890,23 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		AD8DC5D82A900C83008E2717 /* XCRemoteSwiftPackageReference "fuse-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krisk/fuse-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		AD8DC5D92A900CD1008E2717 /* Fuse */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD8DC5D82A900C83008E2717 /* XCRemoteSwiftPackageReference "fuse-swift" */;
+			productName = Fuse;
+		};
 		ADB569E42A8E633400F67C54 /* SwiftyTypst */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftyTypst;

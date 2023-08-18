@@ -7,96 +7,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FAD525D8-5229-4111-9CAA-D7AEEBDD5BCF"
+            uuid = "7FE21ADF-9600-4C6A-AFD3-4739E8EE4F06"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Serifian/View Controllers/TypstEditorViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "autocompletion()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "15D26338-E59D-4910-AD91-59BE4A9AB7DC"
+            uuid = "F531842F-0AA5-419A-A081-39FD13201DF7"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Serifian/Models/Sources/TypstSourceFile.swift"
+            filePath = "Serifian/View Controllers/TypstEditorViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "highlightedContents()"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "autocompletion()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "15D26338-E59D-4910-AD91-59BE4A9AB7DC - 2deea66b0529a307"
+                  uuid = "F531842F-0AA5-419A-A081-39FD13201DF7 - 1a844a21b598de7c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Serifian.TypstSourceFile.highlightedContents() -&gt; Foundation.AttributedString"
+                  symbolName = "Serifian.TypstEditorViewController.autocompletion() -&gt; ()"
                   moduleName = "Serifian"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/riccardopersello/Developer/Serifian/Serifian/Models/Sources/TypstSourceFile.swift"
+                  urlString = "file:///Users/riccardopersello/Developer/Serifian/Serifian/View%20Controllers/TypstEditorViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "4012">
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "1328">
                </Location>
                <Location
-                  uuid = "15D26338-E59D-4910-AD91-59BE4A9AB7DC - 2deea66b0529a307"
+                  uuid = "F531842F-0AA5-419A-A081-39FD13201DF7 - 6789a7d7b9e34614"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Serifian.TypstSourceFile.highlightedContents() -&gt; Foundation.AttributedString"
+                  symbolName = "closure #2 (Swift.String) -&gt; () in Serifian.TypstEditorViewController.autocompletion() -&gt; ()"
                   moduleName = "Serifian"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/riccardopersello/Developer/Serifian/Serifian/Models/Sources/TypstSourceFile.swift"
+                  urlString = "file:///Users/riccardopersello/Developer/Serifian/Serifian/View%20Controllers/TypstEditorViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "4044">
-               </Location>
-               <Location
-                  uuid = "15D26338-E59D-4910-AD91-59BE4A9AB7DC - 2deea66b0529a2e2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Serifian.TypstSourceFile.highlightedContents() -&gt; Foundation.AttributedString"
-                  moduleName = "Serifian"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/riccardopersello/Developer/Serifian/Serifian/Models/Sources/TypstSourceFile.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
-                  offsetFromSymbolStart = "4204">
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "104">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C5A907ED-DBE8-4C1D-A3D4-51BD40C48C7A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Serifian/Models/Sources/TypstSourceFile.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "highlightedContents()"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
