@@ -14,58 +14,10 @@
             filePath = "Serifian/View Controllers/TypstEditorViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "autocompletion()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F531842F-0AA5-419A-A081-39FD13201DF7"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Serifian/View Controllers/TypstEditorViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "autocompletion()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F531842F-0AA5-419A-A081-39FD13201DF7 - 1a844a21b598de7c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Serifian.TypstEditorViewController.autocompletion() -&gt; ()"
-                  moduleName = "Serifian"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/riccardopersello/Developer/Serifian/Serifian/View%20Controllers/TypstEditorViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "80"
-                  endingLineNumber = "80"
-                  offsetFromSymbolStart = "1328">
-               </Location>
-               <Location
-                  uuid = "F531842F-0AA5-419A-A081-39FD13201DF7 - 6789a7d7b9e34614"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.String) -&gt; () in Serifian.TypstEditorViewController.autocompletion() -&gt; ()"
-                  moduleName = "Serifian"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/riccardopersello/Developer/Serifian/Serifian/View%20Controllers/TypstEditorViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "81"
-                  endingLineNumber = "81"
-                  offsetFromSymbolStart = "104">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

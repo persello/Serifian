@@ -244,8 +244,9 @@ extension WorkbenchViewController {
     /// Shows an editor specialized for Typst source files.
     /// - Parameter source: The Typst source to show in the editor.
     private func showTypstEditor(for source: TypstSourceFile) {
-        let editor = TypstEditorViewController(source: source)
+        let editor = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TypstEditorViewController") as! TypstEditorViewController
 
+        editor.setSource(source)
         self.replaceLeadingViewSubview(with: editor)
     }
     

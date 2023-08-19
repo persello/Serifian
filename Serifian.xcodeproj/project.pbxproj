@@ -41,11 +41,12 @@
 		8B87B6FE2A3668BA00287D9F /* AutocompletableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */; };
 		8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */; };
 		8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */; };
-		8BE0E0CB2A2D27FD00A64EB1 /* TypstEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */; };
 		AD334FB72A7703AD006FCB04 /* UIResponder+Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */; };
 		AD5EBBCA2A8E4BB800E8E33C /* Curriculum Vitae.sr in Resources */ = {isa = PBXBuildFile; fileRef = AD5EBBC92A8E4BB700E8E33C /* Curriculum Vitae.sr */; };
 		AD8DC5D52A8E8421008E2717 /* AutocompletePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */; };
 		AD8DC5DA2A900CD1008E2717 /* Fuse in Frameworks */ = {isa = PBXBuildFile; productRef = AD8DC5D92A900CD1008E2717 /* Fuse */; };
+		AD9FF0212A90FE9E00C6EADD /* AutocompletePopupHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FF0202A90FE9E00C6EADD /* AutocompletePopupHostingController.swift */; };
+		AD9FF0222A9106C700C6EADD /* TypstEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */; };
 		ADB569E52A8E633400F67C54 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = ADB569E42A8E633400F67C54 /* SwiftyTypst */; };
 		ADD5C4062A8D6F6600CCD0C5 /* Highlighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD5C4052A8D6F6600CCD0C5 /* Highlighting.swift */; };
 /* End PBXBuildFile section */
@@ -128,6 +129,7 @@
 		AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+Swizzle.swift"; sourceTree = "<group>"; };
 		AD5EBBC92A8E4BB700E8E33C /* Curriculum Vitae.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "Curriculum Vitae.sr"; sourceTree = "<group>"; };
 		AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopup.swift; sourceTree = "<group>"; };
+		AD9FF0202A90FE9E00C6EADD /* AutocompletePopupHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopupHostingController.swift; sourceTree = "<group>"; };
 		ADD5C4052A8D6F6600CCD0C5 /* Highlighting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlighting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -276,11 +278,12 @@
 		8B4F2C522A222E1C007A15D7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AD9FF0202A90FE9E00C6EADD /* AutocompletePopupHostingController.swift */,
 				8B4F2B6F2A21376D007A15D7 /* DocumentBrowserViewController.swift */,
 				8B4F2C532A222E6F007A15D7 /* RootSplitViewController.swift */,
 				8B4F2C572A2236C0007A15D7 /* SidebarViewController.swift */,
-				8B348C7C2A225462009DD175 /* WorkbenchViewController.swift */,
 				8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */,
+				8B348C7C2A225462009DD175 /* WorkbenchViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -467,12 +470,13 @@
 				8B4F2C662A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift in Sources */,
 				8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */,
 				AD8DC5D52A8E8421008E2717 /* AutocompletePopup.swift in Sources */,
+				AD9FF0212A90FE9E00C6EADD /* AutocompletePopupHostingController.swift in Sources */,
 				8B348C7D2A225462009DD175 /* WorkbenchViewController.swift in Sources */,
-				8BE0E0CB2A2D27FD00A64EB1 /* TypstEditorViewController.swift in Sources */,
 				8B348C712A223E18009DD175 /* SourceError.swift in Sources */,
 				8B348C742A223E18009DD175 /* GenericFile.swift in Sources */,
 				8B4F2C682A223C8B007A15D7 /* SerifianDocument+FileReader.swift in Sources */,
 				8B348C722A223E18009DD175 /* TypstSourceFile.swift in Sources */,
+				AD9FF0222A9106C700C6EADD /* TypstEditorViewController.swift in Sources */,
 				8B4F2C542A222E6F007A15D7 /* RootSplitViewController.swift in Sources */,
 				8B87B6FE2A3668BA00287D9F /* AutocompletableSource.swift in Sources */,
 				8B348C892A22B0A2009DD175 /* SidebarItemViewModel.swift in Sources */,

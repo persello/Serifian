@@ -192,7 +192,7 @@ struct AutocompletePopup: View {
                 reorderCompletions(coordinator.latestCompletions, searching: coordinator.latestSearchText)
             }
         }
-        .frame(width: 300, height: 180)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.background)
         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
         .shadow(radius: 4, y: 2)
