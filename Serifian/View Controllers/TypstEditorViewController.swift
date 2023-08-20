@@ -28,7 +28,7 @@ class TypstEditorViewController: UIViewController {
         self.autocompletePopupHostingController = children.first { controller in
             controller is AutocompletePopupHostingController
         } as? AutocompletePopupHostingController
-                
+        
         // Initialise the text view.
         self.textView.delegate = self
         self.highlight()
@@ -50,7 +50,7 @@ class TypstEditorViewController: UIViewController {
     func autocompletion() {
         // First, make sure that the selection length is zero.
         guard self.textView.selectedTextRange?.isEmpty ?? false,
-        let cursorPosition = self.textView.selectedTextRange?.start else {
+              let cursorPosition = self.textView.selectedTextRange?.start else {
             return
         }
         
@@ -62,10 +62,42 @@ class TypstEditorViewController: UIViewController {
         
         guard completions.count > 0 else {
             return
-        
         }
+        
+        // Detect the latest word.
+        var range = self.textView.textRange(from: self.textView.beginningOfDocument, to: cursorPosition)!
+        guard let textBeforeCursor = self.textView.text(in: range),
+              let lastWordStartIndex = textBeforeCursor.lastIndex(where: { c in
+                  !(c.isLetter || c.isNumber)
+              }) else {
+            autocompletePopupHostingController.autocompletionCoordinator.updateCompletions(completions, searching: "")
+            return
+        }
+        
+        let word = textBeforeCursor[textBeforeCursor.index(after: lastWordStartIndex)...]
+        
+        autocompletePopupHostingController.autocompletionCoordinator.updateCompletions(completions, searching: String(word))
+    }
+    
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        guard let key = presses.first?.key else { return }
 
-        autocompletePopupHostingController.autocompletionCoordinator.updateCompletions(completions, searching: "")
+        guard !autocompleteContainerView.isHidden else {
+            super.pressesBegan(presses, with: event)
+            return
+        }
+        
+        switch key.keyCode {
+        case .keyboardUpArrow:
+                autocompletePopupHostingController.autocompletionCoordinator.previous()
+        case .keyboardDownArrow:
+            autocompletePopupHostingController.autocompletionCoordinator.next()
+        case .keyboardReturnOrEnter,
+                .keyboardTab:
+            autocompletePopupHostingController.autocompletionCoordinator.enter()
+        default:
+            super.pressesBegan(presses, with: event)
+        }
     }
 }
 

@@ -180,9 +180,9 @@
 		8B348C772A224A66009DD175 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */,
 				8B348C7E2A22567B009DD175 /* DocumentCreationView.swift */,
 				8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */,
-				AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -300,9 +300,9 @@
 		8B4F2C5E2A223C77007A15D7 /* Document */ = {
 			isa = PBXGroup;
 			children = (
-				8B4F2C5A2A223B64007A15D7 /* SerifianDocument.swift */,
 				8B4F2C602A223C8B007A15D7 /* DocumentError.swift */,
 				8B4F2C622A223C8B007A15D7 /* DocumentMetadata.swift */,
+				8B4F2C5A2A223B64007A15D7 /* SerifianDocument.swift */,
 				8B4F2C5F2A223C8B007A15D7 /* SerifianDocument+Compile.swift */,
 				8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileReader.swift */,
 				8B4F2C612A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift */,

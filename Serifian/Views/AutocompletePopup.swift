@@ -12,17 +12,30 @@ import Fuse
 extension AutocompleteResult: Fuseable {
     public var properties: [FuseProperty] {
         [
-            FuseProperty(name: self.label, weight: 0.4),
-            FuseProperty(name: self.description, weight: 0.4),
-            FuseProperty(name: self.completion, weight: 0.2)
+            FuseProperty(name: self.label, weight: 1.0)
         ]
     }
 }
 
 struct AutocompletePopupItem: View {
     let completion: AutocompleteResult
-    
+    let highlightedLabelRanges: [CountableClosedRange<Int>]
     let focused: Bool
+    
+    private var labelFont: Font {
+        return .system(size: focused ? 14 : 12).monospaced()
+    }
+     
+    private var label: AttributedString {
+        var label = AttributedString(completion.label)
+        for range in self.highlightedLabelRanges {
+            let start = label.index(label.startIndex, offsetByCharacters: range.lowerBound)
+            let end = label.index(label.startIndex, offsetByCharacters: range.upperBound)
+            label[start...end].font = self.labelFont.weight(.black)
+        }
+        
+        return label
+    }
     
     var body: some View {
         Grid(alignment: .leading, horizontalSpacing: 12, verticalSpacing: -4) {
@@ -31,8 +44,8 @@ struct AutocompletePopupItem: View {
                     .frame(width: 36, height: 24, alignment: .trailing)
                     .opacity(0.5)
                     .scaleEffect(focused ? 1.0 : 0.9)
-                Text(completion.label)
-                    .font(.system(size: (focused ? 14 : 12), design: .monospaced))
+                Text(self.label)
+                    .font(self.labelFont)
                     .opacity(focused ? 1.0 : 0.7)
             }
             
@@ -52,7 +65,7 @@ struct AutocompletePopupItem: View {
         .contentShape(.rect)
     }
     
-    func icon(completion: AutocompleteResult) -> AnyView {
+    private func icon(completion: AutocompleteResult) -> AnyView {
         switch completion.kind {
         case .constant:
             return AnyView(
@@ -127,14 +140,14 @@ struct AutocompletePopup: View {
     let coordinator: Coordinator
     let callback: (String) -> ()
     
-    private var searcher = Fuse()
+    private var searcher = Fuse(threshold: 0.2)
     
-    @State private var orderedCompletions: [AutocompleteResult] = []
+    @State private var orderedCompletions: [(result: AutocompleteResult, highlightedLabelRanges: [CountableClosedRange<Int>])] = []
     
     @State private var selectedIndex: Int = 0
     private var selectedItem: AutocompleteResult? {
         if orderedCompletions.indices.contains(self.selectedIndex) {
-            return orderedCompletions[self.selectedIndex]
+            return orderedCompletions[self.selectedIndex].result
         } else {
             return nil
         }
@@ -149,18 +162,18 @@ struct AutocompletePopup: View {
         ScrollViewReader { proxy in
             ScrollView {
                 VStack(spacing: 0) {
-                    ForEach(orderedCompletions, id: \.label) { completion in
-                        AutocompletePopupItem(completion: completion, focused: selectedItem == completion)
+                    ForEach(orderedCompletions, id: \.result.label) { completion in
+                        AutocompletePopupItem(completion: completion.result, highlightedLabelRanges: completion.highlightedLabelRanges, focused: selectedItem == completion.result)
                             .onTapGesture {
-                                selectedIndex = orderedCompletions.firstIndex(of: completion) ?? selectedIndex
-                                callback(completion.completion)
+                                selectedIndex = orderedCompletions.firstIndex(where: {$0.result == completion.result}) ?? selectedIndex
+                                callback(completion.result.completion)
                             }
                             .onHover { hovering in
                                 if hovering {
-                                    selectedIndex = orderedCompletions.firstIndex(of: completion) ?? selectedIndex
+                                    selectedIndex = orderedCompletions.firstIndex(where: {$0.result == completion.result}) ?? selectedIndex
                                 }
                             }
-                            .id(completion)
+                            .id(completion.result)
                     }
                 }
             }
@@ -202,14 +215,16 @@ struct AutocompletePopup: View {
         if text.isEmpty {
             orderedCompletions = completions.sorted(by: { a, b in
                 a.label < b.label
+            }).map({ result in
+                (result, [])
             })
-            
-            print("AAA")
         } else {
-            orderedCompletions = searcher.search(text, in: completions).sorted { a, b in
-                a.score > b.score
+            let result = searcher.search(text, in: completions)
+            
+            orderedCompletions = result.sorted { a, b in
+                a.score < b.score
             }.map { result in
-                completions[result.index]
+                (completions[result.index], result.results.first?.ranges ?? [])
             }
         }
     }
