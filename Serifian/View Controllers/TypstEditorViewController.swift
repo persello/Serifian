@@ -32,7 +32,7 @@ class TypstEditorViewController: UIViewController {
         // Initialise the text view.
         self.textView.delegate = self
         self.highlight()
-        self.highlightCancellable = self.source.objectWillChange.throttle(for: 2, scheduler: RunLoop.main, latest: true).sink { _ in
+        self.highlightCancellable = self.source.objectWillChange.throttle(for: 0.5, scheduler: RunLoop.main, latest: true).sink { _ in
             self.highlight()
         }
     }
@@ -65,7 +65,7 @@ class TypstEditorViewController: UIViewController {
         }
         
         // Detect the latest word.
-        var range = self.textView.textRange(from: self.textView.beginningOfDocument, to: cursorPosition)!
+        let range = self.textView.textRange(from: self.textView.beginningOfDocument, to: cursorPosition)!
         guard let textBeforeCursor = self.textView.text(in: range),
               let lastWordStartIndex = textBeforeCursor.lastIndex(where: { c in
                   !(c.isLetter || c.isNumber)
@@ -77,6 +77,47 @@ class TypstEditorViewController: UIViewController {
         let word = textBeforeCursor[textBeforeCursor.index(after: lastWordStartIndex)...]
         
         autocompletePopupHostingController.autocompletionCoordinator.updateCompletions(completions, searching: String(word))
+        
+        self.layoutAutocompleteWindow()
+    }
+    
+    func layoutAutocompleteWindow() {
+        
+        // First, make sure that the selection length is zero.
+        guard self.textView.selectedTextRange?.isEmpty ?? false,
+              let cursorPosition = self.textView.selectedTextRange?.start else {
+            return
+        }
+        
+        // Update constraints.
+        let position = self.textView.caretRect(for: cursorPosition)
+        
+        // Horizontal position.
+        // Margins are handled in the storyboard.
+        let leadingX = position.minX
+        idealAutocompleteHorizontalConstraint.constant = leadingX
+                
+        // Vertical position: we need to decide whether to show the box above or under the cursor.
+        
+        let spacing = 8.0
+        
+        let spaceLeftBelow = self.textView.frame.height - (position.maxY - self.textView.contentOffset.y)
+        
+        if spaceLeftBelow > self.autocompleteContainerView.frame.height + spacing + 80 {
+    
+            // Position the window below the cursor.
+            self.idealAutocompleteVerticalConstraint.constant = position.maxY - self.textView.contentOffset.y + spacing
+        } else {
+            
+            // Position the window above the cursor.
+            self.idealAutocompleteVerticalConstraint.constant = position.minY - self.autocompleteContainerView.frame.height - self.textView.contentOffset.y - spacing
+        }
+        
+        // TODO: Add case: doesn't fit neither above nor below.
+        
+        // TODO: Check for horizontal fit.
+        
+        self.autocompleteContainerView.layoutIfNeeded()
     }
     
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
@@ -133,6 +174,10 @@ extension TypstEditorViewController: UITextViewDelegate {
         //
         //        // Change document.
         //        source.content = textView.text
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.layoutAutocompleteWindow()
     }
 }
 
