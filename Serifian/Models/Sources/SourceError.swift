@@ -60,8 +60,6 @@ extension SourceError: LocalizedError {
 
     var recoverySuggestion: String? {
         switch self {
-        case .UTF8EncodingError:
-            return "Remove any incompatible symbols."
         default:
             return nil
         }

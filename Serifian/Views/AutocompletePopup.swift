@@ -92,6 +92,11 @@ struct AutocompletePopupItem: View {
             return AnyView(
                 Image(systemName: "textformat")
             )
+            
+        case .type:
+            return AnyView(
+                Image(systemName: "t.square")
+            )
         }
     }
 }
