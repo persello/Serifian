@@ -9,100 +9,11 @@ import SwiftUI
 import SwiftyTypst
 import Fuse
 
-extension AutocompleteResult: Fuseable {
-    public var properties: [FuseProperty] {
-        [
-            FuseProperty(name: self.label, weight: 1.0)
-        ]
-    }
-}
-
-struct AutocompletePopupItem: View {
-    let completion: AutocompleteResult
-    let highlightedLabelRanges: [CountableClosedRange<Int>]
-    let focused: Bool
-    
-    private var labelFont: Font {
-        return .system(size: focused ? 14 : 12).monospaced()
-    }
-     
-    private var label: AttributedString {
-        var label = AttributedString(completion.label)
-        for range in self.highlightedLabelRanges {
-            let start = label.index(label.startIndex, offsetByCharacters: range.lowerBound)
-            let end = label.index(label.startIndex, offsetByCharacters: range.upperBound)
-            label[start...end].font = self.labelFont.weight(.black)
-        }
-        
-        return label
-    }
-    
-    var body: some View {
-        Grid(alignment: .leading, horizontalSpacing: 12, verticalSpacing: -4) {
-            GridRow(alignment: .center) {
-                icon(completion: completion)
-                    .frame(width: 36, height: 24, alignment: .trailing)
-                    .opacity(0.5)
-                    .scaleEffect(focused ? 1.0 : 0.9)
-                Text(self.label)
-                    .font(self.labelFont)
-                    .opacity(focused ? 1.0 : 0.7)
-            }
-            
-            if focused {
-                GridRow {
-                    Text("")
-                    Text(completion.description)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .fontWidth(.condensed)
-                }
-            }
-        }
-        .padding(.vertical, focused ? 4 : 0)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.secondary.opacity(focused ? 0.2 : 0.0))
-        .contentShape(.rect)
-    }
-    
-    private func icon(completion: AutocompleteResult) -> AnyView {
-        switch completion.kind {
-        case .constant:
-            return AnyView(
-                Image(systemName: "equal")
-            )
-            
-        case .func:
-            return AnyView(
-                Image(systemName: "function")
-            )
-            
-        case .param:
-            return AnyView(
-                Image(systemName: "number")
-            )
-            
-        case .symbol:
-            return AnyView(
-                Text(completion.completion)
-                    .dynamicTypeSize(.xSmall)
-            )
-            
-        case .syntax:
-            return AnyView(
-                Image(systemName: "textformat")
-            )
-            
-        case .type:
-            return AnyView(
-                Image(systemName: "t.square")
-            )
-        }
-    }
-}
-
 struct AutocompletePopup: View {
+    /// A class for interacting with `AutocompletePopup`.
     class Coordinator {
+        
+        /// The actions that can be performed with keyboard presses.
         enum KeyboardAction {
             case previous
             case next
@@ -115,28 +26,44 @@ struct AutocompletePopup: View {
         fileprivate var latestCompletions: [AutocompleteResult] = []
         fileprivate var latestSearchText: String = ""
         
+        
+        /// Perform the action bound to the "previous" key.
         func previous() {
             keyboardHandler?(.previous)
         }
         
+        /// Perform the action bound to the "next" key.
         func next() {
             keyboardHandler?(.next)
         }
         
+        /// Perform the action bound to the "enter" key.
         func enter() {
             keyboardHandler?(.enter)
         }
         
+        /// Update the completions and the search text.
+        /// - Parameters:
+        ///   - completions: completions to display.
+        ///   - text: the text that was searched.
         func updateCompletions(_ completions: [AutocompleteResult], searching text: String) {
             self.latestCompletions = completions
             self.latestSearchText = text
             self.completionUpdateHandler?(completions, text)
         }
         
+        /// Attach a keyboard handler.
+        /// 
+        /// This handler is called when an action key is pressed.
+        /// - Parameter handler: the handler to attach.
         fileprivate func attachKeyboardHandler(_ handler: @escaping (KeyboardAction) -> ()) {
             self.keyboardHandler = handler
         }
         
+        /// Attach a completion update handler.
+        /// 
+        /// This handler is called when the completions are updated.
+        /// - Parameter handler: the handler to attach.
         fileprivate func attachCompletionUpdateHandler(_ handler: @escaping ([AutocompleteResult], String) -> ()) {
             self.completionUpdateHandler = handler
         }
