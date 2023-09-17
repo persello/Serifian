@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import SwiftyTypst
+import Fuse
+
+extension AutocompleteResult: Fuseable {
+    public var properties: [FuseProperty] {
+        [
+            FuseProperty(name: self.label, weight: 1.0)
+        ]
+    }
+}

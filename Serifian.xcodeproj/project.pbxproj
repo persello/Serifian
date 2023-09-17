@@ -42,6 +42,9 @@
 		8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */; };
 		8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */; };
 		AD334FB72A7703AD006FCB04 /* UIResponder+Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */; };
+		AD49CE1B2AB737CC0068D5B1 /* AutocompletePopupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE1A2AB737CC0068D5B1 /* AutocompletePopupItem.swift */; };
+		AD49CE1D2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */; };
+		AD49CE202AB7384D0068D5B1 /* AutocompleteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE1F2AB7384D0068D5B1 /* AutocompleteCoordinator.swift */; };
 		AD5EBBCA2A8E4BB800E8E33C /* Curriculum Vitae.sr in Resources */ = {isa = PBXBuildFile; fileRef = AD5EBBC92A8E4BB700E8E33C /* Curriculum Vitae.sr */; };
 		AD8DC5D52A8E8421008E2717 /* AutocompletePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */; };
 		AD8DC5DA2A900CD1008E2717 /* Fuse in Frameworks */ = {isa = PBXBuildFile; productRef = AD8DC5D92A900CD1008E2717 /* Fuse */; };
@@ -127,6 +130,9 @@
 		8BC05B0E2A6C278E00C4B69A /* Thumbnail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Thumbnail.entitlements; sourceTree = "<group>"; };
 		8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstEditorViewController.swift; sourceTree = "<group>"; };
 		AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+Swizzle.swift"; sourceTree = "<group>"; };
+		AD49CE1A2AB737CC0068D5B1 /* AutocompletePopupItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopupItem.swift; sourceTree = "<group>"; };
+		AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutocompleteResult+Fuseable.swift"; sourceTree = "<group>"; };
+		AD49CE1F2AB7384D0068D5B1 /* AutocompleteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteCoordinator.swift; sourceTree = "<group>"; };
 		AD5EBBC92A8E4BB700E8E33C /* Curriculum Vitae.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "Curriculum Vitae.sr"; sourceTree = "<group>"; };
 		AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopup.swift; sourceTree = "<group>"; };
 		AD9FF0202A90FE9E00C6EADD /* AutocompletePopupHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopupHostingController.swift; sourceTree = "<group>"; };
@@ -180,7 +186,7 @@
 		8B348C772A224A66009DD175 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */,
+				AD49CE1E2AB7383B0068D5B1 /* Autocomplete */,
 				8B348C7E2A22567B009DD175 /* DocumentCreationView.swift */,
 				8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */,
 			);
@@ -200,6 +206,7 @@
 		8B348C852A22A66C009DD175 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */,
 				8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */,
 				ADD5C4052A8D6F6600CCD0C5 /* Highlighting.swift */,
 				AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */,
@@ -317,6 +324,16 @@
 				8B87B6FB2A36685100287D9F /* HighlightableSource.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		AD49CE1E2AB7383B0068D5B1 /* Autocomplete */ = {
+			isa = PBXGroup;
+			children = (
+				AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */,
+				AD49CE1A2AB737CC0068D5B1 /* AutocompletePopupItem.swift */,
+				AD49CE1F2AB7384D0068D5B1 /* AutocompleteCoordinator.swift */,
+			);
+			path = Autocomplete;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,6 +480,7 @@
 				8B4F2C672A223C8B007A15D7 /* DocumentMetadata.swift in Sources */,
 				8B4F2C582A2236C0007A15D7 /* SidebarViewController.swift in Sources */,
 				8B4F2C642A223C8B007A15D7 /* SerifianDocument+Compile.swift in Sources */,
+				AD49CE1D2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift in Sources */,
 				8B4F2B702A21376D007A15D7 /* DocumentBrowserViewController.swift in Sources */,
 				8B348C7F2A22567B009DD175 /* DocumentCreationView.swift in Sources */,
 				8B348C732A223E18009DD175 /* SourceProtocol.swift in Sources */,
@@ -471,6 +489,8 @@
 				8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */,
 				AD8DC5D52A8E8421008E2717 /* AutocompletePopup.swift in Sources */,
 				AD9FF0212A90FE9E00C6EADD /* AutocompletePopupHostingController.swift in Sources */,
+				AD49CE1B2AB737CC0068D5B1 /* AutocompletePopupItem.swift in Sources */,
+				AD49CE202AB7384D0068D5B1 /* AutocompleteCoordinator.swift in Sources */,
 				8B348C7D2A225462009DD175 /* WorkbenchViewController.swift in Sources */,
 				8B348C712A223E18009DD175 /* SourceError.swift in Sources */,
 				8B348C742A223E18009DD175 /* GenericFile.swift in Sources */,

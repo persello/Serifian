@@ -20,6 +20,9 @@ class TypstEditorViewController: UIViewController {
     private var autocompletePopupHostingController: AutocompletePopupHostingController!
     private var highlightCancellable: AnyCancellable?
     
+    private var tabSnippetRanges: [Range<AttributedString.Index>] = []
+    private var selectedTabSnippetRange: Range<AttributedString.Index>? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +46,16 @@ class TypstEditorViewController: UIViewController {
     
     func highlight() {
         let cursorPosition = self.textView.selectedRange
-        self.textView.attributedText = NSAttributedString(source.highlightedContents())
+        var attributedString = source.highlightedContents()
+        
+        // Highlight snippets.
+        for tabSnippetRange in tabSnippetRanges {
+            let active = (tabSnippetRange == selectedTabSnippetRange)
+            
+            attributedString[tabSnippetRange].setAttributes(HighlightingTheme.default.attributeContainerForSnippet(active: active))
+        }
+        
+        self.textView.attributedText = NSAttributedString(attributedString)
         self.textView.selectedRange = cursorPosition
     }
     
@@ -65,18 +77,30 @@ class TypstEditorViewController: UIViewController {
         }
         
         // Detect the latest word.
-        let range = self.textView.textRange(from: self.textView.beginningOfDocument, to: cursorPosition)!
-        guard let textBeforeCursor = self.textView.text(in: range),
-              let lastWordStartIndex = textBeforeCursor.lastIndex(where: { c in
-                  !(c.isLetter || c.isNumber)
-              }) else {
-            autocompletePopupHostingController.autocompletionCoordinator.updateCompletions(completions, searching: "")
+        guard let wordRange = textView.tokenizer.rangeEnclosingPosition(cursorPosition, with: .word, inDirection: .layout(.left)),
+              let word = textView.text(in: wordRange) else {
+            
+            autocompletePopupHostingController.coordinator.updateCompletions(completions, searching: "")
+            
             return
         }
         
-        let word = textBeforeCursor[textBeforeCursor.index(after: lastWordStartIndex)...]
         
-        autocompletePopupHostingController.autocompletionCoordinator.updateCompletions(completions, searching: String(word))
+        autocompletePopupHostingController.coordinator.updateCompletions(completions, searching: String(word))
+        
+        // In case of completion, replace the last word.
+        self.autocompletePopupHostingController.coordinator.onSelection { [self] text in
+            self.textView.replace(wordRange, withText: text)
+            self.autocompleteContainerView.isHidden = true
+            
+            let start = wordRange.start
+            guard let end = self.textView.position(from: start, offset: text.count),
+                  let newWordRange = self.textView.textRange(from: start, to: end) else {
+                return
+            }
+            
+            self.detectSnippetRanges(in: newWordRange)
+        }
         
         self.layoutAutocompleteWindow()
     }
@@ -96,21 +120,21 @@ class TypstEditorViewController: UIViewController {
         // Margins are handled in the storyboard.
         let leadingX = position.minX
         idealAutocompleteHorizontalConstraint.constant = leadingX
-                
+        
         // Vertical position: we need to decide whether to show the box above or under the cursor.
         
-        let spacing = 8.0
+        let verticalSpacing = 8.0
         
         let spaceLeftBelow = self.textView.frame.height - (position.maxY - self.textView.contentOffset.y)
         
-        if spaceLeftBelow > self.autocompleteContainerView.frame.height + spacing + 80 {
-    
+        if spaceLeftBelow > self.autocompleteContainerView.frame.height + verticalSpacing + 80 {
+            
             // Position the window below the cursor.
-            self.idealAutocompleteVerticalConstraint.constant = position.maxY - self.textView.contentOffset.y + spacing
+            self.idealAutocompleteVerticalConstraint.constant = position.maxY - self.textView.contentOffset.y + verticalSpacing
         } else {
             
             // Position the window above the cursor.
-            self.idealAutocompleteVerticalConstraint.constant = position.minY - self.autocompleteContainerView.frame.height - self.textView.contentOffset.y - spacing
+            self.idealAutocompleteVerticalConstraint.constant = position.minY - self.autocompleteContainerView.frame.height - self.textView.contentOffset.y - verticalSpacing
         }
         
         // TODO: Add case: doesn't fit neither above nor below.
@@ -120,9 +144,34 @@ class TypstEditorViewController: UIViewController {
         self.autocompleteContainerView.layoutIfNeeded()
     }
     
+    func detectSnippetRanges(in range: UITextRange) {
+        guard let completion = textView.text(in: range) else { return }
+        let completionStartOffset = textView.offset(from: textView.beginningOfDocument, to: range.start)
+        
+        let attributedString = source.highlightedContents()
+        
+        // Detect ${...} inside the completion...
+        
+        let snippetRegex = /\${[^${}]*}/
+        
+        let matches = completion.matches(of: snippetRegex)
+        for match in matches {
+            // Get the start index.
+            let matchStartOffset = match.startIndex.utf16Offset(in: completion)
+            let attributedStringStartIndex = attributedString.index(attributedString.startIndex, offsetByCharacters: completionStartOffset + matchStartOffset)
+            
+            // Get the end index.
+            let matchEndOffset = match.endIndex.utf16Offset(in: completion)
+            let attributedStringEndIndex = attributedString.index(attributedString.startIndex, offsetByCharacters: completionStartOffset + matchEndOffset)
+            
+            // Form the range.
+            self.tabSnippetRanges.append(attributedStringStartIndex..<attributedStringEndIndex)
+        }
+    }
+    
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         guard let key = presses.first?.key else { return }
-
+        
         guard !autocompleteContainerView.isHidden else {
             super.pressesBegan(presses, with: event)
             return
@@ -130,12 +179,12 @@ class TypstEditorViewController: UIViewController {
         
         switch key.keyCode {
         case .keyboardUpArrow:
-                autocompletePopupHostingController.autocompletionCoordinator.previous()
+            autocompletePopupHostingController.coordinator.previous()
         case .keyboardDownArrow:
-            autocompletePopupHostingController.autocompletionCoordinator.next()
+            autocompletePopupHostingController.coordinator.next()
         case .keyboardReturnOrEnter,
                 .keyboardTab:
-            autocompletePopupHostingController.autocompletionCoordinator.enter()
+            autocompletePopupHostingController.coordinator.enter()
         default:
             super.pressesBegan(presses, with: event)
         }
@@ -146,6 +195,10 @@ extension TypstEditorViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         source.content = textView.text
         
+        // Check whether we're inside a snippet.
+        if textView.selectedTextRange
+        
+        // Start autocompletion.
         autocompletion()
         
         //        let oldText = source.content

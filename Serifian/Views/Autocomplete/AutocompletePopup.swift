@@ -10,68 +10,8 @@ import SwiftyTypst
 import Fuse
 
 struct AutocompletePopup: View {
-    /// A class for interacting with `AutocompletePopup`.
-    class Coordinator {
-        
-        /// The actions that can be performed with keyboard presses.
-        enum KeyboardAction {
-            case previous
-            case next
-            case enter
-        }
-        
-        private var keyboardHandler: ((KeyboardAction) -> ())? = nil
-        private var completionUpdateHandler: (([AutocompleteResult], String) -> ())? = nil
-        
-        fileprivate var latestCompletions: [AutocompleteResult] = []
-        fileprivate var latestSearchText: String = ""
-        
-        
-        /// Perform the action bound to the "previous" key.
-        func previous() {
-            keyboardHandler?(.previous)
-        }
-        
-        /// Perform the action bound to the "next" key.
-        func next() {
-            keyboardHandler?(.next)
-        }
-        
-        /// Perform the action bound to the "enter" key.
-        func enter() {
-            keyboardHandler?(.enter)
-        }
-        
-        /// Update the completions and the search text.
-        /// - Parameters:
-        ///   - completions: completions to display.
-        ///   - text: the text that was searched.
-        func updateCompletions(_ completions: [AutocompleteResult], searching text: String) {
-            self.latestCompletions = completions
-            self.latestSearchText = text
-            self.completionUpdateHandler?(completions, text)
-        }
-        
-        /// Attach a keyboard handler.
-        /// 
-        /// This handler is called when an action key is pressed.
-        /// - Parameter handler: the handler to attach.
-        fileprivate func attachKeyboardHandler(_ handler: @escaping (KeyboardAction) -> ()) {
-            self.keyboardHandler = handler
-        }
-        
-        /// Attach a completion update handler.
-        /// 
-        /// This handler is called when the completions are updated.
-        /// - Parameter handler: the handler to attach.
-        fileprivate func attachCompletionUpdateHandler(_ handler: @escaping ([AutocompleteResult], String) -> ()) {
-            self.completionUpdateHandler = handler
-        }
-    }
     
-    let coordinator: Coordinator
-    let callback: (String) -> ()
-    
+    let coordinator: AutocompleteCoordinator
     private var searcher = Fuse(threshold: 0.2)
     
     @State private var orderedCompletions: [(result: AutocompleteResult, highlightedLabelRanges: [CountableClosedRange<Int>])] = []
@@ -85,9 +25,8 @@ struct AutocompletePopup: View {
         }
     }
     
-    init(coordinator: Coordinator, callback: @escaping (String) -> Void) {
+    init(coordinator: AutocompleteCoordinator) {
         self.coordinator = coordinator
-        self.callback = callback
     }
         
     var body: some View {
@@ -98,7 +37,7 @@ struct AutocompletePopup: View {
                         AutocompletePopupItem(completion: completion.result, highlightedLabelRanges: completion.highlightedLabelRanges, focused: selectedItem == completion.result)
                             .onTapGesture {
                                 selectedIndex = orderedCompletions.firstIndex(where: {$0.result == completion.result}) ?? selectedIndex
-                                callback(completion.result.completion)
+                                coordinator.select(completion.result)
                             }
                             .onHover { hovering in
                                 if hovering {
@@ -123,8 +62,8 @@ struct AutocompletePopup: View {
                             proxy.scrollTo(selectedItem)
                         }
                     case .enter:
-                        if let completion = selectedItem?.completion {
-                            callback(completion)
+                        if let completion = selectedItem {
+                            coordinator.select(completion)
                         }
                     }
                 }
@@ -181,15 +120,10 @@ struct AutocompletePopup: View {
         AutocompleteResult(kind: .symbol, label: "Heart 3", completion: "❤️3", description: "A heart.")
     ]
     
-    let coordinator = AutocompletePopup.Coordinator()
+    let coordinator = AutocompleteCoordinator()
     
     return VStack(spacing: 24) {
-        AutocompletePopup(
-            coordinator: coordinator,
-            callback: { completion in
-                print("Completion received: \(completion)")
-            }
-        )
+        AutocompletePopup(coordinator: coordinator)
         
         HStack {
             Button {

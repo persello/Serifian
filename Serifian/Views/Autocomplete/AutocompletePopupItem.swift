@@ -16,7 +16,7 @@ struct AutocompletePopupItem: View {
     private var labelFont: Font {
         return .system(size: focused ? 14 : 12).monospaced()
     }
-     
+    
     private var label: AttributedString {
         var label = AttributedString(completion.label)
         for range in self.highlightedLabelRanges {
@@ -93,5 +93,13 @@ struct AutocompletePopupItem: View {
 }
 
 #Preview {
-    AutocompletePopupItem()
+    AutocompletePopupItem(
+        completion: AutocompleteResult(
+            kind: .param, label: "Parameter",
+            completion: "parameter",
+            description: "A parameter"
+        ),
+        highlightedLabelRanges: [2...4, 6...7],
+        focused: true
+    )
 }

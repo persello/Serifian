@@ -9,15 +9,12 @@ import UIKit
 import SwiftUI
 
 class AutocompletePopupHostingController: UIHostingController<AutocompletePopup> {
-    var autocompletionCoordinator = AutocompletePopup.Coordinator()
+    var coordinator = AutocompleteCoordinator()
     
-    @MainActor required dynamic init?(coder aDecoder: NSCoder) {
-        let view = AutocompletePopup(coordinator: self.autocompletionCoordinator, callback: { text in
-            print("Received completion: \(text)")
-        })
+    @MainActor required init?(coder aDecoder: NSCoder) {
+        let view = AutocompletePopup(coordinator: self.coordinator)
         
         super.init(coder: aDecoder, rootView: view)
-        
         self.view.backgroundColor = .clear
     }
 }
