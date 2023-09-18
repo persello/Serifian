@@ -34,17 +34,17 @@ struct HighlightingTheme {
             .interpolated: AttributeContainer(),
             .error: AttributeContainer(),
         ],
-        activeSnippetContainer: AttributeContainer([
+        activePlaceholderContainer: AttributeContainer([
             .backgroundColor: UIColor.systemBlue
         ]),
-        inactiveSnippetContainer: AttributeContainer([
+        inactivePlaceholderContainer: AttributeContainer([
             .backgroundColor: UIColor.systemBlue.withAlphaComponent(0.2)
         ])
     )
     
     private let attributeMap: [SwiftyTypst.Tag: AttributeContainer]
-    private let activeSnippetContainer: AttributeContainer
-    private let inactiveSnippetContainer: AttributeContainer
+    private let activePlaceholderContainer: AttributeContainer
+    private let inactivePlaceholderContainer: AttributeContainer
     
     let baseContainer = AttributeContainer([.font: UIFont.monospacedSystemFont(ofSize: 14, weight: .regular), .foregroundColor: UIColor.label])
     
@@ -56,11 +56,11 @@ struct HighlightingTheme {
         return baseContainer
     }
     
-    func attributeContainerForSnippet(active: Bool) -> AttributeContainer {
+    func attributeContainerForPlaceholder(active: Bool) -> AttributeContainer {
         if active {
-            return baseContainer.merging(self.activeSnippetContainer)
+            return baseContainer.merging(self.activePlaceholderContainer)
         } else {
-            return baseContainer.merging(self.inactiveSnippetContainer)
+            return baseContainer.merging(self.inactivePlaceholderContainer)
         }
     }
 }

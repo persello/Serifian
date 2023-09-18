@@ -45,6 +45,7 @@
 		AD49CE1B2AB737CC0068D5B1 /* AutocompletePopupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE1A2AB737CC0068D5B1 /* AutocompletePopupItem.swift */; };
 		AD49CE1D2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */; };
 		AD49CE202AB7384D0068D5B1 /* AutocompleteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE1F2AB7384D0068D5B1 /* AutocompleteCoordinator.swift */; };
+		AD49CE222AB75C240068D5B1 /* UITextRange+Intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE212AB75C240068D5B1 /* UITextRange+Intersection.swift */; };
 		AD5EBBCA2A8E4BB800E8E33C /* Curriculum Vitae.sr in Resources */ = {isa = PBXBuildFile; fileRef = AD5EBBC92A8E4BB700E8E33C /* Curriculum Vitae.sr */; };
 		AD8DC5D52A8E8421008E2717 /* AutocompletePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */; };
 		AD8DC5DA2A900CD1008E2717 /* Fuse in Frameworks */ = {isa = PBXBuildFile; productRef = AD8DC5D92A900CD1008E2717 /* Fuse */; };
@@ -133,6 +134,7 @@
 		AD49CE1A2AB737CC0068D5B1 /* AutocompletePopupItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopupItem.swift; sourceTree = "<group>"; };
 		AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutocompleteResult+Fuseable.swift"; sourceTree = "<group>"; };
 		AD49CE1F2AB7384D0068D5B1 /* AutocompleteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteCoordinator.swift; sourceTree = "<group>"; };
+		AD49CE212AB75C240068D5B1 /* UITextRange+Intersection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextRange+Intersection.swift"; sourceTree = "<group>"; };
 		AD5EBBC92A8E4BB700E8E33C /* Curriculum Vitae.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "Curriculum Vitae.sr"; sourceTree = "<group>"; };
 		AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopup.swift; sourceTree = "<group>"; };
 		AD9FF0202A90FE9E00C6EADD /* AutocompletePopupHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopupHostingController.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */,
 				ADD5C4052A8D6F6600CCD0C5 /* Highlighting.swift */,
 				AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */,
+				AD49CE212AB75C240068D5B1 /* UITextRange+Intersection.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				8B4F2C662A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift in Sources */,
 				8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */,
 				AD8DC5D52A8E8421008E2717 /* AutocompletePopup.swift in Sources */,
+				AD49CE222AB75C240068D5B1 /* UITextRange+Intersection.swift in Sources */,
 				AD9FF0212A90FE9E00C6EADD /* AutocompletePopupHostingController.swift in Sources */,
 				AD49CE1B2AB737CC0068D5B1 /* AutocompletePopupItem.swift in Sources */,
 				AD49CE202AB7384D0068D5B1 /* AutocompleteCoordinator.swift in Sources */,
