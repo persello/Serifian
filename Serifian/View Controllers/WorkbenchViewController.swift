@@ -8,6 +8,7 @@
 import UIKit
 import PDFKit
 import Combine
+import os
 
 // MARK: View controller
 class WorkbenchViewController: UIDocumentViewController {
@@ -41,16 +42,26 @@ class WorkbenchViewController: UIDocumentViewController {
     }
     
     private var previewCancellable: AnyCancellable!
+    
+    static private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "WorkbenchViewController")
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Self.logger.info("Setting up view controller.")
 
         self.setupDragger()
         self.previewView.pageBreakMargins = .init(top: 30, left: 30, bottom: 30, right: 30)
         self.previewView.autoScales = true
         
         self.previewCancellable = self.serifianDocument.$preview.sink { document in
+            
+            Self.logger.trace("Preview document has changed.")
+            
             DispatchQueue.main.async {
+                
+                Self.logger.trace("Refreshing preview view.")
+                
                 // Get inner UIScrollView.
                 let scrollView = self.previewView.subviews.first { view in
                     view is UIScrollView
@@ -65,17 +76,23 @@ class WorkbenchViewController: UIDocumentViewController {
                     (nil, nil)
                 }
                 
+                Self.logger.debug("Saved preview view content position: offset = \(oldOffset.debugDescription), zoom = \(oldZoom.debugDescription).")
+                
                 // Update document.
                 self.previewView.document = document
                 self.previewView.layoutDocumentView()
                 
+                Self.logger.trace("Document updated.")
+                
                 // Restore content position.
                 if let oldZoom {
                     scrollView?.setZoomScale(oldZoom, animated: false)
+                    Self.logger.trace("Zoom restored.")
                 }
                 
                 if let oldOffset {
                     scrollView?.setContentOffset(oldOffset, animated: false)
+                    Self.logger.trace("Offset restored.")
                 }
             }
         }
@@ -84,6 +101,9 @@ class WorkbenchViewController: UIDocumentViewController {
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        Self.logger.trace("View will change size to \(size.debugDescription).")
+        
         self.constrainSplitWidth(width: size.width)
         self.resizeSplit(ratio: self.lastEditorRelativeWidth, width: size.width)
     }
@@ -146,6 +166,9 @@ extension WorkbenchViewController {
     /// Sets the initial values for `lastLeadingViewRelativeWidth` and
     /// `lastTrailingPanelMinimumWidth`, so they can be implicitly unwrapped afterwards.
     private func setupDragger() {
+        
+        Self.logger.info("Setting up dragger.")
+        
         self.view.bringSubviewToFront(draggableDividerView)
         draggableDividerView.panRecognizer.addTarget(self, action: #selector(handlePan(_:)))
 
@@ -234,6 +257,9 @@ extension WorkbenchViewController {
     /// Sets the new source to be edited.
     /// - Parameter source: The new source object.
     func changeSource(source: any SourceProtocol) {
+        
+        Self.logger.info("Changing source to \(source.name).")
+        
         self.clearChildren()
 
         if let typstSource = source as? TypstSourceFile {
@@ -245,6 +271,8 @@ extension WorkbenchViewController {
     /// - Parameter source: The Typst source to show in the editor.
     private func showTypstEditor(for source: TypstSourceFile) {
         let editor = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TypstEditorViewController") as! TypstEditorViewController
+        
+        Self.logger.trace("Showing Typst editor for \(source.name).")
 
         editor.setSource(source)
         self.replaceLeadingViewSubview(with: editor)
@@ -283,6 +311,9 @@ extension WorkbenchViewController {
     }
 
     func setupDocument(_ document: SerifianDocument) {
+        
+        Self.logger.info(#"Setting document to "\#(document.title)"."#)
+        
         self.document = document
     }
 }

@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import os
 
 class RootSplitViewController: UISplitViewController {
 
     private(set) var document: SerifianDocument!
+    
+    static private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "RootSplitViewController")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +21,9 @@ class RootSplitViewController: UISplitViewController {
     }
 
     func setDocument(_ document: SerifianDocument) throws {
+        
+        Self.logger.info(#"Setting document: "\#(document.title)"."#)
+        
         self.document = document
 
         let workbench = (self.viewControllers.last as! UINavigationController).topViewController! as! WorkbenchViewController
@@ -26,6 +32,7 @@ class RootSplitViewController: UISplitViewController {
         let sidebar = (self.viewControllers.first as! UINavigationController).topViewController! as! SidebarViewController
         sidebar.setReferencedDocument(document)
         sidebar.attachSourceSelectionCallback { source in
+            Self.logger.info("Source selection callback: \(source.name).")
             workbench.changeSource(source: source)
         }
     }

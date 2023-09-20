@@ -52,7 +52,7 @@
 		AD9FF0212A90FE9E00C6EADD /* AutocompletePopupHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FF0202A90FE9E00C6EADD /* AutocompletePopupHostingController.swift */; };
 		AD9FF0222A9106C700C6EADD /* TypstEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */; };
 		ADB569E52A8E633400F67C54 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = ADB569E42A8E633400F67C54 /* SwiftyTypst */; };
-		ADD5C4062A8D6F6600CCD0C5 /* Highlighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD5C4052A8D6F6600CCD0C5 /* Highlighting.swift */; };
+		ADD5C4062A8D6F6600CCD0C5 /* HighlightingTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD5C4052A8D6F6600CCD0C5 /* HighlightingTheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,7 +138,7 @@
 		AD5EBBC92A8E4BB700E8E33C /* Curriculum Vitae.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "Curriculum Vitae.sr"; sourceTree = "<group>"; };
 		AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopup.swift; sourceTree = "<group>"; };
 		AD9FF0202A90FE9E00C6EADD /* AutocompletePopupHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopupHostingController.swift; sourceTree = "<group>"; };
-		ADD5C4052A8D6F6600CCD0C5 /* Highlighting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlighting.swift; sourceTree = "<group>"; };
+		ADD5C4052A8D6F6600CCD0C5 /* HighlightingTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightingTheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,7 +210,7 @@
 			children = (
 				AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */,
 				8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */,
-				ADD5C4052A8D6F6600CCD0C5 /* Highlighting.swift */,
+				ADD5C4052A8D6F6600CCD0C5 /* HighlightingTheme.swift */,
 				AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */,
 				AD49CE212AB75C240068D5B1 /* UITextRange+Intersection.swift */,
 			);
@@ -505,7 +505,7 @@
 				8B87B6FE2A3668BA00287D9F /* AutocompletableSource.swift in Sources */,
 				8B348C892A22B0A2009DD175 /* SidebarItemViewModel.swift in Sources */,
 				8B348C752A223E18009DD175 /* ImageFile.swift in Sources */,
-				ADD5C4062A8D6F6600CCD0C5 /* Highlighting.swift in Sources */,
+				ADD5C4062A8D6F6600CCD0C5 /* HighlightingTheme.swift in Sources */,
 				8B4F2C652A223C8B007A15D7 /* DocumentError.swift in Sources */,
 				8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */,
 				AD334FB72A7703AD006FCB04 /* UIResponder+Swizzle.swift in Sources */,

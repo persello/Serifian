@@ -10,6 +10,8 @@ import SwiftyTypst
 
 extension SerifianDocument: FileReader {
     func source(path: URL, in folder: Folder?) -> (any SourceProtocol)? {
+        
+        Self.logger.trace("Getting source \(path.absoluteString)\(folder == nil ? "." : " inside " + folder!.name).")
 
         var sources: [any SourceProtocol] = []
         if let folder {
@@ -33,6 +35,8 @@ extension SerifianDocument: FileReader {
 
     func read(path: String) throws -> [UInt8] {
         let url = URL(filePath: path.trimmingCharacters(in: CharacterSet(["/", "."])))
+        
+        Self.logger.trace("Reading file at \(url.absoluteString).")
         
         guard let file = self.source(path: url, in: nil) else {
             throw FileReaderError.NotFound(message: "Not found among the document's sources.")
