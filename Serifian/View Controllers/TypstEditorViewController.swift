@@ -49,8 +49,19 @@ class TypstEditorViewController: UIViewController {
         Self.logger.trace("Doing first highlight.")
         self.highlight(cached: false)
         
+        self.setupUndoManager()
+        
         self.highlightCancellable = self.source.objectWillChange.throttle(for: 0.5, scheduler: RunLoop.main, latest: true).sink { _ in
             self.highlight(cached: false)
+        }
+    }
+    
+    func setupUndoManager() {
+        // TODO: Check this. I might be committing warcrimes.
+        if textView != nil {
+            self.textView.undoManager?.removeAllActions()
+            self.source.document.undoManager = self.textView.undoManager
+            Self.logger.debug("The document's undo manager is \(self.source.document.undoManager).")
         }
     }
     
@@ -59,6 +70,7 @@ class TypstEditorViewController: UIViewController {
         Self.logger.info(#"Setting source to "\#(source.name)"."#)
         
         self.source = source
+        self.setupUndoManager()
     }
     
     func highlight(cached: Bool = true) {
@@ -76,6 +88,8 @@ class TypstEditorViewController: UIViewController {
         Self.logger.debug("Highlighting \(self.placeholderRanges.count) placeholders.")
         
         // Highlight placeholders.
+        self.detectPlaceholders()
+        
         for placeholderRange in placeholderRanges {
             let active = (placeholderRange == selectedPlaceholderRange)
             
@@ -138,22 +152,29 @@ class TypstEditorViewController: UIViewController {
                 return
             }
             
-            self.detectPlaceholders(in: newWordRange)
-            self.nextPlaceholder()
+            self.detectPlaceholders()
+            
+            // Select the placeholder in the new word, if it exists.
+            for placeholderRange in placeholderRanges {
+                if placeholderRange.intersection(with: newWordRange, in: self.textView) != nil {
+                    self.selectPlaceholder(placeholderRange)
+                    break
+                }
+            }
         }
         
         self.layoutAutocompleteWindow()
     }
     
     func layoutAutocompleteWindow() {
-        
-        Self.logger.trace("Laying out autocomplete view.")
-        
+                
         // First, make sure that the selection length is zero.
         guard self.textView.selectedTextRange?.isEmpty ?? false,
               let cursorPosition = self.textView.selectedTextRange?.start else {
             return
         }
+        
+        Self.logger.trace("Laying out autocomplete view.")
         
         // Update constraints.
         let position = self.textView.caretRect(for: cursorPosition)
@@ -186,22 +207,26 @@ class TypstEditorViewController: UIViewController {
         self.autocompleteContainerView.layoutIfNeeded()
     }
     
-    func detectPlaceholders(in range: UITextRange) {
-        guard let completion = textView.text(in: range) else { return }
-        let completionStartOffset = textView.offset(from: textView.beginningOfDocument, to: range.start)
+    func detectPlaceholders() {
+        self.placeholderRanges.removeAll(keepingCapacity: true)
+        
+        Self.logger.trace("Detecting placeholders.")
 
         // Detect ${...} inside the completion...
         let placeholderRegex = /\${[^${}]*}/
         
-        let matches = completion.matches(of: placeholderRegex)
+        let matches = self.textView.text.matches(of: placeholderRegex)
+        
+        Self.logger.debug("Found \(matches.count) new placeholders.")
+        
         for match in matches {
             // Get the start index.
-            let matchStartOffset = match.startIndex.utf16Offset(in: completion)
-            guard let startPosition = textView.position(from: textView.beginningOfDocument, offset: completionStartOffset + matchStartOffset) else { continue }
+            let matchStartOffset = match.startIndex.utf16Offset(in: self.textView.text)
+            guard let startPosition = textView.position(from: textView.beginningOfDocument, offset: matchStartOffset) else { continue }
             
             // Get the end index.
-            let matchEndOffset = match.endIndex.utf16Offset(in: completion)
-                    guard let endPosition = textView.position(from: textView.beginningOfDocument, offset: completionStartOffset + matchEndOffset) else { continue }
+            let matchEndOffset = match.endIndex.utf16Offset(in: self.textView.text)
+                    guard let endPosition = textView.position(from: textView.beginningOfDocument, offset: matchEndOffset) else { continue }
             
             // Form the range.
             guard let range = textView.textRange(from: startPosition, to: endPosition) else { continue }
@@ -211,14 +236,17 @@ class TypstEditorViewController: UIViewController {
     
     func selectPlaceholder(_ range: UITextRange) {
         self.selectedPlaceholderRange = range
-        self.highlight()
+        self.highlight(cached: false )
         self.textView.selectedTextRange = range
     }
     
     func nextPlaceholder() {
         if let selectedPlaceholderRange,
            let index = placeholderRanges.firstIndex(of: selectedPlaceholderRange) {
-            let next = if index == placeholderRanges.endIndex {
+            
+            Self.logger.debug("Selecting next placeholder")
+            
+            let next = if index >= placeholderRanges.endIndex - 1 {
                 placeholderRanges.startIndex
             } else {
                 placeholderRanges.index(after: index)
@@ -226,25 +254,34 @@ class TypstEditorViewController: UIViewController {
             
             selectPlaceholder(placeholderRanges[next])
         } else if let first = placeholderRanges.first {
-             // Select the first placeholder.
-             selectPlaceholder(first)
+            
+            Self.logger.debug("Selecting first placeholder.")
+            
+            // Select the first placeholder.
+            selectPlaceholder(first)
         }
     }
     
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         guard let key = presses.first?.key else { return }
         
+        Self.logger.debug("Handling keypress: \(key).")
+        
         // Autocomplete window. Highest priority.
         if !autocompleteContainerView.isHidden  {
             switch key.keyCode {
             case .keyboardEscape:
+                Self.logger.debug("Detected escape key. Closing autocomplete window.")
                 autocompleteContainerView.isHidden = true
             case .keyboardUpArrow:
+                Self.logger.debug("Detected up key. Selecting previous autocomplete suggestion.")
                 autocompletePopupHostingController.coordinator.previous()
             case .keyboardDownArrow:
+                Self.logger.debug("Detected down key. Selecting next autocomplete suggestion.")
                 autocompletePopupHostingController.coordinator.next()
             case .keyboardReturnOrEnter,
                     .keyboardTab:
+                Self.logger.debug("Detected enter/tab key. Selecting current autocomplete suggestion.")
                 autocompletePopupHostingController.coordinator.enter()
             default:
                 super.pressesBegan(presses, with: event)
@@ -253,6 +290,7 @@ class TypstEditorViewController: UIViewController {
             // Placeholders. Medium priority.
             switch key.keyCode {
             case .keyboardTab:
+                Self.logger.debug("Detected tab key. Selecting next placeholder.")
                 self.nextPlaceholder()
             default:
                 super.pressesBegan(presses, with: event)
@@ -276,6 +314,10 @@ extension TypstEditorViewController: UITextViewDelegate {
                 // Do not insert the character.
                 return false
             }
+        } else if !self.placeholderRanges.isEmpty && text == "\t" {
+            self.nextPlaceholder()
+            
+            return false
         }
         
         guard let selected = textView.selectedTextRange else { return true }
