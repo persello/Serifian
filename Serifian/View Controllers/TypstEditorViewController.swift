@@ -41,6 +41,8 @@ class TypstEditorViewController: UIViewController {
         
         // Initialise the text view.
         self.textView.delegate = self
+        self.textView.smartDashesType = .no
+        self.textView.smartQuotesType = .no
         
         Self.logger.trace("Text view delegate set.")
         
@@ -49,13 +51,14 @@ class TypstEditorViewController: UIViewController {
         
         self.setupUndoManager()
         
-        self.highlightCancellable = self.source.objectWillChange.throttle(for: 0.5, scheduler: RunLoop.main, latest: true).sink { _ in
+        self.highlightCancellable = self.source.objectWillChange.throttle(for: 0.1, scheduler: RunLoop.main, latest: true).sink { _ in
             self.highlight(cached: false)
         }
     }
     
     func setupUndoManager() {
         // TODO: Check this. I might be committing warcrimes.
+        // It seems to work better than my own implementation.
         if textView != nil {
             self.textView.undoManager?.removeAllActions()
             self.source.document.undoManager = self.textView.undoManager
@@ -72,14 +75,14 @@ class TypstEditorViewController: UIViewController {
     }
     
     func highlight(cached: Bool = true) {
-    
+        
         Self.logger.debug("Highlighting source. Cached = \(cached).")
         if !cached {
             self.cachedHighlightedContent = self.source.highlightedContents()
         }
         
         let cursorPosition = self.textView.selectedRange
-        var attributedString = self.cachedHighlightedContent!
+        let attributedString = self.cachedHighlightedContent!
         
         Self.logger.trace("Cursor position is \(cursorPosition.location), length \(cursorPosition.length).")
         
@@ -109,11 +112,42 @@ class TypstEditorViewController: UIViewController {
             return
         }
         
-        // Detect the latest word.
-        guard let wordRange = textView.tokenizer.rangeEnclosingPosition(cursorPosition, with: .word, inDirection: .layout(.left)),
+        // Detect the starting position of the last word before the cursor.
+        guard let rangeBeforeCursor = textView.textRange(from: textView.beginningOfDocument, to: cursorPosition),
+              let textBeforeCursor = textView.text(in: rangeBeforeCursor),
+              let lastNonAlphanumericCharacterIndex = textBeforeCursor.lastIndex(where: { char in
+                  !(char.isLetter || char.isNumber)
+              }),
+              let wordStartingPosition = textView.position(from: textView.beginningOfDocument, offset: lastNonAlphanumericCharacterIndex.utf16Offset(in: textBeforeCursor) + 1)
+        else {
+            
+            // Hide the autocomplete window: without knowing what to replace, it makes no sense to show it.
+            self.autocompleteContainerView.isHidden = true
+            Self.logger.warning("Hiding autocomplete view because it wasn't possible to find the beginning of the last word.")
+            
+            return
+        }
+        
+        // Detect the ending position of the last word before the cursor.
+        var wordEndingPosition = cursorPosition
+        if let rangeAfterCursor = textView.textRange(from: cursorPosition, to: textView.endOfDocument),
+           let textAfterCursor = textView.text(in: rangeAfterCursor),
+           let firstNonAlphanumericCharacterIndex = textAfterCursor.firstIndex(where: { char in
+               !(char.isLetter || char.isNumber)
+           }) {
+            
+            Self.logger.trace("Defaulting to cursor position for ending position of the last word.")
+            
+            wordEndingPosition = textView.position(from: cursorPosition, offset: firstNonAlphanumericCharacterIndex.utf16Offset(in: textAfterCursor)) ?? wordEndingPosition
+        }
+        
+        // Extract the word.
+        guard let wordRange = textView.textRange(from: wordStartingPosition, to: wordEndingPosition),
               let word = textView.text(in: wordRange) else {
             
-            autocompletePopupHostingController.coordinator.updateCompletions(completions, searching: "")
+            // Hide the autocomplete window: without knowing what to replace, it makes no sense to show it.
+            self.autocompleteContainerView.isHidden = true
+            Self.logger.warning("Hiding autocomplete view because it wasn't possible to extract the last word.")
             
             return
         }
@@ -123,27 +157,33 @@ class TypstEditorViewController: UIViewController {
         autocompletePopupHostingController.coordinator.updateCompletions(completions, searching: String(word))
         
         // In case of completion, replace the last word.
-        self.autocompletePopupHostingController.coordinator.onSelection { [self] text in
-            self.textView.replace(wordRange, withText: text)
+        self.autocompletePopupHostingController.coordinator.onSelection { [self] replacement in
             self.autocompleteContainerView.isHidden = true
             
-            Self.logger.info(#"Completion accepted. Replaced "\#(word)" with "\#(text)"."#)
+            Self.logger.info(#"Completion accepted. Replaced "\#(word)" with "\#(replacement)"."#)
             
-            let start = wordRange.start
-            guard let end = self.textView.position(from: start, offset: text.count),
-                  let newWordRange = self.textView.textRange(from: start, to: end) else {
-                return
+            // Detect the placeholder and move the cursor there.
+            let placeholderRegex = /\${[^${}]*}/
+            
+            // Insert the text without the "${}".
+            let cleanReplacement = replacement.replacing(placeholderRegex, with: "")
+            textView.replace(wordRange, withText: cleanReplacement)
+            
+            // Find the starting index.
+            if let first = replacement.firstMatch(of: placeholderRegex) {
+                let indexInReplacement = first.startIndex
+                if let cursorPosition = textView.position(from: wordRange.start, offset: indexInReplacement.utf16Offset(in: replacement)),
+                   let cursorRange = textView.textRange(from: cursorPosition, to: cursorPosition) {
+                    self.textView.selectedTextRange = cursorRange
+                }
             }
-            
-            // Detect the placeholder.
-        
         }
         
         self.layoutAutocompleteWindow()
     }
     
     func layoutAutocompleteWindow() {
-                
+        
         // First, make sure that the selection length is zero.
         guard self.textView.selectedTextRange?.isEmpty ?? false,
               let cursorPosition = self.textView.selectedTextRange?.start else {
@@ -183,32 +223,32 @@ class TypstEditorViewController: UIViewController {
         self.autocompleteContainerView.layoutIfNeeded()
     }
     
-//    func detectPlaceholders() {
-//        self.placeholderRanges.removeAll(keepingCapacity: true)
-//        
-//        Self.logger.trace("Detecting placeholders.")
-//
-//        // Detect ${...} inside the completion...
-//        let placeholderRegex = /\${[^${}]*}/
-//        
-//        let matches = self.textView.text.matches(of: placeholderRegex)
-//        
-//        Self.logger.debug("Found \(matches.count) new placeholders.")
-//        
-//        for match in matches {
-//            // Get the start index.
-//            let matchStartOffset = match.startIndex.utf16Offset(in: self.textView.text)
-//            guard let startPosition = textView.position(from: textView.beginningOfDocument, offset: matchStartOffset) else { continue }
-//            
-//            // Get the end index.
-//            let matchEndOffset = match.endIndex.utf16Offset(in: self.textView.text)
-//                    guard let endPosition = textView.position(from: textView.beginningOfDocument, offset: matchEndOffset) else { continue }
-//            
-//            // Form the range.
-//            guard let range = textView.textRange(from: startPosition, to: endPosition) else { continue }
-//            self.placeholderRanges.append(range)
-//        }
-//    }
+    //    func detectPlaceholders() {
+    //        self.placeholderRanges.removeAll(keepingCapacity: true)
+    //
+    //        Self.logger.trace("Detecting placeholders.")
+    //
+    //        // Detect ${...} inside the completion...
+    //        let placeholderRegex = /\${[^${}]*}/
+    //
+    //        let matches = self.textView.text.matches(of: placeholderRegex)
+    //
+    //        Self.logger.debug("Found \(matches.count) new placeholders.")
+    //
+    //        for match in matches {
+    //            // Get the start index.
+    //            let matchStartOffset = match.startIndex.utf16Offset(in: self.textView.text)
+    //            guard let startPosition = textView.position(from: textView.beginningOfDocument, offset: matchStartOffset) else { continue }
+    //
+    //            // Get the end index.
+    //            let matchEndOffset = match.endIndex.utf16Offset(in: self.textView.text)
+    //                    guard let endPosition = textView.position(from: textView.beginningOfDocument, offset: matchEndOffset) else { continue }
+    //
+    //            // Form the range.
+    //            guard let range = textView.textRange(from: startPosition, to: endPosition) else { continue }
+    //            self.placeholderRanges.append(range)
+    //        }
+    //    }
     
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         guard let key = presses.first?.key else { return }
@@ -263,6 +303,9 @@ extension TypstEditorViewController: UITextViewDelegate {
     
     func textViewDidChangeSelection(_ textView: UITextView) {
         self.autocompletion()
+        
+        // For Catalyst and key handling.
+        self.becomeFirstResponder()
     }
     
     func textViewDidChange(_ textView: UITextView) {

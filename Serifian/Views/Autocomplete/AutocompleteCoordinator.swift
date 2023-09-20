@@ -52,7 +52,7 @@ class AutocompleteCoordinator {
     ///   - completions: completions to display.
     ///   - text: The text that was searched.
     func updateCompletions(_ completions: [AutocompleteResult], searching text: String) {
-        Self.logger.trace("Updating \(completions.count) completions, searching \(text).")
+        Self.logger.trace(#"Updating \(completions.count) completions, searching "\#(text)"."#)
         self.latestCompletions = completions
         self.latestSearchText = text
         self.completionUpdateHandler?(completions, text)

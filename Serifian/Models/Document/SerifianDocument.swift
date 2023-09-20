@@ -181,7 +181,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         
         self.sources.append(source)
         
-        let cancellable = source.changePublisher.throttle(for: 3, scheduler: RunLoop.main, latest: true).sink { _ in
+        let cancellable = source.changePublisher.throttle(for: 0.1, scheduler: RunLoop.main, latest: true).sink { _ in
             self.objectWillChange.send()
             Self.logger.trace("\(source.name) changed. Recompiling document.")
             Task.detached {
