@@ -41,7 +41,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         self.metadata = DocumentMetadata(mainSource: "main.typ", lastOpenedSourceName: "main.typ")
         super.init(fileURL: url)
         
-        self.compiler = TypstCompiler(fileReader: self, main: self.metadata.mainSource)
+        self.compiler = TypstCompiler(fileReader: self, fontReader: self, main: self.metadata.mainSource)
     }
     
     override func contents(forType typeName: String) throws -> Any {
@@ -137,7 +137,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         self.sources = []
         
         // Create the compiler and set up the change notifications.
-        self.compiler = TypstCompiler(fileReader: self, main: self.metadata.mainSource)
+        self.compiler = TypstCompiler(fileReader: self, fontReader: self, main: self.metadata.mainSource)
         Self.logger.trace("Compiler created. Main source is \(self.metadata.mainSource).")
         
         // Create the actual contents.

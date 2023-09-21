@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -42,6 +42,37 @@
 		8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */; };
 		8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */; };
 		AD2B63C72ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */; };
+		AD2B63E92ABC6C1D00DAF85E /* InriaSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63CB2ABC6C1D00DAF85E /* InriaSerif-Bold.ttf */; };
+		AD2B63EA2ABC6C1D00DAF85E /* NotoSerifHebrew-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63CC2ABC6C1D00DAF85E /* NotoSerifHebrew-Bold.ttf */; };
+		AD2B63EB2ABC6C1D00DAF85E /* NewCMMath-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63CD2ABC6C1D00DAF85E /* NewCMMath-Regular.otf */; };
+		AD2B63EC2ABC6C1D00DAF85E /* IBMPlexSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63CE2ABC6C1D00DAF85E /* IBMPlexSerif-Regular.ttf */; };
+		AD2B63ED2ABC6C1D00DAF85E /* NewCM10-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63CF2ABC6C1D00DAF85E /* NewCM10-Regular.otf */; };
+		AD2B63EE2ABC6C1D00DAF85E /* InriaSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D02ABC6C1D00DAF85E /* InriaSerif-Regular.ttf */; };
+		AD2B63EF2ABC6C1D00DAF85E /* NewCM10-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D12ABC6C1D00DAF85E /* NewCM10-Italic.otf */; };
+		AD2B63F02ABC6C1D00DAF85E /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D22ABC6C1D00DAF85E /* Roboto-Regular.ttf */; };
+		AD2B63F12ABC6C1D00DAF85E /* LinLibertine_RB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D32ABC6C1D00DAF85E /* LinLibertine_RB.ttf */; };
+		AD2B63F22ABC6C1D00DAF85E /* DejaVuSansMono-BoldOblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D42ABC6C1D00DAF85E /* DejaVuSansMono-BoldOblique.ttf */; };
+		AD2B63F32ABC6C1D00DAF85E /* NewCMMath-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D52ABC6C1D00DAF85E /* NewCMMath-Book.otf */; };
+		AD2B63F42ABC6C1D00DAF85E /* NotoSerifCJKsc-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D62ABC6C1D00DAF85E /* NotoSerifCJKsc-Regular.otf */; };
+		AD2B63F52ABC6C1D00DAF85E /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D72ABC6C1D00DAF85E /* Ubuntu-Regular.ttf */; };
+		AD2B63F62ABC6C1D00DAF85E /* FiraMath-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D82ABC6C1D00DAF85E /* FiraMath-Regular.otf */; };
+		AD2B63F72ABC6C1D00DAF85E /* NotoColorEmoji.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D92ABC6C1D00DAF85E /* NotoColorEmoji.ttf */; };
+		AD2B63F82ABC6C1D00DAF85E /* LinLibertine_RI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63DA2ABC6C1D00DAF85E /* LinLibertine_RI.ttf */; };
+		AD2B63F92ABC6C1D00DAF85E /* DejaVuSansMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63DB2ABC6C1D00DAF85E /* DejaVuSansMono.ttf */; };
+		AD2B63FA2ABC6C1D00DAF85E /* NewCM10-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63DC2ABC6C1D00DAF85E /* NewCM10-Bold.otf */; };
+		AD2B63FB2ABC6C1D00DAF85E /* InriaSerif-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63DD2ABC6C1D00DAF85E /* InriaSerif-Italic.ttf */; };
+		AD2B63FC2ABC6C1D00DAF85E /* PTSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63DE2ABC6C1D00DAF85E /* PTSans-Regular.ttf */; };
+		AD2B63FD2ABC6C1D00DAF85E /* TwitterColorEmoji.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63DF2ABC6C1D00DAF85E /* TwitterColorEmoji.ttf */; };
+		AD2B63FE2ABC6C1D00DAF85E /* LinLibertine_R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63E02ABC6C1D00DAF85E /* LinLibertine_R.ttf */; };
+		AD2B63FF2ABC6C1D00DAF85E /* DejaVuSansMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63E12ABC6C1D00DAF85E /* DejaVuSansMono-Bold.ttf */; };
+		AD2B64002ABC6C1D00DAF85E /* NotoSansSymbols2-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63E22ABC6C1D00DAF85E /* NotoSansSymbols2-Regular.ttf */; };
+		AD2B64012ABC6C1D00DAF85E /* DejaVuSansMono-Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63E32ABC6C1D00DAF85E /* DejaVuSansMono-Oblique.ttf */; };
+		AD2B64022ABC6C1D00DAF85E /* NewCM10-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63E42ABC6C1D00DAF85E /* NewCM10-BoldItalic.otf */; };
+		AD2B64032ABC6C1D00DAF85E /* NotoSansArabic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63E52ABC6C1D00DAF85E /* NotoSansArabic-Regular.ttf */; };
+		AD2B64042ABC6C1D00DAF85E /* NotoSerifHebrew-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63E62ABC6C1D00DAF85E /* NotoSerifHebrew-Regular.ttf */; };
+		AD2B64052ABC6C1D00DAF85E /* LinLibertine_RBI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63E72ABC6C1D00DAF85E /* LinLibertine_RBI.ttf */; };
+		AD2B64062ABC6C1D00DAF85E /* InriaSerif-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63E82ABC6C1D00DAF85E /* InriaSerif-BoldItalic.ttf */; };
+		AD2B64082ABC6C4000DAF85E /* SerifianDocument+FontReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2B64072ABC6C4000DAF85E /* SerifianDocument+FontReader.swift */; };
 		AD334FB72A7703AD006FCB04 /* UIResponder+Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */; };
 		AD49CE1B2AB737CC0068D5B1 /* AutocompletePopupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE1A2AB737CC0068D5B1 /* AutocompletePopupItem.swift */; };
 		AD49CE1D2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */; };
@@ -132,6 +163,37 @@
 		8BC05B0E2A6C278E00C4B69A /* Thumbnail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Thumbnail.entitlements; sourceTree = "<group>"; };
 		8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstEditorViewController.swift; sourceTree = "<group>"; };
 		AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutocompleteResult+Clean.swift"; sourceTree = "<group>"; };
+		AD2B63CB2ABC6C1D00DAF85E /* InriaSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "InriaSerif-Bold.ttf"; sourceTree = "<group>"; };
+		AD2B63CC2ABC6C1D00DAF85E /* NotoSerifHebrew-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifHebrew-Bold.ttf"; sourceTree = "<group>"; };
+		AD2B63CD2ABC6C1D00DAF85E /* NewCMMath-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewCMMath-Regular.otf"; sourceTree = "<group>"; };
+		AD2B63CE2ABC6C1D00DAF85E /* IBMPlexSerif-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSerif-Regular.ttf"; sourceTree = "<group>"; };
+		AD2B63CF2ABC6C1D00DAF85E /* NewCM10-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewCM10-Regular.otf"; sourceTree = "<group>"; };
+		AD2B63D02ABC6C1D00DAF85E /* InriaSerif-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "InriaSerif-Regular.ttf"; sourceTree = "<group>"; };
+		AD2B63D12ABC6C1D00DAF85E /* NewCM10-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewCM10-Italic.otf"; sourceTree = "<group>"; };
+		AD2B63D22ABC6C1D00DAF85E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		AD2B63D32ABC6C1D00DAF85E /* LinLibertine_RB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LinLibertine_RB.ttf; sourceTree = "<group>"; };
+		AD2B63D42ABC6C1D00DAF85E /* DejaVuSansMono-BoldOblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DejaVuSansMono-BoldOblique.ttf"; sourceTree = "<group>"; };
+		AD2B63D52ABC6C1D00DAF85E /* NewCMMath-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewCMMath-Book.otf"; sourceTree = "<group>"; };
+		AD2B63D62ABC6C1D00DAF85E /* NotoSerifCJKsc-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifCJKsc-Regular.otf"; sourceTree = "<group>"; };
+		AD2B63D72ABC6C1D00DAF85E /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
+		AD2B63D82ABC6C1D00DAF85E /* FiraMath-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraMath-Regular.otf"; sourceTree = "<group>"; };
+		AD2B63D92ABC6C1D00DAF85E /* NotoColorEmoji.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NotoColorEmoji.ttf; sourceTree = "<group>"; };
+		AD2B63DA2ABC6C1D00DAF85E /* LinLibertine_RI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LinLibertine_RI.ttf; sourceTree = "<group>"; };
+		AD2B63DB2ABC6C1D00DAF85E /* DejaVuSansMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DejaVuSansMono.ttf; sourceTree = "<group>"; };
+		AD2B63DC2ABC6C1D00DAF85E /* NewCM10-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewCM10-Bold.otf"; sourceTree = "<group>"; };
+		AD2B63DD2ABC6C1D00DAF85E /* InriaSerif-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "InriaSerif-Italic.ttf"; sourceTree = "<group>"; };
+		AD2B63DE2ABC6C1D00DAF85E /* PTSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-Regular.ttf"; sourceTree = "<group>"; };
+		AD2B63DF2ABC6C1D00DAF85E /* TwitterColorEmoji.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TwitterColorEmoji.ttf; sourceTree = "<group>"; };
+		AD2B63E02ABC6C1D00DAF85E /* LinLibertine_R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LinLibertine_R.ttf; sourceTree = "<group>"; };
+		AD2B63E12ABC6C1D00DAF85E /* DejaVuSansMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DejaVuSansMono-Bold.ttf"; sourceTree = "<group>"; };
+		AD2B63E22ABC6C1D00DAF85E /* NotoSansSymbols2-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansSymbols2-Regular.ttf"; sourceTree = "<group>"; };
+		AD2B63E32ABC6C1D00DAF85E /* DejaVuSansMono-Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DejaVuSansMono-Oblique.ttf"; sourceTree = "<group>"; };
+		AD2B63E42ABC6C1D00DAF85E /* NewCM10-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewCM10-BoldItalic.otf"; sourceTree = "<group>"; };
+		AD2B63E52ABC6C1D00DAF85E /* NotoSansArabic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansArabic-Regular.ttf"; sourceTree = "<group>"; };
+		AD2B63E62ABC6C1D00DAF85E /* NotoSerifHebrew-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifHebrew-Regular.ttf"; sourceTree = "<group>"; };
+		AD2B63E72ABC6C1D00DAF85E /* LinLibertine_RBI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LinLibertine_RBI.ttf; sourceTree = "<group>"; };
+		AD2B63E82ABC6C1D00DAF85E /* InriaSerif-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "InriaSerif-BoldItalic.ttf"; sourceTree = "<group>"; };
+		AD2B64072ABC6C4000DAF85E /* SerifianDocument+FontReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+FontReader.swift"; sourceTree = "<group>"; };
 		AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+Swizzle.swift"; sourceTree = "<group>"; };
 		AD49CE1A2AB737CC0068D5B1 /* AutocompletePopupItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopupItem.swift; sourceTree = "<group>"; };
 		AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutocompleteResult+Fuseable.swift"; sourceTree = "<group>"; };
@@ -223,6 +285,7 @@
 		8B4F2B612A21376D007A15D7 = {
 			isa = PBXGroup;
 			children = (
+				AD2B63CA2ABC6C1D00DAF85E /* Fonts */,
 				8B348C802A225925009DD175 /* Templates */,
 				8B4F2B6C2A21376D007A15D7 /* Serifian */,
 				8B4F2C312A222627007A15D7 /* Preview */,
@@ -318,6 +381,7 @@
 				8B4F2C5A2A223B64007A15D7 /* SerifianDocument.swift */,
 				8B4F2C5F2A223C8B007A15D7 /* SerifianDocument+Compile.swift */,
 				8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileReader.swift */,
+				AD2B64072ABC6C4000DAF85E /* SerifianDocument+FontReader.swift */,
 				8B4F2C612A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift */,
 			);
 			path = Document;
@@ -330,6 +394,43 @@
 				8B87B6FB2A36685100287D9F /* HighlightableSource.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		AD2B63CA2ABC6C1D00DAF85E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AD2B63CB2ABC6C1D00DAF85E /* InriaSerif-Bold.ttf */,
+				AD2B63CC2ABC6C1D00DAF85E /* NotoSerifHebrew-Bold.ttf */,
+				AD2B63CD2ABC6C1D00DAF85E /* NewCMMath-Regular.otf */,
+				AD2B63CE2ABC6C1D00DAF85E /* IBMPlexSerif-Regular.ttf */,
+				AD2B63CF2ABC6C1D00DAF85E /* NewCM10-Regular.otf */,
+				AD2B63D02ABC6C1D00DAF85E /* InriaSerif-Regular.ttf */,
+				AD2B63D12ABC6C1D00DAF85E /* NewCM10-Italic.otf */,
+				AD2B63D22ABC6C1D00DAF85E /* Roboto-Regular.ttf */,
+				AD2B63D32ABC6C1D00DAF85E /* LinLibertine_RB.ttf */,
+				AD2B63D42ABC6C1D00DAF85E /* DejaVuSansMono-BoldOblique.ttf */,
+				AD2B63D52ABC6C1D00DAF85E /* NewCMMath-Book.otf */,
+				AD2B63D62ABC6C1D00DAF85E /* NotoSerifCJKsc-Regular.otf */,
+				AD2B63D72ABC6C1D00DAF85E /* Ubuntu-Regular.ttf */,
+				AD2B63D82ABC6C1D00DAF85E /* FiraMath-Regular.otf */,
+				AD2B63D92ABC6C1D00DAF85E /* NotoColorEmoji.ttf */,
+				AD2B63DA2ABC6C1D00DAF85E /* LinLibertine_RI.ttf */,
+				AD2B63DB2ABC6C1D00DAF85E /* DejaVuSansMono.ttf */,
+				AD2B63DC2ABC6C1D00DAF85E /* NewCM10-Bold.otf */,
+				AD2B63DD2ABC6C1D00DAF85E /* InriaSerif-Italic.ttf */,
+				AD2B63DE2ABC6C1D00DAF85E /* PTSans-Regular.ttf */,
+				AD2B63DF2ABC6C1D00DAF85E /* TwitterColorEmoji.ttf */,
+				AD2B63E02ABC6C1D00DAF85E /* LinLibertine_R.ttf */,
+				AD2B63E12ABC6C1D00DAF85E /* DejaVuSansMono-Bold.ttf */,
+				AD2B63E22ABC6C1D00DAF85E /* NotoSansSymbols2-Regular.ttf */,
+				AD2B63E32ABC6C1D00DAF85E /* DejaVuSansMono-Oblique.ttf */,
+				AD2B63E42ABC6C1D00DAF85E /* NewCM10-BoldItalic.otf */,
+				AD2B63E52ABC6C1D00DAF85E /* NotoSansArabic-Regular.ttf */,
+				AD2B63E62ABC6C1D00DAF85E /* NotoSerifHebrew-Regular.ttf */,
+				AD2B63E72ABC6C1D00DAF85E /* LinLibertine_RBI.ttf */,
+				AD2B63E82ABC6C1D00DAF85E /* InriaSerif-BoldItalic.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		AD49CE1E2AB7383B0068D5B1 /* Autocomplete */ = {
@@ -434,8 +535,8 @@
 			);
 			mainGroup = 8B4F2B612A21376D007A15D7;
 			packageReferences = (
-				ADC3BAD02A76CB7200A3561B /* XCLocalSwiftPackageReference "../SwiftyTypst" */,
 				AD8DC5D82A900C83008E2717 /* XCRemoteSwiftPackageReference "fuse-swift" */,
+				AD2B64092ABC841200DAF85E /* XCRemoteSwiftPackageReference "SwiftyTypst" */,
 			);
 			productRefGroup = 8B4F2B6B2A21376D007A15D7 /* Products */;
 			projectDirPath = "";
@@ -453,12 +554,42 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD2B63ED2ABC6C1D00DAF85E /* NewCM10-Regular.otf in Resources */,
+				AD2B64062ABC6C1D00DAF85E /* InriaSerif-BoldItalic.ttf in Resources */,
+				AD2B64002ABC6C1D00DAF85E /* NotoSansSymbols2-Regular.ttf in Resources */,
+				AD2B63EA2ABC6C1D00DAF85E /* NotoSerifHebrew-Bold.ttf in Resources */,
+				AD2B63F92ABC6C1D00DAF85E /* DejaVuSansMono.ttf in Resources */,
+				AD2B63EC2ABC6C1D00DAF85E /* IBMPlexSerif-Regular.ttf in Resources */,
+				AD2B63E92ABC6C1D00DAF85E /* InriaSerif-Bold.ttf in Resources */,
+				AD2B63FD2ABC6C1D00DAF85E /* TwitterColorEmoji.ttf in Resources */,
+				AD2B63F82ABC6C1D00DAF85E /* LinLibertine_RI.ttf in Resources */,
 				8B348C842A2264EB009DD175 /* Untitled.sr in Resources */,
 				8B4F2B7C2A21376E007A15D7 /* LaunchScreen.storyboard in Resources */,
+				AD2B63FC2ABC6C1D00DAF85E /* PTSans-Regular.ttf in Resources */,
+				AD2B64012ABC6C1D00DAF85E /* DejaVuSansMono-Oblique.ttf in Resources */,
+				AD2B64022ABC6C1D00DAF85E /* NewCM10-BoldItalic.otf in Resources */,
+				AD2B64032ABC6C1D00DAF85E /* NotoSansArabic-Regular.ttf in Resources */,
+				AD2B63F22ABC6C1D00DAF85E /* DejaVuSansMono-BoldOblique.ttf in Resources */,
+				AD2B63F32ABC6C1D00DAF85E /* NewCMMath-Book.otf in Resources */,
+				AD2B63EB2ABC6C1D00DAF85E /* NewCMMath-Regular.otf in Resources */,
+				AD2B63F52ABC6C1D00DAF85E /* Ubuntu-Regular.ttf in Resources */,
 				8B4F2B792A21376E007A15D7 /* Assets.xcassets in Resources */,
+				AD2B63F02ABC6C1D00DAF85E /* Roboto-Regular.ttf in Resources */,
+				AD2B63FE2ABC6C1D00DAF85E /* LinLibertine_R.ttf in Resources */,
+				AD2B64052ABC6C1D00DAF85E /* LinLibertine_RBI.ttf in Resources */,
+				AD2B63F72ABC6C1D00DAF85E /* NotoColorEmoji.ttf in Resources */,
+				AD2B63F42ABC6C1D00DAF85E /* NotoSerifCJKsc-Regular.otf in Resources */,
+				AD2B63FA2ABC6C1D00DAF85E /* NewCM10-Bold.otf in Resources */,
 				8B348C822A225939009DD175 /* Empty.sr in Resources */,
+				AD2B63F62ABC6C1D00DAF85E /* FiraMath-Regular.otf in Resources */,
+				AD2B63EE2ABC6C1D00DAF85E /* InriaSerif-Regular.ttf in Resources */,
+				AD2B63FB2ABC6C1D00DAF85E /* InriaSerif-Italic.ttf in Resources */,
+				AD2B63FF2ABC6C1D00DAF85E /* DejaVuSansMono-Bold.ttf in Resources */,
 				AD5EBBCA2A8E4BB800E8E33C /* Curriculum Vitae.sr in Resources */,
+				AD2B64042ABC6C1D00DAF85E /* NotoSerifHebrew-Regular.ttf in Resources */,
 				8B4F2B772A21376D007A15D7 /* Main.storyboard in Resources */,
+				AD2B63F12ABC6C1D00DAF85E /* LinLibertine_RB.ttf in Resources */,
+				AD2B63EF2ABC6C1D00DAF85E /* NewCM10-Italic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +647,7 @@
 				8B4F2C5B2A223B64007A15D7 /* SerifianDocument.swift in Sources */,
 				8B348C702A223E18009DD175 /* Folder.swift in Sources */,
 				8B87B6FC2A36685100287D9F /* HighlightableSource.swift in Sources */,
+				AD2B64082ABC6C4000DAF85E /* SerifianDocument+FontReader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -917,14 +1049,15 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		ADC3BAD02A76CB7200A3561B /* XCLocalSwiftPackageReference "../SwiftyTypst" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../SwiftyTypst;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
+		AD2B64092ABC841200DAF85E /* XCRemoteSwiftPackageReference "SwiftyTypst" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/persello/SwiftyTypst";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		AD8DC5D82A900C83008E2717 /* XCRemoteSwiftPackageReference "fuse-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/krisk/fuse-swift";
