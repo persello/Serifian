@@ -84,6 +84,7 @@
 		AD9FF0212A90FE9E00C6EADD /* AutocompletePopupHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FF0202A90FE9E00C6EADD /* AutocompletePopupHostingController.swift */; };
 		AD9FF0222A9106C700C6EADD /* TypstEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */; };
 		ADB569E52A8E633400F67C54 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = ADB569E42A8E633400F67C54 /* SwiftyTypst */; };
+		ADCFDA542ABC884600C2C555 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = ADCFDA532ABC884600C2C555 /* SwiftyTypst */; };
 		ADD5C4062A8D6F6600CCD0C5 /* HighlightingTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD5C4052A8D6F6600CCD0C5 /* HighlightingTheme.swift */; };
 /* End PBXBuildFile section */
 
@@ -211,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADB569E52A8E633400F67C54 /* SwiftyTypst in Frameworks */,
+				ADCFDA542ABC884600C2C555 /* SwiftyTypst in Frameworks */,
 				AD8DC5DA2A900CD1008E2717 /* Fuse in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,6 +467,7 @@
 			packageProductDependencies = (
 				ADB569E42A8E633400F67C54 /* SwiftyTypst */,
 				AD8DC5D92A900CD1008E2717 /* Fuse */,
+				ADCFDA532ABC884600C2C555 /* SwiftyTypst */,
 			);
 			productName = Serifian;
 			productReference = 8B4F2B6A2A21376D007A15D7 /* Serifian.app */;
@@ -536,7 +539,7 @@
 			mainGroup = 8B4F2B612A21376D007A15D7;
 			packageReferences = (
 				AD8DC5D82A900C83008E2717 /* XCRemoteSwiftPackageReference "fuse-swift" */,
-				AD2B64092ABC841200DAF85E /* XCRemoteSwiftPackageReference "SwiftyTypst" */,
+				ADCFDA522ABC884600C2C555 /* XCRemoteSwiftPackageReference "SwiftyTypst" */,
 			);
 			productRefGroup = 8B4F2B6B2A21376D007A15D7 /* Products */;
 			projectDirPath = "";
@@ -1050,20 +1053,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AD2B64092ABC841200DAF85E /* XCRemoteSwiftPackageReference "SwiftyTypst" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/persello/SwiftyTypst";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		AD8DC5D82A900C83008E2717 /* XCRemoteSwiftPackageReference "fuse-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/krisk/fuse-swift";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.4.0;
+			};
+		};
+		ADCFDA522ABC884600C2C555 /* XCRemoteSwiftPackageReference "SwiftyTypst" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/persello/SwiftyTypst";
+			requirement = {
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1076,6 +1079,11 @@
 		};
 		ADB569E42A8E633400F67C54 /* SwiftyTypst */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = SwiftyTypst;
+		};
+		ADCFDA532ABC884600C2C555 /* SwiftyTypst */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADCFDA522ABC884600C2C555 /* XCRemoteSwiftPackageReference "SwiftyTypst" */;
 			productName = SwiftyTypst;
 		};
 /* End XCSwiftPackageProductDependency section */
