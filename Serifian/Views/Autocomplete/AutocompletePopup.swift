@@ -57,6 +57,8 @@ struct AutocompletePopup: View {
                             proxy.scrollTo(selectedItem)
                         }
                     case .next:
+
+
                         if selectedIndex < orderedCompletions.endIndex - 1 {
                             selectedIndex = orderedCompletions.index(after: selectedIndex)
                             proxy.scrollTo(selectedItem)
@@ -82,22 +84,41 @@ struct AutocompletePopup: View {
         .shadow(radius: 4, y: 2)
     }
     
-    func reorderCompletions(_ completions: [AutocompleteResult], searching text: String) {
+    @discardableResult
+    func reorderCompletions(_ completions: [AutocompleteResult], searching text: String) -> Int {
+        
+        var dedup = Array(Set(completions))
+        dedup.removeAll { result in
+            result.cleanCompletion() == .empty
+        }
+            
         if text.isEmpty {
-            orderedCompletions = completions.sorted(by: { a, b in
+            orderedCompletions = dedup.sorted(by: { a, b in
                 a.label < b.label
             }).map({ result in
                 (result, [])
             })
         } else {
-            let result = searcher.search(text, in: completions)
+            let result = searcher.search(text, in: dedup)
             
             orderedCompletions = result.sorted { a, b in
                 a.score < b.score
             }.map { result in
-                (completions[result.index], result.results.first?.ranges ?? [])
+                (dedup[result.index], result.results.first?.ranges ?? [])
             }
         }
+        
+        self.selectedIndex = orderedCompletions.startIndex
+        
+        for completion in orderedCompletions {
+            // Add the completion to the spell checker.
+            if !UITextChecker.hasLearnedWord(completion.result.completion) {
+//                Self.logger.trace(#"Learning word "\#(completion.result.completion)"."#)
+                UITextChecker.learnWord(completion.result.completion)
+            }
+        }
+        
+        return orderedCompletions.count
     }
 }
 

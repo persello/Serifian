@@ -43,7 +43,7 @@ class TypstEditorViewController: UIViewController {
         self.textView.delegate = self
         self.textView.smartDashesType = .no
         self.textView.smartQuotesType = .no
-        
+    
         Self.logger.trace("Text view delegate set.")
         
         Self.logger.trace("Doing first highlight.")
@@ -154,29 +154,38 @@ class TypstEditorViewController: UIViewController {
         
         Self.logger.debug(#"Detected latest word: "\#(word)". Updating completions."#)
         
-        autocompletePopupHostingController.coordinator.updateCompletions(completions, searching: String(word))
-        
-        // In case of completion, replace the last word.
-        self.autocompletePopupHostingController.coordinator.onSelection { [self] replacement in
+        if autocompletePopupHostingController.coordinator.updateCompletions(completions, searching: String(word)) == 0 {
+            // No completion remained after filtering.
+            
+            Self.logger.debug("No completions remained after filtering.")
             self.autocompleteContainerView.isHidden = true
             
-            Self.logger.info(#"Completion accepted. Replaced "\#(word)" with "\#(replacement)"."#)
+            return
+        }
+        
+        // In case of completion, replace the last word.
+        self.autocompletePopupHostingController.coordinator.onSelection { [self] result in
             
-            // Detect the placeholder and move the cursor there.
-            let placeholderRegex = /\${[^${}]*}/
-            
-            // Insert the text without the "${}".
-            let cleanReplacement = replacement.replacing(placeholderRegex, with: "")
-            textView.replace(wordRange, withText: cleanReplacement)
-            
-            // Find the starting index.
-            if let first = replacement.firstMatch(of: placeholderRegex) {
-                let indexInReplacement = first.startIndex
-                if let cursorPosition = textView.position(from: wordRange.start, offset: indexInReplacement.utf16Offset(in: replacement)),
+            switch result.cleanCompletion() {
+            case .empty:
+                return
+            case .noPlaceholder(let replacement):
+                
+                // Insert the clean text.
+                textView.replace(wordRange, withText: replacement)
+            case .withPlaceholder(let replacement, let offset):
+                
+                // Insert the clean text.
+                textView.replace(wordRange, withText: replacement)
+                
+                // Find the starting index.
+                if let cursorPosition = textView.position(from: wordRange.start, offset: offset),
                    let cursorRange = textView.textRange(from: cursorPosition, to: cursorPosition) {
                     self.textView.selectedTextRange = cursorRange
                 }
             }
+
+            self.autocompleteContainerView.isHidden = true
         }
         
         self.layoutAutocompleteWindow()
@@ -223,33 +232,6 @@ class TypstEditorViewController: UIViewController {
         self.autocompleteContainerView.layoutIfNeeded()
     }
     
-    //    func detectPlaceholders() {
-    //        self.placeholderRanges.removeAll(keepingCapacity: true)
-    //
-    //        Self.logger.trace("Detecting placeholders.")
-    //
-    //        // Detect ${...} inside the completion...
-    //        let placeholderRegex = /\${[^${}]*}/
-    //
-    //        let matches = self.textView.text.matches(of: placeholderRegex)
-    //
-    //        Self.logger.debug("Found \(matches.count) new placeholders.")
-    //
-    //        for match in matches {
-    //            // Get the start index.
-    //            let matchStartOffset = match.startIndex.utf16Offset(in: self.textView.text)
-    //            guard let startPosition = textView.position(from: textView.beginningOfDocument, offset: matchStartOffset) else { continue }
-    //
-    //            // Get the end index.
-    //            let matchEndOffset = match.endIndex.utf16Offset(in: self.textView.text)
-    //                    guard let endPosition = textView.position(from: textView.beginningOfDocument, offset: matchEndOffset) else { continue }
-    //
-    //            // Form the range.
-    //            guard let range = textView.textRange(from: startPosition, to: endPosition) else { continue }
-    //            self.placeholderRanges.append(range)
-    //        }
-    //    }
-    
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         guard let key = presses.first?.key else { return }
         
@@ -267,9 +249,8 @@ class TypstEditorViewController: UIViewController {
             case .keyboardDownArrow:
                 Self.logger.debug("Detected down key. Selecting next autocomplete suggestion.")
                 autocompletePopupHostingController.coordinator.next()
-            case .keyboardReturnOrEnter,
-                    .keyboardTab:
-                Self.logger.debug("Detected enter/tab key. Selecting current autocomplete suggestion.")
+            case .keyboardTab:
+                Self.logger.debug("Detected tab key. Selecting current autocomplete suggestion.")
                 autocompletePopupHostingController.coordinator.enter()
             default:
                 super.pressesBegan(presses, with: event)
@@ -286,7 +267,7 @@ extension TypstEditorViewController: UITextViewDelegate {
         
         // Ignore tabs and enters when the autocomplete window is shown.
         if !self.autocompleteContainerView.isHidden {
-            if text == "\t" || text.contains("\n") {
+            if text == "\t" {
                 
                 Self.logger.debug("Detected tab or enter while the autocomplete window is open. Accepting completion.")
                 
@@ -303,9 +284,6 @@ extension TypstEditorViewController: UITextViewDelegate {
     
     func textViewDidChangeSelection(_ textView: UITextView) {
         self.autocompletion()
-        
-        // For Catalyst and key handling.
-        self.becomeFirstResponder()
     }
     
     func textViewDidChange(_ textView: UITextView) {

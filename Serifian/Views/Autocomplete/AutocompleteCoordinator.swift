@@ -22,8 +22,8 @@ class AutocompleteCoordinator {
     static private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "AutocompleteCoordinator")
     
     private var keyboardHandler: ((KeyboardAction) -> ())? = nil
-    private var completionUpdateHandler: (([AutocompleteResult], String) -> ())? = nil
-    private var selectionCallback: ((String) -> ())? = nil
+    private var completionUpdateHandler: (([AutocompleteResult], String) -> Int)? = nil
+    private var selectionCallback: ((AutocompleteResult) -> ())? = nil
     
     var latestCompletions: [AutocompleteResult] = []
     var latestSearchText: String = ""
@@ -51,11 +51,11 @@ class AutocompleteCoordinator {
     /// - Parameters:
     ///   - completions: completions to display.
     ///   - text: The text that was searched.
-    func updateCompletions(_ completions: [AutocompleteResult], searching text: String) {
-        Self.logger.trace(#"Updating \(completions.count) completions, searching "\#(text)"."#)
+    func updateCompletions(_ completions: [AutocompleteResult], searching text: String) -> Int {
+        Self.logger.trace(#"Updating \#(completions.count) completions, searching "\#(text)"."#)
         self.latestCompletions = completions
         self.latestSearchText = text
-        self.completionUpdateHandler?(completions, text)
+        return self.completionUpdateHandler?(completions, text) ?? 0
     }
     
     
@@ -63,7 +63,7 @@ class AutocompleteCoordinator {
     /// - Parameter completion: The current completion.
     func select(_ completion: AutocompleteResult) {
         Self.logger.info(#"Selecting completion "\#(completion.label)"."#)
-        self.selectionCallback?(completion.completion)
+        self.selectionCallback?(completion)
     }
     
     /// Attach a keyboard handler.
@@ -79,7 +79,7 @@ class AutocompleteCoordinator {
     ///
     /// This handler is called when the completions are updated.
     /// - Parameter handler: The handler to attach.
-    func attachCompletionUpdateHandler(_ handler: @escaping ([AutocompleteResult], String) -> ()) {
+    func attachCompletionUpdateHandler(_ handler: @escaping ([AutocompleteResult], String) -> Int) {
         Self.logger.info("Completion update handler attached.")
         self.completionUpdateHandler = handler
     }
@@ -89,7 +89,7 @@ class AutocompleteCoordinator {
     ///
     /// The callback is called when the user selects a completion.
     /// - Parameter callback: The callback to attach.
-    func onSelection(_ callback: @escaping (String) -> ()) {
+    func onSelection(_ callback: @escaping (AutocompleteResult) -> ()) {
         Self.logger.info("Selection callback attached.")
         self.selectionCallback = callback
     }
