@@ -71,7 +71,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         let encodedMetadata = try plistEncoder.encode(self.metadata)
         let metadataWrapper = FileWrapper(regularFileWithContents: encodedMetadata)
         
-        metadataWrapper.preferredFilename = "Info.plist"
+        metadataWrapper.preferredFilename = "Serifian.plist"
         root.addFileWrapper(metadataWrapper)
         
         Self.logger.trace("Metadata encoded.")
@@ -111,7 +111,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         
         // Find the metadata.
         Self.logger.trace("Finding document metadata.")
-        guard let metadata = root.fileWrappers?["Info.plist"],
+        guard let metadata = root.fileWrappers?["Serifian.plist"],
               let encodedMetadata = metadata.regularFileContents else {
             Self.logger.error("Metadata not found, or damaged.")
             throw DocumentError.noMetadata

@@ -16,7 +16,6 @@
 		8B348C7D2A225462009DD175 /* WorkbenchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C7C2A225462009DD175 /* WorkbenchViewController.swift */; };
 		8B348C7F2A22567B009DD175 /* DocumentCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C7E2A22567B009DD175 /* DocumentCreationView.swift */; };
 		8B348C822A225939009DD175 /* Empty.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8B348C812A225939009DD175 /* Empty.sr */; };
-		8B348C842A2264EB009DD175 /* Untitled.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8B348C832A2264EB009DD175 /* Untitled.sr */; };
 		8B348C892A22B0A2009DD175 /* SidebarItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C882A22B0A2009DD175 /* SidebarItemViewModel.swift */; };
 		8B4F2B6E2A21376D007A15D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2B6D2A21376D007A15D7 /* AppDelegate.swift */; };
 		8B4F2B702A21376D007A15D7 /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2B6F2A21376D007A15D7 /* DocumentBrowserViewController.swift */; };
@@ -78,7 +77,6 @@
 		AD49CE1D2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */; };
 		AD49CE202AB7384D0068D5B1 /* AutocompleteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE1F2AB7384D0068D5B1 /* AutocompleteCoordinator.swift */; };
 		AD49CE222AB75C240068D5B1 /* UITextRange+Intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE212AB75C240068D5B1 /* UITextRange+Intersection.swift */; };
-		AD5EBBCA2A8E4BB800E8E33C /* Curriculum Vitae.sr in Resources */ = {isa = PBXBuildFile; fileRef = AD5EBBC92A8E4BB700E8E33C /* Curriculum Vitae.sr */; };
 		AD8DC5D52A8E8421008E2717 /* AutocompletePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */; };
 		AD8DC5DA2A900CD1008E2717 /* Fuse in Frameworks */ = {isa = PBXBuildFile; productRef = AD8DC5D92A900CD1008E2717 /* Fuse */; };
 		AD9FF0212A90FE9E00C6EADD /* AutocompletePopupHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FF0202A90FE9E00C6EADD /* AutocompletePopupHostingController.swift */; };
@@ -130,7 +128,6 @@
 		8B348C7C2A225462009DD175 /* WorkbenchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkbenchViewController.swift; sourceTree = "<group>"; };
 		8B348C7E2A22567B009DD175 /* DocumentCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCreationView.swift; sourceTree = "<group>"; };
 		8B348C812A225939009DD175 /* Empty.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Empty.sr; sourceTree = "<group>"; };
-		8B348C832A2264EB009DD175 /* Untitled.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Untitled.sr; sourceTree = "<group>"; };
 		8B348C882A22B0A2009DD175 /* SidebarItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarItemViewModel.swift; sourceTree = "<group>"; };
 		8B4F2B6A2A21376D007A15D7 /* Serifian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serifian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4F2B6D2A21376D007A15D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -200,7 +197,6 @@
 		AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutocompleteResult+Fuseable.swift"; sourceTree = "<group>"; };
 		AD49CE1F2AB7384D0068D5B1 /* AutocompleteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteCoordinator.swift; sourceTree = "<group>"; };
 		AD49CE212AB75C240068D5B1 /* UITextRange+Intersection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextRange+Intersection.swift"; sourceTree = "<group>"; };
-		AD5EBBC92A8E4BB700E8E33C /* Curriculum Vitae.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "Curriculum Vitae.sr"; sourceTree = "<group>"; };
 		AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopup.swift; sourceTree = "<group>"; };
 		AD9FF0202A90FE9E00C6EADD /* AutocompletePopupHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopupHostingController.swift; sourceTree = "<group>"; };
 		ADD5C4052A8D6F6600CCD0C5 /* HighlightingTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightingTheme.swift; sourceTree = "<group>"; };
@@ -265,8 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				8B348C812A225939009DD175 /* Empty.sr */,
-				8B348C832A2264EB009DD175 /* Untitled.sr */,
-				AD5EBBC92A8E4BB700E8E33C /* Curriculum Vitae.sr */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -566,7 +560,6 @@
 				AD2B63E92ABC6C1D00DAF85E /* InriaSerif-Bold.ttf in Resources */,
 				AD2B63FD2ABC6C1D00DAF85E /* TwitterColorEmoji.ttf in Resources */,
 				AD2B63F82ABC6C1D00DAF85E /* LinLibertine_RI.ttf in Resources */,
-				8B348C842A2264EB009DD175 /* Untitled.sr in Resources */,
 				8B4F2B7C2A21376E007A15D7 /* LaunchScreen.storyboard in Resources */,
 				AD2B63FC2ABC6C1D00DAF85E /* PTSans-Regular.ttf in Resources */,
 				AD2B64012ABC6C1D00DAF85E /* DejaVuSansMono-Oblique.ttf in Resources */,
@@ -588,7 +581,6 @@
 				AD2B63EE2ABC6C1D00DAF85E /* InriaSerif-Regular.ttf in Resources */,
 				AD2B63FB2ABC6C1D00DAF85E /* InriaSerif-Italic.ttf in Resources */,
 				AD2B63FF2ABC6C1D00DAF85E /* DejaVuSansMono-Bold.ttf in Resources */,
-				AD5EBBCA2A8E4BB800E8E33C /* Curriculum Vitae.sr in Resources */,
 				AD2B64042ABC6C1D00DAF85E /* NotoSerifHebrew-Regular.ttf in Resources */,
 				8B4F2B772A21376D007A15D7 /* Main.storyboard in Resources */,
 				AD2B63F12ABC6C1D00DAF85E /* LinLibertine_RB.ttf in Resources */,
@@ -836,6 +828,7 @@
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Serifian/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -875,6 +868,7 @@
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Serifian/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
