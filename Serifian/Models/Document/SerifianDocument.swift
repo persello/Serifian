@@ -38,7 +38,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
     override init(fileURL url: URL) {
         self.title = url.deletingPathExtension().lastPathComponent
         Self.logger.info(#"Initialising document "\#(self.title)" (\#(url))."#)
-        self.metadata = DocumentMetadata(mainSource: "main.typ")
+        self.metadata = DocumentMetadata(mainSource: "main.typ", lastOpenedSourceName: "main.typ")
         super.init(fileURL: url)
         
         self.compiler = TypstCompiler(fileReader: self, main: self.metadata.mainSource)
@@ -190,5 +190,23 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         }
         
         self.sourceCancellables.append(cancellable)
+    }
+    
+    
+    public var lastOpenedSource: (any SourceProtocol)? {
+        get {
+            guard let path = self.metadata.lastOpenedSourceName,
+                  let source = self.source(relativePathString: path) else {
+                return nil
+            }
+            
+            return source
+        }
+        
+        set {
+            self.metadata.lastOpenedSourceName = newValue?.getPath().relativeString
+            self.objectWillChange.send()
+            self.updateChangeCount(.done)
+        }
     }
 }

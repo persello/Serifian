@@ -98,6 +98,12 @@ class WorkbenchViewController: UIDocumentViewController {
         }
         
         self.navigationItem.centerItemGroups.append(undoRedoItemGroup)
+        
+        // Reload previous source if available.
+        if let source = self.serifianDocument.lastOpenedSource {
+            Self.logger.trace("Restoring previously opened source: \(source.name).")
+            self.changeSource(source: source)
+        }
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -261,6 +267,8 @@ extension WorkbenchViewController {
         Self.logger.info("Changing source to \(source.name).")
         
         self.clearChildren()
+        
+        self.serifianDocument.lastOpenedSource = source
 
         if let typstSource = source as? TypstSourceFile {
             self.showTypstEditor(for: typstSource)
