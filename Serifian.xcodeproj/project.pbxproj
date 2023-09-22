@@ -71,7 +71,7 @@
 		AD2B64042ABC6C1D00DAF85E /* NotoSerifHebrew-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63E62ABC6C1D00DAF85E /* NotoSerifHebrew-Regular.ttf */; };
 		AD2B64052ABC6C1D00DAF85E /* LinLibertine_RBI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63E72ABC6C1D00DAF85E /* LinLibertine_RBI.ttf */; };
 		AD2B64062ABC6C1D00DAF85E /* InriaSerif-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63E82ABC6C1D00DAF85E /* InriaSerif-BoldItalic.ttf */; };
-		AD2B64082ABC6C4000DAF85E /* SerifianDocument+FontReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2B64072ABC6C4000DAF85E /* SerifianDocument+FontReader.swift */; };
+		AD2B64082ABC6C4000DAF85E /* SerifianDocument+Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2B64072ABC6C4000DAF85E /* SerifianDocument+Fonts.swift */; };
 		AD334FB72A7703AD006FCB04 /* UIResponder+Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */; };
 		AD49CE1B2AB737CC0068D5B1 /* AutocompletePopupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE1A2AB737CC0068D5B1 /* AutocompletePopupItem.swift */; };
 		AD49CE1D2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */; };
@@ -191,7 +191,7 @@
 		AD2B63E62ABC6C1D00DAF85E /* NotoSerifHebrew-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifHebrew-Regular.ttf"; sourceTree = "<group>"; };
 		AD2B63E72ABC6C1D00DAF85E /* LinLibertine_RBI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LinLibertine_RBI.ttf; sourceTree = "<group>"; };
 		AD2B63E82ABC6C1D00DAF85E /* InriaSerif-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "InriaSerif-BoldItalic.ttf"; sourceTree = "<group>"; };
-		AD2B64072ABC6C4000DAF85E /* SerifianDocument+FontReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+FontReader.swift"; sourceTree = "<group>"; };
+		AD2B64072ABC6C4000DAF85E /* SerifianDocument+Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+Fonts.swift"; sourceTree = "<group>"; };
 		AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+Swizzle.swift"; sourceTree = "<group>"; };
 		AD49CE1A2AB737CC0068D5B1 /* AutocompletePopupItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopupItem.swift; sourceTree = "<group>"; };
 		AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutocompleteResult+Fuseable.swift"; sourceTree = "<group>"; };
@@ -377,7 +377,7 @@
 				8B4F2C5A2A223B64007A15D7 /* SerifianDocument.swift */,
 				8B4F2C5F2A223C8B007A15D7 /* SerifianDocument+Compile.swift */,
 				8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileReader.swift */,
-				AD2B64072ABC6C4000DAF85E /* SerifianDocument+FontReader.swift */,
+				AD2B64072ABC6C4000DAF85E /* SerifianDocument+Fonts.swift */,
 				8B4F2C612A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift */,
 			);
 			path = Document;
@@ -642,7 +642,7 @@
 				8B4F2C5B2A223B64007A15D7 /* SerifianDocument.swift in Sources */,
 				8B348C702A223E18009DD175 /* Folder.swift in Sources */,
 				8B87B6FC2A36685100287D9F /* HighlightableSource.swift in Sources */,
-				AD2B64082ABC6C4000DAF85E /* SerifianDocument+FontReader.swift in Sources */,
+				AD2B64082ABC6C4000DAF85E /* SerifianDocument+Fonts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

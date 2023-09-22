@@ -8,8 +8,8 @@
 import Foundation
 import SwiftyTypst
 
-extension SerifianDocument: FontReader {
-    func fonts() -> [SwiftyTypst.FontDefinition] {
+extension SerifianDocument {
+    func loadFonts() {
         
         Self.logger.info("Starting font search.")
         
@@ -21,21 +21,19 @@ extension SerifianDocument: FontReader {
         urls.append(contentsOf: Bundle.main.urls(forResourcesWithExtension: ".otc", subdirectory: nil) ?? [])
 
         Self.logger.info("Found \(urls.count) font URLs.")
-        
-        var definitions: [FontDefinition] = []
-        
+                
         for url in urls {
-            guard let data = try? Data(contentsOf: url, options: .alwaysMapped) else {
-                Self.logger.warning("Failed to read data for font at \(url.absoluteString).")
-                continue
+            Task.detached {
+                guard let data = try? Data(contentsOf: url, options: .alwaysMapped) else {
+                    Self.logger.warning("Failed to read data for font at \(url.absoluteString).")
+                    return
+                }
+                
+                Self.logger.info("Read font at \(url.absoluteString).")
+                
+                let fontDefinition = FontDefinition(data: [UInt8](data))
+                await self.compiler.addFont(font: fontDefinition)
             }
-            
-            Self.logger.info("Read font at \(url.absoluteString).")
-            
-            let fontDefinition = FontDefinition(data: [UInt8](data))
-            definitions.append(fontDefinition)
         }
-        
-        return definitions
     }
 }

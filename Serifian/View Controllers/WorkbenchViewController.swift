@@ -98,7 +98,9 @@ class WorkbenchViewController: UIDocumentViewController {
         }
         
         self.navigationItem.centerItemGroups.append(undoRedoItemGroup)
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         // Reload previous source if available.
         if let source = self.serifianDocument.lastOpenedSource {
             Self.logger.trace("Restoring previously opened source: \(source.name).")
