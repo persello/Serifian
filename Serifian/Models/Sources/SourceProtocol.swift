@@ -58,6 +58,25 @@ extension SourceProtocol {
             return URL(filePath: self.name)
         }
     }
+    
+    func rename(to newName: String) throws {
+        let newPath = self.getPath().deletingLastPathComponent().appending(path: newName)
+        let noCollision = self.document.getSources().allSatisfy({
+            !($0.path(collidesWith: newPath))
+        })
+    }
+    
+    func path(collidesWith path: URL) -> Bool {
+        if let folder = self as? Folder {
+            for child in folder.content {
+                if child.path(collidesWith: path) {
+                    return true
+                }
+            }
+        }
+        
+        return self.getPath() == path
+    }
 
     var id: URL {
         self.getPath()

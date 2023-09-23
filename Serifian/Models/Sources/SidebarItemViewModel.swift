@@ -8,9 +8,14 @@
 import Foundation
 import UIKit
 
-struct SidebarItemViewModel: Identifiable, Hashable, Equatable {
+class SidebarItemViewModel: Identifiable, Hashable, Equatable {
 
     var referencedSource: any SourceProtocol
+    var isRenaming: Bool = false
+    
+    init(referencedSource: any SourceProtocol) {
+        self.referencedSource = referencedSource
+    }
 
     var children: [SidebarItemViewModel]? {
         if let folder = self.referencedSource as? Folder {
@@ -23,9 +28,14 @@ struct SidebarItemViewModel: Identifiable, Hashable, Equatable {
     }
 
     var image: UIImage {
-        if referencedSource is TypstSourceFile {
-            let configuration = UIImage.SymbolConfiguration(paletteColors: [.white, .systemTeal])
-            return UIImage(systemName: "t.square.fill", withConfiguration: configuration)!
+        if let typstSource = referencedSource as? TypstSourceFile {
+            if typstSource.isMain {
+                let configuration = UIImage.SymbolConfiguration(paletteColors: [.systemTeal])
+                return UIImage(named: "custom.t.square.fill.square.stack.fill", in: Bundle.main, with: configuration)!
+            } else {
+                let configuration = UIImage.SymbolConfiguration(paletteColors: [.white, .systemTeal])
+                return UIImage(systemName: "t.square.fill", withConfiguration: configuration)!
+            }
         }
 
         if referencedSource is ImageFile {

@@ -32,6 +32,10 @@ class TypstSourceFile: SourceProtocol {
         }
     }
     
+    var isMain: Bool {
+        return self.getPath().relativeString == self.document.metadata.mainSource
+    }
+    
     required init(from fileWrapper: FileWrapper, in folder: Folder?, partOf document: SerifianDocument) throws {
         guard fileWrapper.isRegularFile else {
             throw SourceError.notAFile

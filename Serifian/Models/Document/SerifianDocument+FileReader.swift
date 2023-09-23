@@ -16,7 +16,7 @@ extension SerifianDocument: FileReader {
     
     func source(path: URL, in folder: Folder?) -> (any SourceProtocol)? {
         
-        Self.logger.trace("Getting source \(path.absoluteString)\(folder == nil ? "." : " inside " + folder!.name).")
+        Self.logger.trace("Getting source \(path.relativeString)\(folder == nil ? "" : " inside " + folder!.name).")
 
         var sources: [any SourceProtocol] = []
         if let folder {

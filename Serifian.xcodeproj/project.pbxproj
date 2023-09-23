@@ -268,12 +268,12 @@
 		8B348C852A22A66C009DD175 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */,
 				AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */,
 				8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */,
 				ADD5C4052A8D6F6600CCD0C5 /* HighlightingTheme.swift */,
 				AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */,
 				AD49CE212AB75C240068D5B1 /* UITextRange+Intersection.swift */,
-				AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
