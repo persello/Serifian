@@ -31,8 +31,20 @@ class SidebarViewController: UIViewController {
         Self.logger.trace("Configuring add button.")
         self.addButton.menu = UIMenu(
             children: [
-                UIAction(title: "New Typst file...", image: UIImage(named: "custom.t.square.fill.badge.plus"), handler: {_ in }),
-                UIAction(title: "Import existing...", image: UIImage(systemName: "square.and.arrow.down.on.square"), handler: {_ in })
+                UIAction(title: "New Typst file...", image: UIImage(named: "custom.t.square.badge.plus"), handler: { _ in
+                    let source = TypstSourceFile(preferredName: "untitled", content: "", in: nil, partOf: self.referencedDocument)
+                    self.referencedDocument.addSource(source)
+                    self.updateSidebar()
+                }),
+                UIAction(title: "Import existing...", image: UIImage(systemName: "square.and.arrow.down.on.square"), handler: { _ in
+                    let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.text, .image, .jpeg, .json, .commaSeparatedText, .bmp, .cHeader, .cPlusPlusHeader, .cSource, .cPlusPlusSource, .objectiveCSource, .objectiveCPlusPlusSource, .swiftSource, .rubyScript, .gif, .heif, .xml, .yaml, .assemblyLanguageSource, .plainText])
+                    
+                    picker.allowsMultipleSelection = true
+                    picker.shouldShowFileExtensions = true
+                    picker.delegate = self
+                    
+                    self.present(picker, animated: true)
+                })
             ]
         )
         
@@ -48,14 +60,12 @@ class SidebarViewController: UIViewController {
         let cell = UICollectionView.CellRegistration<UICollectionViewListCell, SidebarItemViewModel> { (cell, indexPath, item) in
 
             Self.logger.trace("Building cell for \(item.referencedSource.name).")
-            
-            var contentConfiguration = UIListContentConfiguration.sidebarCell()
-            
+                        
             let textField = UITextField()
             textField.delegate = self
             textField.autocapitalizationType = .none
             textField.autocorrectionType = .no
-            textField.tintColor = .white
+            textField.tintColor = .systemBlue
             
             let image = UIImageView(image: item.image)
             
@@ -80,7 +90,6 @@ class SidebarViewController: UIViewController {
                 ),
             ]
 
-            cell.contentConfiguration = contentConfiguration
             if item.children != nil {
                 cell.accessories += [.outlineDisclosure()]
             }
@@ -90,24 +99,27 @@ class SidebarViewController: UIViewController {
                 
                 // Update cell data.
                 textField.text = item.referencedSource.name
-                image.image = item.image
                 
-                // Manage text field.
+                // Manage selection color.
+                if cell.isSelected {
+                    image.image = item.image.withConfiguration(UIImage.SymbolConfiguration(paletteColors: [.white]))
+                    textField.textColor = .white
+                } else {
+                    image.image = item.image
+                    textField.textColor = .label
+                }
+                
+                // Manage renaming style.
                 if item.isRenaming {
                     cell.tintColor = .systemBackground
+                    image.image = item.image
+                    textField.textColor = .label
                     textField.isEnabled = true
                     textField.becomeFirstResponder()
                     textField.selectAll(nil)
                 } else {
                     cell.tintColor = .tintColor
                     textField.isEnabled = false
-                }
-                
-                // Manage selection color.
-                if cell.isSelected {
-                    contentConfiguration.image = item.image.withConfiguration(UIImage.SymbolConfiguration(paletteColors: [.white]))
-                } else {
-                    contentConfiguration.image = item.image
                 }
             }
         }
@@ -147,7 +159,7 @@ class SidebarViewController: UIViewController {
         
         var snapshot = NSDiffableDataSourceSectionSnapshot<SidebarItemViewModel>()
 
-        for item in self.referencedDocument.getSources() {
+        for item in self.referencedDocument.getSources().sorted(by: {$0.name.compare($1.name) == .orderedAscending}) {
             append(model: SidebarItemViewModel(referencedSource: item), to: nil, in: &snapshot)
         }
 
@@ -208,39 +220,56 @@ extension SidebarViewController: UICollectionViewDelegate {
         
         guard let item = items.first else { return nil }
         
-        let configuration = UIContextMenuConfiguration(actionProvider: { _ in
-            UIMenu(children: [
-                UIAction(
-                    title: "Rename",
-                    image: UIImage(systemName: "pencil"),
-                    handler: { _ in
-                        // End the previous renaming.
-                        self.endRenamingCallback?(nil)
-                        
-                        // Begin the current renaming.
-                        item.isRenaming = true
-                        self.endRenamingCallback = { newName in
-                            item.isRenaming = false
+        var actions: [UIMenuElement] = []
+        let renameAction = UIAction(
+            title: "Rename",
+            image: UIImage(systemName: "pencil"),
+            handler: { _ in
+                // End the previous renaming.
+                self.endRenamingCallback?(nil)
+                
+                // Begin the current renaming.
+                item.isRenaming = true
+                self.endRenamingCallback = { newName in
+                    item.isRenaming = false
+                    
+                    if let newName {
+                        do {
+                            try item.referencedSource.rename(to: newName)
+                        } catch let error as SourceError {
+                            let alert = UIAlertController(title: error.errorDescription, message: error.failureReason, preferredStyle: .alert)
                             
-                            if let newName {
-                                do {
-                                    try item.referencedSource.rename(to: newName)
-                                } catch let error as SourceError {
-                                    let alert = UIAlertController(title: error.errorDescription, message: error.failureReason, preferredStyle: .alert)
-                                    
-                                    alert.addAction(.init(title: "OK", style: .default, handler: { _ in
-                                        alert.dismiss(animated: true)
-                                    }))
-                                    
-                                    self.present(alert, animated: true)
-                                } catch {
-                                    fatalError(error.localizedDescription)
-                                }
-                            }
+                            alert.addAction(.init(title: "OK", style: .default, handler: { _ in
+                                alert.dismiss(animated: true)
+                            }))
+                            
+                            self.present(alert, animated: true)
+                        } catch {
+                            fatalError(error.localizedDescription)
                         }
                     }
-                )
-            ])
+                }
+            }
+        )
+        
+        actions += [renameAction]
+        
+        if let source = item.referencedSource as? TypstSourceFile,
+           !source.isMain {
+            let mainSourceAction = UIAction(
+                title: "Set as main source",
+                image: UIImage(systemName: "checkmark.seal.fill"),
+                handler: { _ in
+                    source.setAsMain()
+                    self.updateSidebar()
+                }
+            )
+            
+            actions += [mainSourceAction]
+        }
+        
+        let configuration = UIContextMenuConfiguration(actionProvider: { _ in
+            UIMenu(children: actions)
         })
         
         return configuration
@@ -250,6 +279,19 @@ extension SidebarViewController: UICollectionViewDelegate {
 extension SidebarViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.endRenamingCallback?(textField.text)
+    }
+}
+
+extension SidebarViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        for url in urls {
+            if let wrapper = try? FileWrapper(url: url),
+               let source = sourceProtocolObjectFrom(fileWrapper: wrapper, in: nil, partOf: self.referencedDocument) {
+                self.referencedDocument.addSource(source)
+            }
+        }
+        
+        self.updateSidebar()
     }
 }
 

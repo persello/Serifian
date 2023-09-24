@@ -30,7 +30,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         self.init(fileURL: fileURL)
         
         if !empty {
-            let main = TypstSourceFile(name: "main.typ", content: "Hello, Serifian.", in: nil, partOf: self)
+            let main = TypstSourceFile(preferredName: "main", content: "Hello, Serifian.", in: nil, partOf: self)
             self.addSource(main)
         }
     }

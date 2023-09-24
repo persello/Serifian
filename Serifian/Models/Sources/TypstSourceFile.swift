@@ -64,11 +64,17 @@ class TypstSourceFile: SourceProtocol {
         self.document = document
     }
     
-    init(name: String, content: String, in folder: Folder?, partOf document: SerifianDocument) {
-        self.name = name
+    init(preferredName: String, content: String, in folder: Folder?, partOf document: SerifianDocument) {
+        self.name = preferredName + ".typ"
         self.content = content
         self.parent = folder
         self.document = document
+        
+        var i = 1
+        while self.duplicate() {
+            self.name = preferredName + " \(i).typ"
+            i += 1
+        }
     }
 }
 
@@ -85,7 +91,7 @@ extension TypstSourceFile: Hashable {
 
 extension TypstSourceFile: NSCopying {
     func copy(with zone: NSZone? = nil) -> Any {
-        let copy = TypstSourceFile(name: self.name, content: self.content, in: self.parent, partOf: self.document)
+        let copy = TypstSourceFile(preferredName: self.name, content: self.content, in: self.parent, partOf: self.document)
         return copy
     }
 }

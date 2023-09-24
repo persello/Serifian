@@ -89,6 +89,12 @@ extension SourceProtocol {
         
         return self.getPath() == path
     }
+    
+    func duplicate() -> Bool {
+        return !self.document.getSources().allSatisfy { source in
+            !source.path(collidesWith: self.getPath())
+        }
+    }
 
     var id: URL {
         self.getPath()
