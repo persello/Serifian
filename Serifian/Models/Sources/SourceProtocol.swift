@@ -55,7 +55,7 @@ extension SourceProtocol {
             let basePath = parent.getPath()
             return basePath.appending(path: self.name)
         } else {
-            return URL(filePath: self.name)
+            return URL(string: "/\(self.name)")!
         }
     }
     
@@ -64,6 +64,18 @@ extension SourceProtocol {
         let noCollision = self.document.getSources().allSatisfy({
             !($0.path(collidesWith: newPath))
         })
+        
+        guard noCollision else {
+            throw SourceError.renameCollision
+        }
+        
+        if let source = self as? TypstSourceFile,
+           source.isMain {
+            self.document.metadata.mainSource = newPath
+        }
+        
+        self.name = newName
+        self.document.updateChangeCount(.done)
     }
     
     func path(collidesWith path: URL) -> Bool {

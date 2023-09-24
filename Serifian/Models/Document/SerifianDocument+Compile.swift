@@ -20,7 +20,7 @@ extension SerifianDocument {
         
         Self.logger.trace("Recompiling document.")
         
-        try self.compiler.setMain(main: self.metadata.mainSource)
+        try self.compiler.setMain(main: self.metadata.mainSource.absoluteString)
         let result = self.compiler?.compile()
         
         switch result {

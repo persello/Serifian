@@ -8,12 +8,7 @@
 import Foundation
 import SwiftyTypst
 
-extension SerifianDocument: FileReader {
-    func source(relativePathString: String) -> (any SourceProtocol)? {
-        let url = URL(filePath: relativePathString.trimmingCharacters(in: CharacterSet(["/", "."])))
-        return self.source(path: url, in: nil)
-    }
-    
+extension SerifianDocument: FileReader {    
     func source(path: URL, in folder: Folder?) -> (any SourceProtocol)? {
         
         Self.logger.trace("Getting source \(path.relativeString)\(folder == nil ? "" : " inside " + folder!.name).")
@@ -41,7 +36,8 @@ extension SerifianDocument: FileReader {
     func read(path: String) throws -> [UInt8] {
         Self.logger.trace("Reading file at \(path).")
         
-        guard let file = self.source(relativePathString: path) else {
+        guard let url = URL(string: path),
+              let file = self.source(path: url, in: nil) else {
             throw FileReaderError.NotFound(message: "Not found among the document's sources.")
         }
 

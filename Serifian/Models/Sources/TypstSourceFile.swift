@@ -33,7 +33,11 @@ class TypstSourceFile: SourceProtocol {
     }
     
     var isMain: Bool {
-        return self.getPath().relativeString == self.document.metadata.mainSource
+        return self.getPath() == self.document.metadata.mainSource
+    }
+    
+    func setAsMain() {
+        self.document.metadata.mainSource = self.getPath()
     }
     
     required init(from fileWrapper: FileWrapper, in folder: Folder?, partOf document: SerifianDocument) throws {

@@ -31,8 +31,8 @@ class SidebarViewController: UIViewController {
         Self.logger.trace("Configuring add button.")
         self.addButton.menu = UIMenu(
             children: [
-                UIAction(title: "New Typst file", image: UIImage(named: "custom.t.square.fill.badge.plus"), handler: {_ in }),
-                UIAction(title: "Import existing", image: UIImage(systemName: "square.and.arrow.down.on.square"), handler: {_ in })
+                UIAction(title: "New Typst file...", image: UIImage(named: "custom.t.square.fill.badge.plus"), handler: {_ in }),
+                UIAction(title: "Import existing...", image: UIImage(systemName: "square.and.arrow.down.on.square"), handler: {_ in })
             ]
         )
         
@@ -52,8 +52,6 @@ class SidebarViewController: UIViewController {
             var contentConfiguration = UIListContentConfiguration.sidebarCell()
             
             let textField = UITextField()
-            textField.text = item.referencedSource.name
-            textField.isEnabled = false
             textField.delegate = self
             textField.autocapitalizationType = .none
             textField.autocorrectionType = .no
@@ -90,6 +88,11 @@ class SidebarViewController: UIViewController {
             cell.configurationUpdateHandler = { cell, state in
                 Self.logger.trace("Updating cell for \(item.referencedSource.name).")
                 
+                // Update cell data.
+                textField.text = item.referencedSource.name
+                image.image = item.image
+                
+                // Manage text field.
                 if item.isRenaming {
                     cell.tintColor = .systemBackground
                     textField.isEnabled = true
@@ -100,6 +103,7 @@ class SidebarViewController: UIViewController {
                     textField.isEnabled = false
                 }
                 
+                // Manage selection color.
                 if cell.isSelected {
                     contentConfiguration.image = item.image.withConfiguration(UIImage.SymbolConfiguration(paletteColors: [.white]))
                 } else {
@@ -219,7 +223,19 @@ extension SidebarViewController: UICollectionViewDelegate {
                             item.isRenaming = false
                             
                             if let newName {
-                                try! item.referencedSource.rename(to: newName)
+                                do {
+                                    try item.referencedSource.rename(to: newName)
+                                } catch let error as SourceError {
+                                    let alert = UIAlertController(title: error.errorDescription, message: error.failureReason, preferredStyle: .alert)
+                                    
+                                    alert.addAction(.init(title: "OK", style: .default, handler: { _ in
+                                        alert.dismiss(animated: true)
+                                    }))
+                                    
+                                    self.present(alert, animated: true)
+                                } catch {
+                                    fatalError(error.localizedDescription)
+                                }
                             }
                         }
                     }

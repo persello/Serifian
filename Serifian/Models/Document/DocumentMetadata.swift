@@ -8,6 +8,6 @@
 import Foundation
 
 struct DocumentMetadata: Codable {
-    var mainSource: String
-    var lastOpenedSourceName: String?
+    var mainSource: URL
+    var lastOpenedSource: URL?
 }

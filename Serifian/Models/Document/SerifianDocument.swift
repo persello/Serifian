@@ -14,7 +14,7 @@ import os
 class SerifianDocument: UIDocument, Identifiable, ObservableObject {
     private(set) var title: String
     var compiler: TypstCompiler!
-    private(set) var metadata: DocumentMetadata
+    var metadata: DocumentMetadata
     private var sources: [any SourceProtocol] = []
     private(set) var coverImage: CGImage?
     @Published private(set) var preview: PDFDocument?
@@ -38,10 +38,10 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
     override init(fileURL url: URL) {
         self.title = url.deletingPathExtension().lastPathComponent
         Self.logger.info(#"Initialising document "\#(self.title)" (\#(url))."#)
-        self.metadata = DocumentMetadata(mainSource: "main.typ", lastOpenedSourceName: "main.typ")
+        self.metadata = DocumentMetadata(mainSource: URL(string: "/main.typ")!, lastOpenedSource: URL(string: "/main.typ")!)
         super.init(fileURL: url)
         
-        self.compiler = TypstCompiler(fileReader: self, main: self.metadata.mainSource)
+        self.compiler = TypstCompiler(fileReader: self, main: self.metadata.mainSource.absoluteString)
         self.loadFonts()
     }
     
@@ -198,8 +198,8 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
     
     public var lastOpenedSource: (any SourceProtocol)? {
         get {
-            guard let path = self.metadata.lastOpenedSourceName,
-                  let source = self.source(relativePathString: path) else {
+            guard let path = self.metadata.lastOpenedSource,
+                  let source = self.source(path: path, in: nil) else {
                 return nil
             }
             
@@ -207,7 +207,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         }
         
         set {
-            self.metadata.lastOpenedSourceName = newValue?.getPath().relativeString
+            self.metadata.lastOpenedSource = newValue?.getPath()
             self.objectWillChange.send()
             self.updateChangeCount(.done)
         }

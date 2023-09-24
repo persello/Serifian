@@ -19,6 +19,7 @@ enum SourceError: Error {
     case notTypstSource
     case UTF8EncodingError
     case UTF8DecodingError
+    case renameCollision
 }
 
 extension SourceError: LocalizedError {
@@ -40,6 +41,8 @@ extension SourceError: LocalizedError {
             return "A source file cannot be decoded from UTF8."
         case .UTF8EncodingError:
             return "A source file cannot be encoded to UTF8."
+        case .renameCollision:
+            return "Unable to rename file."
         }
     }
 
@@ -55,11 +58,15 @@ extension SourceError: LocalizedError {
             return "Parts of this document might be corrupted."
         case .UTF8EncodingError:
             return "A source file has symbols that cannot be encoded into UTF8."
+        case .renameCollision:
+            return "A file with the same name already exists."
         }
     }
 
     var recoverySuggestion: String? {
         switch self {
+        case .renameCollision:
+            return "Choose a different file name."
         default:
             return nil
         }

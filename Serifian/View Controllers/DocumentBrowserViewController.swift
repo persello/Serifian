@@ -93,27 +93,44 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 
 
     // MARK: Document Presentation
-
+    
     func presentDocument(at documentURL: URL) {
         
         Self.logger.trace("Presenting document at \(documentURL).")
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let rootSplitViewController = storyBoard.instantiateViewController(withIdentifier: "RootSplitViewController") as! RootSplitViewController
-
+        
         // Set up transition.
         rootSplitViewController.transitioningDelegate = self
         transitionController = self.transitionController(forDocumentAt: documentURL)
-
+        
         // Customise transition.
         rootSplitViewController.modalPresentationStyle = .fullScreen
         transitionController?.targetView = rootSplitViewController.view
-
-        // TODO: Handle failure.
+        
         let document = SerifianDocument(fileURL: documentURL)
-        try! document.read(from: documentURL)
-        try! rootSplitViewController.setDocument(document)
-        present(rootSplitViewController, animated: true)
+        
+        do {
+            try document.read(from: documentURL)
+            try rootSplitViewController.setDocument(document)
+            present(rootSplitViewController, animated: true)
+        } catch _ as DecodingError {
+            let alert = UIAlertController(title: "Decoding error", message: "The chosen file might be damaged.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            
+            self.present(alert, animated: true)
+        } catch let error as LocalizedError {
+            let alert = UIAlertController(title: error.errorDescription, message: error.failureReason, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            
+            self.present(alert, animated: true)
+        } catch {
+            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            
+            self.present(alert, animated: true)
+        }
     }
 }
 
