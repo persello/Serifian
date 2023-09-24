@@ -9,6 +9,8 @@ import UIKit
 import PDFKit
 import Combine
 import os
+import SwiftyTypst
+import SwiftUI
 
 // MARK: View controller
 class WorkbenchViewController: UIDocumentViewController {
@@ -19,6 +21,7 @@ class WorkbenchViewController: UIDocumentViewController {
     @IBOutlet weak var editorPreferredWidth: NSLayoutConstraint!
 
     // Views.
+    @IBOutlet weak var issueNavigatorButtonItem: UIBarButtonItem!
     @IBOutlet weak var editorView: UIView!
     @IBOutlet weak var draggableDividerView: DraggableDividerView!
     @IBOutlet weak var previewView: PDFView!
@@ -32,6 +35,10 @@ class WorkbenchViewController: UIDocumentViewController {
         self.trailingViewVisible.toggle()
     }
 
+    @IBAction func issueNavigatorButtonPressed(_ sender: Any) {
+        self.present(issueNavigatorPopover, animated: true)
+    }
+    
     // Variables for restoring the split setup after hiding the trailing view.
     private var lastEditorRelativeWidth: CGFloat!
     private var lastPreviewMinimumWidth: CGFloat!
@@ -41,7 +48,15 @@ class WorkbenchViewController: UIDocumentViewController {
         self.document as! SerifianDocument
     }
     
-    private var previewCancellable: AnyCancellable!
+    private var cancellables: [AnyCancellable] = []
+    
+    private let issueNavigatorCoordinator = CompilationErrorsView.Coordinator()
+    private var issueNavigatorPopover: UIHostingController<CompilationErrorsView> {
+        let uhc = UIHostingController(rootView: CompilationErrorsView(coordinator: self.issueNavigatorCoordinator))
+        uhc.modalPresentationStyle = .popover
+        uhc.popoverPresentationController?.barButtonItem = self.issueNavigatorButtonItem
+        return uhc
+    }
     
     static private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "WorkbenchViewController")
 
@@ -49,12 +64,20 @@ class WorkbenchViewController: UIDocumentViewController {
         super.viewDidLoad()
         
         Self.logger.info("Setting up view controller.")
-
+        
+        // Setup view.
         self.setupDragger()
         self.previewView.pageBreakMargins = .init(top: 30, left: 30, bottom: 30, right: 30)
         self.previewView.autoScales = true
         
-        self.previewCancellable = self.serifianDocument.$preview.sink { document in
+        // Set up compilation error display.
+        let compilationErrorsCancellable = self.serifianDocument.$errors.sink { errors in
+            self.setIssueNavigatorIcon(for: errors)
+            self.issueNavigatorCoordinator.update(errors: errors)
+        }
+        
+        // Set up preview update.
+        let previewCancellable = self.serifianDocument.$preview.sink { document in
             
             Self.logger.trace("Preview document has changed.")
             
@@ -97,6 +120,8 @@ class WorkbenchViewController: UIDocumentViewController {
             }
         }
         
+        self.cancellables = [previewCancellable, compilationErrorsCancellable]
+        
         self.navigationItem.centerItemGroups.append(undoRedoItemGroup)
     }
     
@@ -114,6 +139,27 @@ class WorkbenchViewController: UIDocumentViewController {
         
         self.constrainSplitWidth(width: size.width)
         self.resizeSplit(ratio: self.lastEditorRelativeWidth, width: size.width)
+    }
+    
+    func setIssueNavigatorIcon(for errors: [CompilationError]) {
+        let thereAreWarnings = errors.contains { error in
+            error.severity == .warning
+        }
+        
+        let thereAreErrors = errors.contains { error in
+            error.severity == .error
+        }
+                
+        if thereAreErrors {
+            self.issueNavigatorButtonItem.image = UIImage(systemName: "xmark.octagon.fill")
+            self.issueNavigatorButtonItem.tintColor = .red
+        } else if thereAreWarnings {
+            self.issueNavigatorButtonItem.image = UIImage(systemName: "exclamationmark.triangle.fill")
+            self.issueNavigatorButtonItem.tintColor = .yellow
+        } else {
+            self.issueNavigatorButtonItem.image = UIImage(systemName: "checkmark.circle")
+            self.issueNavigatorButtonItem.tintColor = .tintColor
+        }
     }
 }
 
@@ -330,13 +376,12 @@ extension WorkbenchViewController {
 
 #Preview("Workbench View Controller") {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let vc = storyboard.instantiateViewController(withIdentifier: "WorkbenchViewController") as! WorkbenchViewController
+    let vc = storyboard.instantiateViewController(identifier: "RootSplitViewController") as! RootSplitViewController
     
     let documentURL = Bundle.main.url(forResource: "Empty", withExtension: ".sr")!
     let document = SerifianDocument(fileURL: documentURL)
     try! document.read(from: documentURL)
-    
-    vc.setupDocument(document)
+    try! vc.setDocument(document)
     
     return vc
 }

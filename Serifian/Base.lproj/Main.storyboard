@@ -78,18 +78,29 @@
                                 <action selector="backButtonPressed:" destination="hlC-xv-vT7" id="qQl-Cr-aKg"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Preview" id="kIa-Rb-bSa">
-                            <imageReference key="image" image="sidebar.squares.trailing" catalog="system" variableValue="0.0"/>
-                            <connections>
-                                <action selector="previewPaneButtonPressed:" destination="hlC-xv-vT7" id="ewz-db-cs3"/>
-                            </connections>
-                        </barButtonItem>
+                        <centerItemGroups>
+                            <barButtonItemGroup customizationDisposition="fixed" id="Vdd-uv-1LG"/>
+                        </centerItemGroups>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Preview" id="kIa-Rb-bSa">
+                                <imageReference key="image" image="sidebar.squares.trailing" catalog="system" variableValue="0.0"/>
+                                <connections>
+                                    <action selector="previewPaneButtonPressed:" destination="hlC-xv-vT7" id="ewz-db-cs3"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="checkmark.circle" catalog="system" id="bLd-oU-AQP">
+                                <connections>
+                                    <action selector="issueNavigatorButtonPressed:" destination="hlC-xv-vT7" id="Hn2-vk-Kae"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="draggableDividerView" destination="bPf-mp-2am" id="BAb-il-r4l"/>
                         <outlet property="editorMinimumWidth" destination="nNs-Ht-dnW" id="em0-7O-zoY"/>
                         <outlet property="editorPreferredWidth" destination="lAG-NO-DZb" id="r9A-aR-JKs"/>
                         <outlet property="editorView" destination="CiV-eZ-pvn" id="5kC-nq-QaU"/>
+                        <outlet property="issueNavigatorButtonItem" destination="bLd-oU-AQP" id="FX5-8E-PBd"/>
                         <outlet property="previewMinimumWidth" destination="QWD-BY-3UG" id="1LJ-K7-v3T"/>
                         <outlet property="previewView" destination="BLb-Lx-cy2" id="NDn-C5-8MF"/>
                     </connections>
@@ -256,6 +267,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.circle" catalog="system" width="128" height="123"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="sidebar.squares.trailing" catalog="system" width="128" height="93"/>
         <systemColor name="labelColor">

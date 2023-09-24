@@ -18,6 +18,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
     private var sources: [any SourceProtocol] = []
     private(set) var coverImage: CGImage?
     @Published private(set) var preview: PDFDocument?
+    @Published private(set) var errors: [CompilationError] = []
     
     private var sourceCancellables: [AnyCancellable] = []
     
@@ -188,13 +189,20 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
             self.objectWillChange.send()
             Self.logger.trace("\(source.name) changed. Recompiling document.")
             Task.detached {
-                try? await self.compile(updatesPreview: true)
+                do {
+                    let _ = try? await self.compile(updatesPreview: true)
+                }
             }
         }
         
         self.sourceCancellables.append(cancellable)
     }
     
+    func updateErrors(_ errors: [CompilationError]) {
+        DispatchQueue.main.async {
+            self.errors = errors
+        }
+    }
     
     public var lastOpenedSource: (any SourceProtocol)? {
         get {

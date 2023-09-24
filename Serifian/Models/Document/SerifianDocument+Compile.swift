@@ -7,9 +7,10 @@
 
 import Foundation
 import PDFKit
+import SwiftyTypst
 
-enum CompilationError: Error {
-    case generic
+enum CompilationErrorContainer: Error {
+    case compilation(errors: [CompilationError])
     case pdfConversion
     case undefined
 }
@@ -26,19 +27,23 @@ extension SerifianDocument {
         switch result {
         case .document(let buffer):
             Self.logger.trace("Compilation finished (\(buffer.count) bytes).")
+            self.updateErrors([])
             if let document = PDFDocument(data: Data(buffer)) {
                 if updatesPreview { self.setPreview(document) }
                 return document
             } else {
                 Self.logger.error("Cannot convert the document to PDF.")
-                throw CompilationError.pdfConversion
+                throw CompilationErrorContainer.pdfConversion
             }
+            
+            // TODO: Handle warnings.
         case .errors(let errors):
             Self.logger.warning("Compilation errors: \(errors).")
-            throw CompilationError.generic
+            self.updateErrors(errors)
+            throw CompilationErrorContainer.compilation(errors: errors)
         default:
             Self.logger.error("Undefined compilation result.")
-            throw CompilationError.undefined
+            throw CompilationErrorContainer.undefined
         }
     }
 }

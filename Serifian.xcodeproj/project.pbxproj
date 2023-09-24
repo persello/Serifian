@@ -82,6 +82,8 @@
 		AD9FF0222A9106C700C6EADD /* TypstEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */; };
 		ADB569E52A8E633400F67C54 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = ADB569E42A8E633400F67C54 /* SwiftyTypst */; };
 		ADCA13592AC0ABE1000A5EFC /* Empty.sr in Resources */ = {isa = PBXBuildFile; fileRef = ADCA13582AC0ABE1000A5EFC /* Empty.sr */; };
+		ADCA135B2AC0C175000A5EFC /* CompilationErrorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA135A2AC0C175000A5EFC /* CompilationErrorsView.swift */; };
+		ADCA135D2AC0C325000A5EFC /* CompilationError+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA135C2AC0C325000A5EFC /* CompilationError+Identifiable.swift */; };
 		ADCFDA542ABC884600C2C555 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = ADCFDA532ABC884600C2C555 /* SwiftyTypst */; };
 		ADD5C4062A8D6F6600CCD0C5 /* HighlightingTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD5C4052A8D6F6600CCD0C5 /* HighlightingTheme.swift */; };
 /* End PBXBuildFile section */
@@ -199,6 +201,8 @@
 		AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopup.swift; sourceTree = "<group>"; };
 		AD9FF0202A90FE9E00C6EADD /* AutocompletePopupHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopupHostingController.swift; sourceTree = "<group>"; };
 		ADCA13582AC0ABE1000A5EFC /* Empty.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Empty.sr; sourceTree = "<group>"; };
+		ADCA135A2AC0C175000A5EFC /* CompilationErrorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompilationErrorsView.swift; sourceTree = "<group>"; };
+		ADCA135C2AC0C325000A5EFC /* CompilationError+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompilationError+Identifiable.swift"; sourceTree = "<group>"; };
 		ADD5C4052A8D6F6600CCD0C5 /* HighlightingTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightingTheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -251,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				AD49CE1E2AB7383B0068D5B1 /* Autocomplete */,
+				ADCA135A2AC0C175000A5EFC /* CompilationErrorsView.swift */,
 				8B348C7E2A22567B009DD175 /* DocumentCreationView.swift */,
 				8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */,
 			);
@@ -271,6 +276,7 @@
 				AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */,
 				AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */,
 				8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */,
+				ADCA135C2AC0C325000A5EFC /* CompilationError+Identifiable.swift */,
 				ADD5C4052A8D6F6600CCD0C5 /* HighlightingTheme.swift */,
 				AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */,
 				AD49CE212AB75C240068D5B1 /* UITextRange+Intersection.swift */,
@@ -611,6 +617,7 @@
 			files = (
 				8B4F2C672A223C8B007A15D7 /* DocumentMetadata.swift in Sources */,
 				8B4F2C582A2236C0007A15D7 /* SidebarViewController.swift in Sources */,
+				ADCA135D2AC0C325000A5EFC /* CompilationError+Identifiable.swift in Sources */,
 				8B4F2C642A223C8B007A15D7 /* SerifianDocument+Compile.swift in Sources */,
 				AD49CE1D2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift in Sources */,
 				8B4F2B702A21376D007A15D7 /* DocumentBrowserViewController.swift in Sources */,
@@ -629,6 +636,7 @@
 				8B348C712A223E18009DD175 /* SourceError.swift in Sources */,
 				8B348C742A223E18009DD175 /* GenericFile.swift in Sources */,
 				8B4F2C682A223C8B007A15D7 /* SerifianDocument+FileReader.swift in Sources */,
+				ADCA135B2AC0C175000A5EFC /* CompilationErrorsView.swift in Sources */,
 				8B348C722A223E18009DD175 /* TypstSourceFile.swift in Sources */,
 				AD9FF0222A9106C700C6EADD /* TypstEditorViewController.swift in Sources */,
 				8B4F2C542A222E6F007A15D7 /* RootSplitViewController.swift in Sources */,
