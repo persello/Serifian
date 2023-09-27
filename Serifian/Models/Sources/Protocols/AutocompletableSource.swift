@@ -9,5 +9,5 @@ import Foundation
 import SwiftyTypst
 
 protocol AutocompletableSource {
-    func autocomplete(at position: Int) -> [AutocompleteResult]
+    func autocomplete(at position: Int) async -> [AutocompleteResult]
 }

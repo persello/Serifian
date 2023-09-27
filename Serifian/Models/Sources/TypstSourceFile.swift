@@ -97,48 +97,41 @@ extension TypstSourceFile: NSCopying {
 }
 
 extension TypstSourceFile: HighlightableSource {
-    func highlightedContents() -> AttributedString {
-        var attributedString = AttributedString(self.content)
-        let highlightResults = self.document.compiler.highlight(filePath: self.getPath().relativeString)
-        
-        attributedString.setAttributes(HighlightingTheme.default.baseContainer)
-        
-        for result in highlightResults {
-            if result.start >= content.count || result.end >= content.count {
-                continue
+    func highlightedContents() async -> AttributedString {
+        return await withCheckedContinuation { continuation in
+            Task { @MainActor in
+                self.document.highlightingContinuations[self.getPath()] = continuation
+                self.document.compiler.highlight(filePath: self.getPath().absoluteString)
             }
-            
-            let attributeContainer = HighlightingTheme.default.attributeContainer(for: result.tag)
-            let startIndex = attributedString.index(attributedString.startIndex, offsetByUnicodeScalars: Int(result.start))
-            let endIndex = attributedString.index(attributedString.startIndex, offsetByUnicodeScalars: Int(result.end))
-            
-            attributedString[startIndex..<endIndex].setAttributes(attributeContainer)
         }
-        
-        return attributedString
     }
 }
 
 extension TypstSourceFile: AutocompletableSource {
-    func autocomplete(at position: Int) -> [AutocompleteResult] {
+    func autocomplete(at position: Int) async -> [AutocompleteResult] {
         
         // TODO: This algorithm assumes that line termination is a single character. Please normalise the file first.
-        
-        var characterPosition = UInt64(position)
-        
-        var row: UInt64 = 0
-        var column: UInt64 = 0
-        self.content.enumerateLines { line, stop in
-            if characterPosition <= line.count {
-                column = characterPosition
-                stop = true
-                return
-            } else {
-                characterPosition -= UInt64(line.count + 1)
-                row += 1
+        return await withCheckedContinuation { continuation in
+            Task { @MainActor in
+                self.document.autocompletionContinuations[self.getPath()] = continuation
+
+                var characterPosition = UInt64(position)
+                
+                var row: UInt64 = 0
+                var column: UInt64 = 0
+                self.content.enumerateLines { line, stop in
+                    if characterPosition <= line.count {
+                        column = characterPosition
+                        stop = true
+                        return
+                    } else {
+                        characterPosition -= UInt64(line.count + 1)
+                        row += 1
+                    }
+                }
+                
+                self.document.compiler.autocomplete(filePath: self.getPath().absoluteString, line: row, column: column)
             }
         }
-        
-        return self.document.compiler.autocomplete(filePath: self.getPath().relativeString, line: row, column: column)
     }
 }

@@ -13,14 +13,23 @@ import os
 
 class SerifianDocument: UIDocument, Identifiable, ObservableObject {
     private(set) var title: String
+    
     var compiler: TypstCompiler!
+
     var metadata: DocumentMetadata
+    
     private var sources: [any SourceProtocol] = []
+    
     private(set) var coverImage: CGImage?
+    
     @Published private(set) var preview: PDFDocument?
     @Published private(set) var errors: [CompilationError] = []
     
     private var sourceCancellables: [AnyCancellable] = []
+    
+    internal var compilationContinuation: CheckedContinuation<PDFDocument, any Error>? = nil
+    internal var highlightingContinuations: [URL: CheckedContinuation<AttributedString, Never>] = [:]
+    internal var autocompletionContinuations: [URL: CheckedContinuation<[AutocompleteResult], Never>] = [:]
     
     static let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "SerifianDocument")
         
@@ -42,7 +51,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         self.metadata = DocumentMetadata(mainSource: URL(string: "/main.typ")!, lastOpenedSource: URL(string: "/main.typ")!)
         super.init(fileURL: url)
         
-        self.compiler = TypstCompiler(fileReader: self, main: self.metadata.mainSource.absoluteString)
+        self.compiler = TypstCompiler(delegate: self, fileManager: self, main: self.metadata.mainSource.absoluteString)
         self.loadFonts()
     }
     
@@ -185,13 +194,11 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         
         self.sources.append(source)
         
-        let cancellable = source.changePublisher.throttle(for: 0.1, scheduler: RunLoop.main, latest: true).sink { _ in
+        let cancellable = source.changePublisher.throttle(for: 1, scheduler: RunLoop.main, latest: true).sink { _ in
             self.objectWillChange.send()
             Self.logger.trace("\(source.name) changed. Recompiling document.")
             Task.detached {
-                do {
-                    let _ = try? await self.compile(updatesPreview: true)
-                }
+                try? await self.compile(updatesPreview: true)
             }
         }
         
@@ -199,7 +206,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
     }
     
     func updateErrors(_ errors: [CompilationError]) {
-        DispatchQueue.main.async {
+        Task { @MainActor in
             self.errors = errors
         }
     }

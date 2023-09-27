@@ -8,10 +8,10 @@
 import Foundation
 import SwiftyTypst
 
-extension SerifianDocument: FileReader {    
+extension SerifianDocument: SwiftyTypst.FileManager {
     func source(path: URL, in folder: Folder?) -> (any SourceProtocol)? {
         
-        Self.logger.trace("Getting source \(path.relativeString)\(folder == nil ? "" : " inside " + folder!.name).")
+//        Self.logger.trace("Getting source \(path.absoluteString)\(folder == nil ? "" : " inside " + folder!.name).")
 
         var sources: [any SourceProtocol] = []
         if let folder {
@@ -22,14 +22,22 @@ extension SerifianDocument: FileReader {
 
         for source in sources {
             if let folder = source as? Folder {
-                return self.source(path: path, in: folder)
+                if let source = self.source(path: path, in: folder) {
+                    return source
+                }
             } else {
-                if source.getPath().relativePath == path.relativePath {
+                if source.getPath() == path {
+                    Self.logger.trace("Found source \(path.absoluteString).")
                     return source
                 }
             }
         }
 
+        if let folder {
+            Self.logger.trace("Source \(path.absoluteString) not found in \(folder.name).")
+        } else {
+            Self.logger.warning("Source \(path.absoluteString) not found.")
+        }
         return nil
     }
 
@@ -38,11 +46,11 @@ extension SerifianDocument: FileReader {
         
         guard let url = URL(string: path),
               let file = self.source(path: url, in: nil) else {
-            throw FileReaderError.NotFound(message: "Not found among the document's sources.")
+            throw FileManagerError.NotFound(message: "Not found among the document's sources.")
         }
 
         if file is Folder {
-            throw FileReaderError.IsDirectory(message: "The specified source is a directory.")
+            throw FileManagerError.IsDirectory(message: "The specified source is a directory.")
         } else if let typstSource = file as? TypstSourceFile {
             let utf8: [UInt8] = Array(typstSource.content.utf8)
             return utf8
@@ -52,6 +60,18 @@ extension SerifianDocument: FileReader {
             return [UInt8](imageFile.content)
         }
 
-        throw FileReaderError.Other(message: "Cannot convert the contents of the specified source to data.")
+        throw FileManagerError.Other(message: "Cannot convert the contents of the specified source to data.")
+    }
+    
+    func write(path: String, data: [UInt8]) throws {
+        
+    }
+    
+    func exists(path: String) throws -> Bool {
+        true
+    }
+    
+    func createDirectory(path: String) throws {
+        
     }
 }

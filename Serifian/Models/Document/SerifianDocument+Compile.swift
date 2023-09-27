@@ -16,34 +16,22 @@ enum CompilationErrorContainer: Error {
 }
 
 extension SerifianDocument {
+    // TODO: Remove parameter updatesPreview.
     @discardableResult
     func compile(updatesPreview: Bool = true) async throws -> PDFDocument {
         
-        Self.logger.trace("Recompiling document.")
-        
-        try self.compiler.setMain(main: self.metadata.mainSource.absoluteString)
-        let result = self.compiler?.compile()
-        
-        switch result {
-        case .document(let buffer):
-            Self.logger.trace("Compilation finished (\(buffer.count) bytes).")
-            self.updateErrors([])
-            if let document = PDFDocument(data: Data(buffer)) {
-                if updatesPreview { self.setPreview(document) }
-                return document
-            } else {
-                Self.logger.error("Cannot convert the document to PDF.")
-                throw CompilationErrorContainer.pdfConversion
+        return try await withCheckedThrowingContinuation { continuation in
+            Self.logger.trace("Recompiling document.")
+            do {
+                try self.compiler.setMain(main: self.metadata.mainSource.absoluteString)
+            } catch {
+                continuation.resume(throwing: error)
+                return
             }
             
-            // TODO: Handle warnings.
-        case .errors(let errors):
-            Self.logger.warning("Compilation errors: \(errors).")
-            self.updateErrors(errors)
-            throw CompilationErrorContainer.compilation(errors: errors)
-        default:
-            Self.logger.error("Undefined compilation result.")
-            throw CompilationErrorContainer.undefined
+            self.compilationContinuation = continuation
+            
+            self.compiler?.compile()
         }
     }
 }

@@ -81,7 +81,7 @@ class WorkbenchViewController: UIDocumentViewController {
             
             Self.logger.trace("Preview document has changed.")
             
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 
                 Self.logger.trace("Refreshing preview view.")
                 

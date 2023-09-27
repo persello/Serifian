@@ -37,7 +37,7 @@ class SidebarViewController: UIViewController {
                     self.updateSidebar()
                 }),
                 UIAction(title: "Import existing...", image: UIImage(systemName: "square.and.arrow.down.on.square"), handler: { _ in
-                    let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.text, .image, .jpeg, .json, .commaSeparatedText, .bmp, .cHeader, .cPlusPlusHeader, .cSource, .cPlusPlusSource, .objectiveCSource, .objectiveCPlusPlusSource, .swiftSource, .rubyScript, .gif, .heif, .xml, .yaml, .assemblyLanguageSource, .plainText])
+                    let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.png, .jpeg, .gif, .svg, .plainText, .text])
                     
                     picker.allowsMultipleSelection = true
                     picker.shouldShowFileExtensions = true

@@ -34,7 +34,7 @@
 		8B4F2C652A223C8B007A15D7 /* DocumentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C602A223C8B007A15D7 /* DocumentError.swift */; };
 		8B4F2C662A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C612A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift */; };
 		8B4F2C672A223C8B007A15D7 /* DocumentMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C622A223C8B007A15D7 /* DocumentMetadata.swift */; };
-		8B4F2C682A223C8B007A15D7 /* SerifianDocument+FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileReader.swift */; };
+		8B4F2C682A223C8B007A15D7 /* SerifianDocument+FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileManager.swift */; };
 		8B87B6FC2A36685100287D9F /* HighlightableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87B6FB2A36685100287D9F /* HighlightableSource.swift */; };
 		8B87B6FE2A3668BA00287D9F /* AutocompletableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */; };
 		8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */; };
@@ -78,6 +78,7 @@
 		AD49CE222AB75C240068D5B1 /* UITextRange+Intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE212AB75C240068D5B1 /* UITextRange+Intersection.swift */; };
 		AD8DC5D52A8E8421008E2717 /* AutocompletePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */; };
 		AD8DC5DA2A900CD1008E2717 /* Fuse in Frameworks */ = {isa = PBXBuildFile; productRef = AD8DC5D92A900CD1008E2717 /* Fuse */; };
+		AD9DA7032AC42D59001099AA /* SerifianDocument+TypstCompilerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9DA7022AC42D59001099AA /* SerifianDocument+TypstCompilerDelegate.swift */; };
 		AD9FF0212A90FE9E00C6EADD /* AutocompletePopupHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FF0202A90FE9E00C6EADD /* AutocompletePopupHostingController.swift */; };
 		AD9FF0222A9106C700C6EADD /* TypstEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */; };
 		ADB569E52A8E633400F67C54 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = ADB569E42A8E633400F67C54 /* SwiftyTypst */; };
@@ -152,7 +153,7 @@
 		8B4F2C602A223C8B007A15D7 /* DocumentError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentError.swift; sourceTree = "<group>"; };
 		8B4F2C612A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+Thumbnail.swift"; sourceTree = "<group>"; };
 		8B4F2C622A223C8B007A15D7 /* DocumentMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentMetadata.swift; sourceTree = "<group>"; };
-		8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+FileReader.swift"; sourceTree = "<group>"; };
+		8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+FileManager.swift"; sourceTree = "<group>"; };
 		8B87B6FB2A36685100287D9F /* HighlightableSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightableSource.swift; sourceTree = "<group>"; };
 		8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletableSource.swift; sourceTree = "<group>"; };
 		8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableDividerView.swift; sourceTree = "<group>"; };
@@ -199,6 +200,7 @@
 		AD49CE1F2AB7384D0068D5B1 /* AutocompleteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteCoordinator.swift; sourceTree = "<group>"; };
 		AD49CE212AB75C240068D5B1 /* UITextRange+Intersection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextRange+Intersection.swift"; sourceTree = "<group>"; };
 		AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopup.swift; sourceTree = "<group>"; };
+		AD9DA7022AC42D59001099AA /* SerifianDocument+TypstCompilerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+TypstCompilerDelegate.swift"; sourceTree = "<group>"; };
 		AD9FF0202A90FE9E00C6EADD /* AutocompletePopupHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopupHostingController.swift; sourceTree = "<group>"; };
 		ADCA13582AC0ABE1000A5EFC /* Empty.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Empty.sr; sourceTree = "<group>"; };
 		ADCA135A2AC0C175000A5EFC /* CompilationErrorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompilationErrorsView.swift; sourceTree = "<group>"; };
@@ -382,9 +384,10 @@
 				8B4F2C622A223C8B007A15D7 /* DocumentMetadata.swift */,
 				8B4F2C5A2A223B64007A15D7 /* SerifianDocument.swift */,
 				8B4F2C5F2A223C8B007A15D7 /* SerifianDocument+Compile.swift */,
-				8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileReader.swift */,
+				8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileManager.swift */,
 				AD2B64072ABC6C4000DAF85E /* SerifianDocument+Fonts.swift */,
 				8B4F2C612A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift */,
+				AD9DA7022AC42D59001099AA /* SerifianDocument+TypstCompilerDelegate.swift */,
 			);
 			path = Document;
 			sourceTree = "<group>";
@@ -635,13 +638,14 @@
 				8B348C7D2A225462009DD175 /* WorkbenchViewController.swift in Sources */,
 				8B348C712A223E18009DD175 /* SourceError.swift in Sources */,
 				8B348C742A223E18009DD175 /* GenericFile.swift in Sources */,
-				8B4F2C682A223C8B007A15D7 /* SerifianDocument+FileReader.swift in Sources */,
+				8B4F2C682A223C8B007A15D7 /* SerifianDocument+FileManager.swift in Sources */,
 				ADCA135B2AC0C175000A5EFC /* CompilationErrorsView.swift in Sources */,
 				8B348C722A223E18009DD175 /* TypstSourceFile.swift in Sources */,
 				AD9FF0222A9106C700C6EADD /* TypstEditorViewController.swift in Sources */,
 				8B4F2C542A222E6F007A15D7 /* RootSplitViewController.swift in Sources */,
 				8B87B6FE2A3668BA00287D9F /* AutocompletableSource.swift in Sources */,
 				8B348C892A22B0A2009DD175 /* SidebarItemViewModel.swift in Sources */,
+				AD9DA7032AC42D59001099AA /* SerifianDocument+TypstCompilerDelegate.swift in Sources */,
 				8B348C752A223E18009DD175 /* ImageFile.swift in Sources */,
 				ADD5C4062A8D6F6600CCD0C5 /* HighlightingTheme.swift in Sources */,
 				8B4F2C652A223C8B007A15D7 /* DocumentError.swift in Sources */,

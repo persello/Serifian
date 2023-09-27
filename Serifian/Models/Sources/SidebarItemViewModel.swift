@@ -39,14 +39,14 @@ class SidebarItemViewModel: Identifiable, Hashable, Equatable {
         }
 
         if referencedSource is ImageFile {
-            return UIImage(systemName: "photo.fill")!
+            return UIImage(systemName: "photo")!
         }
 
         if referencedSource is Folder {
             return UIImage(systemName: "folder")!
         }
 
-        return UIImage(systemName: "doc.fill")!
+        return UIImage(systemName: "doc")!
     }
 
     var id: URL {

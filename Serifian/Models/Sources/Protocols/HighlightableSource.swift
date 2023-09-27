@@ -8,5 +8,5 @@
 import Foundation
 
 protocol HighlightableSource {
-    func highlightedContents() -> AttributedString
+    func highlightedContents() async -> AttributedString
 }
