@@ -17,6 +17,9 @@ class TypstSourceFile: SourceProtocol {
     
     internal var highlightingCache: AttributedString? = nil
     
+    private var highlightingLock = NSLock()
+    private var autocompletionLock = NSLock()
+    
     var changePublisher: AnyPublisher<Void, Never> {
         return self.objectWillChange.eraseToAnyPublisher()
     }
@@ -103,13 +106,16 @@ extension TypstSourceFile: HighlightableSource {
         return await withCheckedContinuation { continuation in
             Task { @MainActor in
                 
-                // End the previous continuation before starting another.
-                if let oldContinuation = self.document.highlightingContinuations[self.getPath()] {
-                    oldContinuation.resume(returning: self.highlightingCache ?? AttributedString())
+                self.highlightingLock.withLock {
+                    // End the previous continuation before starting another.
+                    if let oldContinuation = self.document.highlightingContinuations[self.getPath()] {
+                        self.document.highlightingContinuations.removeValue(forKey: self.getPath())
+                        oldContinuation.resume(returning: self.highlightingCache ?? AttributedString())
+                    }
+                    
+                    self.document.highlightingContinuations[self.getPath()] = continuation
+                    self.document.compiler.highlight(filePath: self.getPath().absoluteString)
                 }
-                
-                self.document.highlightingContinuations[self.getPath()] = continuation
-                self.document.compiler.highlight(filePath: self.getPath().absoluteString)
             }
         }
     }
@@ -126,30 +132,29 @@ extension TypstSourceFile: AutocompletableSource {
                 
                 var row: UInt64 = 0
                 var column: UInt64 = 0
-                var fail = false
+
                 self.content.enumerateLines { line, stop in
                     if characterPosition <= line.count {
                         column = characterPosition
                         stop = true
-                        fail = true
+                        return
                     } else {
                         characterPosition -= UInt64(line.count + 1)
                         row += 1
                     }
                 }
+
                 
-                if fail {
-                    continuation.resume(returning: [])
-                    return
+                self.autocompletionLock.withLock {
+                    // End the previous continuation before starting another.
+                    if let oldContinuation = self.document.autocompletionContinuations[self.getPath()] {
+                        self.document.autocompletionContinuations.removeValue(forKey: self.getPath())
+                        oldContinuation.resume(returning: [])
+                    }
+                    
+                    self.document.autocompletionContinuations[self.getPath()] = continuation
+                    self.document.compiler.autocomplete(filePath: self.getPath().absoluteString, line: row, column: column)
                 }
-                
-                // End the previous continuation before starting another.
-                if let oldContinuation = self.document.autocompletionContinuations[self.getPath()] {
-                    oldContinuation.resume(returning: [])
-                }
-                
-                self.document.autocompletionContinuations[self.getPath()] = continuation
-                self.document.compiler.autocomplete(filePath: self.getPath().absoluteString, line: row, column: column)
             }
         }
     }

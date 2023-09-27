@@ -22,6 +22,7 @@ extension SerifianDocument {
         
         return try await withCheckedThrowingContinuation { continuation in
             Self.logger.trace("Recompiling document.")
+            
             do {
                 try self.compiler.setMain(main: self.metadata.mainSource.absoluteString)
             } catch {
@@ -31,6 +32,7 @@ extension SerifianDocument {
             
             // We need to end the previous continuation before starting a new one.
             if let compilationContinuation {
+                self.compilationContinuation = nil
                 compilationContinuation.resume(returning: self.preview ?? PDFDocument())
             }
             

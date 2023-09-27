@@ -76,14 +76,16 @@ class TypstEditorViewController: UIViewController {
     }
     
     func highlight() async {
-        Self.logger.debug("Highlighting source.")
+        Self.logger.debug("Highlighting \(self.source.name).")
         let highlighted = await self.source.highlightedContents()
         Task { @MainActor in
-            let cursorPosition = self.textView.selectedRange
-            let scrollPosition = self.textView.contentOffset
+//            let cursorPosition = self.textView.selectedRange
+//            let scrollPosition = self.textView.contentOffset
+            self.textView.delegate = nil
             self.textView.attributedText = NSAttributedString(highlighted)
-            self.textView.contentOffset = scrollPosition
-            self.textView.selectedRange = cursorPosition
+            self.textView.delegate = self
+//            self.textView.contentOffset = scrollPosition
+//            self.textView.selectedRange = cursorPosition
         }
     }
     
@@ -95,7 +97,7 @@ class TypstEditorViewController: UIViewController {
             return
         }
         
-        Self.logger.trace("Starting autocompletion.")
+        Self.logger.trace("Starting autocompletion for \(self.source.name).")
         
         let characterPosition = self.textView.offset(from: textView.beginningOfDocument, to: cursorPosition)
         

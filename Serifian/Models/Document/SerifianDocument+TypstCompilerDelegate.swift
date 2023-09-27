@@ -16,9 +16,7 @@ extension SerifianDocument: TypstCompilerDelegate {
             return
         }
         
-        defer {
-            self.compilationContinuation = nil
-        }
+        self.compilationContinuation = nil
         
         switch result {
         case .document(let buffer, let warnings):
@@ -46,13 +44,11 @@ extension SerifianDocument: TypstCompilerDelegate {
         }
         
         guard let continuation = self.highlightingContinuations[url] else {
-            Self.logger.error("Received a highlighting event for an URL that does not have an associated continuation: \(url). Current continuations are set for \(self.highlightingContinuations.keys)")
+            Self.logger.error("Received a highlighting finished event for an URL that does not have an associated continuation: \(url). Current continuations are set for \(self.highlightingContinuations.keys)")
             return
         }
-
-        defer {
-            self.highlightingContinuations.removeValue(forKey: url)
-        }
+        
+        self.highlightingContinuations.removeValue(forKey: url)
         
         guard let source = self.source(path: url, in: nil) else {
             Self.logger.error("Received a highlighting finished event for a path that does not refer to a source: \(url.absoluteString). Returning an empty attributed string.")
@@ -83,24 +79,27 @@ extension SerifianDocument: TypstCompilerDelegate {
         
         typstSource.highlightingCache = attributedString
         
+        Self.logger.trace("Autocompletion finished for \(url.absoluteString).")
+        
+        
         continuation.resume(returning: attributedString)
     }
     
     func autocompleteFinished(path: String, result: [SwiftyTypst.AutocompleteResult]) {
         guard let url = URL(string: path) else {
-            Self.logger.error("Received a highlighting finished event for an invalid URL: \(path).")
+            Self.logger.error("Received an autocompletion finished event for an invalid URL: \(path).")
             return
         }
         
         guard let continuation = self.autocompletionContinuations[url] else {
-            Self.logger.error("Received a highlighting event for an URL that does not have an associated continuation: \(url).")
+            Self.logger.error("Received an autocompletion finished event for an URL that does not have an associated continuation: \(url). Current continuations are set for \(self.autocompletionContinuations.keys)")
             return
         }
-        
-        defer {
-            self.autocompletionContinuations.removeValue(forKey: url)
-        }
-        
+
+        self.autocompletionContinuations.removeValue(forKey: url)
+
+        Self.logger.trace("Autocompletion finished for \(url.absoluteString).")
+                
         continuation.resume(returning: result)
     }
 }
