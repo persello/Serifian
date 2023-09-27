@@ -29,6 +29,11 @@ extension SerifianDocument {
                 return
             }
             
+            // We need to end the previous continuation before starting a new one.
+            if let compilationContinuation {
+                compilationContinuation.resume(returning: self.preview ?? PDFDocument())
+            }
+            
             self.compilationContinuation = continuation
             
             self.compiler?.compile()

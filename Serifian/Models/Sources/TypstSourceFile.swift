@@ -15,6 +15,8 @@ class TypstSourceFile: SourceProtocol {
     weak var parent: Folder?
     unowned var document: SerifianDocument
     
+    internal var highlightingCache: AttributedString? = nil
+    
     var changePublisher: AnyPublisher<Void, Never> {
         return self.objectWillChange.eraseToAnyPublisher()
     }
@@ -100,6 +102,12 @@ extension TypstSourceFile: HighlightableSource {
     func highlightedContents() async -> AttributedString {
         return await withCheckedContinuation { continuation in
             Task { @MainActor in
+                
+                // End the previous continuation before starting another.
+                if let oldContinuation = self.document.highlightingContinuations[self.getPath()] {
+                    oldContinuation.resume(returning: self.highlightingCache ?? AttributedString())
+                }
+                
                 self.document.highlightingContinuations[self.getPath()] = continuation
                 self.document.compiler.highlight(filePath: self.getPath().absoluteString)
             }
@@ -113,23 +121,34 @@ extension TypstSourceFile: AutocompletableSource {
         // TODO: This algorithm assumes that line termination is a single character. Please normalise the file first.
         return await withCheckedContinuation { continuation in
             Task { @MainActor in
-                self.document.autocompletionContinuations[self.getPath()] = continuation
 
                 var characterPosition = UInt64(position)
                 
                 var row: UInt64 = 0
                 var column: UInt64 = 0
+                var fail = false
                 self.content.enumerateLines { line, stop in
                     if characterPosition <= line.count {
                         column = characterPosition
                         stop = true
-                        return
+                        fail = true
                     } else {
                         characterPosition -= UInt64(line.count + 1)
                         row += 1
                     }
                 }
                 
+                if fail {
+                    continuation.resume(returning: [])
+                    return
+                }
+                
+                // End the previous continuation before starting another.
+                if let oldContinuation = self.document.autocompletionContinuations[self.getPath()] {
+                    oldContinuation.resume(returning: [])
+                }
+                
+                self.document.autocompletionContinuations[self.getPath()] = continuation
                 self.document.compiler.autocomplete(filePath: self.getPath().absoluteString, line: row, column: column)
             }
         }

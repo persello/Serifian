@@ -22,9 +22,7 @@ class TypstEditorViewController: UIViewController {
     private var source: TypstSourceFile!
     private var autocompletePopupHostingController: AutocompletePopupHostingController!
     private var highlightCancellable: AnyCancellable?
-    
-    private var highlightingTask: Task<Void, Error>?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,12 +44,16 @@ class TypstEditorViewController: UIViewController {
         Self.logger.trace("Text view delegate set.")
         
         Self.logger.trace("Doing first highlight.")
-        self.highlight()
+        Task {
+            await self.highlight()
+        }
         
         self.setupUndoManager()
         
         self.highlightCancellable = self.source.objectWillChange.debounce(for: 0.1, scheduler: RunLoop.main).sink { _ in
-            self.highlight()
+            Task {
+                await self.highlight()
+            }
         }
     }
     
@@ -73,17 +75,15 @@ class TypstEditorViewController: UIViewController {
         self.setupUndoManager()
     }
     
-    func highlight() {
+    func highlight() async {
         Self.logger.debug("Highlighting source.")
-        self.highlightingTask = Task.detached {
-            let highlighted = await self.source.highlightedContents()
-            Task { @MainActor in
-                let cursorPosition = self.textView.selectedRange
-                let scrollPosition = self.textView.contentOffset
-                self.textView.attributedText = NSAttributedString(highlighted)
-                self.textView.contentOffset = scrollPosition
-                self.textView.selectedRange = cursorPosition
-            }
+        let highlighted = await self.source.highlightedContents()
+        Task { @MainActor in
+            let cursorPosition = self.textView.selectedRange
+            let scrollPosition = self.textView.contentOffset
+            self.textView.attributedText = NSAttributedString(highlighted)
+            self.textView.contentOffset = scrollPosition
+            self.textView.selectedRange = cursorPosition
         }
     }
     
@@ -259,10 +259,6 @@ class TypstEditorViewController: UIViewController {
 extension TypstEditorViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        // Abort highlighting.
-        highlightingTask?.cancel()
-        
         // Ignore tabs and enters when the autocomplete window is shown.
         if !self.autocompleteContainerView.isHidden {
             if text == "\t" {

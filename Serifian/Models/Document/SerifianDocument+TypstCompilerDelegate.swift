@@ -46,7 +46,7 @@ extension SerifianDocument: TypstCompilerDelegate {
         }
         
         guard let continuation = self.highlightingContinuations[url] else {
-            Self.logger.error("Received a highlighting event for an URL that does not have an associated continuation: \(url).")
+            Self.logger.error("Received a highlighting event for an URL that does not have an associated continuation: \(url). Current continuations are set for \(self.highlightingContinuations.keys)")
             return
         }
 
@@ -81,6 +81,8 @@ extension SerifianDocument: TypstCompilerDelegate {
             attributedString[startIndex..<endIndex].setAttributes(attributeContainer)
         }
         
+        typstSource.highlightingCache = attributedString
+        
         continuation.resume(returning: attributedString)
     }
     
@@ -94,7 +96,7 @@ extension SerifianDocument: TypstCompilerDelegate {
             Self.logger.error("Received a highlighting event for an URL that does not have an associated continuation: \(url).")
             return
         }
-
+        
         defer {
             self.autocompletionContinuations.removeValue(forKey: url)
         }
