@@ -38,7 +38,7 @@ extension SerifianDocument {
             
             self.compilationContinuation = continuation
             
-            self.compiler?.compile()
+            self.compiler?.compile(delegate: self)
         }
     }
 }

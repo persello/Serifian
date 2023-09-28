@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import SwiftyTypst
 
-protocol HighlightableSource {
-    func highlightedContents() async -> AttributedString
+protocol HighlightableSource: TypstSourceDelegate {
+    func highlightedContents() async -> AttributedString?
 }

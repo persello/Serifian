@@ -40,16 +40,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0C51C92B-E9BC-4629-8E21-68F6197AA298"
+            uuid = "8C5CD6A2-170E-46FB-B44E-690580515F87"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Serifian/Models/Document/SerifianDocument+TypstCompilerDelegate.swift"
+            filePath = "Serifian/Models/Sources/TypstSourceFile.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "highlightingFinished(path:result:)"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "highlightingFinished(result:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F68D8347-48C4-4B56-8D61-09F09E86BFEE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/Models/Sources/TypstSourceFile.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "highlightingFinished(result:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

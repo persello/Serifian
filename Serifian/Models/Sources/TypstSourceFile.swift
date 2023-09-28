@@ -8,17 +8,22 @@
 import Foundation
 import Combine
 import SwiftyTypst
+import os
 
 class TypstSourceFile: SourceProtocol {
     var name: String
     @Published var content: String
+    
     weak var parent: Folder?
     unowned var document: SerifianDocument
     
-    internal var highlightingCache: AttributedString? = nil
+    fileprivate var highlightingContinuation: CheckedContinuation<AttributedString?, Never>?
+    fileprivate var autocompletionContinuation: CheckedContinuation<[AutocompleteResult], Never>?
     
-    private var highlightingLock = NSLock()
-    private var autocompletionLock = NSLock()
+    private var highlightingTask: Task<(), Never>?
+    
+    static private var logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "TypstSourceFile")
+    static private var signposter = OSSignposter(subsystem: Bundle.main.bundleIdentifier!, category: "TypstSourceFile")
     
     var changePublisher: AnyPublisher<Void, Never> {
         return self.objectWillChange.eraseToAnyPublisher()
@@ -102,21 +107,26 @@ extension TypstSourceFile: NSCopying {
 }
 
 extension TypstSourceFile: HighlightableSource {
-    func highlightedContents() async -> AttributedString {
+    func highlightedContents() async -> AttributedString? {
+        Self.logger.trace("Creating highlighted contents for \(self.name).")
+        
+        // End the previous continuation before starting another.
+        self.cancelHighlighting()
+        
         return await withCheckedContinuation { continuation in
             Task { @MainActor in
-                
-                self.highlightingLock.withLock {
-                    // End the previous continuation before starting another.
-                    if let oldContinuation = self.document.highlightingContinuations[self.getPath()] {
-                        self.document.highlightingContinuations.removeValue(forKey: self.getPath())
-                        oldContinuation.resume(returning: self.highlightingCache ?? AttributedString())
-                    }
-                    
-                    self.document.highlightingContinuations[self.getPath()] = continuation
-                    self.document.compiler.highlight(filePath: self.getPath().absoluteString)
-                }
+                self.highlightingContinuation = continuation
+                self.document.compiler.highlight(delegate: self, filePath: self.getPath().absoluteString)
             }
+        }
+    }
+    
+    func cancelHighlighting() {
+        Self.logger.trace("Canceling highlighting task for \(self.name).")
+        self.highlightingTask?.cancel()
+        if let oldContinuation = self.highlightingContinuation {
+            self.highlightingContinuation = nil
+            oldContinuation.resume(returning: nil)
         }
     }
 }
@@ -124,15 +134,21 @@ extension TypstSourceFile: HighlightableSource {
 extension TypstSourceFile: AutocompletableSource {
     func autocomplete(at position: Int) async -> [AutocompleteResult] {
         
+        // End the previous continuation before starting another.
+        if let oldContinuation = self.autocompletionContinuation {
+            self.autocompletionContinuation = nil
+            oldContinuation.resume(returning: [])
+        }
+        
         // TODO: This algorithm assumes that line termination is a single character. Please normalise the file first.
         return await withCheckedContinuation { continuation in
             Task { @MainActor in
-
+                
                 var characterPosition = UInt64(position)
                 
                 var row: UInt64 = 0
                 var column: UInt64 = 0
-
+                
                 self.content.enumerateLines { line, stop in
                     if characterPosition <= line.count {
                         column = characterPosition
@@ -143,19 +159,84 @@ extension TypstSourceFile: AutocompletableSource {
                         row += 1
                     }
                 }
-
                 
-                self.autocompletionLock.withLock {
-                    // End the previous continuation before starting another.
-                    if let oldContinuation = self.document.autocompletionContinuations[self.getPath()] {
-                        self.document.autocompletionContinuations.removeValue(forKey: self.getPath())
-                        oldContinuation.resume(returning: [])
-                    }
-                    
-                    self.document.autocompletionContinuations[self.getPath()] = continuation
-                    self.document.compiler.autocomplete(filePath: self.getPath().absoluteString, line: row, column: column)
-                }
+                self.autocompletionContinuation = continuation
+                self.document.compiler.autocomplete(delegate: self, filePath: self.getPath().absoluteString, line: row, column: column)
             }
         }
+    }
+}
+
+extension TypstSourceFile: TypstSourceDelegate {
+    func highlightingFinished(result: [SwiftyTypst.HighlightResult]) {
+        guard let continuation = self.highlightingContinuation else {
+            Self.logger.error("Received a highlighting finished event for a source that does not have an associated continuation: \(self.name).")
+            return
+        }
+        
+        self.highlightingContinuation = nil
+        
+        let signpostID = Self.signposter.makeSignpostID()
+        
+        Self.logger.trace("Creating attributed string for \(self.getPath()). There are \(result.count) attributes.")
+        let state = Self.signposter.beginInterval("Attributed string creation", id: signpostID)
+        
+        self.highlightingTask = Task.detached {
+            var attributedString = AttributedString(self.content)
+            attributedString.setAttributes(HighlightingTheme.default.baseContainer)
+            
+            let finalString = await withTaskGroup(of: (container: AttributeContainer, start: AttributedString.Index, end: AttributedString.Index)?.self) { group in
+                for highlight in result {
+                    let stringCopy = attributedString
+                    group.addTask {
+                        let signpostID = Self.signposter.makeSignpostID()
+                        let state = Self.signposter.beginInterval("Attribute container creation", id: signpostID)
+                        
+                        defer {
+                            Self.signposter.endInterval("Attribute container creation", state)
+                        }
+                        
+                        if self.highlightingTask?.isCancelled ?? true {
+                            return nil
+                        }
+                        
+                        if highlight.start >= self.content.count || highlight.end >= self.content.count {
+                            return nil
+                        }
+                        
+                        let attributeContainer = HighlightingTheme.default.attributeContainer(for: highlight.tag)
+                        let startIndex = stringCopy.index(stringCopy.startIndex, offsetByUnicodeScalars: Int(highlight.start))
+                        let endIndex = stringCopy.index(stringCopy.startIndex, offsetByUnicodeScalars: Int(highlight.end))
+                                                
+                        return (attributeContainer, startIndex, endIndex)
+                    }
+                }
+                
+                for await result in group {
+                    if let result {
+                        attributedString[result.start...result.end].setAttributes(result.container)
+                    }
+                }
+                
+                return attributedString
+            }
+            
+            Self.logger.trace("Highlighting finished for \(self.getPath()).")
+            Self.signposter.endInterval("Attributed string creation", state)
+            continuation.resume(returning: finalString)
+        }
+    }
+    
+    func autocompleteFinished(result: [SwiftyTypst.AutocompleteResult]) {
+        guard let continuation = self.autocompletionContinuation else {
+            Self.logger.error("Received an autocompletion finished event for a source that does not have an associated continuation: \(self.getPath()).")
+            return
+        }
+        
+        self.autocompletionContinuation = nil
+        
+        Self.logger.trace("Autocompletion finished for \(self.getPath()).")
+        
+        continuation.resume(returning: result)
     }
 }

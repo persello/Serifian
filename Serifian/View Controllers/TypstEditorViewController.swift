@@ -13,6 +13,7 @@ import os
 class TypstEditorViewController: UIViewController {
     
     static private let logger: Logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "TypstEditorViewController")
+    static private let signposter = OSSignposter(subsystem: Bundle.main.bundleIdentifier!, category: "TypstEditorViewController")
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var autocompleteContainerView: UIView!
@@ -22,7 +23,8 @@ class TypstEditorViewController: UIViewController {
     private var source: TypstSourceFile!
     private var autocompletePopupHostingController: AutocompletePopupHostingController!
     private var highlightCancellable: AnyCancellable?
-        
+    
+            
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,16 +46,15 @@ class TypstEditorViewController: UIViewController {
         Self.logger.trace("Text view delegate set.")
         
         Self.logger.trace("Doing first highlight.")
-        Task {
-            await self.highlight()
-        }
         
         self.setupUndoManager()
+//        
+//        self.highlightCancellable = self.source.objectWillChange.debounce(for: 0.1, scheduler: RunLoop.main).sink { _ in
+//
+//        }
         
-        self.highlightCancellable = self.source.objectWillChange.debounce(for: 0.1, scheduler: RunLoop.main).sink { _ in
-            Task {
-                await self.highlight()
-            }
+        Task.detached {
+            await self.highlight()
         }
     }
     
@@ -77,19 +78,38 @@ class TypstEditorViewController: UIViewController {
     
     func highlight() async {
         Self.logger.debug("Highlighting \(self.source.name).")
-        let highlighted = await self.source.highlightedContents()
+        guard let highlighted = await self.source.highlightedContents() else { return }
         Task { @MainActor in
-//            let cursorPosition = self.textView.selectedRange
-//            let scrollPosition = self.textView.contentOffset
+            let signpostID = Self.signposter.makeSignpostID()
+            let state = Self.signposter.beginInterval("Setting attributed string", id: signpostID)
+            
+            let cursorPosition = self.textView.selectedRange
+            let scrollPosition = self.textView.contentOffset
             self.textView.delegate = nil
+            
+            Self.signposter.emitEvent("Preparation complete", id: signpostID)
+            
             self.textView.attributedText = NSAttributedString(highlighted)
+            
+            Self.signposter.emitEvent("Attributed text set", id: signpostID)
+            
+            self.textView.contentOffset = scrollPosition
+            self.textView.selectedRange = cursorPosition
             self.textView.delegate = self
-//            self.textView.contentOffset = scrollPosition
-//            self.textView.selectedRange = cursorPosition
+            
+            Self.signposter.endInterval("Setting attributed string", state)
         }
     }
     
     func autocompletion() async  {
+        let signpostID = Self.signposter.makeSignpostID()
+        
+        let state = Self.signposter.beginInterval("Autocompletion", id: signpostID)
+        
+        defer {
+            Self.signposter.endInterval("Autocompletion", state)
+        }
+        
         // First, make sure that the selection length is zero.
         guard self.textView.selectedTextRange?.isEmpty ?? false,
               let cursorPosition = self.textView.selectedTextRange?.start else {
@@ -100,7 +120,6 @@ class TypstEditorViewController: UIViewController {
         Self.logger.trace("Starting autocompletion for \(self.source.name).")
         
         let characterPosition = self.textView.offset(from: textView.beginningOfDocument, to: cursorPosition)
-        
         let completions = await self.source.autocomplete(at: characterPosition)
         
         Self.logger.debug("Generated \(completions.count) completions.")
@@ -261,6 +280,9 @@ class TypstEditorViewController: UIViewController {
 extension TypstEditorViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        self.source.cancelHighlighting()
+        
         // Ignore tabs and enters when the autocomplete window is shown.
         if !self.autocompleteContainerView.isHidden {
             if text == "\t" {
@@ -278,49 +300,20 @@ extension TypstEditorViewController: UITextViewDelegate {
         return true
     }
     
-    func textViewDidChangeSelection(_ textView: UITextView) {
-        Task {
-            await self.autocompletion()
-        }
-    }
-    
     func textViewDidChange(_ textView: UITextView) {
         
         Self.logger.trace("Text view content changed.")
-        
         source.content = textView.text
         
-        // Start autocompletion.
-        Task {
-            await self.autocompletion()
+        // Start highlighting.
+        Task.detached {
+            await self.highlight()
         }
         
-        //        let oldText = source.content
-        //
-        //        // Cleanup undo manager.
-        //        if source.document.undoManager.canRedo {
-        ////            source.document.undoManager.remove
-        //        }
-        //
-        //        // Register undo.
-        //        source.document.undoManager.registerUndo(withTarget: source) { source in
-        //
-        //            // Register redo.
-        //            let newText = source.content
-        //            source.document.undoManager.registerUndo(withTarget: source) { source in
-        //
-        //                // Apply redo.
-        //                source.content = newText
-        //                textView.text = newText
-        //            }
-        //
-        //            // Apply undo.
-        //            source.content = oldText
-        //            textView.text = oldText
-        //        }
-        //
-        //        // Change document.
-        //        source.content = textView.text
+        // Start autocompletion.
+        Task.detached {
+            await self.autocompletion()
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

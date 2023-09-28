@@ -28,10 +28,9 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
     private var sourceCancellables: [AnyCancellable] = []
     
     internal var compilationContinuation: CheckedContinuation<PDFDocument, any Error>? = nil
-    internal var highlightingContinuations: [URL: CheckedContinuation<AttributedString, Never>] = [:]
-    internal var autocompletionContinuations: [URL: CheckedContinuation<[AutocompleteResult], Never>] = [:]
     
     static let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "SerifianDocument")
+    static let signposter = OSSignposter(subsystem: Bundle.main.bundleIdentifier!, category: "SerifianDocument")
         
     convenience init(empty: Bool, fileURL: URL) {
         
@@ -51,7 +50,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         self.metadata = DocumentMetadata(mainSource: URL(string: "/main.typ")!, lastOpenedSource: URL(string: "/main.typ")!)
         super.init(fileURL: url)
         
-        self.compiler = TypstCompiler(delegate: self, fileManager: self, main: self.metadata.mainSource.absoluteString)
+        self.compiler = TypstCompiler(fileManager: self, main: self.metadata.mainSource.absoluteString)
         self.loadFonts()
     }
     
