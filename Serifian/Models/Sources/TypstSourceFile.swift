@@ -17,10 +17,11 @@ class TypstSourceFile: SourceProtocol {
     weak var parent: Folder?
     unowned var document: SerifianDocument
     
-    fileprivate var highlightingContinuation: CheckedContinuation<AttributedString?, Never>?
+    fileprivate var highlightingContinuation: CheckedContinuation<NSAttributedString?, Never>?
     fileprivate var autocompletionContinuation: CheckedContinuation<[AutocompleteResult], Never>?
     
     private var highlightingTask: Task<(), Never>?
+    private var highlightingGroup: TaskGroup<(container: [NSAttributedString.Key: Any], range: NSRange)?>?
     
     static private var logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "TypstSourceFile")
     static private var signposter = OSSignposter(subsystem: Bundle.main.bundleIdentifier!, category: "TypstSourceFile")
@@ -107,7 +108,7 @@ extension TypstSourceFile: NSCopying {
 }
 
 extension TypstSourceFile: HighlightableSource {
-    func highlightedContents() async -> AttributedString? {
+    func highlightedContents() async -> NSAttributedString? {
         Self.logger.trace("Creating highlighted contents for \(self.name).")
         
         // End the previous continuation before starting another.
@@ -124,6 +125,7 @@ extension TypstSourceFile: HighlightableSource {
     func cancelHighlighting() {
         Self.logger.trace("Canceling highlighting task for \(self.name).")
         self.highlightingTask?.cancel()
+        self.highlightingGroup?.cancelAll()
         if let oldContinuation = self.highlightingContinuation {
             self.highlightingContinuation = nil
             oldContinuation.resume(returning: nil)
@@ -181,50 +183,27 @@ extension TypstSourceFile: TypstSourceDelegate {
         Self.logger.trace("Creating attributed string for \(self.getPath()). There are \(result.count) attributes.")
         let state = Self.signposter.beginInterval("Attributed string creation", id: signpostID)
         
-        self.highlightingTask = Task.detached {
-            var attributedString = AttributedString(self.content)
-            attributedString.setAttributes(HighlightingTheme.default.baseContainer)
+        let attributedString = NSMutableAttributedString(string: self.content)
+        attributedString.addAttributes(HighlightingTheme.default.baseContainer, range: NSRange(location: 0, length: attributedString.length))
+        
+        for highlight in result {
+            let signpostID = Self.signposter.makeSignpostID()
+            let state = Self.signposter.beginInterval("Attribute container creation", id: signpostID)
             
-            let finalString = await withTaskGroup(of: (container: AttributeContainer, start: AttributedString.Index, end: AttributedString.Index)?.self) { group in
-                for highlight in result {
-                    let stringCopy = attributedString
-                    group.addTask {
-                        let signpostID = Self.signposter.makeSignpostID()
-                        let state = Self.signposter.beginInterval("Attribute container creation", id: signpostID)
-                        
-                        defer {
-                            Self.signposter.endInterval("Attribute container creation", state)
-                        }
-                        
-                        if self.highlightingTask?.isCancelled ?? true {
-                            return nil
-                        }
-                        
-                        if highlight.start >= self.content.count || highlight.end >= self.content.count {
-                            return nil
-                        }
-                        
-                        let attributeContainer = HighlightingTheme.default.attributeContainer(for: highlight.tag)
-                        let startIndex = stringCopy.index(stringCopy.startIndex, offsetByUnicodeScalars: Int(highlight.start))
-                        let endIndex = stringCopy.index(stringCopy.startIndex, offsetByUnicodeScalars: Int(highlight.end))
-                                                
-                        return (attributeContainer, startIndex, endIndex)
-                    }
-                }
-                
-                for await result in group {
-                    if let result {
-                        attributedString[result.start...result.end].setAttributes(result.container)
-                    }
-                }
-                
-                return attributedString
+            if highlight.start >= self.content.count || highlight.end >= self.content.count {
+                continue
             }
             
-            Self.logger.trace("Highlighting finished for \(self.getPath()).")
-            Self.signposter.endInterval("Attributed string creation", state)
-            continuation.resume(returning: finalString)
+            let attributeContainer = HighlightingTheme.default.attributeContainer(for: highlight.tag)
+            
+            attributedString.addAttributes(attributeContainer, range: NSRange(location: Int(highlight.start), length: Int(highlight.end - highlight.start)))
+            Self.signposter.endInterval("Attribute container creation", state)
         }
+        
+        
+        Self.logger.trace("Highlighting finished for \(self.getPath()).")
+        Self.signposter.endInterval("Attributed string creation", state)
+        continuation.resume(returning: attributedString)
     }
     
     func autocompleteFinished(result: [SwiftyTypst.AutocompleteResult]) {

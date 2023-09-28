@@ -89,7 +89,7 @@ class TypstEditorViewController: UIViewController {
             
             Self.signposter.emitEvent("Preparation complete", id: signpostID)
             
-            self.textView.attributedText = NSAttributedString(highlighted)
+            self.textView.attributedText = highlighted
             
             Self.signposter.emitEvent("Attributed text set", id: signpostID)
             

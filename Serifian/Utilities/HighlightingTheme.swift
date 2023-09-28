@@ -12,55 +12,39 @@ import SwiftyTypst
 struct HighlightingTheme {
     static let `default` = Self(
         attributeMap: [
-            .comment: AttributeContainer([.foregroundColor: UIColor.secondaryLabel]),
-            .punctuation: AttributeContainer(),
-            .escape: AttributeContainer([.foregroundColor: UIColor.systemTeal]),
-            .strong: AttributeContainer([.font: UIFont.monospacedSystemFont(ofSize: 14, weight: .bold)]),
-            .emph: AttributeContainer(),
-            .link: AttributeContainer([.underlineStyle: NSUnderlineStyle.single.rawValue]),
-            .raw: AttributeContainer(),
-            .mathDelimiter: AttributeContainer(),
-            .mathOperator: AttributeContainer(),
-            .heading: AttributeContainer([.foregroundColor: UIColor.label, .underlineStyle: NSUnderlineStyle.single.rawValue, .underlineColor: UIColor.label, .font: UIFont.monospacedSystemFont(ofSize: 14, weight: .black)]),
-            .listMarker: AttributeContainer(),
-            .listTerm: AttributeContainer(),
-            .label: AttributeContainer(),
-            .ref: AttributeContainer(),
-            .keyword: AttributeContainer([.foregroundColor: UIColor.systemPink, .font: UIFont.monospacedSystemFont(ofSize: 14, weight: .bold)]),
-            .operator: AttributeContainer(),
-            .number: AttributeContainer([.foregroundColor: UIColor.systemBlue, .font: UIFont.monospacedSystemFont(ofSize: 14, weight: .bold)]),
-            .string: AttributeContainer([.foregroundColor: UIColor.systemGreen, .font: UIFont.monospacedSystemFont(ofSize: 14, weight: .semibold)]),
-            .function: AttributeContainer([.foregroundColor: UIColor.systemPurple, .font: UIFont.monospacedSystemFont(ofSize: 14, weight: .bold)]),
-            .interpolated: AttributeContainer(),
-            .error: AttributeContainer(),
-        ],
-        activePlaceholderContainer: AttributeContainer([
-            .backgroundColor: UIColor.systemBlue
-        ]),
-        inactivePlaceholderContainer: AttributeContainer([
-            .backgroundColor: UIColor.systemBlue.withAlphaComponent(0.2)
-        ])
+            .comment: [.foregroundColor: UIColor.secondaryLabel],
+            .punctuation: [:],
+            .escape: [.foregroundColor: UIColor.systemTeal],
+            .strong: [.font: UIFont.monospacedSystemFont(ofSize: 14, weight: .bold)],
+            .emph: [:],
+            .link: [.underlineStyle: NSUnderlineStyle.single.rawValue],
+            .raw: [:],
+            .mathDelimiter: [:],
+            .mathOperator: [:],
+            .heading: [.foregroundColor: UIColor.label, .underlineStyle: NSUnderlineStyle.single.rawValue, .underlineColor: UIColor.label, .font: UIFont.monospacedSystemFont(ofSize: 14, weight: .black)],
+            .listMarker: [:],
+            .listTerm: [:],
+            .label: [:],
+            .ref: [:],
+            .keyword: [.foregroundColor: UIColor.systemPink, .font: UIFont.monospacedSystemFont(ofSize: 14, weight: .bold)],
+            .operator: [:],
+            .number: [.foregroundColor: UIColor.systemBlue, .font: UIFont.monospacedSystemFont(ofSize: 14, weight: .bold)],
+            .string: [.foregroundColor: UIColor.systemGreen, .font: UIFont.monospacedSystemFont(ofSize: 14, weight: .semibold)],
+            .function: [.foregroundColor: UIColor.systemPurple, .font: UIFont.monospacedSystemFont(ofSize: 14, weight: .bold)],
+            .interpolated: [:],
+            .error: [:],
+        ]
     )
     
-    private let attributeMap: [SwiftyTypst.Tag: AttributeContainer]
-    private let activePlaceholderContainer: AttributeContainer
-    private let inactivePlaceholderContainer: AttributeContainer
+    private let attributeMap: [SwiftyTypst.Tag: [NSAttributedString.Key: Any]]
     
-    let baseContainer = AttributeContainer([.font: UIFont.monospacedSystemFont(ofSize: 14, weight: .regular), .foregroundColor: UIColor.label])
+    let baseContainer: [NSAttributedString.Key: Any] = [.font: UIFont.monospacedSystemFont(ofSize: 14, weight: .regular), .foregroundColor: UIColor.label]
     
-    func attributeContainer(for tag: SwiftyTypst.Tag) -> AttributeContainer {
+    func attributeContainer(for tag: SwiftyTypst.Tag) -> [NSAttributedString.Key: Any] {
         if let container = self.attributeMap[tag] {
-            return baseContainer.merging(container, mergePolicy: .keepNew)
+            return container.merging(baseContainer) { $1 }
         }
         
         return baseContainer
-    }
-    
-    func attributeContainerForPlaceholder(active: Bool) -> AttributeContainer {
-        if active {
-            return baseContainer.merging(self.activePlaceholderContainer)
-        } else {
-            return baseContainer.merging(self.inactivePlaceholderContainer)
-        }
     }
 }

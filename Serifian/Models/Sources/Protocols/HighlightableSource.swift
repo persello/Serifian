@@ -9,5 +9,5 @@ import Foundation
 import SwiftyTypst
 
 protocol HighlightableSource: TypstSourceDelegate {
-    func highlightedContents() async -> AttributedString?
+    func highlightedContents() async -> NSAttributedString?
 }
