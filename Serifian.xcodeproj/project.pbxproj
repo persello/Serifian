@@ -35,10 +35,26 @@
 		8B4F2C662A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C612A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift */; };
 		8B4F2C672A223C8B007A15D7 /* DocumentMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C622A223C8B007A15D7 /* DocumentMetadata.swift */; };
 		8B4F2C682A223C8B007A15D7 /* SerifianDocument+FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileManager.swift */; };
-		8B87B6FC2A36685100287D9F /* HighlightableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87B6FB2A36685100287D9F /* HighlightableSource.swift */; };
 		8B87B6FE2A3668BA00287D9F /* AutocompletableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */; };
 		8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */; };
 		8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */; };
+		8BCC9C2B2AC6113300F4522B /* Runestone in Frameworks */ = {isa = PBXBuildFile; productRef = 8BCC9C2A2AC6113300F4522B /* Runestone */; };
+		8BD4CB012AC61A20001D4E43 /* Example.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB002AC61A1F001D4E43 /* Example.sr */; };
+		8BD4CB262AC61D8D001D4E43 /* Cargo.toml in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB032AC61D8D001D4E43 /* Cargo.toml */; };
+		8BD4CB272AC61D8D001D4E43 /* grammar.js in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB042AC61D8D001D4E43 /* grammar.js */; };
+		8BD4CB282AC61D8D001D4E43 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB052AC61D8D001D4E43 /* LICENSE */; };
+		8BD4CB292AC61D8D001D4E43 /* binding.gyp in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB062AC61D8D001D4E43 /* binding.gyp */; };
+		8BD4CB302AC61D8D001D4E43 /* highlights.scm in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB0F2AC61D8D001D4E43 /* highlights.scm */; };
+		8BD4CB312AC61D8D001D4E43 /* injections.scm in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB102AC61D8D001D4E43 /* injections.scm */; };
+		8BD4CB332AC61D8D001D4E43 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB122AC61D8D001D4E43 /* README.md */; };
+		8BD4CB342AC61D8D001D4E43 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB132AC61D8D001D4E43 /* .gitignore */; };
+		8BD4CB362AC61D8D001D4E43 /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB152AC61D8D001D4E43 /* package.json */; };
+		8BD4CB3A2AC61D8D001D4E43 /* build.rs in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB1B2AC61D8D001D4E43 /* build.rs */; };
+		8BD4CB3D2AC61D8D001D4E43 /* node-types.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB202AC61D8D001D4E43 /* node-types.json */; };
+		8BD4CB3E2AC61D8D001D4E43 /* grammar.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB232AC61D8D001D4E43 /* grammar.json */; };
+		8BD4CB402AC61D8D001D4E43 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4CB252AC61D8D001D4E43 /* parser.c */; };
+		8BD4CB432AC6235E001D4E43 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */; };
+		8BD4CB462AC62FB0001D4E43 /* scanner.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4CB452AC62FAF001D4E43 /* scanner.cc */; };
 		AD2B63C72ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */; };
 		AD2B63E92ABC6C1D00DAF85E /* InriaSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63CB2ABC6C1D00DAF85E /* InriaSerif-Bold.ttf */; };
 		AD2B63EA2ABC6C1D00DAF85E /* NotoSerifHebrew-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63CC2ABC6C1D00DAF85E /* NotoSerifHebrew-Bold.ttf */; };
@@ -86,7 +102,6 @@
 		ADCA135B2AC0C175000A5EFC /* CompilationErrorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA135A2AC0C175000A5EFC /* CompilationErrorsView.swift */; };
 		ADCA135D2AC0C325000A5EFC /* CompilationError+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA135C2AC0C325000A5EFC /* CompilationError+Identifiable.swift */; };
 		ADCFDA542ABC884600C2C555 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = ADCFDA532ABC884600C2C555 /* SwiftyTypst */; };
-		ADD5C4062A8D6F6600CCD0C5 /* HighlightingTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD5C4052A8D6F6600CCD0C5 /* HighlightingTheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,13 +169,30 @@
 		8B4F2C612A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+Thumbnail.swift"; sourceTree = "<group>"; };
 		8B4F2C622A223C8B007A15D7 /* DocumentMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentMetadata.swift; sourceTree = "<group>"; };
 		8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+FileManager.swift"; sourceTree = "<group>"; };
-		8B87B6FB2A36685100287D9F /* HighlightableSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightableSource.swift; sourceTree = "<group>"; };
 		8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletableSource.swift; sourceTree = "<group>"; };
 		8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableDividerView.swift; sourceTree = "<group>"; };
 		8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
 		8BC05B0C2A6C278E00C4B69A /* Serifian.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Serifian.entitlements; sourceTree = "<group>"; };
 		8BC05B0D2A6C278E00C4B69A /* Preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Preview.entitlements; sourceTree = "<group>"; };
 		8BC05B0E2A6C278E00C4B69A /* Thumbnail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Thumbnail.entitlements; sourceTree = "<group>"; };
+		8BD4CB002AC61A1F001D4E43 /* Example.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Example.sr; sourceTree = "<group>"; };
+		8BD4CB032AC61D8D001D4E43 /* Cargo.toml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cargo.toml; sourceTree = "<group>"; };
+		8BD4CB042AC61D8D001D4E43 /* grammar.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = grammar.js; sourceTree = "<group>"; };
+		8BD4CB052AC61D8D001D4E43 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8BD4CB062AC61D8D001D4E43 /* binding.gyp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = binding.gyp; sourceTree = "<group>"; };
+		8BD4CB0F2AC61D8D001D4E43 /* highlights.scm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = highlights.scm; sourceTree = "<group>"; };
+		8BD4CB102AC61D8D001D4E43 /* injections.scm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = injections.scm; sourceTree = "<group>"; };
+		8BD4CB122AC61D8D001D4E43 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8BD4CB132AC61D8D001D4E43 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		8BD4CB152AC61D8D001D4E43 /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
+		8BD4CB1B2AC61D8D001D4E43 /* build.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = build.rs; sourceTree = "<group>"; };
+		8BD4CB202AC61D8D001D4E43 /* node-types.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "node-types.json"; sourceTree = "<group>"; };
+		8BD4CB222AC61D8D001D4E43 /* parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
+		8BD4CB232AC61D8D001D4E43 /* grammar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = grammar.json; sourceTree = "<group>"; };
+		8BD4CB252AC61D8D001D4E43 /* parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser.c; sourceTree = "<group>"; };
+		8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTheme.swift; sourceTree = "<group>"; };
+		8BD4CB442AC62DC9001D4E43 /* TreeSitterTypst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeSitterTypst.h; sourceTree = "<group>"; };
+		8BD4CB452AC62FAF001D4E43 /* scanner.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner.cc; sourceTree = "<group>"; };
 		8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstEditorViewController.swift; sourceTree = "<group>"; };
 		AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutocompleteResult+Clean.swift"; sourceTree = "<group>"; };
 		AD2B63CB2ABC6C1D00DAF85E /* InriaSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "InriaSerif-Bold.ttf"; sourceTree = "<group>"; };
@@ -205,7 +237,6 @@
 		ADCA13582AC0ABE1000A5EFC /* Empty.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Empty.sr; sourceTree = "<group>"; };
 		ADCA135A2AC0C175000A5EFC /* CompilationErrorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompilationErrorsView.swift; sourceTree = "<group>"; };
 		ADCA135C2AC0C325000A5EFC /* CompilationError+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompilationError+Identifiable.swift"; sourceTree = "<group>"; };
-		ADD5C4052A8D6F6600CCD0C5 /* HighlightingTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightingTheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BCC9C2B2AC6113300F4522B /* Runestone in Frameworks */,
 				ADB569E52A8E633400F67C54 /* SwiftyTypst in Frameworks */,
 				ADCFDA542ABC884600C2C555 /* SwiftyTypst in Frameworks */,
 				AD8DC5DA2A900CD1008E2717 /* Fuse in Frameworks */,
@@ -268,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				ADCA13582AC0ABE1000A5EFC /* Empty.sr */,
+				8BD4CB002AC61A1F001D4E43 /* Example.sr */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -277,9 +310,9 @@
 			children = (
 				AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */,
 				AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */,
+				8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */,
 				8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */,
 				ADCA135C2AC0C325000A5EFC /* CompilationError+Identifiable.swift */,
-				ADD5C4052A8D6F6600CCD0C5 /* HighlightingTheme.swift */,
 				AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */,
 				AD49CE212AB75C240068D5B1 /* UITextRange+Intersection.swift */,
 			);
@@ -294,6 +327,9 @@
 				8B4F2B6C2A21376D007A15D7 /* Serifian */,
 				8B4F2C312A222627007A15D7 /* Preview */,
 				8B4F2C482A2226AD007A15D7 /* Thumbnail */,
+				8BD4CB022AC61D8D001D4E43 /* TreeSitterTypst */,
+				8BD4CB442AC62DC9001D4E43 /* TreeSitterTypst.h */,
+				8BD4CB452AC62FAF001D4E43 /* scanner.cc */,
 				8B4F2C2E2A222626007A15D7 /* Frameworks */,
 				8B4F2B6B2A21376D007A15D7 /* Products */,
 			);
@@ -396,9 +432,69 @@
 			isa = PBXGroup;
 			children = (
 				8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */,
-				8B87B6FB2A36685100287D9F /* HighlightableSource.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8BD4CB022AC61D8D001D4E43 /* TreeSitterTypst */ = {
+			isa = PBXGroup;
+			children = (
+				8BD4CB032AC61D8D001D4E43 /* Cargo.toml */,
+				8BD4CB042AC61D8D001D4E43 /* grammar.js */,
+				8BD4CB052AC61D8D001D4E43 /* LICENSE */,
+				8BD4CB062AC61D8D001D4E43 /* binding.gyp */,
+				8BD4CB0E2AC61D8D001D4E43 /* queries */,
+				8BD4CB122AC61D8D001D4E43 /* README.md */,
+				8BD4CB132AC61D8D001D4E43 /* .gitignore */,
+				8BD4CB152AC61D8D001D4E43 /* package.json */,
+				8BD4CB182AC61D8D001D4E43 /* bindings */,
+				8BD4CB1F2AC61D8D001D4E43 /* src */,
+			);
+			path = TreeSitterTypst;
+			sourceTree = "<group>";
+		};
+		8BD4CB0E2AC61D8D001D4E43 /* queries */ = {
+			isa = PBXGroup;
+			children = (
+				8BD4CB0F2AC61D8D001D4E43 /* highlights.scm */,
+				8BD4CB102AC61D8D001D4E43 /* injections.scm */,
+			);
+			path = queries;
+			sourceTree = "<group>";
+		};
+		8BD4CB182AC61D8D001D4E43 /* bindings */ = {
+			isa = PBXGroup;
+			children = (
+				8BD4CB192AC61D8D001D4E43 /* rust */,
+			);
+			path = bindings;
+			sourceTree = "<group>";
+		};
+		8BD4CB192AC61D8D001D4E43 /* rust */ = {
+			isa = PBXGroup;
+			children = (
+				8BD4CB1B2AC61D8D001D4E43 /* build.rs */,
+			);
+			path = rust;
+			sourceTree = "<group>";
+		};
+		8BD4CB1F2AC61D8D001D4E43 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				8BD4CB202AC61D8D001D4E43 /* node-types.json */,
+				8BD4CB212AC61D8D001D4E43 /* tree_sitter */,
+				8BD4CB232AC61D8D001D4E43 /* grammar.json */,
+				8BD4CB252AC61D8D001D4E43 /* parser.c */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		8BD4CB212AC61D8D001D4E43 /* tree_sitter */ = {
+			isa = PBXGroup;
+			children = (
+				8BD4CB222AC61D8D001D4E43 /* parser.h */,
+			);
+			path = tree_sitter;
 			sourceTree = "<group>";
 		};
 		AD2B63CA2ABC6C1D00DAF85E /* Fonts */ = {
@@ -471,6 +567,7 @@
 				ADB569E42A8E633400F67C54 /* SwiftyTypst */,
 				AD8DC5D92A900CD1008E2717 /* Fuse */,
 				ADCFDA532ABC884600C2C555 /* SwiftyTypst */,
+				8BCC9C2A2AC6113300F4522B /* Runestone */,
 			);
 			productName = Serifian;
 			productReference = 8B4F2B6A2A21376D007A15D7 /* Serifian.app */;
@@ -543,6 +640,7 @@
 			packageReferences = (
 				AD8DC5D82A900C83008E2717 /* XCRemoteSwiftPackageReference "fuse-swift" */,
 				ADCFDA522ABC884600C2C555 /* XCRemoteSwiftPackageReference "SwiftyTypst" */,
+				8BCC9C292AC6113300F4522B /* XCRemoteSwiftPackageReference "Runestone" */,
 			);
 			productRefGroup = 8B4F2B6B2A21376D007A15D7 /* Products */;
 			projectDirPath = "";
@@ -560,39 +658,52 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BD4CB362AC61D8D001D4E43 /* package.json in Resources */,
 				AD2B63ED2ABC6C1D00DAF85E /* NewCM10-Regular.otf in Resources */,
 				AD2B64062ABC6C1D00DAF85E /* InriaSerif-BoldItalic.ttf in Resources */,
+				8BD4CB302AC61D8D001D4E43 /* highlights.scm in Resources */,
 				AD2B64002ABC6C1D00DAF85E /* NotoSansSymbols2-Regular.ttf in Resources */,
 				AD2B63EA2ABC6C1D00DAF85E /* NotoSerifHebrew-Bold.ttf in Resources */,
 				ADCA13592AC0ABE1000A5EFC /* Empty.sr in Resources */,
 				AD2B63F92ABC6C1D00DAF85E /* DejaVuSansMono.ttf in Resources */,
 				AD2B63EC2ABC6C1D00DAF85E /* IBMPlexSerif-Regular.ttf in Resources */,
+				8BD4CB342AC61D8D001D4E43 /* .gitignore in Resources */,
 				AD2B63E92ABC6C1D00DAF85E /* InriaSerif-Bold.ttf in Resources */,
+				8BD4CB272AC61D8D001D4E43 /* grammar.js in Resources */,
 				AD2B63FD2ABC6C1D00DAF85E /* TwitterColorEmoji.ttf in Resources */,
 				AD2B63F82ABC6C1D00DAF85E /* LinLibertine_RI.ttf in Resources */,
 				8B4F2B7C2A21376E007A15D7 /* LaunchScreen.storyboard in Resources */,
+				8BD4CB3A2AC61D8D001D4E43 /* build.rs in Resources */,
 				AD2B63FC2ABC6C1D00DAF85E /* PTSans-Regular.ttf in Resources */,
+				8BD4CB332AC61D8D001D4E43 /* README.md in Resources */,
+				8BD4CB262AC61D8D001D4E43 /* Cargo.toml in Resources */,
 				AD2B64012ABC6C1D00DAF85E /* DejaVuSansMono-Oblique.ttf in Resources */,
 				AD2B64022ABC6C1D00DAF85E /* NewCM10-BoldItalic.otf in Resources */,
 				AD2B64032ABC6C1D00DAF85E /* NotoSansArabic-Regular.ttf in Resources */,
+				8BD4CB3D2AC61D8D001D4E43 /* node-types.json in Resources */,
 				AD2B63F22ABC6C1D00DAF85E /* DejaVuSansMono-BoldOblique.ttf in Resources */,
+				8BD4CB3E2AC61D8D001D4E43 /* grammar.json in Resources */,
+				8BD4CB012AC61A20001D4E43 /* Example.sr in Resources */,
 				AD2B63F32ABC6C1D00DAF85E /* NewCMMath-Book.otf in Resources */,
 				AD2B63EB2ABC6C1D00DAF85E /* NewCMMath-Regular.otf in Resources */,
 				AD2B63F52ABC6C1D00DAF85E /* Ubuntu-Regular.ttf in Resources */,
 				8B4F2B792A21376E007A15D7 /* Assets.xcassets in Resources */,
 				AD2B63F02ABC6C1D00DAF85E /* Roboto-Regular.ttf in Resources */,
 				AD2B63FE2ABC6C1D00DAF85E /* LinLibertine_R.ttf in Resources */,
+				8BD4CB292AC61D8D001D4E43 /* binding.gyp in Resources */,
 				AD2B64052ABC6C1D00DAF85E /* LinLibertine_RBI.ttf in Resources */,
 				AD2B63F72ABC6C1D00DAF85E /* NotoColorEmoji.ttf in Resources */,
 				AD2B63F42ABC6C1D00DAF85E /* NotoSerifCJKsc-Regular.otf in Resources */,
 				AD2B63FA2ABC6C1D00DAF85E /* NewCM10-Bold.otf in Resources */,
 				AD2B63F62ABC6C1D00DAF85E /* FiraMath-Regular.otf in Resources */,
+				8BD4CB282AC61D8D001D4E43 /* LICENSE in Resources */,
 				AD2B63EE2ABC6C1D00DAF85E /* InriaSerif-Regular.ttf in Resources */,
 				AD2B63FB2ABC6C1D00DAF85E /* InriaSerif-Italic.ttf in Resources */,
 				AD2B63FF2ABC6C1D00DAF85E /* DejaVuSansMono-Bold.ttf in Resources */,
 				AD2B64042ABC6C1D00DAF85E /* NotoSerifHebrew-Regular.ttf in Resources */,
 				8B4F2B772A21376D007A15D7 /* Main.storyboard in Resources */,
 				AD2B63F12ABC6C1D00DAF85E /* LinLibertine_RB.ttf in Resources */,
+				8BD4CB312AC61D8D001D4E43 /* injections.scm in Resources */,
 				AD2B63EF2ABC6C1D00DAF85E /* NewCM10-Italic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -630,6 +741,7 @@
 				8B4F2B6E2A21376D007A15D7 /* AppDelegate.swift in Sources */,
 				8B4F2C662A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift in Sources */,
 				8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */,
+				8BD4CB462AC62FB0001D4E43 /* scanner.cc in Sources */,
 				AD8DC5D52A8E8421008E2717 /* AutocompletePopup.swift in Sources */,
 				AD49CE222AB75C240068D5B1 /* UITextRange+Intersection.swift in Sources */,
 				AD9FF0212A90FE9E00C6EADD /* AutocompletePopupHostingController.swift in Sources */,
@@ -643,17 +755,17 @@
 				8B348C722A223E18009DD175 /* TypstSourceFile.swift in Sources */,
 				AD9FF0222A9106C700C6EADD /* TypstEditorViewController.swift in Sources */,
 				8B4F2C542A222E6F007A15D7 /* RootSplitViewController.swift in Sources */,
+				8BD4CB432AC6235E001D4E43 /* EditorTheme.swift in Sources */,
 				8B87B6FE2A3668BA00287D9F /* AutocompletableSource.swift in Sources */,
 				8B348C892A22B0A2009DD175 /* SidebarItemViewModel.swift in Sources */,
 				AD9DA7032AC42D59001099AA /* SerifianDocument+TypstCompilerDelegate.swift in Sources */,
 				8B348C752A223E18009DD175 /* ImageFile.swift in Sources */,
-				ADD5C4062A8D6F6600CCD0C5 /* HighlightingTheme.swift in Sources */,
 				8B4F2C652A223C8B007A15D7 /* DocumentError.swift in Sources */,
 				8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */,
 				AD334FB72A7703AD006FCB04 /* UIResponder+Swizzle.swift in Sources */,
 				8B4F2C5B2A223B64007A15D7 /* SerifianDocument.swift in Sources */,
 				8B348C702A223E18009DD175 /* Folder.swift in Sources */,
-				8B87B6FC2A36685100287D9F /* HighlightableSource.swift in Sources */,
+				8BD4CB402AC61D8D001D4E43 /* parser.c in Sources */,
 				AD2B64082ABC6C4000DAF85E /* SerifianDocument+Fonts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -860,6 +972,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = TreeSitterTypst.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -900,6 +1013,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = TreeSitterTypst.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -1059,6 +1173,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8BCC9C292AC6113300F4522B /* XCRemoteSwiftPackageReference "Runestone" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simonbs/Runestone";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.2;
+			};
+		};
 		AD8DC5D82A900C83008E2717 /* XCRemoteSwiftPackageReference "fuse-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/krisk/fuse-swift";
@@ -1078,6 +1200,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8BCC9C2A2AC6113300F4522B /* Runestone */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BCC9C292AC6113300F4522B /* XCRemoteSwiftPackageReference "Runestone" */;
+			productName = Runestone;
+		};
 		AD8DC5D92A900CD1008E2717 /* Fuse */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AD8DC5D82A900C83008E2717 /* XCRemoteSwiftPackageReference "fuse-swift" */;

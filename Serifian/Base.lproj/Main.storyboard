@@ -211,15 +211,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eAr-c4-MQY">
-                                <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjt-fo-cgd" userLabel="Autocomplete Container View">
-                                <rect key="frame" x="200" y="340" width="360" height="240"/>
+                                <rect key="frame" x="220" y="180" width="360" height="240"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="360" id="7sY-Qh-uL5"/>
@@ -233,28 +226,19 @@
                         <viewLayoutGuide key="safeArea" id="Mi3-Xa-kIY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bjt-fo-cgd" firstAttribute="leading" secondItem="eAr-c4-MQY" secondAttribute="leading" priority="500" constant="200" id="4az-OA-EAM"/>
-                            <constraint firstItem="eAr-c4-MQY" firstAttribute="top" secondItem="ezJ-zl-yNW" secondAttribute="top" id="NNy-g0-xKM"/>
-                            <constraint firstItem="eAr-c4-MQY" firstAttribute="trailing" secondItem="Mi3-Xa-kIY" secondAttribute="trailing" id="T7H-C0-ElA"/>
-                            <constraint firstItem="bjt-fo-cgd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Mi3-Xa-kIY" secondAttribute="top" constant="20" id="Vd7-iV-R6c"/>
-                            <constraint firstItem="bjt-fo-cgd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Mi3-Xa-kIY" secondAttribute="leading" constant="20" id="aaW-Mg-0n1"/>
-                            <constraint firstAttribute="bottom" secondItem="eAr-c4-MQY" secondAttribute="bottom" id="cOf-VF-l9I"/>
-                            <constraint firstItem="Mi3-Xa-kIY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bjt-fo-cgd" secondAttribute="bottom" constant="20" id="l6M-a8-k2z"/>
-                            <constraint firstItem="eAr-c4-MQY" firstAttribute="leading" secondItem="Mi3-Xa-kIY" secondAttribute="leading" id="oBh-3U-P7z"/>
-                            <constraint firstItem="Mi3-Xa-kIY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bjt-fo-cgd" secondAttribute="trailing" constant="20" id="rLf-IW-zGd"/>
-                            <constraint firstItem="bjt-fo-cgd" firstAttribute="top" secondItem="eAr-c4-MQY" secondAttribute="top" priority="500" constant="424" id="wDW-tl-eyr"/>
+                            <constraint firstItem="bjt-fo-cgd" firstAttribute="leading" secondItem="Mi3-Xa-kIY" secondAttribute="leading" constant="220" id="Ecg-Vj-MuK"/>
+                            <constraint firstItem="bjt-fo-cgd" firstAttribute="top" secondItem="Mi3-Xa-kIY" secondAttribute="top" constant="180" id="TqW-Un-ZfQ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="autocompleteContainerView" destination="bjt-fo-cgd" id="ZCy-7V-dMB"/>
-                        <outlet property="idealAutocompleteHorizontalConstraint" destination="4az-OA-EAM" id="0ST-4G-657"/>
-                        <outlet property="idealAutocompleteVerticalConstraint" destination="wDW-tl-eyr" id="dyr-jJ-yMg"/>
-                        <outlet property="textView" destination="eAr-c4-MQY" id="Y20-Nq-wbL"/>
+                        <outlet property="idealAutocompleteHorizontalConstraint" destination="Ecg-Vj-MuK" id="gHz-In-ptE"/>
+                        <outlet property="idealAutocompleteVerticalConstraint" destination="TqW-Un-ZfQ" id="Ot3-Pe-3MH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EWM-3D-Q6D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1459.7989949748744" y="2158.9928057553957"/>
+            <point key="canvasLocation" x="1459.5" y="2158"/>
         </scene>
         <!--Autocomplete Popup Hosting Controller-->
         <scene sceneID="JvU-xr-sdR">
@@ -269,9 +253,6 @@
         <image name="checkmark.circle" catalog="system" width="128" height="123"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="sidebar.squares.trailing" catalog="system" width="128" height="93"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -1,0 +1,4 @@
+
+[submodule "TreeSitterTypst"]
+	path = TreeSitterTypst
+	url = https://github.com/uben0/tree-sitter-typst.git

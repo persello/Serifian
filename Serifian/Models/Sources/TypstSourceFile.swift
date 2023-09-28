@@ -107,32 +107,6 @@ extension TypstSourceFile: NSCopying {
     }
 }
 
-extension TypstSourceFile: HighlightableSource {
-    func highlightedContents() async -> NSAttributedString? {
-        Self.logger.trace("Creating highlighted contents for \(self.name).")
-        
-        // End the previous continuation before starting another.
-        self.cancelHighlighting()
-        
-        return await withCheckedContinuation { continuation in
-            Task { @MainActor in
-                self.highlightingContinuation = continuation
-                self.document.compiler.highlight(delegate: self, filePath: self.getPath().absoluteString)
-            }
-        }
-    }
-    
-    func cancelHighlighting() {
-        Self.logger.trace("Canceling highlighting task for \(self.name).")
-        self.highlightingTask?.cancel()
-        self.highlightingGroup?.cancelAll()
-        if let oldContinuation = self.highlightingContinuation {
-            self.highlightingContinuation = nil
-            oldContinuation.resume(returning: nil)
-        }
-    }
-}
-
 extension TypstSourceFile: AutocompletableSource {
     func autocomplete(at position: Int) async -> [AutocompleteResult] {
         
@@ -171,39 +145,7 @@ extension TypstSourceFile: AutocompletableSource {
 
 extension TypstSourceFile: TypstSourceDelegate {
     func highlightingFinished(result: [SwiftyTypst.HighlightResult]) {
-        guard let continuation = self.highlightingContinuation else {
-            Self.logger.error("Received a highlighting finished event for a source that does not have an associated continuation: \(self.name).")
-            return
-        }
-        
-        self.highlightingContinuation = nil
-        
-        let signpostID = Self.signposter.makeSignpostID()
-        
-        Self.logger.trace("Creating attributed string for \(self.getPath()). There are \(result.count) attributes.")
-        let state = Self.signposter.beginInterval("Attributed string creation", id: signpostID)
-        
-        let attributedString = NSMutableAttributedString(string: self.content)
-        attributedString.addAttributes(HighlightingTheme.default.baseContainer, range: NSRange(location: 0, length: attributedString.length))
-        
-        for highlight in result {
-            let signpostID = Self.signposter.makeSignpostID()
-            let state = Self.signposter.beginInterval("Attribute container creation", id: signpostID)
-            
-            if highlight.start >= self.content.count || highlight.end >= self.content.count {
-                continue
-            }
-            
-            let attributeContainer = HighlightingTheme.default.attributeContainer(for: highlight.tag)
-            
-            attributedString.addAttributes(attributeContainer, range: NSRange(location: Int(highlight.start), length: Int(highlight.end - highlight.start)))
-            Self.signposter.endInterval("Attribute container creation", state)
-        }
-        
-        
-        Self.logger.trace("Highlighting finished for \(self.getPath()).")
-        Self.signposter.endInterval("Attributed string creation", state)
-        continuation.resume(returning: attributedString)
+        fatalError("Highlighting is done in tree-sitter. Do not use the integrated highlighter.")
     }
     
     func autocompleteFinished(result: [SwiftyTypst.AutocompleteResult]) {
