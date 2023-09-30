@@ -46,10 +46,18 @@ class TypstEditorViewController: UIViewController {
         self.textView.backgroundColor = .systemBackground
         self.textView.showLineNumbers = true
         self.textView.lineSelectionDisplayType = .line
+        self.textView.characterPairs = [TypstCharacterPair.asterisks, TypstCharacterPair.backticks, TypstCharacterPair.braces, TypstCharacterPair.brackets, TypstCharacterPair.parentheses, TypstCharacterPair.quotes, TypstCharacterPair.underscores]
+        self.textView.lineBreakMode = .byWordWrapping
+        self.textView.gutterLeadingPadding = 12
+        self.textView.lineHeightMultiplier = 1.2
+        self.textView.textContainerInset = .init(top: 0, left: 12, bottom: 0, right: 0)
+        self.textView.verticalOverscrollFactor = 0.9
         
         self.textView.autocapitalizationType = .none
         self.textView.smartQuotesType = .no
         self.textView.smartDashesType = .no
+        
+        self.textView.editorDelegate = self
         
         textView.setState(TextViewState(text: self.source.content, theme: EditorTheme(), language: language))
         
@@ -97,12 +105,19 @@ class TypstEditorViewController: UIViewController {
     }
 }
 
+extension TypstEditorViewController: TextViewDelegate {
+    func textViewDidChange(_ textView: TextView) {
+        // Edit source.
+        self.source.content = textView.text
+    }
+}
+
 #Preview("Typst Editor View Controller") {
     let documentURL = Bundle.main.url(forResource: "Example", withExtension: ".sr")!
     let document = SerifianDocument(fileURL: documentURL)
     try! document.read(from: documentURL)
     
-    let source = document.getSources().compactMap({$0 as? TypstSourceFile}).first!
+    let source = document.getSources().compactMap({$0 as? TypstSourceFile}).last!
     
     let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TypstEditorViewController") as! TypstEditorViewController
     

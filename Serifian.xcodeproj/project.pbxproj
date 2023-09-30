@@ -36,25 +36,36 @@
 		8B4F2C672A223C8B007A15D7 /* DocumentMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C622A223C8B007A15D7 /* DocumentMetadata.swift */; };
 		8B4F2C682A223C8B007A15D7 /* SerifianDocument+FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileManager.swift */; };
 		8B87B6FE2A3668BA00287D9F /* AutocompletableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */; };
+		8B882E562AC8310300BD2FEE /* DOC.md in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E342AC8310200BD2FEE /* DOC.md */; };
+		8B882E572AC8310300BD2FEE /* Cargo.toml in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E352AC8310200BD2FEE /* Cargo.toml */; };
+		8B882E582AC8310300BD2FEE /* grammar.js in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E362AC8310200BD2FEE /* grammar.js */; };
+		8B882E592AC8310300BD2FEE /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E372AC8310200BD2FEE /* LICENSE */; };
+		8B882E5A2AC8310300BD2FEE /* binding.gyp in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E382AC8310200BD2FEE /* binding.gyp */; };
+		8B882E5B2AC8310300BD2FEE /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 8B882E392AC8310200BD2FEE /* Makefile */; };
+		8B882E5C2AC8310300BD2FEE /* test.scm in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E3B2AC8310200BD2FEE /* test.scm */; };
+		8B882E5D2AC8310300BD2FEE /* chaos.scm in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E3C2AC8310200BD2FEE /* chaos.scm */; };
+		8B882E5E2AC8310300BD2FEE /* fixme.scm in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E3D2AC8310200BD2FEE /* fixme.scm */; };
+		8B882E5F2AC8310300BD2FEE /* highlights.scm in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E3F2AC8310200BD2FEE /* highlights.scm */; };
+		8B882E602AC8310300BD2FEE /* injections.scm in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E402AC8310200BD2FEE /* injections.scm */; };
+		8B882E612AC8310300BD2FEE /* unicode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E412AC8310200BD2FEE /* unicode.txt */; };
+		8B882E622AC8310300BD2FEE /* size.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E422AC8310200BD2FEE /* size.txt */; };
+		8B882E632AC8310300BD2FEE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E432AC8310200BD2FEE /* README.md */; };
+		8B882E642AC8310300BD2FEE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E442AC8310200BD2FEE /* .gitignore */; };
+		8B882E652AC8310300BD2FEE /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E452AC8310200BD2FEE /* package.json */; };
+		8B882E662AC8310300BD2FEE /* lib.rs in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E482AC8310200BD2FEE /* lib.rs */; };
+		8B882E672AC8310300BD2FEE /* build.rs in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E492AC8310200BD2FEE /* build.rs */; };
+		8B882E692AC8310300BD2FEE /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E4C2AC8310200BD2FEE /* index.js */; };
+		8B882E6A2AC8310300BD2FEE /* languages.toml in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E4E2AC8310200BD2FEE /* languages.toml */; };
+		8B882E6B2AC8310300BD2FEE /* scanner.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B882E502AC8310200BD2FEE /* scanner.c */; };
+		8B882E6C2AC8310300BD2FEE /* node-types.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E512AC8310200BD2FEE /* node-types.json */; };
+		8B882E6D2AC8310300BD2FEE /* grammar.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E542AC8310200BD2FEE /* grammar.json */; };
+		8B882E6E2AC8310300BD2FEE /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B882E552AC8310200BD2FEE /* parser.c */; };
+		8B882E702AC8577300BD2FEE /* TypstCharacterPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B882E6F2AC8577300BD2FEE /* TypstCharacterPair.swift */; };
 		8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */; };
 		8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */; };
 		8BCC9C2B2AC6113300F4522B /* Runestone in Frameworks */ = {isa = PBXBuildFile; productRef = 8BCC9C2A2AC6113300F4522B /* Runestone */; };
 		8BD4CB012AC61A20001D4E43 /* Example.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB002AC61A1F001D4E43 /* Example.sr */; };
-		8BD4CB262AC61D8D001D4E43 /* Cargo.toml in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB032AC61D8D001D4E43 /* Cargo.toml */; };
-		8BD4CB272AC61D8D001D4E43 /* grammar.js in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB042AC61D8D001D4E43 /* grammar.js */; };
-		8BD4CB282AC61D8D001D4E43 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB052AC61D8D001D4E43 /* LICENSE */; };
-		8BD4CB292AC61D8D001D4E43 /* binding.gyp in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB062AC61D8D001D4E43 /* binding.gyp */; };
-		8BD4CB302AC61D8D001D4E43 /* highlights.scm in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB0F2AC61D8D001D4E43 /* highlights.scm */; };
-		8BD4CB312AC61D8D001D4E43 /* injections.scm in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB102AC61D8D001D4E43 /* injections.scm */; };
-		8BD4CB332AC61D8D001D4E43 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB122AC61D8D001D4E43 /* README.md */; };
-		8BD4CB342AC61D8D001D4E43 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB132AC61D8D001D4E43 /* .gitignore */; };
-		8BD4CB362AC61D8D001D4E43 /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB152AC61D8D001D4E43 /* package.json */; };
-		8BD4CB3A2AC61D8D001D4E43 /* build.rs in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB1B2AC61D8D001D4E43 /* build.rs */; };
-		8BD4CB3D2AC61D8D001D4E43 /* node-types.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB202AC61D8D001D4E43 /* node-types.json */; };
-		8BD4CB3E2AC61D8D001D4E43 /* grammar.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB232AC61D8D001D4E43 /* grammar.json */; };
-		8BD4CB402AC61D8D001D4E43 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4CB252AC61D8D001D4E43 /* parser.c */; };
 		8BD4CB432AC6235E001D4E43 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */; };
-		8BD4CB462AC62FB0001D4E43 /* scanner.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4CB452AC62FAF001D4E43 /* scanner.cc */; };
 		AD2B63C72ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */; };
 		AD2B63E92ABC6C1D00DAF85E /* InriaSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63CB2ABC6C1D00DAF85E /* InriaSerif-Bold.ttf */; };
 		AD2B63EA2ABC6C1D00DAF85E /* NotoSerifHebrew-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63CC2ABC6C1D00DAF85E /* NotoSerifHebrew-Bold.ttf */; };
@@ -170,29 +181,41 @@
 		8B4F2C622A223C8B007A15D7 /* DocumentMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentMetadata.swift; sourceTree = "<group>"; };
 		8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+FileManager.swift"; sourceTree = "<group>"; };
 		8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletableSource.swift; sourceTree = "<group>"; };
+		8B882E342AC8310200BD2FEE /* DOC.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = DOC.md; sourceTree = "<group>"; };
+		8B882E352AC8310200BD2FEE /* Cargo.toml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cargo.toml; sourceTree = "<group>"; };
+		8B882E362AC8310200BD2FEE /* grammar.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = grammar.js; sourceTree = "<group>"; };
+		8B882E372AC8310200BD2FEE /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8B882E382AC8310200BD2FEE /* binding.gyp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = binding.gyp; sourceTree = "<group>"; };
+		8B882E392AC8310200BD2FEE /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		8B882E3B2AC8310200BD2FEE /* test.scm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.scm; sourceTree = "<group>"; };
+		8B882E3C2AC8310200BD2FEE /* chaos.scm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = chaos.scm; sourceTree = "<group>"; };
+		8B882E3D2AC8310200BD2FEE /* fixme.scm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fixme.scm; sourceTree = "<group>"; };
+		8B882E3F2AC8310200BD2FEE /* highlights.scm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = highlights.scm; sourceTree = "<group>"; };
+		8B882E402AC8310200BD2FEE /* injections.scm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = injections.scm; sourceTree = "<group>"; };
+		8B882E412AC8310200BD2FEE /* unicode.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode.txt; sourceTree = "<group>"; };
+		8B882E422AC8310200BD2FEE /* size.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = size.txt; sourceTree = "<group>"; };
+		8B882E432AC8310200BD2FEE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8B882E442AC8310200BD2FEE /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		8B882E452AC8310200BD2FEE /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
+		8B882E482AC8310200BD2FEE /* lib.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lib.rs; sourceTree = "<group>"; };
+		8B882E492AC8310200BD2FEE /* build.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = build.rs; sourceTree = "<group>"; };
+		8B882E4B2AC8310200BD2FEE /* binding.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = binding.cc; sourceTree = "<group>"; };
+		8B882E4C2AC8310200BD2FEE /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
+		8B882E4E2AC8310200BD2FEE /* languages.toml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = languages.toml; sourceTree = "<group>"; };
+		8B882E502AC8310200BD2FEE /* scanner.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = scanner.c; sourceTree = "<group>"; };
+		8B882E512AC8310200BD2FEE /* node-types.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "node-types.json"; sourceTree = "<group>"; };
+		8B882E532AC8310200BD2FEE /* parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
+		8B882E542AC8310200BD2FEE /* grammar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = grammar.json; sourceTree = "<group>"; };
+		8B882E552AC8310200BD2FEE /* parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser.c; sourceTree = "<group>"; };
+		8B882E6F2AC8577300BD2FEE /* TypstCharacterPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstCharacterPair.swift; sourceTree = "<group>"; };
 		8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableDividerView.swift; sourceTree = "<group>"; };
 		8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
 		8BC05B0C2A6C278E00C4B69A /* Serifian.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Serifian.entitlements; sourceTree = "<group>"; };
 		8BC05B0D2A6C278E00C4B69A /* Preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Preview.entitlements; sourceTree = "<group>"; };
 		8BC05B0E2A6C278E00C4B69A /* Thumbnail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Thumbnail.entitlements; sourceTree = "<group>"; };
 		8BD4CB002AC61A1F001D4E43 /* Example.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Example.sr; sourceTree = "<group>"; };
-		8BD4CB032AC61D8D001D4E43 /* Cargo.toml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cargo.toml; sourceTree = "<group>"; };
-		8BD4CB042AC61D8D001D4E43 /* grammar.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = grammar.js; sourceTree = "<group>"; };
-		8BD4CB052AC61D8D001D4E43 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		8BD4CB062AC61D8D001D4E43 /* binding.gyp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = binding.gyp; sourceTree = "<group>"; };
-		8BD4CB0F2AC61D8D001D4E43 /* highlights.scm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = highlights.scm; sourceTree = "<group>"; };
-		8BD4CB102AC61D8D001D4E43 /* injections.scm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = injections.scm; sourceTree = "<group>"; };
-		8BD4CB122AC61D8D001D4E43 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		8BD4CB132AC61D8D001D4E43 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		8BD4CB152AC61D8D001D4E43 /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
-		8BD4CB1B2AC61D8D001D4E43 /* build.rs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = build.rs; sourceTree = "<group>"; };
-		8BD4CB202AC61D8D001D4E43 /* node-types.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "node-types.json"; sourceTree = "<group>"; };
-		8BD4CB222AC61D8D001D4E43 /* parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
-		8BD4CB232AC61D8D001D4E43 /* grammar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = grammar.json; sourceTree = "<group>"; };
-		8BD4CB252AC61D8D001D4E43 /* parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser.c; sourceTree = "<group>"; };
 		8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTheme.swift; sourceTree = "<group>"; };
 		8BD4CB442AC62DC9001D4E43 /* TreeSitterTypst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeSitterTypst.h; sourceTree = "<group>"; };
-		8BD4CB452AC62FAF001D4E43 /* scanner.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner.cc; sourceTree = "<group>"; };
 		8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstEditorViewController.swift; sourceTree = "<group>"; };
 		AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutocompleteResult+Clean.swift"; sourceTree = "<group>"; };
 		AD2B63CB2ABC6C1D00DAF85E /* InriaSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "InriaSerif-Bold.ttf"; sourceTree = "<group>"; };
@@ -310,9 +333,10 @@
 			children = (
 				AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */,
 				AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */,
-				8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */,
+				8B882E6F2AC8577300BD2FEE /* TypstCharacterPair.swift */,
 				8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */,
 				ADCA135C2AC0C325000A5EFC /* CompilationError+Identifiable.swift */,
+				8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */,
 				AD334FB62A7703AD006FCB04 /* UIResponder+Swizzle.swift */,
 				AD49CE212AB75C240068D5B1 /* UITextRange+Intersection.swift */,
 			);
@@ -327,9 +351,8 @@
 				8B4F2B6C2A21376D007A15D7 /* Serifian */,
 				8B4F2C312A222627007A15D7 /* Preview */,
 				8B4F2C482A2226AD007A15D7 /* Thumbnail */,
-				8BD4CB022AC61D8D001D4E43 /* TreeSitterTypst */,
+				8B882E332AC8310200BD2FEE /* TreeSitterTypst */,
 				8BD4CB442AC62DC9001D4E43 /* TreeSitterTypst.h */,
-				8BD4CB452AC62FAF001D4E43 /* scanner.cc */,
 				8B4F2C2E2A222626007A15D7 /* Frameworks */,
 				8B4F2B6B2A21376D007A15D7 /* Products */,
 			);
@@ -436,63 +459,99 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		8BD4CB022AC61D8D001D4E43 /* TreeSitterTypst */ = {
+		8B882E332AC8310200BD2FEE /* TreeSitterTypst */ = {
 			isa = PBXGroup;
 			children = (
-				8BD4CB032AC61D8D001D4E43 /* Cargo.toml */,
-				8BD4CB042AC61D8D001D4E43 /* grammar.js */,
-				8BD4CB052AC61D8D001D4E43 /* LICENSE */,
-				8BD4CB062AC61D8D001D4E43 /* binding.gyp */,
-				8BD4CB0E2AC61D8D001D4E43 /* queries */,
-				8BD4CB122AC61D8D001D4E43 /* README.md */,
-				8BD4CB132AC61D8D001D4E43 /* .gitignore */,
-				8BD4CB152AC61D8D001D4E43 /* package.json */,
-				8BD4CB182AC61D8D001D4E43 /* bindings */,
-				8BD4CB1F2AC61D8D001D4E43 /* src */,
+				8B882E342AC8310200BD2FEE /* DOC.md */,
+				8B882E352AC8310200BD2FEE /* Cargo.toml */,
+				8B882E362AC8310200BD2FEE /* grammar.js */,
+				8B882E372AC8310200BD2FEE /* LICENSE */,
+				8B882E382AC8310200BD2FEE /* binding.gyp */,
+				8B882E392AC8310200BD2FEE /* Makefile */,
+				8B882E3A2AC8310200BD2FEE /* corpus */,
+				8B882E3E2AC8310200BD2FEE /* queries */,
+				8B882E412AC8310200BD2FEE /* unicode.txt */,
+				8B882E422AC8310200BD2FEE /* size.txt */,
+				8B882E432AC8310200BD2FEE /* README.md */,
+				8B882E442AC8310200BD2FEE /* .gitignore */,
+				8B882E452AC8310200BD2FEE /* package.json */,
+				8B882E462AC8310200BD2FEE /* bindings */,
+				8B882E4D2AC8310200BD2FEE /* helix */,
+				8B882E4F2AC8310200BD2FEE /* src */,
 			);
 			path = TreeSitterTypst;
 			sourceTree = "<group>";
 		};
-		8BD4CB0E2AC61D8D001D4E43 /* queries */ = {
+		8B882E3A2AC8310200BD2FEE /* corpus */ = {
 			isa = PBXGroup;
 			children = (
-				8BD4CB0F2AC61D8D001D4E43 /* highlights.scm */,
-				8BD4CB102AC61D8D001D4E43 /* injections.scm */,
+				8B882E3B2AC8310200BD2FEE /* test.scm */,
+				8B882E3C2AC8310200BD2FEE /* chaos.scm */,
+				8B882E3D2AC8310200BD2FEE /* fixme.scm */,
+			);
+			path = corpus;
+			sourceTree = "<group>";
+		};
+		8B882E3E2AC8310200BD2FEE /* queries */ = {
+			isa = PBXGroup;
+			children = (
+				8B882E3F2AC8310200BD2FEE /* highlights.scm */,
+				8B882E402AC8310200BD2FEE /* injections.scm */,
 			);
 			path = queries;
 			sourceTree = "<group>";
 		};
-		8BD4CB182AC61D8D001D4E43 /* bindings */ = {
+		8B882E462AC8310200BD2FEE /* bindings */ = {
 			isa = PBXGroup;
 			children = (
-				8BD4CB192AC61D8D001D4E43 /* rust */,
+				8B882E472AC8310200BD2FEE /* rust */,
+				8B882E4A2AC8310200BD2FEE /* node */,
 			);
 			path = bindings;
 			sourceTree = "<group>";
 		};
-		8BD4CB192AC61D8D001D4E43 /* rust */ = {
+		8B882E472AC8310200BD2FEE /* rust */ = {
 			isa = PBXGroup;
 			children = (
-				8BD4CB1B2AC61D8D001D4E43 /* build.rs */,
+				8B882E482AC8310200BD2FEE /* lib.rs */,
+				8B882E492AC8310200BD2FEE /* build.rs */,
 			);
 			path = rust;
 			sourceTree = "<group>";
 		};
-		8BD4CB1F2AC61D8D001D4E43 /* src */ = {
+		8B882E4A2AC8310200BD2FEE /* node */ = {
 			isa = PBXGroup;
 			children = (
-				8BD4CB202AC61D8D001D4E43 /* node-types.json */,
-				8BD4CB212AC61D8D001D4E43 /* tree_sitter */,
-				8BD4CB232AC61D8D001D4E43 /* grammar.json */,
-				8BD4CB252AC61D8D001D4E43 /* parser.c */,
+				8B882E4B2AC8310200BD2FEE /* binding.cc */,
+				8B882E4C2AC8310200BD2FEE /* index.js */,
+			);
+			path = node;
+			sourceTree = "<group>";
+		};
+		8B882E4D2AC8310200BD2FEE /* helix */ = {
+			isa = PBXGroup;
+			children = (
+				8B882E4E2AC8310200BD2FEE /* languages.toml */,
+			);
+			path = helix;
+			sourceTree = "<group>";
+		};
+		8B882E4F2AC8310200BD2FEE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				8B882E502AC8310200BD2FEE /* scanner.c */,
+				8B882E512AC8310200BD2FEE /* node-types.json */,
+				8B882E522AC8310200BD2FEE /* tree_sitter */,
+				8B882E542AC8310200BD2FEE /* grammar.json */,
+				8B882E552AC8310200BD2FEE /* parser.c */,
 			);
 			path = src;
 			sourceTree = "<group>";
 		};
-		8BD4CB212AC61D8D001D4E43 /* tree_sitter */ = {
+		8B882E522AC8310200BD2FEE /* tree_sitter */ = {
 			isa = PBXGroup;
 			children = (
-				8BD4CB222AC61D8D001D4E43 /* parser.h */,
+				8B882E532AC8310200BD2FEE /* parser.h */,
 			);
 			path = tree_sitter;
 			sourceTree = "<group>";
@@ -658,53 +717,62 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BD4CB362AC61D8D001D4E43 /* package.json in Resources */,
 				AD2B63ED2ABC6C1D00DAF85E /* NewCM10-Regular.otf in Resources */,
 				AD2B64062ABC6C1D00DAF85E /* InriaSerif-BoldItalic.ttf in Resources */,
-				8BD4CB302AC61D8D001D4E43 /* highlights.scm in Resources */,
 				AD2B64002ABC6C1D00DAF85E /* NotoSansSymbols2-Regular.ttf in Resources */,
 				AD2B63EA2ABC6C1D00DAF85E /* NotoSerifHebrew-Bold.ttf in Resources */,
 				ADCA13592AC0ABE1000A5EFC /* Empty.sr in Resources */,
 				AD2B63F92ABC6C1D00DAF85E /* DejaVuSansMono.ttf in Resources */,
+				8B882E632AC8310300BD2FEE /* README.md in Resources */,
 				AD2B63EC2ABC6C1D00DAF85E /* IBMPlexSerif-Regular.ttf in Resources */,
-				8BD4CB342AC61D8D001D4E43 /* .gitignore in Resources */,
+				8B882E642AC8310300BD2FEE /* .gitignore in Resources */,
 				AD2B63E92ABC6C1D00DAF85E /* InriaSerif-Bold.ttf in Resources */,
-				8BD4CB272AC61D8D001D4E43 /* grammar.js in Resources */,
+				8B882E582AC8310300BD2FEE /* grammar.js in Resources */,
+				8B882E6D2AC8310300BD2FEE /* grammar.json in Resources */,
 				AD2B63FD2ABC6C1D00DAF85E /* TwitterColorEmoji.ttf in Resources */,
 				AD2B63F82ABC6C1D00DAF85E /* LinLibertine_RI.ttf in Resources */,
 				8B4F2B7C2A21376E007A15D7 /* LaunchScreen.storyboard in Resources */,
-				8BD4CB3A2AC61D8D001D4E43 /* build.rs in Resources */,
+				8B882E652AC8310300BD2FEE /* package.json in Resources */,
+				8B882E612AC8310300BD2FEE /* unicode.txt in Resources */,
 				AD2B63FC2ABC6C1D00DAF85E /* PTSans-Regular.ttf in Resources */,
-				8BD4CB332AC61D8D001D4E43 /* README.md in Resources */,
-				8BD4CB262AC61D8D001D4E43 /* Cargo.toml in Resources */,
 				AD2B64012ABC6C1D00DAF85E /* DejaVuSansMono-Oblique.ttf in Resources */,
 				AD2B64022ABC6C1D00DAF85E /* NewCM10-BoldItalic.otf in Resources */,
+				8B882E592AC8310300BD2FEE /* LICENSE in Resources */,
 				AD2B64032ABC6C1D00DAF85E /* NotoSansArabic-Regular.ttf in Resources */,
-				8BD4CB3D2AC61D8D001D4E43 /* node-types.json in Resources */,
 				AD2B63F22ABC6C1D00DAF85E /* DejaVuSansMono-BoldOblique.ttf in Resources */,
-				8BD4CB3E2AC61D8D001D4E43 /* grammar.json in Resources */,
 				8BD4CB012AC61A20001D4E43 /* Example.sr in Resources */,
+				8B882E622AC8310300BD2FEE /* size.txt in Resources */,
 				AD2B63F32ABC6C1D00DAF85E /* NewCMMath-Book.otf in Resources */,
 				AD2B63EB2ABC6C1D00DAF85E /* NewCMMath-Regular.otf in Resources */,
+				8B882E602AC8310300BD2FEE /* injections.scm in Resources */,
 				AD2B63F52ABC6C1D00DAF85E /* Ubuntu-Regular.ttf in Resources */,
 				8B4F2B792A21376E007A15D7 /* Assets.xcassets in Resources */,
 				AD2B63F02ABC6C1D00DAF85E /* Roboto-Regular.ttf in Resources */,
+				8B882E692AC8310300BD2FEE /* index.js in Resources */,
+				8B882E662AC8310300BD2FEE /* lib.rs in Resources */,
 				AD2B63FE2ABC6C1D00DAF85E /* LinLibertine_R.ttf in Resources */,
-				8BD4CB292AC61D8D001D4E43 /* binding.gyp in Resources */,
 				AD2B64052ABC6C1D00DAF85E /* LinLibertine_RBI.ttf in Resources */,
 				AD2B63F72ABC6C1D00DAF85E /* NotoColorEmoji.ttf in Resources */,
+				8B882E6C2AC8310300BD2FEE /* node-types.json in Resources */,
 				AD2B63F42ABC6C1D00DAF85E /* NotoSerifCJKsc-Regular.otf in Resources */,
+				8B882E672AC8310300BD2FEE /* build.rs in Resources */,
+				8B882E5A2AC8310300BD2FEE /* binding.gyp in Resources */,
 				AD2B63FA2ABC6C1D00DAF85E /* NewCM10-Bold.otf in Resources */,
+				8B882E5E2AC8310300BD2FEE /* fixme.scm in Resources */,
 				AD2B63F62ABC6C1D00DAF85E /* FiraMath-Regular.otf in Resources */,
-				8BD4CB282AC61D8D001D4E43 /* LICENSE in Resources */,
+				8B882E6A2AC8310300BD2FEE /* languages.toml in Resources */,
 				AD2B63EE2ABC6C1D00DAF85E /* InriaSerif-Regular.ttf in Resources */,
 				AD2B63FB2ABC6C1D00DAF85E /* InriaSerif-Italic.ttf in Resources */,
+				8B882E5F2AC8310300BD2FEE /* highlights.scm in Resources */,
 				AD2B63FF2ABC6C1D00DAF85E /* DejaVuSansMono-Bold.ttf in Resources */,
+				8B882E562AC8310300BD2FEE /* DOC.md in Resources */,
+				8B882E5C2AC8310300BD2FEE /* test.scm in Resources */,
+				8B882E5D2AC8310300BD2FEE /* chaos.scm in Resources */,
 				AD2B64042ABC6C1D00DAF85E /* NotoSerifHebrew-Regular.ttf in Resources */,
 				8B4F2B772A21376D007A15D7 /* Main.storyboard in Resources */,
 				AD2B63F12ABC6C1D00DAF85E /* LinLibertine_RB.ttf in Resources */,
-				8BD4CB312AC61D8D001D4E43 /* injections.scm in Resources */,
 				AD2B63EF2ABC6C1D00DAF85E /* NewCM10-Italic.otf in Resources */,
+				8B882E572AC8310300BD2FEE /* Cargo.toml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,16 +800,18 @@
 				8B4F2C672A223C8B007A15D7 /* DocumentMetadata.swift in Sources */,
 				8B4F2C582A2236C0007A15D7 /* SidebarViewController.swift in Sources */,
 				ADCA135D2AC0C325000A5EFC /* CompilationError+Identifiable.swift in Sources */,
+				8B882E702AC8577300BD2FEE /* TypstCharacterPair.swift in Sources */,
 				8B4F2C642A223C8B007A15D7 /* SerifianDocument+Compile.swift in Sources */,
 				AD49CE1D2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift in Sources */,
 				8B4F2B702A21376D007A15D7 /* DocumentBrowserViewController.swift in Sources */,
+				8B882E5B2AC8310300BD2FEE /* Makefile in Sources */,
 				AD2B63C72ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift in Sources */,
 				8B348C7F2A22567B009DD175 /* DocumentCreationView.swift in Sources */,
 				8B348C732A223E18009DD175 /* SourceProtocol.swift in Sources */,
 				8B4F2B6E2A21376D007A15D7 /* AppDelegate.swift in Sources */,
 				8B4F2C662A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift in Sources */,
 				8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */,
-				8BD4CB462AC62FB0001D4E43 /* scanner.cc in Sources */,
+				8B882E6B2AC8310300BD2FEE /* scanner.c in Sources */,
 				AD8DC5D52A8E8421008E2717 /* AutocompletePopup.swift in Sources */,
 				AD49CE222AB75C240068D5B1 /* UITextRange+Intersection.swift in Sources */,
 				AD9FF0212A90FE9E00C6EADD /* AutocompletePopupHostingController.swift in Sources */,
@@ -765,7 +835,7 @@
 				AD334FB72A7703AD006FCB04 /* UIResponder+Swizzle.swift in Sources */,
 				8B4F2C5B2A223B64007A15D7 /* SerifianDocument.swift in Sources */,
 				8B348C702A223E18009DD175 /* Folder.swift in Sources */,
-				8BD4CB402AC61D8D001D4E43 /* parser.c in Sources */,
+				8B882E6E2AC8310300BD2FEE /* parser.c in Sources */,
 				AD2B64082ABC6C4000DAF85E /* SerifianDocument+Fonts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

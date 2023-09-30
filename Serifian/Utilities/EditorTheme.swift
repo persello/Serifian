@@ -11,16 +11,87 @@ import os
 
 import Runestone
 
-class EditorTheme: Theme {
+enum HighlightType: String {
+    case function = "function"
+    case method = "function.method"
+    case tag = "tag"
+    case comment = "comment"
+    case keywordStorageType = "keyword.storage.type"
+    case keywordControlConditional = "keyword.control.conditional"
+    case keywordControlRepeat = "keyword.control.repeat"
+    case keywordControlImport = "keyword.control.import"
+    case keywordOperator = "keyword.operator"
+    case keywordControl = "keyword.control"
+    case `operator` = "operator"
+    case markupRawBlock = "markup.raw.block"
+    case constantNumeric = "constant.numeric"
+    case string = "string"
+    case constantBuiltinBoolean = "constant.builtin.boolean"
+    case constantBuiltin = "constant.builtin"
+    case variable = "variable"
+    case functionBuiltin = "function.builtin"
+    case markupList = "markup.list"
+    case markupHeadingMarker = "markup.heading.marker"
+    case markupHeading = "markup.heading"
+    case markupItalic = "markup.italic"
+    case markupBold = "markup.bold"
+    case constantCharacter = "constant.character"
+    case markupQuote = "markup.quote"
+    case constantCharacterEscape = "constant.character.escape"
+    case ponctuationBracket = "ponctuation.bracket"
+    case ponctuationDelimiter = "ponctuation.delimiter"
+    case ponctuation = "ponctuation"
     
+    var color: UIColor {
+        switch self {
+        case .comment:
+            return .secondaryLabel
+        case .string:
+            return .systemOrange
+        case .function, .method, .functionBuiltin, .variable:
+            return .systemTeal
+        case .constantBuiltin, .constantBuiltinBoolean:
+            return .systemPink
+        case .keywordControl, .keywordStorageType, .keywordControlImport, .keywordControlRepeat, .keywordControlConditional:
+            return .systemPink
+        case .constantNumeric:
+            return .systemBlue
+        case .tag:
+            return .systemMint
+        default:
+            return .label
+        }
+    }
+    
+    var bold: Bool {
+        switch self {
+        case .markupBold, .markupHeading, .markupHeadingMarker, .function, .functionBuiltin, .method, .variable, .constantBuiltin, .constantNumeric, .constantCharacter, .constantBuiltinBoolean, .keywordControl, .keywordOperator, .keywordStorageType, .keywordControlImport, .keywordControlRepeat, .keywordControlConditional, .markupList, .operator:
+            true
+        default:
+            false
+        }
+    }
+    
+    var italic: Bool {
+        switch self {
+        case .markupItalic:
+            true
+        default:
+            false
+        }
+    }
+}
+
+class EditorTheme: Theme {
+
     static private var logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "EditorTheme")
     
-    var font: UIFont = .monospacedSystemFont(ofSize: 12, weight: .regular)
+    var font: UIFont = UIFontMetrics.default.scaledFont(for: .monospacedSystemFont(ofSize: 14, weight: .regular))
     var textColor: UIColor = .label
-    var gutterBackgroundColor: UIColor = .quaternarySystemFill
-    var gutterHairlineColor: UIColor = .secondarySystemFill
+    var gutterBackgroundColor: UIColor = .clear
+    var gutterHairlineColor: UIColor = .clear
     var lineNumberColor: UIColor = .secondaryLabel
-    var lineNumberFont: UIFont = .monospacedSystemFont(ofSize: 10, weight: .light)
+    var lineNumberFont: UIFont = UIFontMetrics.default.scaledFont(for: .monospacedSystemFont(ofSize: 12, weight: .regular))
     var selectedLineBackgroundColor: UIColor = .quaternarySystemFill
     var selectedLinesLineNumberColor: UIColor = .label
     var selectedLinesGutterBackgroundColor: UIColor = .quaternarySystemFill
@@ -28,33 +99,31 @@ class EditorTheme: Theme {
     var pageGuideHairlineColor: UIColor = .secondarySystemFill
     var pageGuideBackgroundColor: UIColor = .tertiarySystemBackground
     var markedTextBackgroundColor: UIColor = .tintColor
-    
+
     func textColor(for highlightName: String) -> UIColor? {
-        switch highlightName {
-        case "markup",
-            "markup.heading",
-            "markup.heading.marker",
-            "punctuation.delimiter",
-            "punctuation.bracket",
-            "punctuation.special":
-            return .label
-        case "markup.bold",
-            "markup.italic":
-            return .systemBlue
-        case "identifier":
-            return .systemPink
-        case "string":
-            return .systemGreen
-        case "variable":
-            return .systemTeal
-        case "comment.line":
-            return .secondaryLabel
-        case "keyword.control.import",
-            "keyword.control.show":
-            return .systemPurple
-        default:
-            Self.logger.error("Token of type \(highlightName) does not have an associated text color.")
+        guard let type = HighlightType(rawValue: highlightName) else {
+            Self.logger.warning("Highlight type \(highlightName) not defined.")
             return nil
         }
+        
+        return type.color
+    }
+    
+    func fontTraits(for highlightName: String) -> FontTraits {
+        guard let type = HighlightType(rawValue: highlightName) else {
+            Self.logger.warning("Highlight type \(highlightName) not defined.")
+            return FontTraits()
+        }
+        
+        var traits = FontTraits()
+        if type.bold {
+            traits.insert(.bold)
+        }
+        
+        if type.italic {
+            traits.insert(.italic)
+        }
+        
+        return traits
     }
 }
