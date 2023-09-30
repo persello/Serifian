@@ -7,93 +7,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CEA71D2A-1F9C-4C34-879F-EB54B527113B"
-            shouldBeEnabled = "No"
+            uuid = "8120EAB6-D391-4B41-BA23-59F84C1D4092"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Serifian/View Controllers/WorkbenchViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "WorkbenchViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0A8E672A-BE4F-418F-AC56-F5B49954DDAF"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Serifian/View Controllers/TypstEditorViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "autocompletion()"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "0A8E672A-BE4F-418F-AC56-F5B49954DDAF - e7c0f8ea9d8aa225"
+                  uuid = "8120EAB6-D391-4B41-BA23-59F84C1D4092 - 3d5b0dcd0ad66baa"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Serifian.TypstEditorViewController.autocompletion() async -&gt; ()"
+                  symbolName = "closure #2 (SwiftyTypst.CompilationError) -&gt; () in Serifian.WorkbenchViewController.viewDidLoad() -&gt; ()"
                   moduleName = "Serifian"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/View%20Controllers/TypstEditorViewController.swift"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/View%20Controllers/WorkbenchViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "111"
-                  endingLineNumber = "111"
-                  offsetFromSymbolStart = "24">
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "232">
                </Location>
                <Location
-                  uuid = "0A8E672A-BE4F-418F-AC56-F5B49954DDAF - 554fbfcc91685b95"
+                  uuid = "8120EAB6-D391-4B41-BA23-59F84C1D4092 - 3d5b0dcd0ad66baa"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for Serifian.TypstEditorViewController.autocompletion() async -&gt; ()"
+                  symbolName = "closure #2 (SwiftyTypst.CompilationError) -&gt; () in Serifian.WorkbenchViewController.viewDidLoad() -&gt; ()"
                   moduleName = "Serifian"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/View%20Controllers/TypstEditorViewController.swift"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/View%20Controllers/WorkbenchViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "111"
-                  endingLineNumber = "111"
-                  offsetFromSymbolStart = "196">
-               </Location>
-               <Location
-                  uuid = "0A8E672A-BE4F-418F-AC56-F5B49954DDAF - 554fbfcc91685b95"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for Serifian.TypstEditorViewController.autocompletion() async -&gt; ()"
-                  moduleName = "Serifian"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/View%20Controllers/TypstEditorViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "111"
-                  endingLineNumber = "111"
-                  offsetFromSymbolStart = "376">
-               </Location>
-               <Location
-                  uuid = "0A8E672A-BE4F-418F-AC56-F5B49954DDAF - 99868dfd27951c97"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for Serifian.TypstEditorViewController.autocompletion() async -&gt; ()"
-                  moduleName = "Serifian"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/View%20Controllers/TypstEditorViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "111"
-                  endingLineNumber = "111"
-                  offsetFromSymbolStart = "172">
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "296">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -101,33 +55,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4066206C-A526-45DF-B4B2-923EB065B04B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Serifian/Models/Document/SerifianDocument.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
-            landmarkName = "addSource(_:root:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "85EA081E-D702-4123-8990-A0CB0114523D"
+            uuid = "730F12CE-BA1D-4DE4-B402-7F6D4FED9D47"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Serifian/View Controllers/TypstEditorViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "showErrors(_:)"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "setSource(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F88B7D02-DFE0-4FE3-B425-CB223D3E992A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/View Controllers/SidebarViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F88B7D02-DFE0-4FE3-B425-CB223D3E992A - a07d2a6043e538f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.SidebarViewController.collectionView(_: __C.UICollectionView, shouldSelectItemAt: Foundation.IndexPath) -&gt; Swift.Bool"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/View%20Controllers/SidebarViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "226"
+                  endingLineNumber = "226"
+                  offsetFromSymbolStart = "312">
+               </Location>
+               <Location
+                  uuid = "F88B7D02-DFE0-4FE3-B425-CB223D3E992A - 4d84e30694200e27"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.SidebarViewController.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/View%20Controllers/SidebarViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "226"
+                  endingLineNumber = "226"
+                  offsetFromSymbolStart = "3212">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -99,6 +99,8 @@ class TypstEditorViewController: UIViewController {
             self.source = source
             self.setupUndoManager()
             
+            self.source.document.lastOpenedSource = source
+            
             // Set up error detection.
             self.errorHighlightCancellable = self.source.document.$errors.sink { errors in
                 self.showErrors(errors)
@@ -128,6 +130,7 @@ class TypstEditorViewController: UIViewController {
     }
     
     func goTo(line: Int) {
+        self.source.document.metadata.lastEditedLine = line
         self.textView.goToLine(line)
     }
 }

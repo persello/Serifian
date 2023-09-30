@@ -10,4 +10,5 @@ import Foundation
 struct DocumentMetadata: Codable {
     var mainSource: URL
     var lastOpenedSource: URL?
+    var lastEditedLine: Int?
 }

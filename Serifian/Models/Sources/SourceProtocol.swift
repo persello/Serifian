@@ -100,4 +100,3 @@ extension SourceProtocol {
         self.getPath()
     }
 }
-

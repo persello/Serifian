@@ -15,7 +15,7 @@ extension SerifianDocument {
         
         if self.preview == nil {
             Self.logger.trace("Compiling document because there isn't an available preview file.")
-            let _ = try? await self.compile(updatesPreview: true)
+            let _ = try? await self.compile()
         }
         
         guard let preview else {

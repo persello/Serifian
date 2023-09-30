@@ -16,9 +16,8 @@ enum CompilationErrorContainer: Error {
 }
 
 extension SerifianDocument {
-    // TODO: Remove parameter updatesPreview.
     @discardableResult
-    func compile(updatesPreview: Bool = true) async throws -> PDFDocument {
+    func compile() async throws -> PDFDocument {
         
         return try await withCheckedThrowingContinuation { continuation in
             Self.logger.trace("Recompiling document.")

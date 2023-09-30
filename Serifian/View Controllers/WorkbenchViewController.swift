@@ -134,7 +134,7 @@ class WorkbenchViewController: UIDocumentViewController {
             }
         }
         
-        self.cancellables = [previewCancellable, compilationErrorsCancellable]
+        self.cancellables += [previewCancellable, compilationErrorsCancellable]
         
         self.navigationItem.centerItemGroups.append(undoRedoItemGroup)
     }
@@ -322,19 +322,17 @@ extension WorkbenchViewController {
 
     /// Sets the new source to be edited.
     /// - Parameter source: The new source object.
-    func changeSource(source: any SourceProtocol) {
+    private func changeSource(source: any SourceProtocol) {
         
         Self.logger.info("Changing source to \(source.name).")
         
         self.clearChildren()
-        
-        self.serifianDocument.lastOpenedSource = source
 
         if let typstSource = source as? TypstSourceFile {
             self.showTypstEditor(for: typstSource)
         }
     }
-
+    
     /// Shows an editor specialized for Typst source files.
     /// - Parameter source: The Typst source to show in the editor.
     private func showTypstEditor(for source: TypstSourceFile, at line: Int? = nil) {
@@ -365,24 +363,30 @@ extension WorkbenchViewController {
     /// - Parameter newController: The view controller of the new view.
     private func replaceLeadingViewSubview(with newController: UIViewController) {
         
+        guard self.editorView != nil else {
+            return
+        }
+        
         // Set up View and View Controller.
-        self.addChild(newController)
-        newController.view.frame = self.editorView.frame
-        self.editorView.addSubview(newController.view)
-        newController.willMove(toParent: self)
-        newController.view.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Constraints.
-        let constraints = [
-            newController.view.leadingAnchor.constraint(equalTo: self.editorView.leadingAnchor),
-            newController.view.trailingAnchor.constraint(equalTo: self.editorView.trailingAnchor),
-            newController.view.bottomAnchor.constraint(equalTo: self.editorView.bottomAnchor),
-            newController.view.topAnchor.constraint(equalTo: self.editorView.topAnchor)
-        ]
-                
-        self.editorView.addConstraints(constraints)
-        
-        self.currentEditorViewController = newController
+        DispatchQueue.main.async {
+            self.addChild(newController)
+            newController.view.frame = self.editorView.frame
+            self.editorView.addSubview(newController.view)
+            newController.willMove(toParent: self)
+            newController.view.translatesAutoresizingMaskIntoConstraints = false
+            
+            // Constraints.
+            let constraints = [
+                newController.view.leadingAnchor.constraint(equalTo: self.editorView.leadingAnchor),
+                newController.view.trailingAnchor.constraint(equalTo: self.editorView.trailingAnchor),
+                newController.view.bottomAnchor.constraint(equalTo: self.editorView.bottomAnchor),
+                newController.view.topAnchor.constraint(equalTo: self.editorView.topAnchor)
+            ]
+            
+            self.editorView.addConstraints(constraints)
+            
+            self.currentEditorViewController = newController
+        }
     }
 
     /// Clears the editor part (leading view) by restoring it to an empty state.
@@ -403,6 +407,15 @@ extension WorkbenchViewController {
         Task {
             try? await self.serifianDocument.compile()
         }
+        
+        let metadataCancellable = self.serifianDocument.$metadata.sink { metadata in
+            if let url = metadata.lastOpenedSource,
+               let source = document.source(path: url, in: nil) {
+                self.changeSource(source: source)
+            }
+        }
+        
+        self.cancellables.append(metadataCancellable)
     }
 }
 

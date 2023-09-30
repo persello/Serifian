@@ -15,18 +15,16 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
     private(set) var title: String
     
     var compiler: TypstCompiler!
-
-    var metadata: DocumentMetadata
+    @Published var metadata: DocumentMetadata
     
     private var sources: [any SourceProtocol] = []
     
     private(set) var coverImage: CGImage?
-    
     @Published private(set) var preview: PDFDocument?
+    
     @Published private(set) var errors: [CompilationError] = []
     
     private var sourceCancellables: [AnyCancellable] = []
-    
     internal var compilationContinuation: CheckedContinuation<PDFDocument, any Error>? = nil
     
     static let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "SerifianDocument")
@@ -199,7 +197,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
             self.objectWillChange.send()
             Self.logger.trace("\(source.name) changed. Recompiling document.")
             Task.detached {
-                try? await self.compile(updatesPreview: true)
+                try? await self.compile()
             }
         }
         
@@ -229,6 +227,10 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         }
         
         set {
+            guard self.metadata.lastOpenedSource != newValue?.getPath() else {
+                return
+            }
+            
             self.metadata.lastOpenedSource = newValue?.getPath()
             self.objectWillChange.send()
             self.updateChangeCount(.done)
