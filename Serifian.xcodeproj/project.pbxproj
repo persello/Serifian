@@ -36,29 +36,9 @@
 		8B4F2C672A223C8B007A15D7 /* DocumentMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C622A223C8B007A15D7 /* DocumentMetadata.swift */; };
 		8B4F2C682A223C8B007A15D7 /* SerifianDocument+FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileManager.swift */; };
 		8B87B6FE2A3668BA00287D9F /* AutocompletableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */; };
-		8B882E562AC8310300BD2FEE /* DOC.md in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E342AC8310200BD2FEE /* DOC.md */; };
-		8B882E572AC8310300BD2FEE /* Cargo.toml in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E352AC8310200BD2FEE /* Cargo.toml */; };
-		8B882E582AC8310300BD2FEE /* grammar.js in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E362AC8310200BD2FEE /* grammar.js */; };
-		8B882E592AC8310300BD2FEE /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E372AC8310200BD2FEE /* LICENSE */; };
-		8B882E5A2AC8310300BD2FEE /* binding.gyp in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E382AC8310200BD2FEE /* binding.gyp */; };
-		8B882E5B2AC8310300BD2FEE /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 8B882E392AC8310200BD2FEE /* Makefile */; };
-		8B882E5C2AC8310300BD2FEE /* test.scm in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E3B2AC8310200BD2FEE /* test.scm */; };
-		8B882E5D2AC8310300BD2FEE /* chaos.scm in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E3C2AC8310200BD2FEE /* chaos.scm */; };
-		8B882E5E2AC8310300BD2FEE /* fixme.scm in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E3D2AC8310200BD2FEE /* fixme.scm */; };
 		8B882E5F2AC8310300BD2FEE /* highlights.scm in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E3F2AC8310200BD2FEE /* highlights.scm */; };
 		8B882E602AC8310300BD2FEE /* injections.scm in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E402AC8310200BD2FEE /* injections.scm */; };
-		8B882E612AC8310300BD2FEE /* unicode.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E412AC8310200BD2FEE /* unicode.txt */; };
-		8B882E622AC8310300BD2FEE /* size.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E422AC8310200BD2FEE /* size.txt */; };
-		8B882E632AC8310300BD2FEE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E432AC8310200BD2FEE /* README.md */; };
-		8B882E642AC8310300BD2FEE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E442AC8310200BD2FEE /* .gitignore */; };
-		8B882E652AC8310300BD2FEE /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E452AC8310200BD2FEE /* package.json */; };
-		8B882E662AC8310300BD2FEE /* lib.rs in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E482AC8310200BD2FEE /* lib.rs */; };
-		8B882E672AC8310300BD2FEE /* build.rs in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E492AC8310200BD2FEE /* build.rs */; };
-		8B882E692AC8310300BD2FEE /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E4C2AC8310200BD2FEE /* index.js */; };
-		8B882E6A2AC8310300BD2FEE /* languages.toml in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E4E2AC8310200BD2FEE /* languages.toml */; };
 		8B882E6B2AC8310300BD2FEE /* scanner.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B882E502AC8310200BD2FEE /* scanner.c */; };
-		8B882E6C2AC8310300BD2FEE /* node-types.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E512AC8310200BD2FEE /* node-types.json */; };
-		8B882E6D2AC8310300BD2FEE /* grammar.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B882E542AC8310200BD2FEE /* grammar.json */; };
 		8B882E6E2AC8310300BD2FEE /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B882E552AC8310200BD2FEE /* parser.c */; };
 		8B882E702AC8577300BD2FEE /* TypstCharacterPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B882E6F2AC8577300BD2FEE /* TypstCharacterPair.swift */; };
 		8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */; };
@@ -733,56 +713,37 @@
 				AD2B63EA2ABC6C1D00DAF85E /* NotoSerifHebrew-Bold.ttf in Resources */,
 				ADCA13592AC0ABE1000A5EFC /* Empty.sr in Resources */,
 				AD2B63F92ABC6C1D00DAF85E /* DejaVuSansMono.ttf in Resources */,
-				8B882E632AC8310300BD2FEE /* README.md in Resources */,
 				AD2B63EC2ABC6C1D00DAF85E /* IBMPlexSerif-Regular.ttf in Resources */,
-				8B882E642AC8310300BD2FEE /* .gitignore in Resources */,
 				AD2B63E92ABC6C1D00DAF85E /* InriaSerif-Bold.ttf in Resources */,
-				8B882E582AC8310300BD2FEE /* grammar.js in Resources */,
-				8B882E6D2AC8310300BD2FEE /* grammar.json in Resources */,
 				AD2B63FD2ABC6C1D00DAF85E /* TwitterColorEmoji.ttf in Resources */,
 				AD2B63F82ABC6C1D00DAF85E /* LinLibertine_RI.ttf in Resources */,
 				8B4F2B7C2A21376E007A15D7 /* LaunchScreen.storyboard in Resources */,
-				8B882E652AC8310300BD2FEE /* package.json in Resources */,
-				8B882E612AC8310300BD2FEE /* unicode.txt in Resources */,
 				AD2B63FC2ABC6C1D00DAF85E /* PTSans-Regular.ttf in Resources */,
 				AD2B64012ABC6C1D00DAF85E /* DejaVuSansMono-Oblique.ttf in Resources */,
 				AD2B64022ABC6C1D00DAF85E /* NewCM10-BoldItalic.otf in Resources */,
-				8B882E592AC8310300BD2FEE /* LICENSE in Resources */,
 				AD2B64032ABC6C1D00DAF85E /* NotoSansArabic-Regular.ttf in Resources */,
 				AD2B63F22ABC6C1D00DAF85E /* DejaVuSansMono-BoldOblique.ttf in Resources */,
 				8BD4CB012AC61A20001D4E43 /* Example.sr in Resources */,
-				8B882E622AC8310300BD2FEE /* size.txt in Resources */,
 				AD2B63F32ABC6C1D00DAF85E /* NewCMMath-Book.otf in Resources */,
 				AD2B63EB2ABC6C1D00DAF85E /* NewCMMath-Regular.otf in Resources */,
 				8B882E602AC8310300BD2FEE /* injections.scm in Resources */,
 				AD2B63F52ABC6C1D00DAF85E /* Ubuntu-Regular.ttf in Resources */,
 				8B4F2B792A21376E007A15D7 /* Assets.xcassets in Resources */,
 				AD2B63F02ABC6C1D00DAF85E /* Roboto-Regular.ttf in Resources */,
-				8B882E692AC8310300BD2FEE /* index.js in Resources */,
-				8B882E662AC8310300BD2FEE /* lib.rs in Resources */,
 				AD2B63FE2ABC6C1D00DAF85E /* LinLibertine_R.ttf in Resources */,
 				AD2B64052ABC6C1D00DAF85E /* LinLibertine_RBI.ttf in Resources */,
 				AD2B63F72ABC6C1D00DAF85E /* NotoColorEmoji.ttf in Resources */,
-				8B882E6C2AC8310300BD2FEE /* node-types.json in Resources */,
 				AD2B63F42ABC6C1D00DAF85E /* NotoSerifCJKsc-Regular.otf in Resources */,
-				8B882E672AC8310300BD2FEE /* build.rs in Resources */,
-				8B882E5A2AC8310300BD2FEE /* binding.gyp in Resources */,
 				AD2B63FA2ABC6C1D00DAF85E /* NewCM10-Bold.otf in Resources */,
-				8B882E5E2AC8310300BD2FEE /* fixme.scm in Resources */,
 				AD2B63F62ABC6C1D00DAF85E /* FiraMath-Regular.otf in Resources */,
-				8B882E6A2AC8310300BD2FEE /* languages.toml in Resources */,
 				AD2B63EE2ABC6C1D00DAF85E /* InriaSerif-Regular.ttf in Resources */,
 				AD2B63FB2ABC6C1D00DAF85E /* InriaSerif-Italic.ttf in Resources */,
 				8B882E5F2AC8310300BD2FEE /* highlights.scm in Resources */,
 				AD2B63FF2ABC6C1D00DAF85E /* DejaVuSansMono-Bold.ttf in Resources */,
-				8B882E562AC8310300BD2FEE /* DOC.md in Resources */,
-				8B882E5C2AC8310300BD2FEE /* test.scm in Resources */,
-				8B882E5D2AC8310300BD2FEE /* chaos.scm in Resources */,
 				AD2B64042ABC6C1D00DAF85E /* NotoSerifHebrew-Regular.ttf in Resources */,
 				8B4F2B772A21376D007A15D7 /* Main.storyboard in Resources */,
 				AD2B63F12ABC6C1D00DAF85E /* LinLibertine_RB.ttf in Resources */,
 				AD2B63EF2ABC6C1D00DAF85E /* NewCM10-Italic.otf in Resources */,
-				8B882E572AC8310300BD2FEE /* Cargo.toml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,7 +775,6 @@
 				8B4F2C642A223C8B007A15D7 /* SerifianDocument+Compile.swift in Sources */,
 				AD49CE1D2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift in Sources */,
 				8B4F2B702A21376D007A15D7 /* DocumentBrowserViewController.swift in Sources */,
-				8B882E5B2AC8310300BD2FEE /* Makefile in Sources */,
 				AD2B63C72ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift in Sources */,
 				8B348C7F2A22567B009DD175 /* DocumentCreationView.swift in Sources */,
 				8B348C732A223E18009DD175 /* SourceProtocol.swift in Sources */,
