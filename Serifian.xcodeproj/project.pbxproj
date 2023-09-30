@@ -208,6 +208,7 @@
 		8B882E542AC8310200BD2FEE /* grammar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = grammar.json; sourceTree = "<group>"; };
 		8B882E552AC8310200BD2FEE /* parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser.c; sourceTree = "<group>"; };
 		8B882E6F2AC8577300BD2FEE /* TypstCharacterPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstCharacterPair.swift; sourceTree = "<group>"; };
+		8B882E722AC86DDB00BD2FEE /* WhatToTest.en-GB.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "WhatToTest.en-GB.txt"; sourceTree = "<group>"; };
 		8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableDividerView.swift; sourceTree = "<group>"; };
 		8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
 		8BC05B0C2A6C278E00C4B69A /* Serifian.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Serifian.entitlements; sourceTree = "<group>"; };
@@ -353,6 +354,7 @@
 				8B4F2C482A2226AD007A15D7 /* Thumbnail */,
 				8B882E332AC8310200BD2FEE /* TreeSitterTypst */,
 				8BD4CB442AC62DC9001D4E43 /* TreeSitterTypst.h */,
+				8B882E712AC86D8E00BD2FEE /* TestFlight */,
 				8B4F2C2E2A222626007A15D7 /* Frameworks */,
 				8B4F2B6B2A21376D007A15D7 /* Products */,
 			);
@@ -554,6 +556,14 @@
 				8B882E532AC8310200BD2FEE /* parser.h */,
 			);
 			path = tree_sitter;
+			sourceTree = "<group>";
+		};
+		8B882E712AC86D8E00BD2FEE /* TestFlight */ = {
+			isa = PBXGroup;
+			children = (
+				8B882E722AC86DDB00BD2FEE /* WhatToTest.en-GB.txt */,
+			);
+			path = TestFlight;
 			sourceTree = "<group>";
 		};
 		AD2B63CA2ABC6C1D00DAF85E /* Fonts */ = {
