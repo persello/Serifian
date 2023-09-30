@@ -1,1 +1,6 @@
-Completely redesigned editor with faster highlighting.
+- Completely redesigned editor with faster highlighting.
+- Enhanced error management: you can now click on an error in the Issue Navigator popup, and you'll be taken to the error's location in its source file.
+- Documents are recompiled when opening them, so you can immediately detect any warning/error.
+- Internal changes in how navigation between files is managed.
+- You can import every file type that Typst supports (mostly images and plaintext files).
+- You can now import photos from your gallery.

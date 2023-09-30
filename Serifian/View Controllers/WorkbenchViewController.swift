@@ -400,6 +400,9 @@ extension WorkbenchViewController {
         Self.logger.info(#"Setting document to "\#(document.title)"."#)
         
         self.document = document
+        Task {
+            try? await self.serifianDocument.compile()
+        }
     }
 }
 
