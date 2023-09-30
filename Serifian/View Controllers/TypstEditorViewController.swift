@@ -62,7 +62,7 @@ class TypstEditorViewController: UIViewController {
         textView.setState(TextViewState(text: self.source.content, theme: EditorTheme(), language: language))
         
         self.view.addSubview(textView)
-                
+        
         NSLayoutConstraint.activate([
             textView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             textView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
@@ -105,10 +105,196 @@ class TypstEditorViewController: UIViewController {
     }
 }
 
+// MARK: Autocompletion.
+extension TypstEditorViewController {
+    func autocompletion() async  {
+        let signpostID = Self.signposter.makeSignpostID()
+        
+        let state = Self.signposter.beginInterval("Autocompletion", id: signpostID)
+        
+        defer {
+            Self.signposter.endInterval("Autocompletion", state)
+        }
+        
+        // First, make sure that the selection length is zero.
+        guard self.textView.selectedTextRange?.isEmpty ?? false,
+              let cursorPosition = self.textView.selectedTextRange?.start else {
+            Self.logger.trace("Autocompletion aborted: cursor has a non-empty selection.")
+            return
+        }
+        
+        Self.logger.trace("Starting autocompletion for \(self.source.name).")
+        
+        let characterPosition = self.textView.offset(from: textView.beginningOfDocument, to: cursorPosition)
+        let completions = await self.source.autocomplete(at: characterPosition)
+        
+        Self.logger.debug("Generated \(completions.count) completions.")
+        
+        self.autocompleteContainerView.isHidden = completions.isEmpty
+        
+        guard completions.count > 0 else {
+            return
+        }
+        
+        // Detect the starting position of the last word before the cursor.
+        guard let rangeBeforeCursor = textView.textRange(from: textView.beginningOfDocument, to: cursorPosition),
+              let textBeforeCursor = textView.text(in: rangeBeforeCursor),
+              let lastNonAlphanumericCharacterIndex = textBeforeCursor.lastIndex(where: { char in
+                  !(char.isLetter || char.isNumber)
+              }),
+              let wordStartingPosition = textView.position(from: textView.beginningOfDocument, offset: lastNonAlphanumericCharacterIndex.utf16Offset(in: textBeforeCursor) + 1)
+        else {
+            
+            // Hide the autocomplete window: without knowing what to replace, it makes no sense to show it.
+            self.autocompleteContainerView.isHidden = true
+            Self.logger.warning("Hiding autocomplete view because it wasn't possible to find the beginning of the last word.")
+            
+            return
+        }
+        
+        // Detect the ending position of the last word before the cursor.
+        var wordEndingPosition = cursorPosition
+        if let rangeAfterCursor = textView.textRange(from: cursorPosition, to: textView.endOfDocument),
+           let textAfterCursor = textView.text(in: rangeAfterCursor),
+           let firstNonAlphanumericCharacterIndex = textAfterCursor.firstIndex(where: { char in
+               !(char.isLetter || char.isNumber)
+           }) {
+            
+            Self.logger.trace("Defaulting to cursor position for ending position of the last word.")
+            
+            wordEndingPosition = textView.position(from: cursorPosition, offset: firstNonAlphanumericCharacterIndex.utf16Offset(in: textAfterCursor)) ?? wordEndingPosition
+        }
+        
+        // Extract the word.
+        guard let wordRange = textView.textRange(from: wordStartingPosition, to: wordEndingPosition),
+              let word = textView.text(in: wordRange) else {
+            
+            // Hide the autocomplete window: without knowing what to replace, it makes no sense to show it.
+            self.autocompleteContainerView.isHidden = true
+            Self.logger.warning("Hiding autocomplete view because it wasn't possible to extract the last word.")
+            
+            return
+        }
+        
+        Self.logger.debug(#"Detected latest word: "\#(word)". Updating completions."#)
+        
+        if autocompletePopupHostingController.coordinator.updateCompletions(completions, searching: String(word)) == 0 {
+            // No completion remained after filtering.
+            
+            Self.logger.debug("No completions remained after filtering.")
+            self.autocompleteContainerView.isHidden = true
+            
+            return
+        }
+        
+        // In case of completion, replace the last word.
+        self.autocompletePopupHostingController.coordinator.onSelection { [self] result in
+            
+            switch result.cleanCompletion() {
+            case .empty:
+                return
+            case .noPlaceholder(let replacement):
+                
+                // Insert the clean text.
+                textView.replace(wordRange, withText: replacement)
+            case .withPlaceholder(let replacement, let offset):
+                
+                // Insert the clean text.
+                textView.replace(wordRange, withText: replacement)
+                
+                // Find the starting index.
+                if let cursorPosition = textView.position(from: wordRange.start, offset: offset),
+                   let cursorRange = textView.textRange(from: cursorPosition, to: cursorPosition) {
+                    self.textView.selectedTextRange = cursorRange
+                }
+            }
+            
+            self.autocompleteContainerView.isHidden = true
+        }
+        
+        self.layoutAutocompleteWindow()
+    }
+    
+    func layoutAutocompleteWindow() {
+        
+        // First, make sure that the selection length is zero.
+        guard self.textView.selectedTextRange?.isEmpty ?? false,
+              let cursorPosition = self.textView.selectedTextRange?.start else {
+            return
+        }
+        
+        // Show on top.
+        self.view.bringSubviewToFront(self.autocompleteContainerView)
+        
+        // Update constraints.
+        let position = self.textView.caretRect(for: cursorPosition)
+        
+        // Horizontal position.
+        // Margins are handled in the storyboard.
+        let leadingX = position.minX
+        idealAutocompleteHorizontalConstraint.constant = leadingX
+        
+        // Vertical position: we need to decide whether to show the box above or under the cursor.
+        
+        let verticalSpacing = 8.0
+        
+        let spaceLeftBelow = self.textView.frame.height - (position.maxY - self.textView.contentOffset.y)
+        
+        if spaceLeftBelow > self.autocompleteContainerView.frame.height + verticalSpacing + 80 {
+            
+            // Position the window below the cursor.
+            self.idealAutocompleteVerticalConstraint.constant = position.maxY - self.textView.contentOffset.y + verticalSpacing
+        } else {
+            
+            // Position the window above the cursor.
+            self.idealAutocompleteVerticalConstraint.constant = position.minY - self.autocompleteContainerView.frame.height - self.textView.contentOffset.y - verticalSpacing
+        }
+        
+        // TODO: Add case: doesn't fit neither above nor below.
+        
+        // TODO: Check for horizontal fit.
+        
+        self.autocompleteContainerView.layoutIfNeeded()
+    }
+    
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        guard let key = presses.first?.key else { return }
+        
+        Self.logger.debug("Handling keypress: \(key).")
+        
+        // Autocomplete window. Highest priority.
+        if !autocompleteContainerView.isHidden  {
+            switch key.keyCode {
+            case .keyboardEscape:
+                Self.logger.debug("Detected escape key. Closing autocomplete window.")
+                autocompleteContainerView.isHidden = true
+            case .keyboardUpArrow:
+                Self.logger.debug("Detected up key. Selecting previous autocomplete suggestion.")
+                autocompletePopupHostingController.coordinator.previous()
+            case .keyboardDownArrow:
+                Self.logger.debug("Detected down key. Selecting next autocomplete suggestion.")
+                autocompletePopupHostingController.coordinator.next()
+            case .keyboardTab:
+                Self.logger.debug("Detected tab key. Selecting current autocomplete suggestion.")
+                autocompletePopupHostingController.coordinator.enter()
+            default:
+                super.pressesBegan(presses, with: event)
+            }
+        } else {
+            super.pressesBegan(presses, with: event)
+        }
+    }
+}
+
+// MARK: Editing delegate.
 extension TypstEditorViewController: TextViewDelegate {
     func textViewDidChange(_ textView: TextView) {
         // Edit source.
         self.source.content = textView.text
+        
+        Task.detached {
+            await self.autocompletion()
+        }
     }
 }
 
