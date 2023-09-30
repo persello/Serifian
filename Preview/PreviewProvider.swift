@@ -10,7 +10,9 @@ import QuickLook
 class PreviewProvider: QLPreviewProvider, QLPreviewingController {
 
     func providePreview(for request: QLFilePreviewRequest) async throws -> QLPreviewReply {
-        return QLPreviewReply(fileURL: request.fileURL.appending(path: "preview.pdf"))
+        let path = request.fileURL.appending(path: "preview.pdf")
+        print("Providing preview with path: \(path).")
+        return QLPreviewReply(fileURL: path)
     }
 }
 

@@ -13,6 +13,8 @@ class ThumbnailProvider: QLThumbnailProvider {
         for request: QLFileThumbnailRequest,
         _ handler: @escaping (QLThumbnailReply?, Error?) -> Void
     ) {
-        handler(.init(imageFileURL: request.fileURL.appending(path: "cover.jpeg")), nil)
+        let path = request.fileURL.appending(path: "cover.jpeg")
+        print("Providing thumbnail with path: \(path).")
+        handler(.init(imageFileURL: path), nil)
     }
 }
