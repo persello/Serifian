@@ -368,7 +368,7 @@ extension WorkbenchViewController {
         }
         
         // Set up View and View Controller.
-        DispatchQueue.main.async {
+        Task { @MainActor in
             self.addChild(newController)
             newController.view.frame = self.editorView.frame
             self.editorView.addSubview(newController.view)

@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 import os
+import PhotosUI
 
 class SidebarViewController: UIViewController {
     
@@ -47,7 +48,17 @@ class SidebarViewController: UIViewController {
                     picker.delegate = self
                     
                     self.present(picker, animated: true)
-                })
+                }),
+                UIAction(title: "Import image...", image: UIImage(systemName: "photo.badge.plus"), handler: { _ in
+                    var configuration = PHPickerConfiguration()
+                    configuration.filter = .images
+                    configuration.preferredAssetRepresentationMode = .compatible
+                    
+                    let controller = PHPickerViewController(configuration: configuration)
+                    controller.delegate = self
+
+                    self.present(controller, animated: true)
+                }),
             ]
         )
         
@@ -312,6 +323,35 @@ extension SidebarViewController: UIDocumentPickerDelegate {
         }
         
         self.updateSidebar()
+    }
+}
+
+extension SidebarViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        
+        results.map(\.itemProvider).forEach { item in
+            let hash = item.hash
+            let name = item.suggestedName ?? "IMG_\(hash % 100000)"
+            let _ = item.loadFileRepresentation(for: .jpeg, openInPlace: false) { url, inPlace, error in
+                
+                guard let url else { return }
+                let temp = URL.temporaryDirectory.appending(component: url.lastPathComponent)
+                
+                try? FileManager.default.copyItem(at: url, to: temp)
+                
+                Task { @MainActor in
+                    guard let wrapper = try? FileWrapper(url: temp),
+                          let image = try? ImageFile(from: wrapper, in: nil, partOf: self.document) else {
+                        return
+                    }
+                    
+                    
+                    self.document.addSource(image)
+                    self.updateSidebar()
+                }
+            }
+        }
     }
 }
 
