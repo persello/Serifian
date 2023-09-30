@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 import os
 import Runestone
-
+import SwiftyTypst
 
 class TypstEditorViewController: UIViewController {
     
@@ -25,9 +25,10 @@ class TypstEditorViewController: UIViewController {
     
     private var source: TypstSourceFile!
     private var autocompletePopupHostingController: AutocompletePopupHostingController!
-    private var highlightCancellable: AnyCancellable?
+    private var errorHighlightCancellable: AnyCancellable?
     
-    
+    private var loadContinuation: CheckedContinuation<(), Never>? = nil
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,7 +60,7 @@ class TypstEditorViewController: UIViewController {
         
         self.textView.editorDelegate = self
         
-        textView.setState(TextViewState(text: self.source.content, theme: EditorTheme(), language: language))
+        self.textView.setState(TextViewState(text: "", theme: EditorTheme(), language: language))
         
         self.view.addSubview(textView)
         
@@ -78,7 +79,7 @@ class TypstEditorViewController: UIViewController {
         
         Self.logger.trace("Autocompletion popup initialised.")
         
-        self.setupUndoManager()
+        self.loadContinuation?.resume()
     }
     
     func setupUndoManager() {
@@ -91,17 +92,43 @@ class TypstEditorViewController: UIViewController {
         }
     }
     
-    func setSource(_ source: TypstSourceFile) {
-        
-        Self.logger.info(#"Setting source to "\#(source.name)"."#)
-        
-        self.source = source
-        
-        if let textView {
-            textView.text = self.source.content
+    func setSource(_ source: TypstSourceFile) async {
+        await withCheckedContinuation { continuation in
+            Self.logger.info(#"Setting source to "\#(source.name)"."#)
+            
+            self.source = source
+            self.setupUndoManager()
+            
+            // Set up error detection.
+            self.errorHighlightCancellable = self.source.document.$errors.sink { errors in
+                self.showErrors(errors)
+            }
+                    
+            if let textView {
+                textView.text = self.source.content
+                self.showErrors(self.source.document.errors)
+                continuation.resume()
+            } else {
+                self.loadContinuation = continuation
+            }
         }
-        
-        self.setupUndoManager()
+    }
+    
+    func showErrors(_ errors: [CompilationError]) {
+        self.textView.highlightedRanges = errors.filter({ error in
+            self.source.getPath().absoluteString == error.sourcePath
+        }).compactMap({ error in
+            if let start = error.range?.start.byteOffset,
+               let end = error.range?.end.byteOffset {
+                return HighlightedRange(range: NSRange(location: Int(start), length: Int(end - start)), color: .systemRed.withAlphaComponent(0.4), cornerRadius: 4)
+            } else {
+                return nil
+            }
+        })
+    }
+    
+    func goTo(line: Int) {
+        self.textView.goToLine(line)
     }
 }
 
@@ -307,7 +334,9 @@ extension TypstEditorViewController: TextViewDelegate {
     
     let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TypstEditorViewController") as! TypstEditorViewController
     
-    vc.setSource(source)
+    Task {
+        await vc.setSource(source)
+    }
     
     return vc
 }

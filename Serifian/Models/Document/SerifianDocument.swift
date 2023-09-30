@@ -188,10 +188,12 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         return self.sources
     }
     
-    func addSource(_ source: any SourceProtocol) {
-        Self.logger.trace("Source added: \(source.name): (\(String(describing: source))).")
+    func addSource(_ source: any SourceProtocol, root: Bool = true) {
+        Self.logger.trace("Source added: \(source.name): (\(source.getPath())).")
         
-        self.sources.append(source)
+        if root {
+            self.sources.append(source)
+        }
         
         let cancellable = source.changePublisher.throttle(for: 1, scheduler: RunLoop.main, latest: true).sink { _ in
             self.objectWillChange.send()
@@ -202,6 +204,12 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         }
         
         self.sourceCancellables.append(cancellable)
+        
+        if let folder = source as? Folder {
+            for source in folder.content {
+                self.addSource(source, root: false)
+            }
+        }
     }
     
     func updateErrors(_ errors: [CompilationError]) {

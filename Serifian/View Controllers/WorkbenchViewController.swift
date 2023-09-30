@@ -25,6 +25,8 @@ class WorkbenchViewController: UIDocumentViewController {
     @IBOutlet weak var editorView: UIView!
     @IBOutlet weak var draggableDividerView: DraggableDividerView!
     @IBOutlet weak var previewView: PDFView!
+    
+    private var currentEditorViewController: UIViewController?
 
     // Actions.
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
@@ -74,6 +76,18 @@ class WorkbenchViewController: UIDocumentViewController {
         let compilationErrorsCancellable = self.serifianDocument.$errors.sink { errors in
             self.setIssueNavigatorIcon(for: errors)
             self.issueNavigatorCoordinator.update(errors: errors)
+        }
+        
+        self.issueNavigatorCoordinator.onSelection { error in
+            if let sourcePath = error.sourcePath,
+               let url = URL(string: sourcePath),
+               let source = self.serifianDocument.source(path: url, in: nil) as? TypstSourceFile {
+                if let line = error.range?.start.line {
+                    self.showTypstEditor(for: source, at: Int(line))
+                } else {
+                    self.showTypstEditor(for: source)
+                }
+            }
         }
         
         // Set up preview update.
@@ -151,11 +165,9 @@ class WorkbenchViewController: UIDocumentViewController {
         }
                 
         if thereAreErrors {
-            self.issueNavigatorButtonItem.image = UIImage(systemName: "xmark.octagon.fill")
-            self.issueNavigatorButtonItem.tintColor = .red
+            self.issueNavigatorButtonItem.image = UIImage(systemName: "xmark.octagon.fill")?.applyingSymbolConfiguration(.init(paletteColors: [.white, .systemRed]))
         } else if thereAreWarnings {
-            self.issueNavigatorButtonItem.image = UIImage(systemName: "exclamationmark.triangle.fill")
-            self.issueNavigatorButtonItem.tintColor = .yellow
+            self.issueNavigatorButtonItem.image = UIImage(systemName: "exclamationmark.triangle.fill")?.applyingSymbolConfiguration(.init(paletteColors: [.black, .systemYellow]))
         } else {
             self.issueNavigatorButtonItem.image = UIImage(systemName: "checkmark.circle")
             self.issueNavigatorButtonItem.tintColor = .tintColor
@@ -325,13 +337,28 @@ extension WorkbenchViewController {
 
     /// Shows an editor specialized for Typst source files.
     /// - Parameter source: The Typst source to show in the editor.
-    private func showTypstEditor(for source: TypstSourceFile) {
-        let editor = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TypstEditorViewController") as! TypstEditorViewController
-        
-        Self.logger.trace("Showing Typst editor for \(source.name).")
+    private func showTypstEditor(for source: TypstSourceFile, at line: Int? = nil) {
+        Self.logger.trace("Showing Typst editor for \(source.name):\(line ?? 0).")
 
-        editor.setSource(source)
-        self.replaceLeadingViewSubview(with: editor)
+        if !(self.currentEditorViewController is TypstEditorViewController) {
+            let editor = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TypstEditorViewController") as! TypstEditorViewController
+            self.replaceLeadingViewSubview(with: editor)
+        }
+        
+        guard let editor = self.currentEditorViewController as? TypstEditorViewController else {
+            Self.logger.error("The current editor view controller is not a Typst editor.")
+            return
+        }
+        
+        Task {
+            await editor.setSource(source)
+            if let line {
+                editor.goTo(line: line)
+            }
+            
+            editor.becomeFirstResponder()
+        }
+        
     }
     
     /// Replaces the leading view with the specified controller's root view.
@@ -354,6 +381,8 @@ extension WorkbenchViewController {
         ]
                 
         self.editorView.addConstraints(constraints)
+        
+        self.currentEditorViewController = newController
     }
 
     /// Clears the editor part (leading view) by restoring it to an empty state.
