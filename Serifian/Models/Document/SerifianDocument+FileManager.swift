@@ -41,8 +41,12 @@ extension SerifianDocument: SwiftyTypst.FileManager {
         return nil
     }
 
-    func read(path: String) throws -> [UInt8] {
-        Self.logger.trace("Reading file at \(path).")
+    func read(path: String, package: String?) throws -> [UInt8] {
+        Self.logger.trace("Reading file at \(path) in package \(package ?? "main").")
+        
+        if let package {
+            return try self.readInPackage(path: path, package: package)
+        }
         
         guard let url = URL(string: path),
               let file = self.source(path: url, in: nil) else {
@@ -63,15 +67,60 @@ extension SerifianDocument: SwiftyTypst.FileManager {
         throw FileManagerError.Other(message: "Cannot convert the contents of the specified source to data.")
     }
     
-    func write(path: String, data: [UInt8]) throws {
+    func packageToPath(package: String) throws -> URL {
+        let components = package.components(separatedBy: .init(charactersIn: ":/"))
+        guard let namespace = components[safe: 0]?.replacingOccurrences(of: "@", with: ""),
+              let package = components[safe: 1],
+              let version = components[safe: 2] else {
+            Self.logger.error("Malformed package specification: \(package).")
+            throw FileManagerError.Other(message: "Package specification could not be converted to a path.")
+        }
         
+        return URL.cachesDirectory.appending(component: namespace).appending(component: package).appending(component: version)
     }
     
-    func exists(path: String) throws -> Bool {
-        true
+    func readInPackage(path: String, package: String) throws -> [UInt8] {
+        let fileURL = try packageToPath(package: package).appending(path: path)
+        
+        Self.logger.trace("Reading \(path) in \(package): URL is \(fileURL)")
+        
+        do {
+            let data = try Data(contentsOf: fileURL)
+            return [UInt8](data)
+        } catch {
+            Self.logger.error("Error while reading data from \(fileURL): \(error.localizedDescription).")
+            throw FileManagerError.Other(message: "Error during file reading: \(error.localizedDescription).")
+        }
     }
     
-    func createDirectory(path: String) throws {
+    func write(path: String, package: String, data: [UInt8]) throws {
+        let fileURL = try packageToPath(package: package).appending(path: path)
+
+        Self.logger.trace("Writing \(data.count) bytes to \(path) in \(package): URL is \(fileURL).")
         
+        let data = Data(data)
+        
+        do {
+            try data.write(to: fileURL)
+        } catch {
+            Self.logger.error("Error while writing data to \(fileURL): \(error.localizedDescription).")
+            throw FileManagerError.Other(message: "Error during file writing: \(error.localizedDescription).")
+        }
+    }
+    
+    func exists(path: String, package: String) throws -> Bool {
+        let fileURL = try packageToPath(package: package).appending(path: path)
+        return Foundation.FileManager.default.fileExists(atPath: fileURL.absoluteString)
+    }
+    
+    func createDirectory(path: String, package: String) throws {
+        let folderURL = try packageToPath(package: package).appending(path: path)
+        
+        do {
+            try Foundation.FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true)
+        } catch {
+            Self.logger.error("Error while creating folder \(folderURL): \(error.localizedDescription).")
+            throw FileManagerError.Other(message: "Error during folder creation: \(error.localizedDescription).")
+        }
     }
 }
