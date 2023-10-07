@@ -1,3 +1,7 @@
+Version 18:
+- You can now use Typst's online packages.
+
+Version 17:
 - Completely redesigned editor with faster highlighting.
 - Enhanced error management: you can now click on an error in the Issue Navigator popup, and you'll be taken to the error's location in its source file.
 - Documents are recompiled when opening them, so you can immediately detect any warning/error.
