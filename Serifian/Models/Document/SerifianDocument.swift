@@ -66,9 +66,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         Self.logger.trace("Typst folder created.")
         
         // Encode files.
-        for item in self.sources {
-            Self.logger.trace(#"Encoding "\#(item.name)"."#)
-            
+        for item in self.sources {            
             let wrapper = try item.fileWrapper
             typstFolder.addFileWrapper(wrapper)
         }
@@ -186,11 +184,13 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         return self.sources
     }
     
-    func addSource(_ source: any SourceProtocol, root: Bool = true) {
+    func addSource(_ source: any SourceProtocol) {
         Self.logger.trace("Source added: \(source.name): (\(source.getPath())).")
         
-        if root {
+        if source.parent == nil {
             self.sources.append(source)
+        } else {
+            source.parent?.content.append(source)
         }
         
         let cancellable = source.changePublisher.throttle(for: 1, scheduler: RunLoop.main, latest: true).sink { _ in
@@ -205,7 +205,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         
         if let folder = source as? Folder {
             for source in folder.content {
-                self.addSource(source, root: false)
+                self.addSource(source)
             }
         }
     }

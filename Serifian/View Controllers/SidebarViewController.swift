@@ -34,32 +34,7 @@ class SidebarViewController: UIViewController {
         
         Self.logger.trace("Configuring add button.")
         self.addButton.menu = UIMenu(
-            children: [
-                UIAction(title: "New Typst file...", image: UIImage(named: "custom.t.square.badge.plus"), handler: { _ in
-                    let source = TypstSourceFile(preferredName: "untitled", content: "", in: nil, partOf: self.document)
-                    self.document.addSource(source)
-                    self.updateSidebar()
-                }),
-                UIAction(title: "Import existing...", image: UIImage(systemName: "square.and.arrow.down.on.square"), handler: { _ in
-                    let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.png, .jpeg, .gif, .svg, .plainText, .text])
-                    
-                    picker.allowsMultipleSelection = true
-                    picker.shouldShowFileExtensions = true
-                    picker.delegate = self
-                    
-                    self.present(picker, animated: true)
-                }),
-                UIAction(title: "Import image...", image: UIImage(systemName: "photo.badge.plus"), handler: { _ in
-                    var configuration = PHPickerConfiguration()
-                    configuration.filter = .images
-                    configuration.preferredAssetRepresentationMode = .compatible
-                    
-                    let controller = PHPickerViewController(configuration: configuration)
-                    controller.delegate = self
-
-                    self.present(controller, animated: true)
-                }),
-            ]
+            children: self.commonMenuItems(for: nil)
         )
         
         Self.logger.trace("Configuring sidebar.")
@@ -82,6 +57,7 @@ class SidebarViewController: UIViewController {
             textField.tintColor = .systemBlue
             
             let image = UIImageView(image: item.image)
+            image.contentMode = .scaleAspectFit
             
             let sc = image.widthAnchor.constraint(equalTo: image.heightAnchor)
             sc.isActive = true
@@ -104,12 +80,13 @@ class SidebarViewController: UIViewController {
                 ),
             ]
             
+            cell.indentationWidth = 24
+            
             if item.children != nil {
                 cell.accessories += [.outlineDisclosure()]
             }
             
             cell.configurationUpdateHandler = { cell, state in
-                Self.logger.trace("Updating cell for \(item.referencedSource.name).")
                 
                 // Update cell data.
                 textField.text = item.referencedSource.name
@@ -217,17 +194,45 @@ class SidebarViewController: UIViewController {
         Self.logger.info("Selecting cell for \(path) at indexPath \(String(describing: indexPath)).")
         self.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
     }
+    
+    func commonMenuItems(for folder: Folder?) -> [UIAction] {
+        return [
+            UIAction(title: "New Typst file...", image: UIImage(named: "custom.t.square.badge.plus"), handler: { _ in
+                let source = TypstSourceFile(preferredName: "untitled", content: "", in: folder, partOf: self.document)
+                self.document.addSource(source)
+                self.updateSidebar()
+            }),
+            UIAction(title: "New folder...", image: UIImage(systemName: "folder.badge.plus"), handler: { _ in
+                let folder = Folder(preferredName: "untitled", in: folder, partOf: self.document)
+                self.document.addSource(folder)
+                self.updateSidebar()
+            }),
+            UIAction(title: "Import...", image: UIImage(systemName: "square.and.arrow.down.on.square"), handler: { _ in
+                let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.png, .jpeg, .gif, .svg, .plainText, .text, .folder])
+                
+                picker.allowsMultipleSelection = true
+                picker.shouldShowFileExtensions = true
+                picker.delegate = self
+                
+                self.present(picker, animated: true)
+            }),
+            UIAction(title: "Import image...", image: UIImage(systemName: "photo.badge.plus"), handler: { _ in
+                var configuration = PHPickerConfiguration()
+                configuration.filter = .images
+                configuration.preferredAssetRepresentationMode = .compatible
+                
+                let controller = PHPickerViewController(configuration: configuration)
+                controller.delegate = self
+                
+                self.present(controller, animated: true)
+            }),
+        ]
+    }
 }
 
 extension SidebarViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        if let item = dataSource?.itemIdentifier(for: indexPath) {
-            if item.children == nil {
-                return true
-            }
-        }
-        
-        return false
+        return true
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -299,6 +304,10 @@ extension SidebarViewController: UICollectionViewDelegate {
             actions += [mainSourceAction]
         }
         
+        if let folder = item.referencedSource as? Folder {
+            actions += self.commonMenuItems(for: folder)
+        }
+        
         let configuration = UIContextMenuConfiguration(actionProvider: { _ in
             UIMenu(children: actions)
         })
@@ -359,7 +368,7 @@ extension SidebarViewController: PHPickerViewControllerDelegate {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let vc = storyboard.instantiateViewController(identifier: "RootSplitViewController") as! RootSplitViewController
     
-    let documentURL = Bundle.main.url(forResource: "Empty", withExtension: ".sr")!
+    let documentURL = Bundle.main.url(forResource: "Example", withExtension: ".sr")!
     let document = SerifianDocument(fileURL: documentURL)
     try! document.read(from: documentURL)
     try! vc.setDocument(document)

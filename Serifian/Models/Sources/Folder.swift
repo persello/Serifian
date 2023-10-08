@@ -50,11 +50,17 @@ class Folder: SourceProtocol {
         }
     }
 
-    init(name: String, in folder: Folder?, partOf document: SerifianDocument) {
-        self.name = name
+    init(preferredName: String, in folder: Folder?, partOf document: SerifianDocument) {
+        self.name = preferredName
         self.content = []
         self.parent = folder
         self.document = document
+        
+        var i = 1
+        while self.duplicate() {
+            self.name = preferredName + " \(i)"
+            i += 1
+        }
     }
 }
 
@@ -70,7 +76,7 @@ extension Folder: Hashable {
 
 extension Folder: NSCopying {
     func copy(with zone: NSZone? = nil) -> Any {
-        let copy = Folder(name: self.name, in: self.parent, partOf: self.document)
+        let copy = Folder(preferredName: self.name, in: self.parent, partOf: self.document)
         copy.content = []
         for item in self.content {
             copy.content.append(item.copy() as! any SourceProtocol)
