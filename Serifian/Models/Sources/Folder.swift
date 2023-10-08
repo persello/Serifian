@@ -13,7 +13,7 @@ class Folder: SourceProtocol {
     var name: String
     @Published var content: [any SourceProtocol]
     weak var parent: Folder?
-    unowned var document: SerifianDocument
+    unowned var document: any SerifianDocument
     var changePublisher: AnyPublisher<Void, Never> {
         return self.objectWillChange.eraseToAnyPublisher()
     }
@@ -31,7 +31,7 @@ class Folder: SourceProtocol {
         return wrapper
     }
 
-    required init(from fileWrapper: FileWrapper, in folder: Folder?, partOf document: SerifianDocument) throws {
+    required init(from fileWrapper: FileWrapper, in folder: Folder?, partOf document: any SerifianDocument) throws {
         guard fileWrapper.isDirectory else {
             throw SourceError.notAFolder
         }
@@ -50,7 +50,7 @@ class Folder: SourceProtocol {
         }
     }
 
-    init(preferredName: String, in folder: Folder?, partOf document: SerifianDocument) {
+    init(preferredName: String, in folder: Folder?, partOf document: any SerifianDocument) {
         self.name = preferredName
         self.content = []
         self.parent = folder

@@ -15,7 +15,7 @@ class TypstSourceFile: SourceProtocol {
     @Published var content: String
     
     weak var parent: Folder?
-    unowned var document: SerifianDocument
+    unowned var document: any SerifianDocument
     
     fileprivate var highlightingContinuation: CheckedContinuation<NSAttributedString?, Never>?
     fileprivate var autocompletionContinuation: CheckedContinuation<[AutocompleteResult], Never>?
@@ -51,7 +51,7 @@ class TypstSourceFile: SourceProtocol {
         self.document.metadata.mainSource = self.getPath()
     }
     
-    required init(from fileWrapper: FileWrapper, in folder: Folder?, partOf document: SerifianDocument) throws {
+    required init(from fileWrapper: FileWrapper, in folder: Folder?, partOf document: any SerifianDocument) throws {
         guard fileWrapper.isRegularFile else {
             throw SourceError.notAFile
         }
@@ -75,7 +75,7 @@ class TypstSourceFile: SourceProtocol {
         self.document = document
     }
     
-    init(preferredName: String, content: String, in folder: Folder?, partOf document: SerifianDocument) {
+    init(preferredName: String, content: String, in folder: Folder?, partOf document: any SerifianDocument) {
         self.name = preferredName + ".typ"
         self.content = content
         self.parent = folder

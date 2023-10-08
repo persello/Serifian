@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyTypst
 
-extension SerifianDocument: SwiftyTypst.FileManager {
+extension SerifianDocument {
     func source(path: URL, in folder: Folder?) -> (any SourceProtocol)? {
         
 //        Self.logger.trace("Getting source \(path.absoluteString)\(folder == nil ? "" : " inside " + folder!.name).")

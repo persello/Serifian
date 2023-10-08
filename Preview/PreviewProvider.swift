@@ -5,7 +5,11 @@
 //  Created by Riccardo Persello on 27/05/23.
 //
 
+#if os(macOS)
+import QuickLookUI
+#elseif os(iOS)
 import QuickLook
+#endif
 
 class PreviewProvider: QLPreviewProvider, QLPreviewingController {
 

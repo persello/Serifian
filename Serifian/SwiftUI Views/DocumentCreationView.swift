@@ -8,32 +8,37 @@
 import SwiftUI
 
 struct DocumentCreationView: View {
-
-    var templatesStream: AsyncStream<SerifianDocument> {
+    
+    #if canImport(AppKit)
+    typealias S = NSSerifianDocument
+    #elseif canImport(UIKit)
+    typealias S = UISerifianDocument
+    #endif
+    
+    var templatesStream: AsyncStream<S> {
         let urls = Bundle.main.urls(
             forResourcesWithExtension: ".sr",
             subdirectory: nil
         )
 
         guard let urls else {
-            return AsyncStream<SerifianDocument> { continuation in
+            return AsyncStream<S> { continuation in
                 continuation.finish()
             }
         }
 
-        return AsyncStream<SerifianDocument> { continuation in
+        return AsyncStream<S> { continuation in
             for url in urls {
                 Task {
-                    let document = await SerifianDocument(fileURL: url)
-                    await document.open()
+                    let document = await S(url: url)
                     continuation.yield(document)
                 }
             }
         }
     }
 
-    @State private var loadedTemplates: [SerifianDocument] = []
-    @State private var selectedTemplate: SerifianDocument?
+    @State private var loadedTemplates: [S] = []
+    @State private var selectedTemplate: S?
 
     var body: some View {
         LazyVGrid(

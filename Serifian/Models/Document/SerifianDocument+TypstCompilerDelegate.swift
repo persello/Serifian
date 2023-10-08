@@ -9,7 +9,7 @@ import Foundation
 import SwiftyTypst
 import PDFKit
 
-extension SerifianDocument: TypstCompilerDelegate {
+extension SerifianDocument {
     func compilationFinished(result: SwiftyTypst.CompilationResult) {
         guard let compilationContinuation else {
             Self.logger.error("Compilation finished, but compilation continuation is nil.")

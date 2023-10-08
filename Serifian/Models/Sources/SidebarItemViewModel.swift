@@ -6,7 +6,14 @@
 //
 
 import Foundation
+
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#else
+#error("Target does not support neither AppKit nor UIKit.")
+#endif
 
 class SidebarItemViewModel: Identifiable, Hashable, Equatable {
 
@@ -27,6 +34,7 @@ class SidebarItemViewModel: Identifiable, Hashable, Equatable {
         }
     }
 
+#if canImport(UIKit)
     var image: UIImage {
         if let typstSource = referencedSource as? TypstSourceFile {
             if typstSource.isMain {
@@ -48,6 +56,29 @@ class SidebarItemViewModel: Identifiable, Hashable, Equatable {
 
         return UIImage(systemName: "doc")!
     }
+    #elseif canImport(AppKit)
+    var image: NSImage {
+        if let typstSource = referencedSource as? TypstSourceFile {
+            if typstSource.isMain {
+                let configuration = NSImage.SymbolConfiguration(paletteColors: [.systemTeal])
+                return NSImage(imageLiteralResourceName: "custom.t.square.fill.square.stack.fill").withSymbolConfiguration(configuration)!
+            } else {
+                let configuration = NSImage.SymbolConfiguration(paletteColors: [.white, .systemTeal])
+                return NSImage(systemSymbolName: "t.square.fill", accessibilityDescription: "Typst source")!.withSymbolConfiguration(configuration)!
+            }
+        }
+
+        if referencedSource is ImageFile {
+            return NSImage(systemSymbolName: "photo", accessibilityDescription: "Image file")!
+        }
+
+        if referencedSource is Folder {
+            return NSImage(systemSymbolName: "folder", accessibilityDescription: "Folder")!
+        }
+
+        return NSImage(systemSymbolName: "doc", accessibilityDescription: "Text file")!
+    }
+    #endif
 
     var id: URL {
         return self.referencedSource.getPath()

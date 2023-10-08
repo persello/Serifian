@@ -12,19 +12,19 @@ import Combine
 protocol SourceProtocol: Identifiable, AnyObject, Hashable, NSCopying, ObservableObject {
     associatedtype Content
 
-    init(from fileWrapper: FileWrapper, in folder: Folder?, partOf document: SerifianDocument) throws
+    init(from fileWrapper: FileWrapper, in folder: Folder?, partOf document: any SerifianDocument) throws
     var changePublisher: AnyPublisher<Void, Never> { get }
     var name: String { get set }
     var content: Content { get set }
     var fileWrapper: FileWrapper { get throws }
     var parent: Folder? { get }
-    var document: SerifianDocument { get }
+    var document: any SerifianDocument { get }
 }
 
 /// Tries to create a `SourceProtocol` conforming object from a `FileWrapper`.
 /// - Parameter fileWrapper: The input `FileWrapper`.
 /// - Returns: A `SourceProtocol` conforming object if successful, `nil` otherwise.
-func sourceProtocolObjectFrom(fileWrapper: FileWrapper, in folder: Folder?, partOf document: SerifianDocument) -> (any SourceProtocol)? {
+func sourceProtocolObjectFrom(fileWrapper: FileWrapper, in folder: Folder?, partOf document: any SerifianDocument) -> (any SourceProtocol)? {
 
     // Try to parse a folder from the specified wrapper.
     if let folder = try? Folder(from: fileWrapper, in: folder, partOf: document) {
@@ -75,7 +75,6 @@ extension SourceProtocol {
         }
         
         self.name = newName
-        self.document.updateChangeCount(.done)
     }
     
     func path(collidesWith path: URL) -> Bool {

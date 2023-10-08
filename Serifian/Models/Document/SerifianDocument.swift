@@ -5,54 +5,35 @@
 //  Created by Riccardo Persello on 27/05/23.
 //
 
-import UIKit
 import SwiftyTypst
 import PDFKit
 import Combine
 import os
 
-class SerifianDocument: UIDocument, Identifiable, ObservableObject {
-    private(set) var title: String
+protocol SerifianDocument: Identifiable, Equatable, ObservableObject, TypstCompilerDelegate, SwiftyTypst.FileManager where ObjectWillChangePublisher == ObservableObjectPublisher {
+    var title: String { get set }
     
-    var compiler: TypstCompiler!
-    @Published var metadata: DocumentMetadata
+    var compiler: TypstCompiler! { get set }
+    var metadata: DocumentMetadata { get set }
     
-    private var sources: [any SourceProtocol] = []
+    var sources: [any SourceProtocol] { get set }
     
-    private(set) var coverImage: CGImage?
-    @Published private(set) var preview: PDFDocument?
+    var coverImage: CGImage? { get set }
+    var preview: PDFDocument? { get set }
     
-    @Published private(set) var errors: [CompilationError] = []
+    var errors: [CompilationError] { get set }
     
-    private var sourceCancellables: [AnyCancellable] = []
-    internal var compilationContinuation: CheckedContinuation<PDFDocument, any Error>? = nil
+    var sourceCancellables: [AnyCancellable] { get set }
+    var compilationContinuation: CheckedContinuation<PDFDocument, any Error>? { get set }
     
-    static let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "SerifianDocument")
-    static let signposter = OSSignposter(subsystem: Bundle.main.bundleIdentifier!, category: "SerifianDocument")
-        
-    convenience init(empty: Bool, fileURL: URL) {
-        
-        Self.logger.info("Creating a new \(empty ? "empty" : "default") document (\(fileURL)).")
-        
-        self.init(fileURL: fileURL)
-        
-        if !empty {
-            let main = TypstSourceFile(preferredName: "main", content: "Hello, Serifian.", in: nil, partOf: self)
-            self.addSource(main)
-        }
-    }
+    static var logger: Logger { get }
+    static var signposter: OSSignposter { get }
     
-    override init(fileURL url: URL) {
-        self.title = url.deletingPathExtension().lastPathComponent
-        Self.logger.info(#"Initialising document "\#(self.title)" (\#(url))."#)
-        self.metadata = DocumentMetadata(mainSource: URL(string: "/main.typ")!, lastOpenedSource: URL(string: "/main.typ")!)
-        super.init(fileURL: url)
-        
-        self.compiler = TypstCompiler(fileManager: self, main: self.metadata.mainSource.absoluteString)
-        self.loadFonts()
-    }
-    
-    override func contents(forType typeName: String) throws -> Any {
+    init(url: URL) async
+}
+
+extension SerifianDocument {
+    func rootFileWrapper() throws -> FileWrapper {
         
         Self.logger.info("Serialising contents.")
         
@@ -101,15 +82,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         return root
     }
     
-    override func load(fromContents contents: Any, ofType typeName: String?) throws {
-        
-        Self.logger.info("Loading document from contents.")
-        
-        guard let root = contents as? FileWrapper else {
-            Self.logger.error("Document is not a file wrapper. Throwing error.")
-            throw DocumentError.notAFileWrapper
-        }
-        
+    func load(from fileWrapper: FileWrapper) throws {
         // Set title.
         //        var fileNameComponents = root.filename?.split(separator: ".")
         //        fileNameComponents?.removeLast()
@@ -117,7 +90,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         
         // Find the metadata.
         Self.logger.trace("Finding document metadata.")
-        guard let metadata = root.fileWrappers?["Serifian.plist"],
+        guard let metadata = fileWrapper.fileWrappers?["Serifian.plist"],
               let encodedMetadata = metadata.regularFileContents else {
             Self.logger.error("Metadata not found, or damaged.")
             throw DocumentError.noMetadata
@@ -129,7 +102,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         Self.logger.trace("Metadata decoded.")
         
         // Find a Typst folder.
-        guard let typstFolder = root.fileWrappers?["Typst"] else {
+        guard let typstFolder = fileWrapper.fileWrappers?["Typst"] else {
             Self.logger.error("Typst folder not found in document.")
             throw DocumentError.noTypstFolder
         }
@@ -159,7 +132,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         }
         
         // Preview image.
-        if let imageWrapper = root.fileWrappers?["cover.jpeg"],
+        if let imageWrapper = fileWrapper.fileWrappers?["cover.jpeg"],
            let data = imageWrapper.regularFileContents,
            let dataProvider = CGDataProvider(data: data as CFData) {
             self.coverImage = CGImage(jpegDataProviderSource: dataProvider, decode: nil, shouldInterpolate: false, intent: .perceptual)
@@ -167,7 +140,7 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
         }
         
         // Preview.
-        if let previewWrapper = root.fileWrappers?["preview.pdf"],
+        if let previewWrapper = fileWrapper.fileWrappers?["preview.pdf"],
            let data = previewWrapper.regularFileContents,
            let pdf = PDFDocument(data: data) {
             self.preview = pdf
@@ -233,7 +206,6 @@ class SerifianDocument: UIDocument, Identifiable, ObservableObject {
             
             self.metadata.lastOpenedSource = newValue?.getPath()
             self.objectWillChange.send()
-            self.updateChangeCount(.done)
         }
     }
 }

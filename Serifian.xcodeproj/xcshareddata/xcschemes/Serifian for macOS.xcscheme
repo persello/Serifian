@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8B4F2B692A21376D007A15D7"
-               BuildableName = "Serifian.app"
-               BlueprintName = "Serifian"
+               BlueprintIdentifier = "8B3DE9D62AD2F60D005060EE"
+               BuildableName = "Serifian for macOS.app"
+               BlueprintName = "Serifian for macOS"
                ReferencedContainer = "container:Serifian.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,19 +43,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B4F2B692A21376D007A15D7"
-            BuildableName = "Serifian.app"
-            BlueprintName = "Serifian"
+            BlueprintIdentifier = "8B3DE9D62AD2F60D005060EE"
+            BuildableName = "Serifian for macOS.app"
+            BlueprintName = "Serifian for macOS"
             ReferencedContainer = "container:Serifian.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "RUST_BACKTRACE"
-            value = "1"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -67,9 +60,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B4F2B692A21376D007A15D7"
-            BuildableName = "Serifian.app"
-            BlueprintName = "Serifian"
+            BlueprintIdentifier = "8B3DE9D62AD2F60D005060EE"
+            BuildableName = "Serifian for macOS.app"
+            BlueprintName = "Serifian for macOS"
             ReferencedContainer = "container:Serifian.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

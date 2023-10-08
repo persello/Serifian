@@ -111,11 +111,13 @@ struct AutocompletePopup: View {
         self.selectedIndex = orderedCompletions.startIndex
         
         for completion in orderedCompletions {
+            #if canImport(UIKit)
             // Add the completion to the spell checker.
             if !UITextChecker.hasLearnedWord(completion.result.completion) {
 //                Self.logger.trace(#"Learning word "\#(completion.result.completion)"."#)
                 UITextChecker.learnWord(completion.result.completion)
             }
+            #endif
         }
         
         return orderedCompletions.count

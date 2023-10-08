@@ -6,14 +6,21 @@
 //
 
 import Foundation
-import UIKit
 import Combine
+
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#else
+#error("Target does not support neither AppKit nor UIKit.")
+#endif
 
 class ImageFile: SourceProtocol {
     var name: String
     @Published var content: Data
     weak var parent: Folder?
-    unowned var document: SerifianDocument
+    unowned var document: any SerifianDocument
 
     var changePublisher: AnyPublisher<Void, Never> {
         return self.objectWillChange.eraseToAnyPublisher()
@@ -26,15 +33,21 @@ class ImageFile: SourceProtocol {
         return wrapper
     }
 
-    required init(from fileWrapper: FileWrapper, in folder: Folder?, partOf document: SerifianDocument) throws {
+    required init(from fileWrapper: FileWrapper, in folder: Folder?, partOf document: any SerifianDocument) throws {
         guard let data = fileWrapper.regularFileContents else {
             throw SourceError.fileHasNoContents
         }
-
+        
         // Try to create an image in order to validate data.
+#if canImport(UIKit)
         guard UIImage(data: data) != nil else {
             throw SourceError.notAnImage
         }
+#elseif canImport(AppKit)
+        guard NSImage(data: data) != nil else {
+            throw SourceError.notAnImage
+        }
+#endif
 
         self.content = data
         self.name = fileWrapper.preferredFilename ?? "Image"
@@ -42,7 +55,7 @@ class ImageFile: SourceProtocol {
         self.document = document
     }
 
-    init(name: String, content: Data, in folder: Folder?, partOf document: SerifianDocument) {
+    init(name: String, content: Data, in folder: Folder?, partOf document: any SerifianDocument) {
         self.name = name
         self.content = content
         self.parent = folder
