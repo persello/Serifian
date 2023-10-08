@@ -368,7 +368,7 @@ extension SidebarViewController: PHPickerViewControllerDelegate {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let vc = storyboard.instantiateViewController(identifier: "RootSplitViewController") as! RootSplitViewController
     
-    let documentURL = Bundle.main.url(forResource: "Example", withExtension: ".sr")!
+    let documentURL = Bundle.main.url(forResource: "Empty", withExtension: ".sr")!
     let document = SerifianDocument(fileURL: documentURL)
     try! document.read(from: documentURL)
     try! vc.setDocument(document)
