@@ -18,7 +18,7 @@ class SidebarViewController: UIViewController {
     private weak var rootSplitViewController: RootSplitViewController!
     
     private var dataSource: UICollectionViewDiffableDataSource<String, SidebarItemViewModel>?
-    private unowned var document: (any SerifianDocument)!
+    private unowned var document: UISerifianDocument!
     
     private var endRenamingCallback: ((String?) -> ())?
     private var selectionChangeCancellable: AnyCancellable?
@@ -166,13 +166,13 @@ class SidebarViewController: UIViewController {
         self.navigationItem.title = document.title
     }
     
-    func setDocument(_ document: any SerifianDocument) {
+    func setDocument(_ document: UISerifianDocument) {
         Self.logger.info(#"Setting referenced document to "\#(document.title)"."#)
         
         self.document = document
         self.updateSidebar()
         
-        self.selectionChangeCancellable = self.document.metadata.sink { metadata in
+        self.selectionChangeCancellable = self.document.$metadata.sink { metadata in
             guard let path = metadata.lastOpenedSource else {
                 return
             }
@@ -369,7 +369,7 @@ extension SidebarViewController: PHPickerViewControllerDelegate {
     let vc = storyboard.instantiateViewController(identifier: "RootSplitViewController") as! RootSplitViewController
     
     let documentURL = Bundle.main.url(forResource: "Empty", withExtension: ".sr")!
-    let document = SerifianDocument(fileURL: documentURL)
+    let document = UISerifianDocument(fileURL: documentURL)
     try! document.read(from: documentURL)
     try! vc.setDocument(document)
     

@@ -36,7 +36,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         // Set the URL for the new document here. Optionally, you can present a template chooser before calling the importHandler.
         // Make sure the importHandler is always called, even if the user cancels the creation request.
         if let newDocumentURL {
-            let newDocument = SerifianDocument(empty: false, fileURL: newDocumentURL)
+            let newDocument = UISerifianDocument(empty: false, fileURL: newDocumentURL)
 
             Task {
                 Self.logger.info("Document created, saving it.")
@@ -109,7 +109,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         rootSplitViewController.modalPresentationStyle = .fullScreen
         transitionController?.targetView = rootSplitViewController.view
         
-        let document = SerifianDocument(fileURL: documentURL)
+        let document = UISerifianDocument(fileURL: documentURL)
         
         do {
             try document.read(from: documentURL)

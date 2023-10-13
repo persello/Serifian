@@ -87,8 +87,7 @@ class TypstEditorViewController: UIViewController {
         // It seems to work better than my own implementation.
         if textView != nil {
             self.textView.undoManager?.removeAllActions()
-            self.source.document.undoManager = self.textView.undoManager
-            Self.logger.debug("The document's undo manager is \(self.source.document.undoManager).")
+            self.source.document.assignUndoManager(undoManager: self.textView.undoManager)
         }
     }
     
@@ -102,7 +101,7 @@ class TypstEditorViewController: UIViewController {
             self.source.document.lastOpenedSource = source
             
             // Set up error detection.
-            self.errorHighlightCancellable = self.source.document.$errors.sink { errors in
+            self.errorHighlightCancellable = (self.source.document as! UISerifianDocument).$errors.sink { errors in
                 self.showErrors(errors)
             }
                     
@@ -330,7 +329,7 @@ extension TypstEditorViewController: TextViewDelegate {
 
 #Preview("Typst Editor View Controller") {
     let documentURL = Bundle.main.url(forResource: "Example", withExtension: ".sr")!
-    let document = SerifianDocument(fileURL: documentURL)
+    let document = UISerifianDocument(fileURL: documentURL)
     try! document.read(from: documentURL)
     
     let source = document.getSources().compactMap({$0 as? TypstSourceFile}).last!

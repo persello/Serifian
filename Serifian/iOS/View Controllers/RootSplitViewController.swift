@@ -10,7 +10,7 @@ import os
 
 class RootSplitViewController: UISplitViewController {
 
-    private(set) var document: (any SerifianDocument)?
+    private(set) var document: UISerifianDocument?
     
     static private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "RootSplitViewController")
 
@@ -20,7 +20,7 @@ class RootSplitViewController: UISplitViewController {
         // Do any additional setup after loading the view.
     }
 
-    func setDocument(_ document: any SerifianDocument) throws {
+    func setDocument(_ document: UISerifianDocument) throws {
         
         Self.logger.info(#"Setting document: "\#(document.title)"."#)
         
@@ -39,7 +39,7 @@ class RootSplitViewController: UISplitViewController {
     let vc = storyboard.instantiateViewController(identifier: "RootSplitViewController") as! RootSplitViewController
     
     let documentURL = Bundle.main.url(forResource: "Empty", withExtension: ".sr")!
-    let document = UISerifianDocument(url: documentURL)
+    let document = UISerifianDocument(fileURL: documentURL)
     try! document.read(from: documentURL)
     try! vc.setDocument(document)
         

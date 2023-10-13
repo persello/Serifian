@@ -30,7 +30,7 @@ struct DocumentCreationView: View {
         return AsyncStream<S> { continuation in
             for url in urls {
                 Task {
-                    let document = await S(url: url)
+                    let document = await S(fileURL: url)
                     continuation.yield(document)
                 }
             }

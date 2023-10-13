@@ -46,8 +46,8 @@ class WorkbenchViewController: UIDocumentViewController {
     private var lastPreviewMinimumWidth: CGFloat!
     
     // Internal variables.
-    private var serifianDocument: SerifianDocument {
-        self.document as! SerifianDocument
+    private var serifianDocument: UISerifianDocument {
+        self.document as! UISerifianDocument
     }
     
     private var cancellables: [AnyCancellable] = []
@@ -408,7 +408,7 @@ extension WorkbenchViewController {
             try? await self.serifianDocument.compile()
         }
         
-        let metadataCancellable = self.serifianDocument.metadataPublisher.sink { metadata in
+        let metadataCancellable = self.serifianDocument.$metadata.sink { metadata in
             if let url = metadata.lastOpenedSource,
                let source = document.source(path: url, in: nil) {
                 self.changeSource(source: source)
