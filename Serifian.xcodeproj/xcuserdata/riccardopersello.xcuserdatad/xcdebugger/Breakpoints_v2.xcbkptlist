@@ -48,9 +48,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "highlightingFinished(result:)"
-            landmarkType = "7">
+            endingLineNumber = "181">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -64,9 +62,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "highlightingFinished(result:)"
-            landmarkType = "7">
+            endingLineNumber = "200">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

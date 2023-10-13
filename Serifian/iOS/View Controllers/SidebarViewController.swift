@@ -18,7 +18,7 @@ class SidebarViewController: UIViewController {
     private weak var rootSplitViewController: RootSplitViewController!
     
     private var dataSource: UICollectionViewDiffableDataSource<String, SidebarItemViewModel>?
-    private unowned var document: SerifianDocument!
+    private unowned var document: (any SerifianDocument)!
     
     private var endRenamingCallback: ((String?) -> ())?
     private var selectionChangeCancellable: AnyCancellable?
@@ -166,13 +166,13 @@ class SidebarViewController: UIViewController {
         self.navigationItem.title = document.title
     }
     
-    func setDocument(_ document: SerifianDocument) {
+    func setDocument(_ document: any SerifianDocument) {
         Self.logger.info(#"Setting referenced document to "\#(document.title)"."#)
         
         self.document = document
         self.updateSidebar()
         
-        self.selectionChangeCancellable = self.document.$metadata.sink { metadata in
+        self.selectionChangeCancellable = self.document.metadata.sink { metadata in
             guard let path = metadata.lastOpenedSource else {
                 return
             }

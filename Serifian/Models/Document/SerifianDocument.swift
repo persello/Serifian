@@ -16,6 +16,8 @@ protocol SerifianDocument: Identifiable, Equatable, ObservableObject, TypstCompi
     var compiler: TypstCompiler! { get set }
     var metadata: DocumentMetadata { get set }
     
+    var metadataPublisher: Published<DocumentMetadata>.Publisher { get }
+    
     var sources: [any SourceProtocol] { get set }
     
     var coverImage: CGImage? { get set }

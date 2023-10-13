@@ -399,7 +399,7 @@ extension WorkbenchViewController {
         //        }
     }
     
-    func setupDocument(_ document: SerifianDocument) {
+    func setupDocument(_ document: UISerifianDocument) {
         
         Self.logger.info(#"Setting document to "\#(document.title)"."#)
         
@@ -408,7 +408,7 @@ extension WorkbenchViewController {
             try? await self.serifianDocument.compile()
         }
         
-        let metadataCancellable = self.serifianDocument.$metadata.sink { metadata in
+        let metadataCancellable = self.serifianDocument.metadataPublisher.sink { metadata in
             if let url = metadata.lastOpenedSource,
                let source = document.source(path: url, in: nil) {
                 self.changeSource(source: source)
@@ -424,7 +424,7 @@ extension WorkbenchViewController {
     let vc = storyboard.instantiateViewController(identifier: "RootSplitViewController") as! RootSplitViewController
     
     let documentURL = Bundle.main.url(forResource: "Empty", withExtension: ".sr")!
-    let document = SerifianDocument(fileURL: documentURL)
+    let document = UISerifianDocument(fileURL: documentURL)
     try! document.read(from: documentURL)
     try! vc.setDocument(document)
     

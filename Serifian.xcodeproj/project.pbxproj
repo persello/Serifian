@@ -52,7 +52,6 @@
 		8B3DEA152AD31D39005060EE /* AutocompleteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE1F2AB7384D0068D5B1 /* AutocompleteCoordinator.swift */; };
 		8B3DEA162AD31D39005060EE /* CompilationErrorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA135A2AC0C175000A5EFC /* CompilationErrorsView.swift */; };
 		8B3DEA172AD31D39005060EE /* DocumentCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C7E2A22567B009DD175 /* DocumentCreationView.swift */; };
-		8B3DEA1C2AD31D8C005060EE /* SerifianDocument+UIDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DEA1A2AD31D78005060EE /* SerifianDocument+UIDocument.swift */; };
 		8B3DEA202AD34BF5005060EE /* NSSerifianDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3DEA1F2AD34BF5005060EE /* NSSerifianDocument.swift */; };
 		8B4F2B6E2A21376D007A15D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2B6D2A21376D007A15D7 /* AppDelegate.swift */; };
 		8B4F2B702A21376D007A15D7 /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2B6F2A21376D007A15D7 /* DocumentBrowserViewController.swift */; };
@@ -84,6 +83,7 @@
 		8BCC9C2B2AC6113300F4522B /* Runestone in Frameworks */ = {isa = PBXBuildFile; productRef = 8BCC9C2A2AC6113300F4522B /* Runestone */; };
 		8BD4CB012AC61A20001D4E43 /* Example.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB002AC61A1F001D4E43 /* Example.sr */; };
 		8BD4CB432AC6235E001D4E43 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */; };
+		AD239B6E2AD8306500C8B82B /* UISerifianDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD239B6D2AD8306500C8B82B /* UISerifianDocument.swift */; };
 		AD2B63C72ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */; };
 		AD2B63E92ABC6C1D00DAF85E /* InriaSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63CB2ABC6C1D00DAF85E /* InriaSerif-Bold.ttf */; };
 		AD2B63EA2ABC6C1D00DAF85E /* NotoSerifHebrew-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63CC2ABC6C1D00DAF85E /* NotoSerifHebrew-Bold.ttf */; };
@@ -211,7 +211,6 @@
 		8B3DE9F42AD31520005060EE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B3DE9F62AD3156A005060EE /* Serifian.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Serifian.entitlements; sourceTree = "<group>"; };
 		8B3DE9F92AD317CF005060EE /* Serifian.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Serifian.entitlements; sourceTree = "<group>"; };
-		8B3DEA1A2AD31D78005060EE /* SerifianDocument+UIDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+UIDocument.swift"; sourceTree = "<group>"; };
 		8B3DEA1F2AD34BF5005060EE /* NSSerifianDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSSerifianDocument.swift; sourceTree = "<group>"; };
 		8B4F2B6A2A21376D007A15D7 /* Serifian for iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Serifian for iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4F2B6D2A21376D007A15D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -272,6 +271,7 @@
 		8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTheme.swift; sourceTree = "<group>"; };
 		8BD4CB442AC62DC9001D4E43 /* TreeSitterTypst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeSitterTypst.h; sourceTree = "<group>"; };
 		8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstEditorViewController.swift; sourceTree = "<group>"; };
+		AD239B6D2AD8306500C8B82B /* UISerifianDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISerifianDocument.swift; sourceTree = "<group>"; };
 		AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutocompleteResult+Clean.swift"; sourceTree = "<group>"; };
 		AD2B63CB2ABC6C1D00DAF85E /* InriaSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "InriaSerif-Bold.ttf"; sourceTree = "<group>"; };
 		AD2B63CC2ABC6C1D00DAF85E /* NotoSerifHebrew-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifHebrew-Bold.ttf"; sourceTree = "<group>"; };
@@ -420,7 +420,7 @@
 		8B3DE9D22AD2F46F005060EE /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				8B3DEA192AD31D59005060EE /* Extensions */,
+				8B3DEA192AD31D59005060EE /* Models */,
 				8B3DEA1D2AD34760005060EE /* Utilities */,
 				8B4F2C522A222E1C007A15D7 /* View Controllers */,
 				8B4F2B6D2A21376D007A15D7 /* AppDelegate.swift */,
@@ -433,12 +433,12 @@
 			path = iOS;
 			sourceTree = "<group>";
 		};
-		8B3DEA192AD31D59005060EE /* Extensions */ = {
+		8B3DEA192AD31D59005060EE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8B3DEA1A2AD31D78005060EE /* SerifianDocument+UIDocument.swift */,
+				AD239B6D2AD8306500C8B82B /* UISerifianDocument.swift */,
 			);
-			path = Extensions;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		8B3DEA1D2AD34760005060EE /* Utilities */ = {
@@ -987,12 +987,12 @@
 				8B348C7F2A22567B009DD175 /* DocumentCreationView.swift in Sources */,
 				8B348C732A223E18009DD175 /* SourceProtocol.swift in Sources */,
 				8B4F2B6E2A21376D007A15D7 /* AppDelegate.swift in Sources */,
-				8B3DEA1C2AD31D8C005060EE /* SerifianDocument+UIDocument.swift in Sources */,
 				8B4F2C662A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift in Sources */,
 				8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */,
 				8B882E6B2AC8310300BD2FEE /* scanner.c in Sources */,
 				AD8DC5D52A8E8421008E2717 /* AutocompletePopup.swift in Sources */,
 				AD49CE222AB75C240068D5B1 /* UITextRange+Intersection.swift in Sources */,
+				AD239B6E2AD8306500C8B82B /* UISerifianDocument.swift in Sources */,
 				AD9FF0212A90FE9E00C6EADD /* AutocompletePopupHostingController.swift in Sources */,
 				AD49CE1B2AB737CC0068D5B1 /* AutocompletePopupItem.swift in Sources */,
 				AD49CE202AB7384D0068D5B1 /* AutocompleteCoordinator.swift in Sources */,
