@@ -28,6 +28,9 @@ class UISerifianDocument: UIDocument, SerifianDocument {
     
     var sourceCancellables: [AnyCancellable] = []
     var compilationContinuation: CheckedContinuation<PDFDocument, any Error>? = nil
+    
+    /// A strong reference to the document opening transitioning delegate.
+    var transitioningDelegate: UIDocumentBrowserTransitioningDelegate? = nil
         
     static let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "SerifianDocument")
     static let signposter = OSSignposter(subsystem: Bundle.main.bundleIdentifier!, category: "SerifianDocument")

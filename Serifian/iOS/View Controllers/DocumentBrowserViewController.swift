@@ -8,7 +8,7 @@
 import UIKit
 import os
 
-class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocumentBrowserViewControllerDelegate, UIViewControllerTransitioningDelegate {
+class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocumentBrowserViewControllerDelegate {
     
     static private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "DocumentBrowserViewController")
     
@@ -74,47 +74,38 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         // Make sure to handle the failed import appropriately, e.g., by presenting an error message to the user.
     }
 
-    // MARK: Animation
-
-    var transitionController: UIDocumentBrowserTransitionController?
-
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        Self.logger.trace("Getting animation controller for presentation.")
-        
-        return transitionController
-    }
-
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        Self.logger.trace("Getting animation controller for dismissal.")
-        return transitionController
-    }
-
-
     // MARK: Document Presentation
     
     func presentDocument(at documentURL: URL) {
         
         Self.logger.trace("Presenting document at \(documentURL).")
         
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let rootSplitViewController = storyBoard.instantiateViewController(withIdentifier: "RootSplitViewController") as! RootSplitViewController
-        
-        // Set up transition.
-        rootSplitViewController.transitioningDelegate = self
-        transitionController = self.transitionController(forDocumentAt: documentURL)
-        
-        // Customise transition.
-        rootSplitViewController.modalPresentationStyle = .fullScreen
-        transitionController?.targetView = rootSplitViewController.view
-        
         let document = UISerifianDocument(fileURL: documentURL)
         
         do {
             try document.read(from: documentURL)
+            
+            // Prepare VC to be presented.
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let rootSplitViewController = storyboard.instantiateViewController(withIdentifier: "RootSplitViewController") as! RootSplitViewController
             try rootSplitViewController.setDocument(document)
-            present(rootSplitViewController, animated: true)
+            rootSplitViewController.workbench.loadViewIfNeeded()
+            
+            // Set up transition controller.
+            let transitioningController = self.transitionController(forDocumentAt: documentURL)
+            transitioningController.targetView = rootSplitViewController.workbench.previewView
+            
+            // Set up transitioning delegate.
+            let transitioningDelegate = UIDocumentBrowserTransitioningDelegate(withTransitionController: transitioningController)
+
+            // Set up transition.
+            rootSplitViewController.modalPresentationStyle = .custom
+            rootSplitViewController.transitioningDelegate = transitioningDelegate
+            
+            // Store a strong reference to the delegate.
+            document.transitioningDelegate = transitioningDelegate
+            
+            present(rootSplitViewController, animated: true, completion: nil)
         } catch _ as DecodingError {
             let alert = UIAlertController(title: "Decoding error", message: "The chosen file might be damaged.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -134,6 +125,22 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
     }
 }
 
+class UIDocumentBrowserTransitioningDelegate : NSObject, UIViewControllerTransitioningDelegate {
+    
+    let transitionController : UIDocumentBrowserTransitionController
+    
+    init(withTransitionController transitionController: UIDocumentBrowserTransitionController) {
+        self.transitionController = transitionController
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transitionController
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transitionController
+    }
+}
 #Preview("Document Browser View Controller") {
     DocumentBrowserViewController()
 }

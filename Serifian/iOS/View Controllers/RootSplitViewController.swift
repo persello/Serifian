@@ -13,6 +13,14 @@ class RootSplitViewController: UISplitViewController {
     private(set) var document: UISerifianDocument?
     
     static private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "RootSplitViewController")
+    
+    var workbench: WorkbenchViewController {
+        (self.viewControllers.last as! UINavigationController).topViewController! as! WorkbenchViewController
+    }
+    
+    var sidebar: SidebarViewController {
+        (self.viewControllers.first as! UINavigationController).topViewController! as! SidebarViewController
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +33,8 @@ class RootSplitViewController: UISplitViewController {
         Self.logger.info(#"Setting document: "\#(document.title)"."#)
         
         self.document = document
-
-        let workbench = (self.viewControllers.last as! UINavigationController).topViewController! as! WorkbenchViewController
-        workbench.setupDocument(document)
-
-        let sidebar = (self.viewControllers.first as! UINavigationController).topViewController! as! SidebarViewController
-        sidebar.setDocument(document)
+        self.workbench.setupDocument(document)
+        self.sidebar.setDocument(document)
     }
 }
 

@@ -34,8 +34,4 @@ class NSSerifianDocument: NSDocument, SerifianDocument {
     static var logger: Logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "NSSerifianDocument")
     
     static var signposter: OSSignposter = OSSignposter(subsystem: Bundle.main.bundleIdentifier!, category: "NSSerifianDocument")
-    
-    required init(url: URL) async {
-        <#code#>
-    }
 }
