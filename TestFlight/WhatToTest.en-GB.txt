@@ -1,3 +1,8 @@
+Version 19:
+- You can now export the compiled PDF or the Typst sources folder.
+- Added more context menus on sidebar items (such as create files in folder).
+- Fixed file opening animation bug.
+
 Version 18:
 - You can now use Typst's online packages.
 
