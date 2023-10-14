@@ -28,19 +28,6 @@ class WorkbenchViewController: UIDocumentViewController {
     
     private var currentEditorViewController: UIViewController?
     
-    // Actions.
-    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true)
-    }
-    
-    @IBAction func previewPaneButtonPressed(_ sender: UIBarButtonItem) {
-        self.trailingViewVisible.toggle()
-    }
-    
-    @IBAction func issueNavigatorButtonPressed(_ sender: Any) {
-        self.present(issueNavigatorPopover, animated: true)
-    }
-    
     // Variables for restoring the split setup after hiding the trailing view.
     private var lastEditorRelativeWidth: CGFloat!
     private var lastPreviewMinimumWidth: CGFloat!
@@ -61,6 +48,19 @@ class WorkbenchViewController: UIDocumentViewController {
     }
     
     static private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "WorkbenchViewController")
+    
+    // Actions.
+    @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction func previewPaneButtonPressed(_ sender: UIBarButtonItem) {
+        self.trailingViewVisible.toggle()
+    }
+    
+    @IBAction func issueNavigatorButtonPressed(_ sender: Any) {
+        self.present(issueNavigatorPopover, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,6 +137,58 @@ class WorkbenchViewController: UIDocumentViewController {
         self.cancellables += [previewCancellable, compilationErrorsCancellable]
         
         self.navigationItem.centerItemGroups.append(undoRedoItemGroup)
+        self.navigationItem.titleMenuProvider = { suggested in
+            var items = suggested
+            items += [
+                UIMenu(title: "Export...", image: UIImage(systemName: "arrow.up.right.square"), children: [
+                    UIAction(title: "Document", image: UIImage(systemName: "doc.richtext"), handler: { _ in
+                        Task {
+                            if let pdf = try? await self.serifianDocument.compile(),
+                               let data = pdf.dataRepresentation() {
+                                
+                                let tempDir = Foundation.FileManager.default.temporaryDirectory
+                                let title = self.serifianDocument.title + ".pdf"
+                                let path = tempDir.appending(path: title)
+                                
+                                try! data.write(to: path)
+                                
+                                let activityViewController = UIActivityViewController(activityItems: [path], applicationActivities: nil)
+                                activityViewController.popoverPresentationController?.sourceRect = CGRect(origin: CGPoint(x: self.view.center.x, y: self.view.frame.height), size: CGSize.zero)
+                                activityViewController.popoverPresentationController?.sourceView = self.view
+                                
+                                DispatchQueue.main.async {
+                                    self.present(activityViewController, animated: true)
+                                }
+                                
+                            } else {
+                                let alertViewController = UIAlertController(title: "Cannot share document", message: "Before sharing a document, please fix all the compilation issues.", preferredStyle: .alert)
+                                
+                                self.present(alertViewController, animated: true)
+                            }
+                        }
+                    }),
+                    UIAction(title: "Sources", image: UIImage(systemName: "doc.zipper"), handler: { _ in
+                        if let sourcesFolder = self.document?.fileURL.appending(path: "Typst/") {
+                            
+                            let newPath = Foundation.FileManager.default.temporaryDirectory.appending(path: self.serifianDocument.title)
+                            
+                            try? Foundation.FileManager.default.removeItem(at: newPath)
+                            try! Foundation.FileManager.default.copyItem(at: sourcesFolder, to: newPath)
+                            
+                            let activityViewController = UIActivityViewController(activityItems: [newPath], applicationActivities: nil)
+                            activityViewController.popoverPresentationController?.sourceRect = CGRect(origin: CGPoint(x: self.view.center.x, y: self.view.frame.height), size: CGSize.zero)
+                            activityViewController.popoverPresentationController?.sourceView = self.view
+                            
+                            DispatchQueue.main.async {
+                                self.present(activityViewController, animated: true)
+                            }
+                        }
+                    }),
+                ])
+            ]
+            
+            return UIMenu(children: items)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

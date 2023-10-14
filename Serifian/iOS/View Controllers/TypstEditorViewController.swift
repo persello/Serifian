@@ -58,6 +58,8 @@ class TypstEditorViewController: UIViewController {
         self.textView.smartQuotesType = .no
         self.textView.smartDashesType = .no
         
+        self.textView.isFindInteractionEnabled = true
+        
         self.textView.editorDelegate = self
         
         self.textView.setState(TextViewState(text: "", theme: EditorTheme(), language: language))
