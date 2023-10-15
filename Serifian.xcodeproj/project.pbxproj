@@ -91,6 +91,9 @@
 		8BA996C12ADC2C82001CEC62 /* ams.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BA996B82ADC2C82001CEC62 /* ams.sr */; };
 		8BA996C22ADC2C82001CEC62 /* ams.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BA996B82ADC2C82001CEC62 /* ams.sr */; };
 		8BA996C32ADC2C85001CEC62 /* Empty.sr in Resources */ = {isa = PBXBuildFile; fileRef = ADCA13582AC0ABE1000A5EFC /* Empty.sr */; };
+		8BA996CB2ADC3E4C001CEC62 /* Serifian_for_iOS_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA996CA2ADC3E4C001CEC62 /* Serifian_for_iOS_Tests.swift */; };
+		8BA996D82ADC3EE3001CEC62 /* Serifian_for_iOS_UI_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA996D72ADC3EE3001CEC62 /* Serifian_for_iOS_UI_Tests.swift */; };
+		8BA996DA2ADC3EE3001CEC62 /* Serifian_for_iOS_UI_TestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA996D92ADC3EE3001CEC62 /* Serifian_for_iOS_UI_TestsLaunchTests.swift */; };
 		8BCC9C2B2AC6113300F4522B /* Runestone in Frameworks */ = {isa = PBXBuildFile; productRef = 8BCC9C2A2AC6113300F4522B /* Runestone */; };
 		8BD4CB432AC6235E001D4E43 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */; };
 		AD239B6E2AD8306500C8B82B /* UISerifianDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD239B6D2AD8306500C8B82B /* UISerifianDocument.swift */; };
@@ -171,6 +174,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8B4F2C442A2226AD007A15D7;
 			remoteInfo = Thumbnail;
+		};
+		8BA996CC2ADC3E4C001CEC62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B4F2B622A21376D007A15D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B4F2B692A21376D007A15D7;
+			remoteInfo = "Serifian for iOS";
+		};
+		8BA996DB2ADC3EE3001CEC62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B4F2B622A21376D007A15D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B4F2B692A21376D007A15D7;
+			remoteInfo = "Serifian for iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -280,6 +297,11 @@
 		8BA996B62ADC2C81001CEC62 /* letter.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = letter.sr; sourceTree = "<group>"; };
 		8BA996B72ADC2C82001CEC62 /* ieee.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ieee.sr; sourceTree = "<group>"; };
 		8BA996B82ADC2C82001CEC62 /* ams.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ams.sr; sourceTree = "<group>"; };
+		8BA996C82ADC3E4C001CEC62 /* Serifian for iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Serifian for iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BA996CA2ADC3E4C001CEC62 /* Serifian_for_iOS_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serifian_for_iOS_Tests.swift; sourceTree = "<group>"; };
+		8BA996D52ADC3EE3001CEC62 /* Serifian for iOS UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Serifian for iOS UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BA996D72ADC3EE3001CEC62 /* Serifian_for_iOS_UI_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serifian_for_iOS_UI_Tests.swift; sourceTree = "<group>"; };
+		8BA996D92ADC3EE3001CEC62 /* Serifian_for_iOS_UI_TestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serifian_for_iOS_UI_TestsLaunchTests.swift; sourceTree = "<group>"; };
 		8BC05B0D2A6C278E00C4B69A /* Preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Preview.entitlements; sourceTree = "<group>"; };
 		8BC05B0E2A6C278E00C4B69A /* Thumbnail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Thumbnail.entitlements; sourceTree = "<group>"; };
 		8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTheme.swift; sourceTree = "<group>"; };
@@ -368,6 +390,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8BA996C52ADC3E4C001CEC62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BA996D22ADC3EE3001CEC62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -439,6 +475,8 @@
 			isa = PBXGroup;
 			children = (
 				8B3DEA192AD31D59005060EE /* Models */,
+				8BA996C92ADC3E4C001CEC62 /* Tests */,
+				8BA996D62ADC3EE3001CEC62 /* UI Tests */,
 				8B3DEA1D2AD34760005060EE /* Utilities */,
 				8B4F2C522A222E1C007A15D7 /* View Controllers */,
 				8B4F2B6D2A21376D007A15D7 /* AppDelegate.swift */,
@@ -501,6 +539,8 @@
 				8B4F2C2D2A222626007A15D7 /* Preview.appex */,
 				8B4F2C452A2226AD007A15D7 /* Thumbnail.appex */,
 				8B3DE9D72AD2F60D005060EE /* Serifian for macOS.app */,
+				8BA996C82ADC3E4C001CEC62 /* Serifian for iOS Tests.xctest */,
+				8BA996D52ADC3EE3001CEC62 /* Serifian for iOS UI Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -697,6 +737,23 @@
 			path = TestFlight;
 			sourceTree = "<group>";
 		};
+		8BA996C92ADC3E4C001CEC62 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8BA996CA2ADC3E4C001CEC62 /* Serifian_for_iOS_Tests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		8BA996D62ADC3EE3001CEC62 /* UI Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8BA996D72ADC3EE3001CEC62 /* Serifian_for_iOS_UI_Tests.swift */,
+				8BA996D92ADC3EE3001CEC62 /* Serifian_for_iOS_UI_TestsLaunchTests.swift */,
+			);
+			path = "UI Tests";
+			sourceTree = "<group>";
+		};
 		AD2B63CA2ABC6C1D00DAF85E /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -831,6 +888,42 @@
 			productReference = 8B4F2C452A2226AD007A15D7 /* Thumbnail.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		8BA996C72ADC3E4C001CEC62 /* Serifian for iOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BA996D02ADC3E4D001CEC62 /* Build configuration list for PBXNativeTarget "Serifian for iOS Tests" */;
+			buildPhases = (
+				8BA996C42ADC3E4C001CEC62 /* Sources */,
+				8BA996C52ADC3E4C001CEC62 /* Frameworks */,
+				8BA996C62ADC3E4C001CEC62 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8BA996CD2ADC3E4C001CEC62 /* PBXTargetDependency */,
+			);
+			name = "Serifian for iOS Tests";
+			productName = "Serifian for iOS Tests";
+			productReference = 8BA996C82ADC3E4C001CEC62 /* Serifian for iOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8BA996D42ADC3EE3001CEC62 /* Serifian for iOS UI Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BA996DD2ADC3EE3001CEC62 /* Build configuration list for PBXNativeTarget "Serifian for iOS UI Tests" */;
+			buildPhases = (
+				8BA996D12ADC3EE3001CEC62 /* Sources */,
+				8BA996D22ADC3EE3001CEC62 /* Frameworks */,
+				8BA996D32ADC3EE3001CEC62 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8BA996DC2ADC3EE3001CEC62 /* PBXTargetDependency */,
+			);
+			name = "Serifian for iOS UI Tests";
+			productName = "Serifian for iOS UI Tests";
+			productReference = 8BA996D52ADC3EE3001CEC62 /* Serifian for iOS UI Tests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -853,6 +946,14 @@
 					8B4F2C442A2226AD007A15D7 = {
 						CreatedOnToolsVersion = 14.3;
 					};
+					8BA996C72ADC3E4C001CEC62 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 8B4F2B692A21376D007A15D7;
+					};
+					8BA996D42ADC3EE3001CEC62 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 8B4F2B692A21376D007A15D7;
+					};
 				};
 			};
 			buildConfigurationList = 8B4F2B652A21376D007A15D7 /* Build configuration list for PBXProject "Serifian" */;
@@ -874,6 +975,8 @@
 			projectRoot = "";
 			targets = (
 				8B4F2B692A21376D007A15D7 /* Serifian for iOS */,
+				8BA996C72ADC3E4C001CEC62 /* Serifian for iOS Tests */,
+				8BA996D42ADC3EE3001CEC62 /* Serifian for iOS UI Tests */,
 				8B3DE9D62AD2F60D005060EE /* Serifian for macOS */,
 				8B4F2C2C2A222626007A15D7 /* Preview */,
 				8B4F2C442A2226AD007A15D7 /* Thumbnail */,
@@ -953,6 +1056,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8B4F2C432A2226AD007A15D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BA996C62ADC3E4C001CEC62 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BA996D32ADC3EE3001CEC62 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1063,6 +1180,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8BA996C42ADC3E4C001CEC62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BA996CB2ADC3E4C001CEC62 /* Serifian_for_iOS_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BA996D12ADC3EE3001CEC62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BA996D82ADC3EE3001CEC62 /* Serifian_for_iOS_UI_Tests.swift in Sources */,
+				8BA996DA2ADC3EE3001CEC62 /* Serifian_for_iOS_UI_TestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1085,6 +1219,16 @@
 			isa = PBXTargetDependency;
 			target = 8B4F2C442A2226AD007A15D7 /* Thumbnail */;
 			targetProxy = 8B4F2C4C2A2226AD007A15D7 /* PBXContainerItemProxy */;
+		};
+		8BA996CD2ADC3E4C001CEC62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B4F2B692A21376D007A15D7 /* Serifian for iOS */;
+			targetProxy = 8BA996CC2ADC3E4C001CEC62 /* PBXContainerItemProxy */;
+		};
+		8BA996DC2ADC3EE3001CEC62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B4F2B692A21376D007A15D7 /* Serifian for iOS */;
+			targetProxy = 8BA996DB2ADC3EE3001CEC62 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1507,6 +1651,102 @@
 			};
 			name = Release;
 		};
+		8BA996CE2ADC3E4D001CEC62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BZTVD28H6K;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.persello.Serifian-for-iOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Serifian for iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Serifian for iOS";
+			};
+			name = Debug;
+		};
+		8BA996CF2ADC3E4D001CEC62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BZTVD28H6K;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.persello.Serifian-for-iOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Serifian for iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Serifian for iOS";
+			};
+			name = Release;
+		};
+		8BA996DE2ADC3EE3001CEC62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BZTVD28H6K;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.persello.Serifian-for-iOS-UI-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Serifian for iOS";
+			};
+			name = Debug;
+		};
+		8BA996DF2ADC3EE3001CEC62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BZTVD28H6K;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.persello.Serifian-for-iOS-UI-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Serifian for iOS";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1551,6 +1791,24 @@
 			buildConfigurations = (
 				8B4F2C502A2226AD007A15D7 /* Debug */,
 				8B4F2C512A2226AD007A15D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8BA996D02ADC3E4D001CEC62 /* Build configuration list for PBXNativeTarget "Serifian for iOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BA996CE2ADC3E4D001CEC62 /* Debug */,
+				8BA996CF2ADC3E4D001CEC62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8BA996DD2ADC3EE3001CEC62 /* Build configuration list for PBXNativeTarget "Serifian for iOS UI Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BA996DE2ADC3EE3001CEC62 /* Debug */,
+				8BA996DF2ADC3EE3001CEC62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
