@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8B3DE9D62AD2F60D005060EE"
-               BuildableName = "Serifian for macOS.app"
+               BuildableName = "Serifian.app"
                BlueprintName = "Serifian for macOS"
                ReferencedContainer = "container:Serifian.xcodeproj">
             </BuildableReference>
@@ -44,7 +44,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8B3DE9D62AD2F60D005060EE"
-            BuildableName = "Serifian for macOS.app"
+            BuildableName = "Serifian.app"
             BlueprintName = "Serifian for macOS"
             ReferencedContainer = "container:Serifian.xcodeproj">
          </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8B3DE9D62AD2F60D005060EE"
-            BuildableName = "Serifian for macOS.app"
+            BuildableName = "Serifian.app"
             BlueprintName = "Serifian for macOS"
             ReferencedContainer = "container:Serifian.xcodeproj">
          </BuildableReference>

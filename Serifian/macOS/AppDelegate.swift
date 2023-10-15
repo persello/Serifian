@@ -23,9 +23,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationShouldOpenUntitledFile(_ sender: NSApplication) -> Bool {
-        false
+        let windowController = NSStoryboard.main?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("WelcomeWindowController")) as! WelcomeWindowController
+        windowController.showWindow(self)
+        
+        return false
     }
-
 
 }
 
