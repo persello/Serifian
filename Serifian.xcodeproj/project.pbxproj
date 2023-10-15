@@ -81,7 +81,6 @@
 		8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */; };
 		8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */; };
 		8BCC9C2B2AC6113300F4522B /* Runestone in Frameworks */ = {isa = PBXBuildFile; productRef = 8BCC9C2A2AC6113300F4522B /* Runestone */; };
-		8BD4CB012AC61A20001D4E43 /* Example.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4CB002AC61A1F001D4E43 /* Example.sr */; };
 		8BD4CB432AC6235E001D4E43 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */; };
 		AD239B6E2AD8306500C8B82B /* UISerifianDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD239B6D2AD8306500C8B82B /* UISerifianDocument.swift */; };
 		AD2B63C72ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */; };
@@ -267,7 +266,6 @@
 		8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
 		8BC05B0D2A6C278E00C4B69A /* Preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Preview.entitlements; sourceTree = "<group>"; };
 		8BC05B0E2A6C278E00C4B69A /* Thumbnail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Thumbnail.entitlements; sourceTree = "<group>"; };
-		8BD4CB002AC61A1F001D4E43 /* Example.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Example.sr; sourceTree = "<group>"; };
 		8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTheme.swift; sourceTree = "<group>"; };
 		8BD4CB442AC62DC9001D4E43 /* TreeSitterTypst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeSitterTypst.h; sourceTree = "<group>"; };
 		8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstEditorViewController.swift; sourceTree = "<group>"; };
@@ -386,7 +384,6 @@
 			isa = PBXGroup;
 			children = (
 				ADCA13582AC0ABE1000A5EFC /* Empty.sr */,
-				8BD4CB002AC61A1F001D4E43 /* Example.sr */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -894,7 +891,6 @@
 				AD2B64022ABC6C1D00DAF85E /* NewCM10-BoldItalic.otf in Resources */,
 				AD2B64032ABC6C1D00DAF85E /* NotoSansArabic-Regular.ttf in Resources */,
 				AD2B63F22ABC6C1D00DAF85E /* DejaVuSansMono-BoldOblique.ttf in Resources */,
-				8BD4CB012AC61A20001D4E43 /* Example.sr in Resources */,
 				AD2B63F32ABC6C1D00DAF85E /* NewCMMath-Book.otf in Resources */,
 				AD2B63EB2ABC6C1D00DAF85E /* NewCMMath-Regular.otf in Resources */,
 				8B882E602AC8310300BD2FEE /* injections.scm in Resources */,

@@ -59,7 +59,7 @@ class TypstEditorViewController: UIViewController {
         self.textView.smartDashesType = .no
         
         self.textView.isFindInteractionEnabled = true
-        
+                
         self.textView.editorDelegate = self
         
         self.textView.setState(TextViewState(text: "", theme: EditorTheme(), language: language))
@@ -82,10 +82,34 @@ class TypstEditorViewController: UIViewController {
         Self.logger.trace("Autocompletion popup initialised.")
         
         self.loadContinuation?.resume()
+        
+        // Add assistant items.
+        self.textView.inputAssistantItem.leadingBarButtonGroups = [
+            UIBarButtonItemGroup(
+                barButtonItems: [
+                    UIBarButtonItem(title: "#", style: .plain, target: self, action: #selector(self.insertPound)),
+                    UIBarButtonItem(title: "[]", style: .plain, target: self, action: #selector(self.insertBrackets)),
+                    UIBarButtonItem(title: "{}", style: .plain, target: self, action: #selector(self.insertBraces)),
+                ],
+                representativeItem: nil
+            )
+        ]
+    }
+    
+    @objc func insertPound() {
+        self.textView.insertText("#")
+    }
+    
+    @objc func insertBrackets() {
+        self.textView.insertText("[")
+    }
+    
+    @objc func insertBraces() {
+        self.textView.insertText("{")
     }
     
     func setupUndoManager() {
-        // TODO: Check this. I might be committing warcrimes.
+        // TODO: Check this. I might be committing war crimes.
         // It seems to work better than my own implementation.
         if textView != nil {
             self.textView.undoManager?.removeAllActions()

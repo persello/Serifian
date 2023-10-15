@@ -1,4 +1,4 @@
-Version 19:
+Version 20:
 - You can now export the compiled PDF or the Typst sources folder.
 - Added more context menus on sidebar items (such as create files in folder).
 - Fixed file opening animation bug.
