@@ -80,6 +80,17 @@
 		8B9468562ACB42F8001F3CC6 /* Collection+safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9468552ACB42F8001F3CC6 /* Collection+safe.swift */; };
 		8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */; };
 		8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */; };
+		8BA996B92ADC2C82001CEC62 /* fiction.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BA996B42ADC2C81001CEC62 /* fiction.sr */; };
+		8BA996BA2ADC2C82001CEC62 /* fiction.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BA996B42ADC2C81001CEC62 /* fiction.sr */; };
+		8BA996BB2ADC2C82001CEC62 /* dept-news.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BA996B52ADC2C81001CEC62 /* dept-news.sr */; };
+		8BA996BC2ADC2C82001CEC62 /* dept-news.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BA996B52ADC2C81001CEC62 /* dept-news.sr */; };
+		8BA996BD2ADC2C82001CEC62 /* letter.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BA996B62ADC2C81001CEC62 /* letter.sr */; };
+		8BA996BE2ADC2C82001CEC62 /* letter.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BA996B62ADC2C81001CEC62 /* letter.sr */; };
+		8BA996BF2ADC2C82001CEC62 /* ieee.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BA996B72ADC2C82001CEC62 /* ieee.sr */; };
+		8BA996C02ADC2C82001CEC62 /* ieee.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BA996B72ADC2C82001CEC62 /* ieee.sr */; };
+		8BA996C12ADC2C82001CEC62 /* ams.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BA996B82ADC2C82001CEC62 /* ams.sr */; };
+		8BA996C22ADC2C82001CEC62 /* ams.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BA996B82ADC2C82001CEC62 /* ams.sr */; };
+		8BA996C32ADC2C85001CEC62 /* Empty.sr in Resources */ = {isa = PBXBuildFile; fileRef = ADCA13582AC0ABE1000A5EFC /* Empty.sr */; };
 		8BCC9C2B2AC6113300F4522B /* Runestone in Frameworks */ = {isa = PBXBuildFile; productRef = 8BCC9C2A2AC6113300F4522B /* Runestone */; };
 		8BD4CB432AC6235E001D4E43 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */; };
 		AD239B6E2AD8306500C8B82B /* UISerifianDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD239B6D2AD8306500C8B82B /* UISerifianDocument.swift */; };
@@ -264,6 +275,11 @@
 		8B9468552ACB42F8001F3CC6 /* Collection+safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+safe.swift"; sourceTree = "<group>"; };
 		8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableDividerView.swift; sourceTree = "<group>"; };
 		8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
+		8BA996B42ADC2C81001CEC62 /* fiction.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = fiction.sr; sourceTree = "<group>"; };
+		8BA996B52ADC2C81001CEC62 /* dept-news.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "dept-news.sr"; sourceTree = "<group>"; };
+		8BA996B62ADC2C81001CEC62 /* letter.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = letter.sr; sourceTree = "<group>"; };
+		8BA996B72ADC2C82001CEC62 /* ieee.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ieee.sr; sourceTree = "<group>"; };
+		8BA996B82ADC2C82001CEC62 /* ams.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ams.sr; sourceTree = "<group>"; };
 		8BC05B0D2A6C278E00C4B69A /* Preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Preview.entitlements; sourceTree = "<group>"; };
 		8BC05B0E2A6C278E00C4B69A /* Thumbnail.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Thumbnail.entitlements; sourceTree = "<group>"; };
 		8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTheme.swift; sourceTree = "<group>"; };
@@ -383,6 +399,11 @@
 		8B348C802A225925009DD175 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
+				8BA996B82ADC2C82001CEC62 /* ams.sr */,
+				8BA996B52ADC2C81001CEC62 /* dept-news.sr */,
+				8BA996B42ADC2C81001CEC62 /* fiction.sr */,
+				8BA996B72ADC2C82001CEC62 /* ieee.sr */,
+				8BA996B62ADC2C81001CEC62 /* letter.sr */,
 				ADCA13582AC0ABE1000A5EFC /* Empty.sr */,
 			);
 			path = Templates;
@@ -865,7 +886,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BA996C02ADC2C82001CEC62 /* ieee.sr in Resources */,
+				8BA996BA2ADC2C82001CEC62 /* fiction.sr in Resources */,
+				8BA996C32ADC2C85001CEC62 /* Empty.sr in Resources */,
+				8BA996C22ADC2C82001CEC62 /* ams.sr in Resources */,
 				8B3DE9E02AD2F60F005060EE /* Assets.xcassets in Resources */,
+				8BA996BC2ADC2C82001CEC62 /* dept-news.sr in Resources */,
+				8BA996BE2ADC2C82001CEC62 /* letter.sr in Resources */,
 				8B3DE9E32AD2F60F005060EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -885,6 +912,7 @@
 				AD2B63E92ABC6C1D00DAF85E /* InriaSerif-Bold.ttf in Resources */,
 				AD2B63FD2ABC6C1D00DAF85E /* TwitterColorEmoji.ttf in Resources */,
 				AD2B63F82ABC6C1D00DAF85E /* LinLibertine_RI.ttf in Resources */,
+				8BA996BD2ADC2C82001CEC62 /* letter.sr in Resources */,
 				8B4F2B7C2A21376E007A15D7 /* LaunchScreen.storyboard in Resources */,
 				AD2B63FC2ABC6C1D00DAF85E /* PTSans-Regular.ttf in Resources */,
 				AD2B64012ABC6C1D00DAF85E /* DejaVuSansMono-Oblique.ttf in Resources */,
@@ -898,9 +926,13 @@
 				AD2B63F02ABC6C1D00DAF85E /* Roboto-Regular.ttf in Resources */,
 				AD2B63FE2ABC6C1D00DAF85E /* LinLibertine_R.ttf in Resources */,
 				AD2B64052ABC6C1D00DAF85E /* LinLibertine_RBI.ttf in Resources */,
+				8BA996BB2ADC2C82001CEC62 /* dept-news.sr in Resources */,
+				8BA996BF2ADC2C82001CEC62 /* ieee.sr in Resources */,
 				AD2B63F72ABC6C1D00DAF85E /* NotoColorEmoji.ttf in Resources */,
 				AD2B63F42ABC6C1D00DAF85E /* NotoSerifCJKsc-Regular.otf in Resources */,
 				AD2B63FA2ABC6C1D00DAF85E /* NewCM10-Bold.otf in Resources */,
+				8BA996B92ADC2C82001CEC62 /* fiction.sr in Resources */,
+				8BA996C12ADC2C82001CEC62 /* ams.sr in Resources */,
 				AD2B63F62ABC6C1D00DAF85E /* FiraMath-Regular.otf in Resources */,
 				AD2B63EE2ABC6C1D00DAF85E /* InriaSerif-Regular.ttf in Resources */,
 				AD2B63FB2ABC6C1D00DAF85E /* InriaSerif-Italic.ttf in Resources */,

@@ -55,6 +55,7 @@ class UISerifianDocument: UIDocument, SerifianDocument {
         
         self.compiler = TypstCompiler(fileManager: self, main: self.metadata.mainSource.absoluteString)
         self.loadFonts()
+        try? self.load(fromContents: FileWrapper(url: url), ofType: nil)
     }
     
     func assignUndoManager(undoManager: UndoManager?) {

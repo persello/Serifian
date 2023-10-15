@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="mac" appearance="light"/>
+    <device id="ipad10_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -12,9 +12,9 @@
         <!--Document Browser View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="DocumentBrowserViewController" id="BYZ-38-t0r" customClass="DocumentBrowserViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DocumentBrowserViewController" id="BYZ-38-t0r" customClass="DocumentBrowserViewController" customModule="Serifian_for_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="0fo-ii-Aj5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -27,21 +27,21 @@
         <!--Workbench View Controller-->
         <scene sceneID="Oda-x6-EjE">
             <objects>
-                <viewController storyboardIdentifier="WorkbenchViewController" id="hlC-xv-vT7" customClass="WorkbenchViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WorkbenchViewController" id="hlC-xv-vT7" customClass="WorkbenchViewController" customModule="Serifian_for_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Cr-ca-qyf">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiV-eZ-pvn" userLabel="Editor View">
-                                <rect key="frame" x="0.0" y="50" width="700" height="550"/>
+                                <rect key="frame" x="0.0" y="74" width="700" height="746"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="999" constant="700" id="lAG-NO-DZb"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="nNs-Ht-dnW"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="nNs-Ht-dnW"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPf-mp-2am" customClass="DraggableDividerView" customModule="Serifian" customModuleProvider="target">
-                                <rect key="frame" x="700" y="50" width="1" height="550"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPf-mp-2am" customClass="DraggableDividerView" customModule="Serifian_for_iOS" customModuleProvider="target">
+                                <rect key="frame" x="700" y="74" width="1" height="746"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -49,7 +49,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-Lx-cy2" userLabel="Preview View" customClass="PDFView">
-                                <rect key="frame" x="701" y="50" width="300" height="550"/>
+                                <rect key="frame" x="701" y="74" width="479" height="746"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="QWD-BY-3UG"/>
@@ -112,13 +112,13 @@
         <!--Sidebar View Controller-->
         <scene sceneID="9Z3-rj-vyo">
             <objects>
-                <viewController storyboardIdentifier="SidebarViewController" id="p5m-fu-0gn" customClass="SidebarViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SidebarViewController" id="p5m-fu-0gn" customClass="SidebarViewController" customModule="Serifian_for_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EqB-gP-WU9">
-                        <rect key="frame" x="0.0" y="0.0" width="420" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b3w-sF-dp6">
-                                <rect key="frame" x="0.0" y="102" width="420" height="498"/>
+                                <rect key="frame" x="0.0" y="126" width="420" height="674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="K5i-ox-bcq"/>
                                 <cells/>
@@ -153,7 +153,7 @@
         <!--Root Split View Controller-->
         <scene sceneID="gQ0-BV-7gp">
             <objects>
-                <splitViewController storyboardIdentifier="RootSplitViewController" allowDoubleColumnStyle="YES" preferredDisplayMode="secondaryOnly" primaryBackgroundStyle="sidebar" id="kfU-ny-yVW" customClass="RootSplitViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="RootSplitViewController" allowDoubleColumnStyle="YES" preferredDisplayMode="secondaryOnly" primaryBackgroundStyle="sidebar" id="kfU-ny-yVW" customClass="RootSplitViewController" customModule="Serifian_for_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="T2K-Xk-G5I" kind="relationship" relationship="masterViewController" id="ok1-Ta-xmY"/>
                         <segue destination="fZj-fA-cXV" kind="relationship" relationship="detailViewController" id="8pS-lf-ki3"/>
@@ -169,7 +169,7 @@
                 <navigationController storyboardIdentifier="SidebarNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="T2K-Xk-G5I" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Q5U-0R-n3P">
-                        <rect key="frame" x="0.0" y="0.0" width="420" height="102"/>
+                        <rect key="frame" x="0.0" y="24" width="420" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -187,7 +187,7 @@
                 <navigationController storyboardIdentifier="WorkbenchNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="fZj-fA-cXV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fgg-jx-w2K">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="50"/>
+                        <rect key="frame" x="0.0" y="24" width="1180" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <navigationBarAppearance key="scrollEdgeAppearance"/>
                     </navigationBar>
@@ -206,13 +206,13 @@
         <!--Typst Editor View Controller-->
         <scene sceneID="8Pp-zh-EzL">
             <objects>
-                <viewController storyboardIdentifier="TypstEditorViewController" title="Typst Editor View Controller" id="luN-gF-ayX" customClass="TypstEditorViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TypstEditorViewController" title="Typst Editor View Controller" id="luN-gF-ayX" customClass="TypstEditorViewController" customModule="Serifian_for_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ezJ-zl-yNW">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjt-fo-cgd" userLabel="Autocomplete Container View">
-                                <rect key="frame" x="220" y="180" width="360" height="240"/>
+                                <rect key="frame" x="220" y="204" width="360" height="240"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="360" id="7sY-Qh-uL5"/>
@@ -243,7 +243,7 @@
         <!--Autocomplete Popup Hosting Controller-->
         <scene sceneID="JvU-xr-sdR">
             <objects>
-                <hostingController storyboardIdentifier="AutocompletePopupHostingController" title="Autocomplete Popup Hosting Controller" id="ICG-om-io8" customClass="AutocompletePopupHostingController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController"/>
+                <hostingController storyboardIdentifier="AutocompletePopupHostingController" title="Autocomplete Popup Hosting Controller" id="ICG-om-io8" customClass="AutocompletePopupHostingController" customModule="Serifian_for_iOS" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZyS-hS-rpa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2046" y="2254"/>

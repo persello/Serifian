@@ -354,7 +354,7 @@ extension TypstEditorViewController: TextViewDelegate {
 }
 
 #Preview("Typst Editor View Controller") {
-    let documentURL = Bundle.main.url(forResource: "Example", withExtension: ".sr")!
+    let documentURL = Bundle.main.url(forResource: "Empty", withExtension: ".sr")!
     let document = UISerifianDocument(fileURL: documentURL)
     try! document.read(from: documentURL)
     

@@ -64,7 +64,7 @@ def generate_serifian_template(source: str):
     subprocess.run(["typst", "c", f"Templates/{name}.sr/Typst/main.typ", f"Templates/{name}.sr/preview.pdf"])
 
     # Create a jpeg file of the first page of the preview.pdf document.
-    subprocess.run(["convert", "-density", "300", f"Templates/{name}.sr/preview.pdf[0]", f"Templates/{name}.sr/preview.jpg"])
+    subprocess.run(["convert", "-density", "300", f"Templates/{name}.sr/preview.pdf[0]", f"Templates/{name}.sr/cover.jpeg"])
 
 # Main
 if __name__ == "__main__":

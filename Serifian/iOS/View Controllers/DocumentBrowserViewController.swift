@@ -7,8 +7,11 @@
 
 import UIKit
 import os
+import SwiftUI
 
 class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocumentBrowserViewControllerDelegate {
+    
+    var templateViewHostingController: UIHostingController<DocumentCreationView>?
     
     static private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "DocumentBrowserViewController")
     
@@ -31,22 +34,31 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         
         Self.logger.info("Document creation requested.")
         
-        let newDocumentURL: URL? = FileManager.default.temporaryDirectory.appending(path: "Untitled.sr")
-        
-        // Set the URL for the new document here. Optionally, you can present a template chooser before calling the importHandler.
-        // Make sure the importHandler is always called, even if the user cancels the creation request.
-        if let newDocumentURL {
-            let newDocument = UISerifianDocument(empty: false, fileURL: newDocumentURL)
-
-            Task {
-                Self.logger.info("Document created, saving it.")
-                await newDocument.save(to: newDocumentURL, for: .forCreating)
-                importHandler(newDocumentURL, .move)
+        let templateView = DocumentCreationView {
+            self.templateViewHostingController?.dismiss(animated: true)
+        } onTemplateSelection: { template in
+            let newDocumentURL: URL? = FileManager.default.temporaryDirectory.appending(path: "Untitled.sr")
+            
+            self.templateViewHostingController?.dismiss(animated: true)
+            
+            // Set the URL for the new document here. Optionally, you can present a template chooser before calling the importHandler.
+            // Make sure the importHandler is always called, even if the user cancels the creation request.
+            if let newDocumentURL {
+                Task {
+                    Self.logger.info("Document created, saving it.")
+                    await template.save(to: newDocumentURL, for: .forCreating)
+                    importHandler(newDocumentURL, .move)
+                }
+            } else {
+                Self.logger.warning("Unable to create the new file in the temporary folder.")
+                importHandler(nil, .none)
             }
-        } else {
-            Self.logger.warning("Unable to create the new file in the temporary folder.")
-            importHandler(nil, .none)
         }
+        
+        self.templateViewHostingController = UIHostingController(rootView: templateView)
+        self.templateViewHostingController?.modalPresentationStyle = .pageSheet
+        
+        self.present(self.templateViewHostingController!, animated: true)
     }
     
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentsAt documentURLs: [URL]) {
