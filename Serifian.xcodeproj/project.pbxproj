@@ -95,6 +95,10 @@
 		8BA996C32ADC2C85001CEC62 /* Empty.sr in Resources */ = {isa = PBXBuildFile; fileRef = ADCA13582AC0ABE1000A5EFC /* Empty.sr */; };
 		8BCC9C2B2AC6113300F4522B /* Runestone in Frameworks */ = {isa = PBXBuildFile; productRef = 8BCC9C2A2AC6113300F4522B /* Runestone */; };
 		8BD4CB432AC6235E001D4E43 /* EditorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */; };
+		8BF64EE32ADC8E8D0050D042 /* WelcomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF64EE12ADC8E680050D042 /* WelcomeButton.swift */; };
+		8BF64EE62ADC91060050D042 /* RecentFileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BF64EE52ADC91060050D042 /* RecentFileCell.xib */; };
+		8BF64EE82ADC91B30050D042 /* RecentFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF64EE72ADC91B30050D042 /* RecentFileCell.swift */; };
+		8BF64EEB2ADC94600050D042 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF64EEA2ADC94600050D042 /* NibLoadable.swift */; };
 		AD239B6E2AD8306500C8B82B /* UISerifianDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD239B6D2AD8306500C8B82B /* UISerifianDocument.swift */; };
 		AD2B63C72ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */; };
 		AD2B63E92ABC6C1D00DAF85E /* InriaSerif-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63CB2ABC6C1D00DAF85E /* InriaSerif-Bold.ttf */; };
@@ -289,6 +293,10 @@
 		8BD4CB422AC6235E001D4E43 /* EditorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTheme.swift; sourceTree = "<group>"; };
 		8BD4CB442AC62DC9001D4E43 /* TreeSitterTypst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeSitterTypst.h; sourceTree = "<group>"; };
 		8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstEditorViewController.swift; sourceTree = "<group>"; };
+		8BF64EE12ADC8E680050D042 /* WelcomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeButton.swift; sourceTree = "<group>"; };
+		8BF64EE52ADC91060050D042 /* RecentFileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentFileCell.xib; sourceTree = "<group>"; };
+		8BF64EE72ADC91B30050D042 /* RecentFileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentFileCell.swift; sourceTree = "<group>"; };
+		8BF64EEA2ADC94600050D042 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		AD239B6D2AD8306500C8B82B /* UISerifianDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISerifianDocument.swift; sourceTree = "<group>"; };
 		AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutocompleteResult+Clean.swift"; sourceTree = "<group>"; };
 		AD2B63CB2ABC6C1D00DAF85E /* InriaSerif-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "InriaSerif-Bold.ttf"; sourceTree = "<group>"; };
@@ -428,8 +436,10 @@
 		8B3DE9D12AD2F467005060EE /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				8BF64EE92ADC94560050D042 /* Utilities */,
 				8B3DEA1E2AD34BE3005060EE /* Models */,
 				8B7E91722ADC52F2006597C7 /* View Controllers */,
+				8BF64EDE2ADC8E000050D042 /* Views */,
 				8B3DE9D92AD2F60D005060EE /* AppDelegate.swift */,
 				8B3DE9DB2AD2F60D005060EE /* ViewController.swift */,
 				8B3DE9E42AD2F60F005060EE /* Info.plist */,
@@ -719,6 +729,24 @@
 			path = TestFlight;
 			sourceTree = "<group>";
 		};
+		8BF64EDE2ADC8E000050D042 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8BF64EE12ADC8E680050D042 /* WelcomeButton.swift */,
+				8BF64EE52ADC91060050D042 /* RecentFileCell.xib */,
+				8BF64EE72ADC91B30050D042 /* RecentFileCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8BF64EE92ADC94560050D042 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8BF64EEA2ADC94600050D042 /* NibLoadable.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		AD2B63CA2ABC6C1D00DAF85E /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -914,6 +942,7 @@
 				8BA996C22ADC2C82001CEC62 /* ams.sr in Resources */,
 				8B3DE9E02AD2F60F005060EE /* Assets.xcassets in Resources */,
 				8BA996BC2ADC2C82001CEC62 /* dept-news.sr in Resources */,
+				8BF64EE62ADC91060050D042 /* RecentFileCell.xib in Resources */,
 				8BA996BE2ADC2C82001CEC62 /* letter.sr in Resources */,
 				8B3DE9E32AD2F60F005060EE /* Main.storyboard in Resources */,
 			);
@@ -990,6 +1019,7 @@
 			files = (
 				8B3DEA0D2AD31D2E005060EE /* AutocompleteResult+Clean.swift in Sources */,
 				8B7E917C2ADC596C006597C7 /* WelcomeViewController.swift in Sources */,
+				8BF64EE82ADC91B30050D042 /* RecentFileCell.swift in Sources */,
 				8B3DEA092AD31D22005060EE /* SerifianDocument+TypstCompilerDelegate.swift in Sources */,
 				8B3DEA012AD31B12005060EE /* SourceProtocol.swift in Sources */,
 				8B3DE9FF2AD31B12005060EE /* ImageFile.swift in Sources */,
@@ -1005,10 +1035,12 @@
 				8B3DEA162AD31D39005060EE /* CompilationErrorsView.swift in Sources */,
 				8B7E91752ADC532D006597C7 /* MainWindowController.swift in Sources */,
 				8B3DEA152AD31D39005060EE /* AutocompleteCoordinator.swift in Sources */,
+				8BF64EE32ADC8E8D0050D042 /* WelcomeButton.swift in Sources */,
 				8B3DE9DC2AD2F60D005060EE /* ViewController.swift in Sources */,
 				8B3DEA002AD31B12005060EE /* SidebarItemViewModel.swift in Sources */,
 				8B3DE9DA2AD2F60D005060EE /* AppDelegate.swift in Sources */,
 				8B3DEA032AD31D16005060EE /* DocumentMetadata.swift in Sources */,
+				8BF64EEB2ADC94600050D042 /* NibLoadable.swift in Sources */,
 				8B3DE9FE2AD31B12005060EE /* TypstSourceFile.swift in Sources */,
 				8B3DEA062AD31D22005060EE /* SerifianDocument+Compile.swift in Sources */,
 				8B3DE9FD2AD31B12005060EE /* SourceError.swift in Sources */,

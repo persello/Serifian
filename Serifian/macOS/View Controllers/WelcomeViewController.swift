@@ -16,17 +16,6 @@ class WelcomeViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-
-        self.setupButton(button: self.createEmptyDocumentButton)
-        self.setupButton(button: self.chooseFromTemplateButton)
-    }
-    
-    private func setupButton(button: NSButton) {
-        button.layer?.cornerRadius = 8
-        button.isBordered = false
-        
-        let cell = (button.cell as! NSButtonCell)
-        cell.backgroundColor = .secondarySystemFill
     }
 }
 

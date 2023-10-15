@@ -52,5 +52,334 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "73A6CD70-322B-49F6-9330-EC2C6FC63723"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/macOS/Utilities/NibLoadable.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "createFromNib(in:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "73A6CD70-322B-49F6-9330-EC2C6FC63723 - af03298a9657081e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.NibLoadable&lt; where &#x3c4;_0_0: __C.NSView&gt;.createFromNib(coder: __C.NSCoder) -&gt; ()"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/macOS/Utilities/NibLoadable.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "680">
+               </Location>
+               <Location
+                  uuid = "73A6CD70-322B-49F6-9330-EC2C6FC63723 - ecc6c4623e92e253"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.NibLoadable&lt; where &#x3c4;_0_0: __C.NSView&gt;.createFromNib(in: __C.NSBundle) -&gt; ()"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/macOS/Utilities/NibLoadable.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "888">
+               </Location>
+               <Location
+                  uuid = "73A6CD70-322B-49F6-9330-EC2C6FC63723 - ecc6c4623e92e253"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.NibLoadable&lt; where &#x3c4;_0_0: __C.NSView&gt;.createFromNib(in: __C.NSBundle) -&gt; ()"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/macOS/Utilities/NibLoadable.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "644">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7CFD276F-FF8D-47A6-B58B-14B5FA11D176"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/macOS/Utilities/NibLoadable.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "createFromNib(in:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7CFD276F-FF8D-47A6-B58B-14B5FA11D176 - af03298a965709b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.NibLoadable&lt; where &#x3c4;_0_0: __C.NSView&gt;.createFromNib(coder: __C.NSCoder) -&gt; ()"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/macOS/Utilities/NibLoadable.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "7CFD276F-FF8D-47A6-B58B-14B5FA11D176 - ecc6c4623e92e3fe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.NibLoadable&lt; where &#x3c4;_0_0: __C.NSView&gt;.createFromNib(in: __C.NSBundle) -&gt; ()"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/macOS/Utilities/NibLoadable.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "1324">
+               </Location>
+               <Location
+                  uuid = "7CFD276F-FF8D-47A6-B58B-14B5FA11D176 - ecc6c4623e92e3fe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.NibLoadable&lt; where &#x3c4;_0_0: __C.NSView&gt;.createFromNib(in: __C.NSBundle) -&gt; ()"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/macOS/Utilities/NibLoadable.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "960">
+               </Location>
+               <Location
+                  uuid = "7CFD276F-FF8D-47A6-B58B-14B5FA11D176 - ecc6c4623e92e3df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.NibLoadable&lt; where &#x3c4;_0_0: __C.NSView&gt;.createFromNib(in: __C.NSBundle) -&gt; ()"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/macOS/Utilities/NibLoadable.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "1036">
+               </Location>
+               <Location
+                  uuid = "7CFD276F-FF8D-47A6-B58B-14B5FA11D176 - ecc6c4623e92e3df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.NibLoadable&lt; where &#x3c4;_0_0: __C.NSView&gt;.createFromNib(in: __C.NSBundle) -&gt; ()"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/macOS/Utilities/NibLoadable.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "1064">
+               </Location>
+               <Location
+                  uuid = "7CFD276F-FF8D-47A6-B58B-14B5FA11D176 - ecc6c4623e92e3df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.NibLoadable&lt; where &#x3c4;_0_0: __C.NSView&gt;.createFromNib(in: __C.NSBundle) -&gt; ()"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/macOS/Utilities/NibLoadable.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "1076">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7C721062-021D-40DF-8DC9-C60161B14840"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/macOS/Utilities/NibLoadable.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "createFromNib(in:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8F8D6B0F-13DC-4D0F-8414-0281D78EDFFA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/macOS/Views/RecentFileCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "init?(coder:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8F8D6B0F-13DC-4D0F-8414-0281D78EDFFA - acfd583d7bb66f93"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.RecentFileCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Serifian.RecentFileCell&gt;"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/macOS/Views/RecentFileCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  uuid = "8F8D6B0F-13DC-4D0F-8414-0281D78EDFFA - acfd583d7bb66f93"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.RecentFileCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Serifian.RecentFileCell&gt;"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/macOS/Views/RecentFileCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "128">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9D672F76-9B8C-4610-878D-91ADBD54F773"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/macOS/Views/RecentFileCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "init(frame:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9D672F76-9B8C-4610-878D-91ADBD54F773 - b94ce65de240137a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.RecentFileCell.init(frame: __C.CGRect) -&gt; Serifian.RecentFileCell"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/macOS/Views/RecentFileCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "9D672F76-9B8C-4610-878D-91ADBD54F773 - b94ce65de240137a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.RecentFileCell.init(frame: __C.CGRect) -&gt; Serifian.RecentFileCell"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/macOS/Views/RecentFileCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  uuid = "9D672F76-9B8C-4610-878D-91ADBD54F773 - b94ce65de2401355"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.RecentFileCell.init(frame: __C.CGRect) -&gt; Serifian.RecentFileCell"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/macOS/Views/RecentFileCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "9D672F76-9B8C-4610-878D-91ADBD54F773 - b94ce65de2401317"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Serifian.RecentFileCell.init(frame: __C.CGRect) -&gt; Serifian.RecentFileCell"
+                  moduleName = "Serifian"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/macOS/Views/RecentFileCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "292">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BFBA8B42-2379-4502-8970-175D596267D5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/macOS/Views/RecentFileCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "prepareForInterfaceBuilder()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
