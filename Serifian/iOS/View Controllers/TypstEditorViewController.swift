@@ -87,9 +87,9 @@ class TypstEditorViewController: UIViewController {
         self.textView.inputAssistantItem.leadingBarButtonGroups = [
             UIBarButtonItemGroup(
                 barButtonItems: [
-                    UIBarButtonItem(title: "#", style: .plain, target: self, action: #selector(self.insertPound)),
-                    UIBarButtonItem(title: "[]", style: .plain, target: self, action: #selector(self.insertBrackets)),
-                    UIBarButtonItem(title: "{}", style: .plain, target: self, action: #selector(self.insertBraces)),
+                    UIBarButtonItem(image: UIImage(systemName: "number"), style: .plain, target: self, action: #selector(self.insertPound)),
+                    UIBarButtonItem(image: UIImage(named: "squarebrackets"), style: .plain, target: self, action: #selector(self.insertBrackets)),
+                    UIBarButtonItem(image: UIImage(systemName: "curlybraces"), style: .plain, target: self, action: #selector(self.insertBraces)),
                 ],
                 representativeItem: nil
             )

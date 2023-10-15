@@ -1,3 +1,6 @@
+Version 21:
+- Added pound, brackets and braces buttons to the input accessory view for simplifying input with AZERTY keyboards.
+
 Version 20:
 - You can now export the compiled PDF or the Typst sources folder.
 - Added more context menus on sidebar items (such as create files in folder).
