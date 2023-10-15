@@ -36,6 +36,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         
         let templateView = DocumentCreationView {
             self.templateViewHostingController?.dismiss(animated: true)
+            importHandler(nil, .none)
         } onTemplateSelection: { template in
             let newDocumentURL: URL? = FileManager.default.temporaryDirectory.appending(path: "Untitled.sr")
             
@@ -57,6 +58,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         
         self.templateViewHostingController = UIHostingController(rootView: templateView)
         self.templateViewHostingController?.modalPresentationStyle = .pageSheet
+        self.templateViewHostingController?.isModalInPresentation = true
         
         self.present(self.templateViewHostingController!, animated: true)
     }
