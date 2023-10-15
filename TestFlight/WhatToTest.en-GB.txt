@@ -1,3 +1,7 @@
+Version 22:
+- Added a template chooser when creating a new document.
+- Solved an issue that would slow down font loading when opening a document.
+
 Version 21:
 - Added pound, brackets and braces buttons to the input accessory view for simplifying input with AZERTY keyboards.
 
