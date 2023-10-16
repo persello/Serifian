@@ -730,7 +730,7 @@
                                                 </shadow>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="D9c-V9-Q7f"/>
                                             </imageView>
-                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4X-3M-wHR">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4X-3M-wHR">
                                                 <rect key="frame" x="11" y="19" width="106" height="33"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Serifian" id="JDk-f3-ZO6">
                                                     <font key="font" metaFont="systemBold" size="28"/>
@@ -738,7 +738,7 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="950-nc-IMD">
+                                            <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="950-nc-IMD">
                                                 <rect key="frame" x="25" y="0.0" width="79" height="19"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Version 1.0" id="DN3-3p-aKQ">
                                                     <font key="font" metaFont="system" size="15"/>
@@ -810,13 +810,13 @@
                             <visualEffectView blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Jbk-gR-9r2">
                                 <rect key="frame" x="400" y="0.0" width="250" height="495"/>
                                 <subviews>
-                                    <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="46" horizontalPageScroll="10" verticalLineScroll="46" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSi-V4-Aix">
+                                    <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="45" horizontalPageScroll="10" verticalLineScroll="45" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSi-V4-Aix">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="495"/>
                                         <clipView key="contentView" drawsBackground="NO" id="umY-he-9g1">
                                             <rect key="frame" x="0.0" y="0.0" width="250" height="495"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="42" rowSizeStyle="automatic" usesAutomaticRowHeights="YES" viewBased="YES" indentationPerLevel="13" outlineTableColumn="dcF-3E-XBE" id="Deu-s3-eD5">
+                                                <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="41" rowSizeStyle="automatic" usesAutomaticRowHeights="YES" viewBased="YES" indentationPerLevel="13" outlineTableColumn="dcF-3E-XBE" id="Deu-s3-eD5">
                                                     <rect key="frame" x="0.0" y="0.0" width="250" height="495"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="0.0" height="4"/>
@@ -836,7 +836,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <customView id="05h-7R-EnW" customClass="RecentFileCell" customModule="Serifian" customModuleProvider="target">
-                                                                    <rect key="frame" x="10" y="2" width="230" height="96"/>
+                                                                    <rect key="frame" x="10" y="2" width="230" height="41"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 </customView>
                                                             </prototypeCellViews>
@@ -844,7 +844,6 @@
                                                     </tableColumns>
                                                     <connections>
                                                         <outlet property="dataSource" destination="9Fc-S8-QCJ" id="iLt-8q-2Ib"/>
-                                                        <outlet property="delegate" destination="9Fc-S8-QCJ" id="Cyv-VO-0EW"/>
                                                     </connections>
                                                 </outlineView>
                                             </subviews>
@@ -891,7 +890,7 @@
                 </viewController>
                 <customObject id="Yxb-om-VwZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-725" y="736"/>
+            <point key="canvasLocation" x="-725" y="735.5"/>
         </scene>
         <!--Main Window-->
         <scene sceneID="R2V-B0-nI4">
@@ -922,7 +921,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="TyV-c9-G0C">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="TyV-c9-G0C">
                                 <rect key="frame" x="117" y="125" width="246" height="21"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Your document contents here" id="Cc7-nU-5Mv">
                                     <font key="font" metaFont="system" size="18"/>
