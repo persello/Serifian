@@ -69,14 +69,12 @@ class NSSerifianDocument: NSDocument, SerifianDocument {
         return true
     }
     
-    
-    
     override func fileWrapper(ofType typeName: String) throws -> FileWrapper {
         return FileWrapper()
     }
     
     override nonisolated func read(from fileWrapper: FileWrapper, ofType typeName: String) throws {
-        Swift.print("READ")
+
     }
 
 }
