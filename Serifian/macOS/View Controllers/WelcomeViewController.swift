@@ -16,7 +16,11 @@ class WelcomeViewController: NSViewController {
     @IBAction func outlineViewDoubleAction(_ sender: NSOutlineView) {
         if let selected = sender.child(sender.selectedRow, ofItem: nil) as? URL {
             NSDocumentController.shared.openDocument(withContentsOf: selected, display: true) { document, aaa, err in
-                print("AAA")
+                guard err == nil else {
+                    return
+                }
+                
+                self.view.window?.close()
             }
         }
     }
@@ -44,12 +48,6 @@ extension WelcomeViewController: NSOutlineViewDelegate {
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         guard let url = item as? URL else { return nil }
         let view = RecentFileCell(path: url)
-        
-        let imageURL = url.appending(path: "cover.jpeg")
-        if let data = try? Data(contentsOf: imageURL) {
-            let image = NSImage(data: data)
-            view.imageView?.image = image
-        }
         
         return view
     }

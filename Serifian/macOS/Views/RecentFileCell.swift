@@ -27,8 +27,14 @@ class RecentFileCell: NSTableCellView, NibLoadable {
         self.init()
 
         let homeDir = URL.userHomePath
+        let iCloudString = "Library/Mobile%20Documents/com~apple~CloudDocs"
         self.title.stringValue = url.deletingPathExtension().lastPathComponent
-        self.path.stringValue = url.deletingLastPathComponent().path().replacingOccurrences(of: homeDir, with: "~")
+        self.path.stringValue = url.deletingLastPathComponent().path().replacingOccurrences(of: homeDir, with: "~").replacingOccurrences(of: iCloudString, with: "iCloud")
+        
+        let image = NSWorkspace.shared.icon(forFile: url.path(percentEncoded: false))
+        
+        self.imageView?.image = image
+        
     }
     
     override func prepareForInterfaceBuilder() {
