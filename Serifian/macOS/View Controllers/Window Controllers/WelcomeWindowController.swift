@@ -11,7 +11,7 @@ class WelcomeWindowController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
-    
+        
         self.window?.isMovableByWindowBackground = true
         self.window?.standardWindowButton(.miniaturizeButton)?.isHidden = true
         self.window?.standardWindowButton(.zoomButton)?.isHidden = true

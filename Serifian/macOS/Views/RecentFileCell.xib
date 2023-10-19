@@ -23,7 +23,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="289" height="48"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="daJ-PD-PTv">
-                            <rect key="frame" x="8" y="14.5" width="18" height="21"/>
+                            <rect key="frame" x="0.0" y="14.5" width="18" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="36" id="OaR-qn-7sA"/>
                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="36" id="bjC-kP-y1C"/>
@@ -33,7 +33,7 @@
                             </imageCell>
                         </imageView>
                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PIY-yl-Iea">
-                            <rect key="frame" x="38" y="9" width="251" height="30"/>
+                            <rect key="frame" x="30" y="9" width="259" height="30"/>
                             <subviews>
                                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QN1-LC-z5h">
                                     <rect key="frame" x="-2" y="14" width="102" height="16"/>
@@ -62,10 +62,7 @@
                             </customSpacing>
                         </stackView>
                     </subviews>
-                    <edgeInsets key="edgeInsets" left="8" right="0.0" top="0.0" bottom="0.0"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="48" id="hkO-I7-fcA"/>
-                    </constraints>
+                    <edgeInsets key="edgeInsets" left="0.0" right="0.0" top="8" bottom="8"/>
                     <visibilityPriorities>
                         <integer value="1000"/>
                         <integer value="1000"/>
