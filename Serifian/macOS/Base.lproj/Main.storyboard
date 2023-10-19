@@ -717,10 +717,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="400" height="495"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sb3-Rj-BJk">
-                                        <rect key="frame" x="136" y="260" width="128" height="180"/>
+                                        <rect key="frame" x="136" y="263" width="128" height="177"/>
                                         <subviews>
                                             <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" mirrorLayoutDirectionWhenInternationalizing="never" translatesAutoresizingMaskIntoConstraints="NO" id="bjy-7D-Bpn">
-                                                <rect key="frame" x="0.0" y="52" width="128" height="128"/>
+                                                <rect key="frame" x="0.0" y="49" width="128" height="128"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="128" id="FH6-Qy-QAI"/>
                                                     <constraint firstAttribute="width" constant="128" id="u3t-xa-lgU"/>
@@ -730,18 +730,18 @@
                                                 </shadow>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="D9c-V9-Q7f"/>
                                             </imageView>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4X-3M-wHR">
-                                                <rect key="frame" x="11" y="19" width="106" height="33"/>
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4X-3M-wHR">
+                                                <rect key="frame" x="11" y="16" width="106" height="33"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Serifian" id="JDk-f3-ZO6">
                                                     <font key="font" metaFont="systemBold" size="28"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="950-nc-IMD">
-                                                <rect key="frame" x="25" y="0.0" width="79" height="19"/>
+                                            <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="950-nc-IMD">
+                                                <rect key="frame" x="29" y="0.0" width="70" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Version 1.0" id="DN3-3p-aKQ">
-                                                    <font key="font" metaFont="system" size="15"/>
+                                                    <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
@@ -816,7 +816,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="250" height="495"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="41" rowSizeStyle="automatic" usesAutomaticRowHeights="YES" viewBased="YES" indentationPerLevel="13" outlineTableColumn="dcF-3E-XBE" id="Deu-s3-eD5">
+                                                <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="41" usesAutomaticRowHeights="YES" viewBased="YES" indentationPerLevel="13" outlineTableColumn="dcF-3E-XBE" id="Deu-s3-eD5">
                                                     <rect key="frame" x="0.0" y="0.0" width="250" height="495"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="0.0" height="4"/>
@@ -843,7 +843,9 @@
                                                         </tableColumn>
                                                     </tableColumns>
                                                     <connections>
+                                                        <action trigger="doubleAction" selector="outlineViewDoubleAction:" target="9Fc-S8-QCJ" id="HWv-20-4ps"/>
                                                         <outlet property="dataSource" destination="9Fc-S8-QCJ" id="iLt-8q-2Ib"/>
+                                                        <outlet property="delegate" destination="9Fc-S8-QCJ" id="HTS-we-qs0"/>
                                                     </connections>
                                                 </outlineView>
                                             </subviews>
@@ -883,9 +885,9 @@
                         </customSpacing>
                     </stackView>
                     <connections>
-                        <outlet property="chooseFromTemplateButton" destination="VAi-aV-inl" id="U2j-KA-9ee"/>
-                        <outlet property="createEmptyDocumentButton" destination="e2P-Ec-2eR" id="wqL-EJ-Vl1"/>
+                        <outlet property="appTitleLabel" destination="l4X-3M-wHR" id="axh-6M-esJ"/>
                         <outlet property="recentFilesOutlineView" destination="Deu-s3-eD5" id="2lz-nd-d3s"/>
+                        <outlet property="versionLabel" destination="950-nc-IMD" id="36c-zf-cKG"/>
                     </connections>
                 </viewController>
                 <customObject id="Yxb-om-VwZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -921,7 +923,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="TyV-c9-G0C">
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="TyV-c9-G0C">
                                 <rect key="frame" x="117" y="125" width="246" height="21"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Your document contents here" id="Cc7-nU-5Mv">
                                     <font key="font" metaFont="system" size="18"/>

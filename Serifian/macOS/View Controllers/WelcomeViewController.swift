@@ -8,20 +8,25 @@
 import Cocoa
 
 class WelcomeViewController: NSViewController {
-
-    @IBOutlet weak var createEmptyDocumentButton: NSButton!
-    @IBOutlet weak var chooseFromTemplateButton: NSButton!
     
+    @IBOutlet weak var appTitleLabel: NSTextField!
+    @IBOutlet weak var versionLabel: NSTextField!
     @IBOutlet weak var recentFilesOutlineView: NSOutlineView!
-    @IBAction func recentFilesDoubleAction(_ sender: NSOutlineView) {
-//        sender.click
-        print("Selected \(sender.child(sender.selectedRow, ofItem: nil))")
+
+    @IBAction func outlineViewDoubleAction(_ sender: NSOutlineView) {
+        if let selected = sender.child(sender.selectedRow, ofItem: nil) as? URL {
+            NSDocumentController.shared.openDocument(withContentsOf: selected, display: true) { document, aaa, err in
+                print("AAA")
+            }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do view setup here.
+        self.appTitleLabel.stringValue = String(describing: Bundle.main.infoDictionary!["CFBundleDisplayName"]!)
+        self.versionLabel.stringValue = "Version \(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)"
     }
 }
 
@@ -33,12 +38,12 @@ extension WelcomeViewController: NSOutlineViewDataSource {
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         return NSDocumentController.shared.recentDocumentURLs[index]
     }
-    
+}
+
+extension WelcomeViewController: NSOutlineViewDelegate {
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         guard let url = item as? URL else { return nil }
-        let view = RecentFileCell()
-        view.title.stringValue = url.deletingPathExtension().lastPathComponent
-        view.path.stringValue = url.deletingLastPathComponent().path()
+        let view = RecentFileCell(path: url)
         
         let imageURL = url.appending(path: "cover.jpeg")
         if let data = try? Data(contentsOf: imageURL) {
@@ -48,7 +53,6 @@ extension WelcomeViewController: NSOutlineViewDataSource {
         
         return view
     }
-    
 }
 
 #Preview("Welcome View Controller") {

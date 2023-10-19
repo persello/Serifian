@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B2C90D42AE1C1C3005D8850 /* URL+Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C90D32AE1C1C3005D8850 /* URL+Home.swift */; };
 		8B348C702A223E18009DD175 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C6F2A223E18009DD175 /* Folder.swift */; };
 		8B348C712A223E18009DD175 /* SourceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C6A2A223E18009DD175 /* SourceError.swift */; };
 		8B348C722A223E18009DD175 /* TypstSourceFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C6B2A223E18009DD175 /* TypstSourceFile.swift */; };
@@ -208,6 +209,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B2C90D32AE1C1C3005D8850 /* URL+Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Home.swift"; sourceTree = "<group>"; };
 		8B348C6A2A223E18009DD175 /* SourceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceError.swift; sourceTree = "<group>"; };
 		8B348C6B2A223E18009DD175 /* TypstSourceFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstSourceFile.swift; sourceTree = "<group>"; };
 		8B348C6C2A223E18009DD175 /* SourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceProtocol.swift; sourceTree = "<group>"; };
@@ -743,6 +745,7 @@
 			isa = PBXGroup;
 			children = (
 				8BF64EEA2ADC94600050D042 /* NibLoadable.swift */,
+				8B2C90D32AE1C1C3005D8850 /* URL+Home.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1033,6 +1036,7 @@
 				8B3DEA082AD31D22005060EE /* SerifianDocument+Fonts.swift in Sources */,
 				8B3DE9FB2AD31B06005060EE /* Folder.swift in Sources */,
 				8B3DEA162AD31D39005060EE /* CompilationErrorsView.swift in Sources */,
+				8B2C90D42AE1C1C3005D8850 /* URL+Home.swift in Sources */,
 				8B7E91752ADC532D006597C7 /* MainWindowController.swift in Sources */,
 				8B3DEA152AD31D39005060EE /* AutocompleteCoordinator.swift in Sources */,
 				8BF64EE32ADC8E8D0050D042 /* WelcomeButton.swift in Sources */,

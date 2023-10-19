@@ -46,7 +46,7 @@ class NSSerifianDocument: NSDocument, SerifianDocument {
     }
     
     func assignUndoManager(undoManager: UndoManager?) {
-        
+        self.undoManager = undoManager
     }
     
     // MARK: NSDocument overrides.
@@ -76,7 +76,7 @@ class NSSerifianDocument: NSDocument, SerifianDocument {
     }
     
     override nonisolated func read(from fileWrapper: FileWrapper, ofType typeName: String) throws {
-        
+        Swift.print("READ")
     }
 
 }
