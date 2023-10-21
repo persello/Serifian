@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22154"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="FileTabHeader" customModule="Serifian" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="196" height="32"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wyz-ct-7t2">
+                    <rect key="frame" x="0.0" y="0.0" width="196" height="32"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q44-Pr-un0">
+                            <rect key="frame" x="4" y="5" width="20" height="22"/>
+                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="xmark" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" id="pa4-nS-hSg">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="q44-Pr-un0" secondAttribute="height" id="RMR-pD-J4k"/>
+                            </constraints>
+                        </button>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wr5-50-I5A">
+                            <rect key="frame" x="32" y="5.5" width="14" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Wr5-50-I5A" secondAttribute="height" id="bPN-uq-nZO"/>
+                            </constraints>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="doc" catalog="system" id="RD0-kO-f7V"/>
+                        </imageView>
+                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pH0-rz-cYO">
+                            <rect key="frame" x="52" y="8" width="142" height="16"/>
+                            <textFieldCell key="cell" title="Label" id="uG1-au-3Gg">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <edgeInsets key="edgeInsets" left="4" right="4" top="4" bottom="4"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="5JN-3O-EI3"/>
+                        <constraint firstAttribute="height" secondItem="q44-Pr-un0" secondAttribute="height" constant="12" id="RPf-fm-pxj"/>
+                    </constraints>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="wyz-ct-7t2" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="3aP-KR-5wA"/>
+                <constraint firstAttribute="trailing" secondItem="wyz-ct-7t2" secondAttribute="trailing" id="BxV-gH-ZVa"/>
+                <constraint firstAttribute="bottom" secondItem="wyz-ct-7t2" secondAttribute="bottom" id="Q4r-Qz-UPd"/>
+                <constraint firstItem="wyz-ct-7t2" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="SD1-jY-TFD"/>
+            </constraints>
+            <point key="canvasLocation" x="-3" y="103.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="doc" catalog="system" width="14" height="16"/>
+        <image name="xmark" catalog="system" width="14" height="13"/>
+    </resources>
+</document>

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B23FE822AE46D8800E803C1 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B23FE812AE46D8800E803C1 /* MainSplitViewController.swift */; };
+		8B23FE852AE4739100E803C1 /* FileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B23FE832AE4739100E803C1 /* FileTabViewController.swift */; };
+		8B23FE862AE4739100E803C1 /* FileTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B23FE842AE4739100E803C1 /* FileTabViewController.xib */; };
+		8B23FE8D2AE4761400E803C1 /* FileTabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B23FE8B2AE4761400E803C1 /* FileTabHeader.swift */; };
+		8B23FE8E2AE4761400E803C1 /* FileTabHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B23FE8C2AE4761400E803C1 /* FileTabHeader.xib */; };
 		8B2C90D42AE1C1C3005D8850 /* URL+Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C90D32AE1C1C3005D8850 /* URL+Home.swift */; };
 		8B348C702A223E18009DD175 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C6F2A223E18009DD175 /* Folder.swift */; };
 		8B348C712A223E18009DD175 /* SourceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C6A2A223E18009DD175 /* SourceError.swift */; };
@@ -209,6 +214,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B23FE812AE46D8800E803C1 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
+		8B23FE832AE4739100E803C1 /* FileTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTabViewController.swift; sourceTree = "<group>"; };
+		8B23FE842AE4739100E803C1 /* FileTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FileTabViewController.xib; sourceTree = "<group>"; };
+		8B23FE8B2AE4761400E803C1 /* FileTabHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTabHeader.swift; sourceTree = "<group>"; };
+		8B23FE8C2AE4761400E803C1 /* FileTabHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FileTabHeader.xib; sourceTree = "<group>"; };
 		8B2C90D32AE1C1C3005D8850 /* URL+Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Home.swift"; sourceTree = "<group>"; };
 		8B348C6A2A223E18009DD175 /* SourceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceError.swift; sourceTree = "<group>"; };
 		8B348C6B2A223E18009DD175 /* TypstSourceFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypstSourceFile.swift; sourceTree = "<group>"; };
@@ -604,6 +614,9 @@
 			isa = PBXGroup;
 			children = (
 				8B7E91792ADC58D1006597C7 /* Window Controllers */,
+				8B23FE832AE4739100E803C1 /* FileTabViewController.swift */,
+				8B23FE842AE4739100E803C1 /* FileTabViewController.xib */,
+				8B23FE812AE46D8800E803C1 /* MainSplitViewController.swift */,
 				8B7E917A2ADC5966006597C7 /* WelcomeViewController.swift */,
 			);
 			path = "View Controllers";
@@ -734,9 +747,11 @@
 		8BF64EDE2ADC8E000050D042 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8BF64EE12ADC8E680050D042 /* WelcomeButton.swift */,
-				8BF64EE52ADC91060050D042 /* RecentFileCell.xib */,
 				8BF64EE72ADC91B30050D042 /* RecentFileCell.swift */,
+				8BF64EE52ADC91060050D042 /* RecentFileCell.xib */,
+				8BF64EE12ADC8E680050D042 /* WelcomeButton.swift */,
+				8B23FE8B2AE4761400E803C1 /* FileTabHeader.swift */,
+				8B23FE8C2AE4761400E803C1 /* FileTabHeader.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -941,12 +956,14 @@
 			files = (
 				8BA996C02ADC2C82001CEC62 /* ieee.sr in Resources */,
 				8BA996BA2ADC2C82001CEC62 /* fiction.sr in Resources */,
+				8B23FE8E2AE4761400E803C1 /* FileTabHeader.xib in Resources */,
 				8BA996C32ADC2C85001CEC62 /* Empty.sr in Resources */,
 				8BA996C22ADC2C82001CEC62 /* ams.sr in Resources */,
 				8B3DE9E02AD2F60F005060EE /* Assets.xcassets in Resources */,
 				8BA996BC2ADC2C82001CEC62 /* dept-news.sr in Resources */,
 				8BF64EE62ADC91060050D042 /* RecentFileCell.xib in Resources */,
 				8BA996BE2ADC2C82001CEC62 /* letter.sr in Resources */,
+				8B23FE862AE4739100E803C1 /* FileTabViewController.xib in Resources */,
 				8B3DE9E32AD2F60F005060EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1026,6 +1043,7 @@
 				8B3DEA092AD31D22005060EE /* SerifianDocument+TypstCompilerDelegate.swift in Sources */,
 				8B3DEA012AD31B12005060EE /* SourceProtocol.swift in Sources */,
 				8B3DE9FF2AD31B12005060EE /* ImageFile.swift in Sources */,
+				8B23FE852AE4739100E803C1 /* FileTabViewController.swift in Sources */,
 				8B3DE9FA2AD31AFC005060EE /* AutocompletableSource.swift in Sources */,
 				8B3DEA042AD31D1D005060EE /* SerifianDocument.swift in Sources */,
 				8B3DEA052AD31D22005060EE /* SerifianDocument+Thumbnail.swift in Sources */,
@@ -1040,6 +1058,7 @@
 				8B7E91752ADC532D006597C7 /* MainWindowController.swift in Sources */,
 				8B3DEA152AD31D39005060EE /* AutocompleteCoordinator.swift in Sources */,
 				8BF64EE32ADC8E8D0050D042 /* WelcomeButton.swift in Sources */,
+				8B23FE822AE46D8800E803C1 /* MainSplitViewController.swift in Sources */,
 				8B3DE9DC2AD2F60D005060EE /* ViewController.swift in Sources */,
 				8B3DEA002AD31B12005060EE /* SidebarItemViewModel.swift in Sources */,
 				8B3DE9DA2AD2F60D005060EE /* AppDelegate.swift in Sources */,
@@ -1047,6 +1066,7 @@
 				8BF64EEB2ADC94600050D042 /* NibLoadable.swift in Sources */,
 				8B3DE9FE2AD31B12005060EE /* TypstSourceFile.swift in Sources */,
 				8B3DEA062AD31D22005060EE /* SerifianDocument+Compile.swift in Sources */,
+				8B23FE8D2AE4761400E803C1 /* FileTabHeader.swift in Sources */,
 				8B3DE9FD2AD31B12005060EE /* SourceError.swift in Sources */,
 				8B3DEA122AD31D2E005060EE /* CompilationError+Identifiable.swift in Sources */,
 				8B3DE9FC2AD31B12005060EE /* GenericFile.swift in Sources */,

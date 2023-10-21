@@ -14,25 +14,18 @@ import Combine
 
 class NSSerifianDocument: NSDocument, SerifianDocument {
     var title: String
-    
     var compiler: SwiftyTypst.TypstCompiler!
-    
     var metadata: DocumentMetadata
-    
     var sources: [any SourceProtocol] = []
     
     var coverImage: CGImage?
-    
     var preview: PDFDocument?
     
     var errors: [SwiftyTypst.CompilationError] = []
-    
     var sourceCancellables: [AnyCancellable] = []
-    
     var compilationContinuation: CheckedContinuation<PDFDocument, Error>?
     
     static var logger: Logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "NSSerifianDocument")
-    
     static var signposter: OSSignposter = OSSignposter(subsystem: Bundle.main.bundleIdentifier!, category: "NSSerifianDocument")
     
     init(fileURL url: URL) {
@@ -70,11 +63,12 @@ class NSSerifianDocument: NSDocument, SerifianDocument {
     }
     
     override func fileWrapper(ofType typeName: String) throws -> FileWrapper {
-        return FileWrapper()
+        return try self.rootFileWrapper()
     }
     
-    override nonisolated func read(from fileWrapper: FileWrapper, ofType typeName: String) throws {
-
+    override func read(from fileWrapper: FileWrapper, ofType typeName: String) throws {
+        Self.logger.info("Loading document from contents.")
+        try self.loadFromFileWrapper(fileWrapper: fileWrapper)
     }
 
 }

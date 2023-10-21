@@ -82,6 +82,72 @@ extension SerifianDocument {
         return root
     }
     
+    func loadFromFileWrapper(fileWrapper root: FileWrapper) throws {
+        // Set title.
+        //        var fileNameComponents = root.filename?.split(separator: ".")
+        //        fileNameComponents?.removeLast()
+        //        self.title = fileNameComponents?.joined(separator: ".") ?? "Untitled"
+        
+        // Find the metadata.
+        Self.logger.trace("Finding document metadata.")
+        guard let metadata = root.fileWrappers?["Serifian.plist"],
+              let encodedMetadata = metadata.regularFileContents else {
+            Self.logger.error("Metadata not found, or damaged.")
+            throw DocumentError.noMetadata
+        }
+        
+        let plistDecoder = PropertyListDecoder()
+        self.metadata = try plistDecoder.decode(DocumentMetadata.self, from: encodedMetadata)
+        
+        Self.logger.trace("Metadata decoded.")
+        
+        // Find a Typst folder.
+        guard let typstFolder = root.fileWrappers?["Typst"] else {
+            Self.logger.error("Typst folder not found in document.")
+            throw DocumentError.noTypstFolder
+        }
+        
+        // Get the contents of Typst.
+        guard let contents = typstFolder.fileWrappers else {
+            Self.logger.error("Typst folder has no content.")
+            throw DocumentError.noTypstContent
+        }
+        
+        self.sources = []
+        
+        // Create the compiler and set up the change notifications.
+        
+        // TODO: This might break the compiler when opening existing files.
+        //        self.compiler = TypstCompiler(fileReader: self, main: self.metadata.mainSource)
+        Self.logger.trace("Compiler created. Main source is \(self.metadata.mainSource).")
+        
+        // Create the actual contents.
+        for item in contents.values {
+            if let sourceItem = sourceProtocolObjectFrom(fileWrapper: item, in: nil, partOf: self) {
+                Self.logger.trace("Loading \(sourceItem.name) (\(String(describing: item))).")
+                self.addSource(sourceItem)
+            } else {
+                Self.logger.warning("Failed to load \(item.filename ?? "unknown file").")
+            }
+        }
+        
+        // Preview image.
+        if let imageWrapper = root.fileWrappers?["cover.jpeg"],
+           let data = imageWrapper.regularFileContents,
+           let dataProvider = CGDataProvider(data: data as CFData) {
+            self.coverImage = CGImage(jpegDataProviderSource: dataProvider, decode: nil, shouldInterpolate: false, intent: .perceptual)
+            Self.logger.trace("Preview image loaded.")
+        }
+        
+        // Preview.
+        if let previewWrapper = root.fileWrappers?["preview.pdf"],
+           let data = previewWrapper.regularFileContents,
+           let pdf = PDFDocument(data: data) {
+            self.preview = pdf
+            Self.logger.trace("Preview PDF loaded.")
+        }
+    }
+    
     func setPreview(_ pdf: PDFDocument) {
         Self.logger.trace("Updating preview.")
         self.preview = pdf

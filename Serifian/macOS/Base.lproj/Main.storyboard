@@ -900,7 +900,7 @@
         <scene sceneID="eKV-SX-igj">
             <objects>
                 <windowController storyboardIdentifier="MainWindowController" id="Xqw-8r-VRG" userLabel="Main Window Controller" customClass="MainWindowController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="cDz-mz-joD">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" tabbingMode="disallowed" id="cDz-mz-joD">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="473" width="1158" height="703"/>
@@ -911,10 +911,7 @@
                         </view>
                         <toolbar key="toolbar" implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="eeh-Gs-PrA">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="5048E508-08D7-4E29-8015-1E1C5C059AD2" label="Hide or show the Navigator" paletteLabel="Navigator" tag="-1" image="sidebar.leading" catalog="system" bordered="YES" selectable="YES" navigational="YES" id="Qhg-qR-cgl">
-                                    <size key="minSize" width="30" height="25"/>
-                                    <size key="maxSize" width="30" height="25"/>
-                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="5048E508-08D7-4E29-8015-1E1C5C059AD2" label="Hide or show the Navigator" paletteLabel="Navigator" tag="-1" image="sidebar.leading" catalog="system" bordered="YES" sizingBehavior="auto" selectable="YES" navigational="YES" id="Qhg-qR-cgl"/>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="Qhg-qR-cgl"/>
@@ -935,7 +932,7 @@
         <!--Main Split View Controller-->
         <scene sceneID="WhM-S0-WJQ">
             <objects>
-                <splitViewController id="z4X-lz-jqN" userLabel="Main Split View Controller" sceneMemberID="viewController">
+                <splitViewController id="z4X-lz-jqN" userLabel="Main Split View Controller" customClass="MainSplitViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="2hI-dd-C7K"/>
                         <splitViewItem id="k54-QO-hr4"/>
