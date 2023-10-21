@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B23FE822AE46D8800E803C1 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B23FE812AE46D8800E803C1 /* MainSplitViewController.swift */; };
-		8B23FE852AE4739100E803C1 /* FileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B23FE832AE4739100E803C1 /* FileTabViewController.swift */; };
-		8B23FE862AE4739100E803C1 /* FileTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B23FE842AE4739100E803C1 /* FileTabViewController.xib */; };
+		8B23FE852AE4739100E803C1 /* MultiFileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B23FE832AE4739100E803C1 /* MultiFileController.swift */; };
 		8B23FE8D2AE4761400E803C1 /* FileTabHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B23FE8B2AE4761400E803C1 /* FileTabHeader.swift */; };
 		8B23FE8E2AE4761400E803C1 /* FileTabHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B23FE8C2AE4761400E803C1 /* FileTabHeader.xib */; };
 		8B2C90D42AE1C1C3005D8850 /* URL+Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2C90D32AE1C1C3005D8850 /* URL+Home.swift */; };
@@ -215,8 +214,7 @@
 
 /* Begin PBXFileReference section */
 		8B23FE812AE46D8800E803C1 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
-		8B23FE832AE4739100E803C1 /* FileTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTabViewController.swift; sourceTree = "<group>"; };
-		8B23FE842AE4739100E803C1 /* FileTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FileTabViewController.xib; sourceTree = "<group>"; };
+		8B23FE832AE4739100E803C1 /* MultiFileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiFileController.swift; sourceTree = "<group>"; };
 		8B23FE8B2AE4761400E803C1 /* FileTabHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTabHeader.swift; sourceTree = "<group>"; };
 		8B23FE8C2AE4761400E803C1 /* FileTabHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FileTabHeader.xib; sourceTree = "<group>"; };
 		8B2C90D32AE1C1C3005D8850 /* URL+Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Home.swift"; sourceTree = "<group>"; };
@@ -614,9 +612,8 @@
 			isa = PBXGroup;
 			children = (
 				8B7E91792ADC58D1006597C7 /* Window Controllers */,
-				8B23FE832AE4739100E803C1 /* FileTabViewController.swift */,
-				8B23FE842AE4739100E803C1 /* FileTabViewController.xib */,
 				8B23FE812AE46D8800E803C1 /* MainSplitViewController.swift */,
+				8B23FE832AE4739100E803C1 /* MultiFileController.swift */,
 				8B7E917A2ADC5966006597C7 /* WelcomeViewController.swift */,
 			);
 			path = "View Controllers";
@@ -747,11 +744,11 @@
 		8BF64EDE2ADC8E000050D042 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8B23FE8B2AE4761400E803C1 /* FileTabHeader.swift */,
+				8B23FE8C2AE4761400E803C1 /* FileTabHeader.xib */,
 				8BF64EE72ADC91B30050D042 /* RecentFileCell.swift */,
 				8BF64EE52ADC91060050D042 /* RecentFileCell.xib */,
 				8BF64EE12ADC8E680050D042 /* WelcomeButton.swift */,
-				8B23FE8B2AE4761400E803C1 /* FileTabHeader.swift */,
-				8B23FE8C2AE4761400E803C1 /* FileTabHeader.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -963,7 +960,6 @@
 				8BA996BC2ADC2C82001CEC62 /* dept-news.sr in Resources */,
 				8BF64EE62ADC91060050D042 /* RecentFileCell.xib in Resources */,
 				8BA996BE2ADC2C82001CEC62 /* letter.sr in Resources */,
-				8B23FE862AE4739100E803C1 /* FileTabViewController.xib in Resources */,
 				8B3DE9E32AD2F60F005060EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1043,7 +1039,7 @@
 				8B3DEA092AD31D22005060EE /* SerifianDocument+TypstCompilerDelegate.swift in Sources */,
 				8B3DEA012AD31B12005060EE /* SourceProtocol.swift in Sources */,
 				8B3DE9FF2AD31B12005060EE /* ImageFile.swift in Sources */,
-				8B23FE852AE4739100E803C1 /* FileTabViewController.swift in Sources */,
+				8B23FE852AE4739100E803C1 /* MultiFileController.swift in Sources */,
 				8B3DE9FA2AD31AFC005060EE /* AutocompletableSource.swift in Sources */,
 				8B3DEA042AD31D1D005060EE /* SerifianDocument.swift in Sources */,
 				8B3DEA052AD31D22005060EE /* SerifianDocument+Thumbnail.swift in Sources */,

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="KRH-Dj-tgd">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22154"/>
+        <plugIn identifier="com.apple.pdfkit.ibplugin" version="22154"/>
         <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -679,7 +680,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="68" y="-49"/>
+            <point key="canvasLocation" x="-34" y="-22"/>
         </scene>
         <!--Welcome Window-->
         <scene sceneID="o2H-4g-5Xu">
@@ -704,7 +705,7 @@
                 </windowController>
                 <customObject id="TFW-lC-GdQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-725" y="155"/>
+            <point key="canvasLocation" x="-1170" y="180"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="fva-6u-Orq">
@@ -894,7 +895,7 @@
                 </viewController>
                 <customObject id="Yxb-om-VwZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-725" y="735.5"/>
+            <point key="canvasLocation" x="-1170" y="740"/>
         </scene>
         <!--Main Window Controller-->
         <scene sceneID="eKV-SX-igj">
@@ -927,7 +928,7 @@
                 </windowController>
                 <customObject id="S5K-YN-KdN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="459" y="458.5"/>
+            <point key="canvasLocation" x="342" y="447"/>
         </scene>
         <!--Main Split View Controller-->
         <scene sceneID="WhM-S0-WJQ">
@@ -935,7 +936,7 @@
                 <splitViewController id="z4X-lz-jqN" userLabel="Main Split View Controller" customClass="MainSplitViewController" customModule="Serifian" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="2hI-dd-C7K"/>
-                        <splitViewItem id="k54-QO-hr4"/>
+                        <splitViewItem id="wSv-XR-3Nq"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="z8I-ty-jlD">
                         <rect key="frame" x="0.0" y="0.0" width="1123" height="559"/>
@@ -943,12 +944,86 @@
                     </splitView>
                     <connections>
                         <segue destination="29c-SU-AVO" kind="relationship" relationship="splitItems" id="T9s-u6-VYW"/>
-                        <segue destination="WdM-o9-efS" kind="relationship" relationship="splitItems" id="JdM-ci-kMP"/>
+                        <segue destination="DUt-F2-OeL" kind="relationship" relationship="splitItems" id="okY-oc-wZs"/>
                     </connections>
                 </splitViewController>
                 <customObject id="Vok-zQ-D1U" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="415.5" y="1364.5"/>
+            <point key="canvasLocation" x="343" y="1364"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Be6-lI-0Sf">
+            <objects>
+                <viewController id="DUt-F2-OeL" sceneMemberID="viewController">
+                    <view key="view" id="Wqt-l8-Wz1">
+                        <rect key="frame" x="0.0" y="0.0" width="1001" height="671"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7W-3Q-8gz">
+                                <rect key="frame" x="0.0" y="0.0" width="1001" height="671"/>
+                                <subviews>
+                                    <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzH-if-zuJ">
+                                        <rect key="frame" x="0.0" y="639" width="1001" height="32"/>
+                                        <clipView key="contentView" id="eGW-Nn-g3P">
+                                            <rect key="frame" x="1" y="1" width="999" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <collectionView id="BmN-9i-jeF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="999" height="158"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="hXo-Vg-dqn">
+                                                        <size key="itemSize" width="50" height="50"/>
+                                                    </collectionViewFlowLayout>
+                                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </collectionView>
+                                            </subviews>
+                                        </clipView>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="MdG-y7-GOI"/>
+                                        </constraints>
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="hC0-T5-J2d">
+                                            <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="2Si-Jw-stL">
+                                            <rect key="frame" x="984" y="1" width="16" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="QiF-yO-GSh">
+                                        <rect key="frame" x="0.0" y="0.0" width="1001" height="639"/>
+                                        <connections>
+                                            <segue destination="WdM-o9-efS" kind="embed" id="1PV-Kl-9eN"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="wzH-if-zuJ" secondAttribute="trailing" id="UJ8-bx-FIO"/>
+                                    <constraint firstItem="wzH-if-zuJ" firstAttribute="leading" secondItem="e7W-3Q-8gz" secondAttribute="leading" id="XoN-xM-p5Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="QiF-yO-GSh" secondAttribute="trailing" id="oAr-hM-Wpr"/>
+                                    <constraint firstItem="QiF-yO-GSh" firstAttribute="leading" secondItem="e7W-3Q-8gz" secondAttribute="leading" id="pSM-Iz-fjy"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="e7W-3Q-8gz" firstAttribute="top" secondItem="Wqt-l8-Wz1" secondAttribute="top" id="35N-H1-Ejp"/>
+                            <constraint firstAttribute="bottom" secondItem="e7W-3Q-8gz" secondAttribute="bottom" id="9gp-WX-Pbi"/>
+                            <constraint firstItem="e7W-3Q-8gz" firstAttribute="leading" secondItem="Wqt-l8-Wz1" secondAttribute="leading" id="Tsk-qe-NC5"/>
+                            <constraint firstAttribute="trailing" secondItem="e7W-3Q-8gz" secondAttribute="trailing" id="rjf-H3-BC4"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="btN-mZ-Tpy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="515" y="2198"/>
         </scene>
         <!--Workbench Split View Controller-->
         <scene sceneID="2Ix-ci-MNv">
@@ -959,7 +1034,7 @@
                         <splitViewItem id="IbO-5a-SaX"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="paneSplitter" vertical="YES" id="8Yw-BN-4CH">
-                        <rect key="frame" x="0.0" y="0.0" width="715" height="607"/>
+                        <rect key="frame" x="0.0" y="25" width="1002" height="582"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <outlet property="delegate" destination="WdM-o9-efS" id="Q3x-n1-2B1"/>
@@ -973,20 +1048,31 @@
                 </splitViewController>
                 <customObject id="QJU-mp-LeH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="865.5" y="2206.5"/>
+            <point key="canvasLocation" x="515" y="3051"/>
         </scene>
         <!--Preview View Controller-->
         <scene sceneID="cMF-lG-4gM">
             <objects>
                 <viewController id="dQA-cD-8no" userLabel="Preview View Controller" sceneMemberID="viewController">
                     <view key="view" id="rKd-gM-tcg">
-                        <rect key="frame" x="0.0" y="0.0" width="435" height="635"/>
+                        <rect key="frame" x="0.0" y="0.0" width="761" height="635"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <pdfView autoresizesSubviews="NO" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tFs-Db-NB2">
+                                <rect key="frame" x="0.0" y="0.0" width="761" height="635"/>
+                            </pdfView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tFs-Db-NB2" secondAttribute="trailing" id="0qk-bz-1yC"/>
+                            <constraint firstAttribute="bottom" secondItem="tFs-Db-NB2" secondAttribute="bottom" id="Tdm-N2-Kwe"/>
+                            <constraint firstItem="tFs-Db-NB2" firstAttribute="leading" secondItem="rKd-gM-tcg" secondAttribute="leading" id="gvS-1L-Kbi"/>
+                            <constraint firstItem="tFs-Db-NB2" firstAttribute="top" secondItem="rKd-gM-tcg" secondAttribute="top" id="zGO-pU-Fxv"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="481-Kf-6NW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1323.5" y="3006.5"/>
+            <point key="canvasLocation" x="841.5" y="3888.5"/>
         </scene>
         <!--Editor View Controller-->
         <scene sceneID="7pc-Ro-CtP">
@@ -999,7 +1085,7 @@
                 </viewController>
                 <customObject id="4VT-1n-rq5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="654" y="3006.5"/>
+            <point key="canvasLocation" x="80" y="3889"/>
         </scene>
         <!--Sidebar View Controller-->
         <scene sceneID="kdH-fw-TXB">
@@ -1014,7 +1100,7 @@
                 </viewController>
                 <customObject id="C9n-c1-H6L" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-54" y="2203"/>
+            <point key="canvasLocation" x="-134" y="2198"/>
         </scene>
     </scenes>
     <resources>
