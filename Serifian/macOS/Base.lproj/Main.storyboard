@@ -732,7 +732,7 @@
                                                 </shadow>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="D9c-V9-Q7f"/>
                                             </imageView>
-                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4X-3M-wHR">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l4X-3M-wHR">
                                                 <rect key="frame" x="-2" y="16" width="148" height="47"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Serifian" id="JDk-f3-ZO6">
                                                     <font key="font" metaFont="systemBold" size="40"/>
@@ -740,7 +740,7 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="950-nc-IMD">
+                                            <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="950-nc-IMD">
                                                 <rect key="frame" x="37" y="0.0" width="70" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Version 1.0" id="DN3-3p-aKQ">
                                                     <font key="font" metaFont="system"/>
