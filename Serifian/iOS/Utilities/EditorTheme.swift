@@ -38,9 +38,9 @@ enum HighlightType: String {
     case constantCharacter = "constant.character"
     case markupQuote = "markup.quote"
     case constantCharacterEscape = "constant.character.escape"
-    case ponctuationBracket = "ponctuation.bracket"
-    case ponctuationDelimiter = "ponctuation.delimiter"
-    case ponctuation = "ponctuation"
+    case punctuationBracket = "punctuation.bracket"
+    case punctuationDelimiter = "punctuation.delimiter"
+    case punctuation = "punctuation"
     
     var color: UIColor {
         switch self {
