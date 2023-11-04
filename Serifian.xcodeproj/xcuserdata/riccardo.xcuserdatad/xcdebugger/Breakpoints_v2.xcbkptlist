@@ -100,5 +100,146 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3D1BBF07-2502-4E49-9B4F-1ABE022A46A6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/Models/Document/SerifianDocument+Compile.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "compile()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3D1BBF07-2502-4E49-9B4F-1ABE022A46A6 - 9dfe9ded81d254c2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Serifian_for_iOS.SerifianDocument.compile() async throws -&gt; __C.PDFDocument"
+                  moduleName = "Serifian for iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/Models/Document/SerifianDocument+Compile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "188">
+               </Location>
+               <Location
+                  uuid = "3D1BBF07-2502-4E49-9B4F-1ABE022A46A6 - d213945938718816"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for Serifian_for_iOS.SerifianDocument.compile() async throws -&gt; __C.PDFDocument"
+                  moduleName = "Serifian for iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/Models/Document/SerifianDocument+Compile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "3D1BBF07-2502-4E49-9B4F-1ABE022A46A6 - eb1acf04c78990c0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Serifian_for_iOS.SerifianDocument.compile() async throws -&gt; __C.PDFDocument"
+                  moduleName = "Serifian for iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/Models/Document/SerifianDocument+Compile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "3D1BBF07-2502-4E49-9B4F-1ABE022A46A6 - efe4d1f7696472c7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for Serifian_for_iOS.SerifianDocument.compile() async throws -&gt; __C.PDFDocument"
+                  moduleName = "Serifian for iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/Models/Document/SerifianDocument+Compile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "3D1BBF07-2502-4E49-9B4F-1ABE022A46A6 - dfdf322ef8fe5e27"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.CheckedContinuation&lt;__C.PDFDocument, Swift.Error&gt;) -&gt; () in Serifian_for_iOS.SerifianDocument.compile() async throws -&gt; __C.PDFDocument"
+                  moduleName = "Serifian for iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/Models/Document/SerifianDocument+Compile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "816">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "873AB8AA-EC11-4547-92E8-29FB487C2750"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/Models/Document/SerifianDocument.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "addSource(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "873AB8AA-EC11-4547-92E8-29FB487C2750 - d211dbaf12e662b6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (()) -&gt; () in Serifian_for_iOS.SerifianDocument.addSource(Serifian_for_iOS.SourceProtocol) -&gt; ()"
+                  moduleName = "Serifian for iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/Models/Document/SerifianDocument.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "1820">
+               </Location>
+               <Location
+                  uuid = "873AB8AA-EC11-4547-92E8-29FB487C2750 - 49fb0f1a55066d3d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable () async -&gt; Swift.Optional&lt;__C.PDFDocument&gt; in closure #1 (()) -&gt; () in Serifian_for_iOS.SerifianDocument.addSource(Serifian_for_iOS.SourceProtocol) -&gt; ()"
+                  moduleName = "Serifian for iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/Models/Document/SerifianDocument.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

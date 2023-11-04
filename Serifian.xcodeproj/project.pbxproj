@@ -117,7 +117,6 @@
 		AD2B63F12ABC6C1D00DAF85E /* LinLibertine_RB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D32ABC6C1D00DAF85E /* LinLibertine_RB.ttf */; };
 		AD2B63F22ABC6C1D00DAF85E /* DejaVuSansMono-BoldOblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D42ABC6C1D00DAF85E /* DejaVuSansMono-BoldOblique.ttf */; };
 		AD2B63F32ABC6C1D00DAF85E /* NewCMMath-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D52ABC6C1D00DAF85E /* NewCMMath-Book.otf */; };
-		AD2B63F42ABC6C1D00DAF85E /* NotoSerifCJKsc-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D62ABC6C1D00DAF85E /* NotoSerifCJKsc-Regular.otf */; };
 		AD2B63F52ABC6C1D00DAF85E /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D72ABC6C1D00DAF85E /* Ubuntu-Regular.ttf */; };
 		AD2B63F62ABC6C1D00DAF85E /* FiraMath-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D82ABC6C1D00DAF85E /* FiraMath-Regular.otf */; };
 		AD2B63F72ABC6C1D00DAF85E /* NotoColorEmoji.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63D92ABC6C1D00DAF85E /* NotoColorEmoji.ttf */; };
@@ -126,7 +125,6 @@
 		AD2B63FA2ABC6C1D00DAF85E /* NewCM10-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63DC2ABC6C1D00DAF85E /* NewCM10-Bold.otf */; };
 		AD2B63FB2ABC6C1D00DAF85E /* InriaSerif-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63DD2ABC6C1D00DAF85E /* InriaSerif-Italic.ttf */; };
 		AD2B63FC2ABC6C1D00DAF85E /* PTSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63DE2ABC6C1D00DAF85E /* PTSans-Regular.ttf */; };
-		AD2B63FD2ABC6C1D00DAF85E /* TwitterColorEmoji.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63DF2ABC6C1D00DAF85E /* TwitterColorEmoji.ttf */; };
 		AD2B63FE2ABC6C1D00DAF85E /* LinLibertine_R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63E02ABC6C1D00DAF85E /* LinLibertine_R.ttf */; };
 		AD2B63FF2ABC6C1D00DAF85E /* DejaVuSansMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63E12ABC6C1D00DAF85E /* DejaVuSansMono-Bold.ttf */; };
 		AD2B64002ABC6C1D00DAF85E /* NotoSansSymbols2-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD2B63E22ABC6C1D00DAF85E /* NotoSansSymbols2-Regular.ttf */; };
@@ -320,7 +318,6 @@
 		AD2B63D32ABC6C1D00DAF85E /* LinLibertine_RB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LinLibertine_RB.ttf; sourceTree = "<group>"; };
 		AD2B63D42ABC6C1D00DAF85E /* DejaVuSansMono-BoldOblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DejaVuSansMono-BoldOblique.ttf"; sourceTree = "<group>"; };
 		AD2B63D52ABC6C1D00DAF85E /* NewCMMath-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewCMMath-Book.otf"; sourceTree = "<group>"; };
-		AD2B63D62ABC6C1D00DAF85E /* NotoSerifCJKsc-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifCJKsc-Regular.otf"; sourceTree = "<group>"; };
 		AD2B63D72ABC6C1D00DAF85E /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
 		AD2B63D82ABC6C1D00DAF85E /* FiraMath-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraMath-Regular.otf"; sourceTree = "<group>"; };
 		AD2B63D92ABC6C1D00DAF85E /* NotoColorEmoji.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NotoColorEmoji.ttf; sourceTree = "<group>"; };
@@ -329,7 +326,6 @@
 		AD2B63DC2ABC6C1D00DAF85E /* NewCM10-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewCM10-Bold.otf"; sourceTree = "<group>"; };
 		AD2B63DD2ABC6C1D00DAF85E /* InriaSerif-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "InriaSerif-Italic.ttf"; sourceTree = "<group>"; };
 		AD2B63DE2ABC6C1D00DAF85E /* PTSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-Regular.ttf"; sourceTree = "<group>"; };
-		AD2B63DF2ABC6C1D00DAF85E /* TwitterColorEmoji.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TwitterColorEmoji.ttf; sourceTree = "<group>"; };
 		AD2B63E02ABC6C1D00DAF85E /* LinLibertine_R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LinLibertine_R.ttf; sourceTree = "<group>"; };
 		AD2B63E12ABC6C1D00DAF85E /* DejaVuSansMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DejaVuSansMono-Bold.ttf"; sourceTree = "<group>"; };
 		AD2B63E22ABC6C1D00DAF85E /* NotoSansSymbols2-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansSymbols2-Regular.ttf"; sourceTree = "<group>"; };
@@ -402,7 +398,6 @@
 				8B348C6E2A223E18009DD175 /* ImageFile.swift */,
 				8B348C882A22B0A2009DD175 /* SidebarItemViewModel.swift */,
 				8B348C6A2A223E18009DD175 /* SourceError.swift */,
-				8B348C6C2A223E18009DD175 /* SourceProtocol.swift */,
 				8B348C6B2A223E18009DD175 /* TypstSourceFile.swift */,
 			);
 			path = Sources;
@@ -632,6 +627,7 @@
 			isa = PBXGroup;
 			children = (
 				8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */,
+				8B348C6C2A223E18009DD175 /* SourceProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -776,7 +772,6 @@
 				AD2B63D32ABC6C1D00DAF85E /* LinLibertine_RB.ttf */,
 				AD2B63D42ABC6C1D00DAF85E /* DejaVuSansMono-BoldOblique.ttf */,
 				AD2B63D52ABC6C1D00DAF85E /* NewCMMath-Book.otf */,
-				AD2B63D62ABC6C1D00DAF85E /* NotoSerifCJKsc-Regular.otf */,
 				AD2B63D72ABC6C1D00DAF85E /* Ubuntu-Regular.ttf */,
 				AD2B63D82ABC6C1D00DAF85E /* FiraMath-Regular.otf */,
 				AD2B63D92ABC6C1D00DAF85E /* NotoColorEmoji.ttf */,
@@ -785,7 +780,6 @@
 				AD2B63DC2ABC6C1D00DAF85E /* NewCM10-Bold.otf */,
 				AD2B63DD2ABC6C1D00DAF85E /* InriaSerif-Italic.ttf */,
 				AD2B63DE2ABC6C1D00DAF85E /* PTSans-Regular.ttf */,
-				AD2B63DF2ABC6C1D00DAF85E /* TwitterColorEmoji.ttf */,
 				AD2B63E02ABC6C1D00DAF85E /* LinLibertine_R.ttf */,
 				AD2B63E12ABC6C1D00DAF85E /* DejaVuSansMono-Bold.ttf */,
 				AD2B63E22ABC6C1D00DAF85E /* NotoSansSymbols2-Regular.ttf */,
@@ -977,7 +971,6 @@
 				AD2B63F92ABC6C1D00DAF85E /* DejaVuSansMono.ttf in Resources */,
 				AD2B63EC2ABC6C1D00DAF85E /* IBMPlexSerif-Regular.ttf in Resources */,
 				AD2B63E92ABC6C1D00DAF85E /* InriaSerif-Bold.ttf in Resources */,
-				AD2B63FD2ABC6C1D00DAF85E /* TwitterColorEmoji.ttf in Resources */,
 				AD2B63F82ABC6C1D00DAF85E /* LinLibertine_RI.ttf in Resources */,
 				8BA996BD2ADC2C82001CEC62 /* letter.sr in Resources */,
 				8B4F2B7C2A21376E007A15D7 /* LaunchScreen.storyboard in Resources */,
@@ -996,7 +989,6 @@
 				8BA996BB2ADC2C82001CEC62 /* dept-news.sr in Resources */,
 				8BA996BF2ADC2C82001CEC62 /* ieee.sr in Resources */,
 				AD2B63F72ABC6C1D00DAF85E /* NotoColorEmoji.ttf in Resources */,
-				AD2B63F42ABC6C1D00DAF85E /* NotoSerifCJKsc-Regular.otf in Resources */,
 				AD2B63FA2ABC6C1D00DAF85E /* NewCM10-Bold.otf in Resources */,
 				8BA996B92ADC2C82001CEC62 /* fiction.sr in Resources */,
 				8BA996C12ADC2C82001CEC62 /* ams.sr in Resources */,

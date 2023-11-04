@@ -19,6 +19,11 @@ extension SerifianDocument {
     @discardableResult
     func compile() async throws -> PDFDocument {
         
+        // We need to end the previous continuation before starting a new one.
+        if compilationContinuation != nil {
+            return self.preview ?? PDFDocument()
+        }
+        
         return try await withCheckedThrowingContinuation { continuation in
             Self.logger.trace("Recompiling document.")
             
@@ -29,14 +34,7 @@ extension SerifianDocument {
                 return
             }
             
-            // We need to end the previous continuation before starting a new one.
-            if let compilationContinuation {
-                self.compilationContinuation = nil
-                compilationContinuation.resume(returning: self.preview ?? PDFDocument())
-            }
-            
             self.compilationContinuation = continuation
-            
             self.compiler?.compile(delegate: self)
         }
     }
