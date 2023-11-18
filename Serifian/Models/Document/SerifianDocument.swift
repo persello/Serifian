@@ -10,7 +10,7 @@ import PDFKit
 import Combine
 import os
 
-protocol SerifianDocument: Identifiable, Equatable, ObservableObject, TypstCompilerDelegate, SwiftyTypst.FileManager where ObjectWillChangePublisher == ObservableObjectPublisher {
+protocol SerifianDocument: Identifiable, Equatable, ObservableObject, SwiftyTypst.FileManager where ObjectWillChangePublisher == ObservableObjectPublisher {
     var title: String { get set }
     
     var compiler: TypstCompiler! { get set }
@@ -24,7 +24,7 @@ protocol SerifianDocument: Identifiable, Equatable, ObservableObject, TypstCompi
     var errors: [CompilationError] { get set }
     
     var sourceCancellables: [AnyCancellable] { get set }
-    var compilationContinuation: CheckedContinuation<PDFDocument, any Error>? { get set }
+    var compilationTask: Task<PDFDocument, any Error>? { get set }
         
     static var logger: Logger { get }
     static var signposter: OSSignposter { get }
@@ -166,10 +166,10 @@ extension SerifianDocument {
             source.parent?.content.append(source)
         }
         
-        let cancellable = source.changePublisher.throttle(for: 1, scheduler: RunLoop.main, latest: true).sink { _ in
+        let cancellable = source.changePublisher.sink { _ in
             self.objectWillChange.send()
             Self.logger.trace("\(source.name) changed. Recompiling document.")
-            Task.detached {
+            Task {
                 try? await self.compile()
             }
         }

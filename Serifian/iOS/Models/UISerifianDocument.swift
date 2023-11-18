@@ -14,6 +14,7 @@ import os
 
 class UISerifianDocument: UIDocument, SerifianDocument {
     
+    
     var title: String
     
     var compiler: TypstCompiler!
@@ -27,8 +28,8 @@ class UISerifianDocument: UIDocument, SerifianDocument {
     @Published var errors: [CompilationError] = []
     
     var sourceCancellables: [AnyCancellable] = []
-    var compilationContinuation: CheckedContinuation<PDFDocument, any Error>? = nil
-    
+    var compilationTask: Task<PDFDocument, Error>?
+
     /// A strong reference to the document opening transitioning delegate.
     var transitioningDelegate: UIDocumentBrowserTransitioningDelegate? = nil
         

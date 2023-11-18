@@ -346,8 +346,7 @@ extension TypstEditorViewController: TextViewDelegate {
     func textViewDidChange(_ textView: TextView) {
         // Edit source.
         self.source.content = textView.text
-        
-        Task.detached {
+        Task {
             await self.autocompletion()
         }
     }

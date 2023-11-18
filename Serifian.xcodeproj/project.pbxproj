@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,7 +28,6 @@
 		8B3DE9E92AD2F69C005060EE /* Preview.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8B4F2C2D2A222626007A15D7 /* Preview.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8B3DE9ED2AD2F6A0005060EE /* Thumbnail.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8B4F2C452A2226AD007A15D7 /* Thumbnail.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8B3DE9F12AD2F6A3005060EE /* Fuse in Frameworks */ = {isa = PBXBuildFile; productRef = 8B3DE9F02AD2F6A3005060EE /* Fuse */; };
-		8B3DE9F32AD2F6A7005060EE /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = 8B3DE9F22AD2F6A7005060EE /* SwiftyTypst */; };
 		8B3DE9F82AD3168A005060EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B3DE9DF2AD2F60F005060EE /* Assets.xcassets */; };
 		8B3DE9FA2AD31AFC005060EE /* AutocompletableSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87B6FD2A3668BA00287D9F /* AutocompletableSource.swift */; };
 		8B3DE9FB2AD31B06005060EE /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348C6F2A223E18009DD175 /* Folder.swift */; };
@@ -45,7 +44,6 @@
 		8B3DEA062AD31D22005060EE /* SerifianDocument+Compile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C5F2A223C8B007A15D7 /* SerifianDocument+Compile.swift */; };
 		8B3DEA072AD31D22005060EE /* SerifianDocument+FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileManager.swift */; };
 		8B3DEA082AD31D22005060EE /* SerifianDocument+Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2B64072ABC6C4000DAF85E /* SerifianDocument+Fonts.swift */; };
-		8B3DEA092AD31D22005060EE /* SerifianDocument+TypstCompilerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9DA7022AC42D59001099AA /* SerifianDocument+TypstCompilerDelegate.swift */; };
 		8B3DEA0A2AD31D2E005060EE /* Collection+safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9468552ACB42F8001F3CC6 /* Collection+safe.swift */; };
 		8B3DEA0D2AD31D2E005060EE /* AutocompleteResult+Clean.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2B63C62ABC2B7F00DAF85E /* AutocompleteResult+Clean.swift */; };
 		8B3DEA0E2AD31D2E005060EE /* AutocompleteResult+Fuseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE1C2AB738090068D5B1 /* AutocompleteResult+Fuseable.swift */; };
@@ -142,14 +140,12 @@
 		AD49CE222AB75C240068D5B1 /* UITextRange+Intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49CE212AB75C240068D5B1 /* UITextRange+Intersection.swift */; };
 		AD8DC5D52A8E8421008E2717 /* AutocompletePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */; };
 		AD8DC5DA2A900CD1008E2717 /* Fuse in Frameworks */ = {isa = PBXBuildFile; productRef = AD8DC5D92A900CD1008E2717 /* Fuse */; };
-		AD9DA7032AC42D59001099AA /* SerifianDocument+TypstCompilerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9DA7022AC42D59001099AA /* SerifianDocument+TypstCompilerDelegate.swift */; };
 		AD9FF0212A90FE9E00C6EADD /* AutocompletePopupHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9FF0202A90FE9E00C6EADD /* AutocompletePopupHostingController.swift */; };
 		AD9FF0222A9106C700C6EADD /* TypstEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE0E0C92A2D27FD00A64EB1 /* TypstEditorViewController.swift */; };
 		ADB569E52A8E633400F67C54 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = ADB569E42A8E633400F67C54 /* SwiftyTypst */; };
 		ADCA13592AC0ABE1000A5EFC /* Empty.sr in Resources */ = {isa = PBXBuildFile; fileRef = ADCA13582AC0ABE1000A5EFC /* Empty.sr */; };
 		ADCA135B2AC0C175000A5EFC /* CompilationErrorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA135A2AC0C175000A5EFC /* CompilationErrorsView.swift */; };
 		ADCA135D2AC0C325000A5EFC /* CompilationError+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA135C2AC0C325000A5EFC /* CompilationError+Identifiable.swift */; };
-		ADCFDA542ABC884600C2C555 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = ADCFDA532ABC884600C2C555 /* SwiftyTypst */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -342,7 +338,6 @@
 		AD49CE1F2AB7384D0068D5B1 /* AutocompleteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteCoordinator.swift; sourceTree = "<group>"; };
 		AD49CE212AB75C240068D5B1 /* UITextRange+Intersection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextRange+Intersection.swift"; sourceTree = "<group>"; };
 		AD8DC5D42A8E8421008E2717 /* AutocompletePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopup.swift; sourceTree = "<group>"; };
-		AD9DA7022AC42D59001099AA /* SerifianDocument+TypstCompilerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SerifianDocument+TypstCompilerDelegate.swift"; sourceTree = "<group>"; };
 		AD9FF0202A90FE9E00C6EADD /* AutocompletePopupHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompletePopupHostingController.swift; sourceTree = "<group>"; };
 		ADCA13582AC0ABE1000A5EFC /* Empty.sr */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Empty.sr; sourceTree = "<group>"; };
 		ADCA135A2AC0C175000A5EFC /* CompilationErrorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompilationErrorsView.swift; sourceTree = "<group>"; };
@@ -355,7 +350,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B3DE9F12AD2F6A3005060EE /* Fuse in Frameworks */,
-				8B3DE9F32AD2F6A7005060EE /* SwiftyTypst in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,7 +359,6 @@
 			files = (
 				8BCC9C2B2AC6113300F4522B /* Runestone in Frameworks */,
 				ADB569E52A8E633400F67C54 /* SwiftyTypst in Frameworks */,
-				ADCFDA542ABC884600C2C555 /* SwiftyTypst in Frameworks */,
 				AD8DC5DA2A900CD1008E2717 /* Fuse in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,7 +591,6 @@
 				8B4F2C632A223C8B007A15D7 /* SerifianDocument+FileManager.swift */,
 				AD2B64072ABC6C4000DAF85E /* SerifianDocument+Fonts.swift */,
 				8B4F2C612A223C8B007A15D7 /* SerifianDocument+Thumbnail.swift */,
-				AD9DA7022AC42D59001099AA /* SerifianDocument+TypstCompilerDelegate.swift */,
 			);
 			path = Document;
 			sourceTree = "<group>";
@@ -824,7 +816,6 @@
 			name = "Serifian for macOS";
 			packageProductDependencies = (
 				8B3DE9F02AD2F6A3005060EE /* Fuse */,
-				8B3DE9F22AD2F6A7005060EE /* SwiftyTypst */,
 			);
 			productName = Serifian;
 			productReference = 8B3DE9D72AD2F60D005060EE /* Serifian.app */;
@@ -849,7 +840,6 @@
 			packageProductDependencies = (
 				ADB569E42A8E633400F67C54 /* SwiftyTypst */,
 				AD8DC5D92A900CD1008E2717 /* Fuse */,
-				ADCFDA532ABC884600C2C555 /* SwiftyTypst */,
 				8BCC9C2A2AC6113300F4522B /* Runestone */,
 			);
 			productName = Serifian;
@@ -925,8 +915,8 @@
 			mainGroup = 8B4F2B612A21376D007A15D7;
 			packageReferences = (
 				AD8DC5D82A900C83008E2717 /* XCRemoteSwiftPackageReference "fuse-swift" */,
-				ADCFDA522ABC884600C2C555 /* XCRemoteSwiftPackageReference "SwiftyTypst" */,
 				8BCC9C292AC6113300F4522B /* XCRemoteSwiftPackageReference "Runestone" */,
+				8B72E21C2AF814EE00F03727 /* XCLocalSwiftPackageReference "../SwiftyTypst" */,
 			);
 			productRefGroup = 8B4F2B6B2A21376D007A15D7 /* Products */;
 			projectDirPath = "";
@@ -1028,7 +1018,6 @@
 				8B3DEA0D2AD31D2E005060EE /* AutocompleteResult+Clean.swift in Sources */,
 				8B7E917C2ADC596C006597C7 /* WelcomeViewController.swift in Sources */,
 				8BF64EE82ADC91B30050D042 /* RecentFileCell.swift in Sources */,
-				8B3DEA092AD31D22005060EE /* SerifianDocument+TypstCompilerDelegate.swift in Sources */,
 				8B3DEA012AD31B12005060EE /* SourceProtocol.swift in Sources */,
 				8B3DE9FF2AD31B12005060EE /* ImageFile.swift in Sources */,
 				8B23FE852AE4739100E803C1 /* MultiFileController.swift in Sources */,
@@ -1103,7 +1092,6 @@
 				8BD4CB432AC6235E001D4E43 /* EditorTheme.swift in Sources */,
 				8B87B6FE2A3668BA00287D9F /* AutocompletableSource.swift in Sources */,
 				8B348C892A22B0A2009DD175 /* SidebarItemViewModel.swift in Sources */,
-				AD9DA7032AC42D59001099AA /* SerifianDocument+TypstCompilerDelegate.swift in Sources */,
 				8B348C752A223E18009DD175 /* ImageFile.swift in Sources */,
 				8B4F2C652A223C8B007A15D7 /* DocumentError.swift in Sources */,
 				8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */,
@@ -1193,7 +1181,7 @@
 				CODE_SIGN_ENTITLEMENTS = Serifian/macOS/Serifian.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = BZTVD28H6K;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1201,6 +1189,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Serifian/macOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Serifian;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -1228,7 +1217,7 @@
 				CODE_SIGN_ENTITLEMENTS = Serifian/macOS/Serifian.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = BZTVD28H6K;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1236,6 +1225,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Serifian/macOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Serifian;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -1379,7 +1369,7 @@
 				CODE_SIGN_ENTITLEMENTS = Serifian/iOS/Serifian.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = BZTVD28H6K;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1422,7 +1412,7 @@
 				CODE_SIGN_ENTITLEMENTS = Serifian/iOS/Serifian.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = BZTVD28H6K;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1625,6 +1615,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		8B72E21C2AF814EE00F03727 /* XCLocalSwiftPackageReference "../SwiftyTypst" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../SwiftyTypst;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		8BCC9C292AC6113300F4522B /* XCRemoteSwiftPackageReference "Runestone" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1642,14 +1639,6 @@
 				minimumVersion = 1.4.0;
 			};
 		};
-		ADCFDA522ABC884600C2C555 /* XCRemoteSwiftPackageReference "SwiftyTypst" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/persello/SwiftyTypst";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1657,11 +1646,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AD8DC5D82A900C83008E2717 /* XCRemoteSwiftPackageReference "fuse-swift" */;
 			productName = Fuse;
-		};
-		8B3DE9F22AD2F6A7005060EE /* SwiftyTypst */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = ADCFDA522ABC884600C2C555 /* XCRemoteSwiftPackageReference "SwiftyTypst" */;
-			productName = SwiftyTypst;
 		};
 		8BCC9C2A2AC6113300F4522B /* Runestone */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1675,11 +1659,6 @@
 		};
 		ADB569E42A8E633400F67C54 /* SwiftyTypst */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = SwiftyTypst;
-		};
-		ADCFDA532ABC884600C2C555 /* SwiftyTypst */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = ADCFDA522ABC884600C2C555 /* XCRemoteSwiftPackageReference "SwiftyTypst" */;
 			productName = SwiftyTypst;
 		};
 /* End XCSwiftPackageProductDependency section */

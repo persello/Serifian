@@ -110,8 +110,8 @@
             filePath = "Serifian/Models/Document/SerifianDocument+Compile.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "compile()"
             landmarkType = "7">
             <Locations>
@@ -197,7 +197,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "873AB8AA-EC11-4547-92E8-29FB487C2750"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Serifian/Models/Document/SerifianDocument.swift"
@@ -238,7 +238,38 @@
                   endingLineNumber = "173"
                   offsetFromSymbolStart = "80">
                </Location>
+               <Location
+                  uuid = "873AB8AA-EC11-4547-92E8-29FB487C2750 - d211dbaf12e66151"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (()) -&gt; () in Serifian_for_iOS.SerifianDocument.addSource(Serifian_for_iOS.SourceProtocol) -&gt; ()"
+                  moduleName = "Serifian for iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/riccardo/Developer/Serifian/Serifian/Models/Document/SerifianDocument.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "460">
+               </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2AC49A9-7CC4-4F6F-8E1E-7AEA881B0933"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Serifian/Models/Document/SerifianDocument+FileManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "write(path:package:data:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -8,6 +8,6 @@
 import Foundation
 import SwiftyTypst
 
-protocol AutocompletableSource: TypstSourceDelegate {
+protocol AutocompletableSource {
     func autocomplete(at position: Int) async -> [AutocompleteResult]
 }

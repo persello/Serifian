@@ -19,15 +19,6 @@
       }
     },
     {
-      "identity" : "swiftytypst",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/persello/SwiftyTypst",
-      "state" : {
-        "branch" : "master",
-        "revision" : "3b073ab10433db944fc332f1894dcd849a2e9095"
-      }
-    },
-    {
       "identity" : "tree-sitter",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/simonbs/tree-sitter",

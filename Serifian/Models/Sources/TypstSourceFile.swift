@@ -17,8 +17,7 @@ class TypstSourceFile: SourceProtocol {
     weak var parent: Folder?
     unowned var document: any SerifianDocument
     
-    fileprivate var highlightingContinuation: CheckedContinuation<NSAttributedString?, Never>?
-    fileprivate var autocompletionContinuation: CheckedContinuation<[AutocompleteResult], Never>?
+    fileprivate var autocompletionTask: Task<[AutocompleteResult], Never>?
     
     private var highlightingTask: Task<(), Never>?
     private var highlightingGroup: TaskGroup<(container: [NSAttributedString.Key: Any], range: NSRange)?>?
@@ -111,53 +110,29 @@ extension TypstSourceFile: AutocompletableSource {
     func autocomplete(at position: Int) async -> [AutocompleteResult] {
         
         // End the previous continuation before starting another.
-        if let oldContinuation = self.autocompletionContinuation {
-            self.autocompletionContinuation = nil
-            oldContinuation.resume(returning: [])
-        }
+        self.autocompletionTask?.cancel()
         
         // TODO: This algorithm assumes that line termination is a single character. Please normalise the file first.
-        return await withCheckedContinuation { continuation in
-            Task { @MainActor in
-                
-                var characterPosition = UInt64(position)
-                
-                var row: UInt64 = 0
-                var column: UInt64 = 0
-                
-                self.content.enumerateLines { line, stop in
-                    if characterPosition <= line.count {
-                        column = characterPosition
-                        stop = true
-                        return
-                    } else {
-                        characterPosition -= UInt64(line.count + 1)
-                        row += 1
-                    }
+        self.autocompletionTask = Task.detached {
+            var characterPosition = UInt64(position)
+            
+            var row: UInt64 = 0
+            var column: UInt64 = 0
+            
+            self.content.enumerateLines { line, stop in
+                if characterPosition <= line.count {
+                    column = characterPosition
+                    stop = true
+                    return
+                } else {
+                    characterPosition -= UInt64(line.count + 1)
+                    row += 1
                 }
-                
-                self.autocompletionContinuation = continuation
-                self.document.compiler.autocomplete(delegate: self, filePath: self.getPath().absoluteString, line: row, column: column)
             }
-        }
-    }
-}
-
-extension TypstSourceFile: TypstSourceDelegate {
-    func highlightingFinished(result: [SwiftyTypst.HighlightResult]) {
-        fatalError("Highlighting is done in tree-sitter. Do not use the integrated highlighter.")
-    }
-    
-    func autocompleteFinished(result: [SwiftyTypst.AutocompleteResult]) {
-        guard let continuation = self.autocompletionContinuation else {
-            Self.logger.error("Received an autocompletion finished event for a source that does not have an associated continuation: \(self.getPath()).")
-            return
+                        
+            return self.document.compiler.autocomplete(filePath: self.getPath().absoluteString, line: row, column: column)
         }
         
-        self.autocompletionContinuation = nil
-        
-        Self.logger.trace("Autocompletion finished for \(self.getPath()).")
-        
-        continuation.resume(returning: result)
+        return await self.autocompletionTask!.value
     }
 }
