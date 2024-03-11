@@ -13,6 +13,7 @@ import PDFKit
 import Combine
 
 class NSSerifianDocument: NSDocument, SerifianDocument {
+    
     var title: String
     var compiler: SwiftyTypst.TypstCompiler!
     var metadata: DocumentMetadata
@@ -23,7 +24,8 @@ class NSSerifianDocument: NSDocument, SerifianDocument {
     
     var errors: [SwiftyTypst.CompilationError] = []
     var sourceCancellables: [AnyCancellable] = []
-    var compilationContinuation: CheckedContinuation<PDFDocument, Error>?
+    var compilationTask: Task<PDFDocument, any Error>?
+
     
     static var logger: Logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "NSSerifianDocument")
     static var signposter: OSSignposter = OSSignposter(subsystem: Bundle.main.bundleIdentifier!, category: "NSSerifianDocument")

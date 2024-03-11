@@ -85,6 +85,7 @@
 		8B9468562ACB42F8001F3CC6 /* Collection+safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9468552ACB42F8001F3CC6 /* Collection+safe.swift */; };
 		8B9561B32A235B6C001E0F6F /* DraggableDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B22A235B6B001E0F6F /* DraggableDividerView.swift */; };
 		8B9561B52A23B1DF001E0F6F /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9561B42A23B1DF001E0F6F /* CGRect+Center.swift */; };
+		8B9AFF6F2B9F331E008FF894 /* SwiftyTypst in Frameworks */ = {isa = PBXBuildFile; productRef = 8B9AFF6E2B9F331E008FF894 /* SwiftyTypst */; };
 		8BA996B92ADC2C82001CEC62 /* fiction.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BA996B42ADC2C81001CEC62 /* fiction.sr */; };
 		8BA996BA2ADC2C82001CEC62 /* fiction.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BA996B42ADC2C81001CEC62 /* fiction.sr */; };
 		8BA996BB2ADC2C82001CEC62 /* dept-news.sr in Resources */ = {isa = PBXBuildFile; fileRef = 8BA996B52ADC2C81001CEC62 /* dept-news.sr */; };
@@ -350,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B3DE9F12AD2F6A3005060EE /* Fuse in Frameworks */,
+				8B9AFF6F2B9F331E008FF894 /* SwiftyTypst in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -816,6 +818,7 @@
 			name = "Serifian for macOS";
 			packageProductDependencies = (
 				8B3DE9F02AD2F6A3005060EE /* Fuse */,
+				8B9AFF6E2B9F331E008FF894 /* SwiftyTypst */,
 			);
 			productName = Serifian;
 			productReference = 8B3DE9D72AD2F60D005060EE /* Serifian.app */;
@@ -1646,6 +1649,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AD8DC5D82A900C83008E2717 /* XCRemoteSwiftPackageReference "fuse-swift" */;
 			productName = Fuse;
+		};
+		8B9AFF6E2B9F331E008FF894 /* SwiftyTypst */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B72E21C2AF814EE00F03727 /* XCLocalSwiftPackageReference "../SwiftyTypst" */;
+			productName = SwiftyTypst;
 		};
 		8BCC9C2A2AC6113300F4522B /* Runestone */ = {
 			isa = XCSwiftPackageProductDependency;
